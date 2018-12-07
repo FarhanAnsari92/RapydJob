@@ -29,7 +29,8 @@ struct InitialSignUpAPIService {
                                    "email"          : email,
                                    "password"       : password,
                                    "c_password"     : password,
-                                   "account_type"   : accountType.lowercased() ]
+                                   "account_type"   : accountType.lowercased(),
+            "fcm": (UIApplication.shared.delegate as! AppDelegate).apnsToken]
         print("🌎 Params : ", params)
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).response { (response) in
