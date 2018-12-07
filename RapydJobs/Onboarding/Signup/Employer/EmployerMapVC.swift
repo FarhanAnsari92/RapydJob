@@ -190,6 +190,7 @@ class EmployerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDele
                 if let addres = response?.firstResult() {
                     if let lines = addres.lines {
                         address = lines[0]
+                        postalCode = addres.postalCode ?? ""
                         //self.showMap(with: coordinate.latitude, and: coordinate.longitude, and: lines[0])
                         
                         let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude), zoom: 16)
@@ -278,6 +279,7 @@ class EmployerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDele
         var selectedAddress = [String:Any]()
         selectedAddress["coordinate"] = self.centerCoordinate
         selectedAddress["address"] = address
+        selectedAddress["postalCode"] = postalCode
         self.completion?(selectedAddress)
         navigationController?.popViewController(animated: true)
     }
