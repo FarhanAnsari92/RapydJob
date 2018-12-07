@@ -14,6 +14,7 @@ class TimeSheetJobseekerTableViewCell: UITableViewCell {
     @IBOutlet weak var jobName: UILabel!
     @IBOutlet weak var perHour: UILabel!
     @IBOutlet weak var createdAt: UILabel!
+    @IBOutlet weak var totalAmount: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +36,8 @@ class TimeSheetJobseekerTableViewCell: UITableViewCell {
         self.jobName.text = data.jobName ?? ""
         let perHourRate = "( \(data.hourlyRate ?? "0") per hour )"
         self.perHour.text = perHourRate
-     
+        let tAmount = String(data.totalAmount ?? 0.0)
+        self.totalAmount.text = "Total Amount: \(tAmount)"
         
     }
     

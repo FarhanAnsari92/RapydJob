@@ -12,18 +12,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimesheetRejectTableViewCellID" rowHeight="136" id="KGk-i7-Jjw" customClass="TimesheetRejectTableViewCell" customModule="RapydJobs" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="654" height="136"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimesheetRejectTableViewCellID" rowHeight="187" id="KGk-i7-Jjw" customClass="TimesheetRejectTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="654" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="654" height="135.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="654" height="186.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEX-Lu-pyk">
-                        <rect key="frame" x="20" y="10" width="614" height="115.5"/>
+                        <rect key="frame" x="20" y="10" width="614" height="166.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-eh-Hq1">
-                                <rect key="frame" x="15" y="10" width="594" height="95.5"/>
+                                <rect key="frame" x="15" y="10" width="594" height="146.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="YuE-kz-KX5">
                                         <rect key="frame" x="0.0" y="0.0" width="107.5" height="17"/>
@@ -48,21 +48,27 @@
                                             <constraint firstItem="fHM-9I-aNA" firstAttribute="leading" secondItem="YuE-kz-KX5" secondAttribute="leading" id="zjz-xa-NhM"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gy-Tb-Ba5">
+                                        <rect key="frame" x="0.0" y="27" width="31" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weT-j1-kKm">
-                                        <rect key="frame" x="0.0" y="27" width="594" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="91" width="594" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbT-Ec-E3a">
-                                        <rect key="frame" x="0.0" y="64.5" width="594" height="1"/>
+                                        <rect key="frame" x="0.0" y="115.5" width="594" height="1"/>
                                         <color key="backgroundColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="HVq-Bz-qky"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jKM-tX-Esk">
-                                        <rect key="frame" x="0.0" y="75.5" width="236" height="20"/>
+                                        <rect key="frame" x="0.0" y="126.5" width="236" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcT-BT-vZE">
                                                 <rect key="frame" x="0.0" y="0.0" width="132" height="20"/>
@@ -144,8 +150,9 @@
                 <outlet property="rejectBtn" destination="Agl-L5-xrM" id="lku-3A-Qwq"/>
                 <outlet property="remakeBtn" destination="IcT-BT-vZE" id="To2-OF-SsN"/>
                 <outlet property="separator" destination="FbT-Ec-E3a" id="eLS-al-bKW"/>
+                <outlet property="totalAmount" destination="6gy-Tb-Ba5" id="v7a-1l-NME"/>
             </connections>
-            <point key="canvasLocation" x="94.400000000000006" y="86.35682158920541"/>
+            <point key="canvasLocation" x="94.400000000000006" y="63.418290854572717"/>
         </tableViewCell>
     </objects>
 </document>

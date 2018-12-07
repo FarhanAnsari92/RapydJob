@@ -47,8 +47,14 @@
                                             <constraint firstItem="zJu-rm-tQk" firstAttribute="leading" secondItem="app-Sf-5qP" secondAttribute="leading" id="qoW-hi-4HC"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4S-kf-w4E">
+                                        <rect key="frame" x="0.0" y="27" width="31" height="70"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHE-W1-0q7">
-                                        <rect key="frame" x="0.0" y="27" width="417" height="94.5"/>
+                                        <rect key="frame" x="0.0" y="107" width="417" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -83,6 +89,7 @@
                 <outlet property="jobName" destination="zJu-rm-tQk" id="hra-rs-4yD"/>
                 <outlet property="parentVu" destination="gBy-3W-Izk" id="13c-V1-fZw"/>
                 <outlet property="perHour" destination="a2w-kl-aO2" id="AkD-PI-fsI"/>
+                <outlet property="totalAmount" destination="t4S-kf-w4E" id="0GP-JS-SKq"/>
             </connections>
             <point key="canvasLocation" x="178.40000000000001" y="173.61319340329837"/>
         </tableViewCell>

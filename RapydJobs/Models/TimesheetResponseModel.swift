@@ -21,6 +21,7 @@ class TimesheetResponseModel: Mappable {
     var hourlyRate: String?
     var updatedAt: String?
     var createdAt: String?
+    var totalAmount: Double?
     var timesheets: [Timesheet]?
     
     init() { }
@@ -40,6 +41,7 @@ class TimesheetResponseModel: Mappable {
         hourlyRate <- map["hourly_rate"]
         updatedAt <- map["updated_at"]
         timesheets <- map["timesheets"]
+        totalAmount <- map["total_amount"]
         
         
         
