@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat ListVC-->
+        <scene sceneID="YC6-jc-cKa">
+            <objects>
+                <viewController storyboardIdentifier="ChatListVC" id="dfC-WJ-prG" customClass="ChatListVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aNk-Sq-sEd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="R0h-Yz-yOe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H81-z5-U7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="164"/>
+        </scene>
+        <!--Chat MessagesVC-->
+        <scene sceneID="gI2-bX-QNt">
+            <objects>
+                <viewController storyboardIdentifier="ChatMessagesVC" id="xVn-3B-9pU" customClass="ChatMessagesVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jgo-qp-LUp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-YR-yWq">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fd-d5-UoK">
+                                        <rect key="frame" x="310" y="7.5" width="60" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="mOK-xA-NJO"/>
+                                            <constraint firstAttribute="width" constant="60" id="uQL-7y-zhe"/>
+                                        </constraints>
+                                        <state key="normal" image="send-inactive"/>
+                                        <connections>
+                                            <action selector="sendMessageTapped:" destination="xVn-3B-9pU" eventType="touchUpInside" id="eYt-Fg-8jA"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Ke-o5-nkA" customClass="GrowingTextView" customModule="GrowingTextView">
+                                        <rect key="frame" x="5" y="5" width="300" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Text Message"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                <integer key="value" value="300"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trimWhiteSpaceWhenEndEditing" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8Fd-d5-UoK" firstAttribute="leading" secondItem="7Ke-o5-nkA" secondAttribute="trailing" constant="5" id="Suv-iT-X3o"/>
+                                    <constraint firstItem="7Ke-o5-nkA" firstAttribute="top" secondItem="KcF-YR-yWq" secondAttribute="top" constant="5" id="WgC-98-rWx"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ybg-Xk-2fs"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Fd-d5-UoK" secondAttribute="trailing" constant="5" id="gUE-8T-e5G"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Ke-o5-nkA" secondAttribute="bottom" constant="5" id="hry-KZ-aiO"/>
+                                    <constraint firstItem="7Ke-o5-nkA" firstAttribute="leading" secondItem="KcF-YR-yWq" secondAttribute="leading" constant="5" id="mpq-Vt-ggv"/>
+                                    <constraint firstItem="8Fd-d5-UoK" firstAttribute="centerY" secondItem="KcF-YR-yWq" secondAttribute="centerY" id="pfk-5K-pne"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mds-1h-PA4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xVn-3B-9pU" id="uUB-D3-HDU"/>
+                                    <outlet property="delegate" destination="xVn-3B-9pU" id="pSg-gZ-dCK"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.46666666666666667" green="0.74509803921568629" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="anw-52-zsK" firstAttribute="bottom" secondItem="KcF-YR-yWq" secondAttribute="bottom" id="0fj-0C-cy1"/>
+                            <constraint firstItem="Mds-1h-PA4" firstAttribute="top" secondItem="anw-52-zsK" secondAttribute="top" id="6UL-aI-gxW"/>
+                            <constraint firstItem="KcF-YR-yWq" firstAttribute="top" secondItem="Mds-1h-PA4" secondAttribute="bottom" id="H6Z-Tl-EYT"/>
+                            <constraint firstItem="anw-52-zsK" firstAttribute="trailing" secondItem="KcF-YR-yWq" secondAttribute="trailing" id="QeP-nH-E6S"/>
+                            <constraint firstItem="KcF-YR-yWq" firstAttribute="leading" secondItem="anw-52-zsK" secondAttribute="leading" id="Uki-og-i2L"/>
+                            <constraint firstItem="Mds-1h-PA4" firstAttribute="leading" secondItem="anw-52-zsK" secondAttribute="leading" id="fEB-X5-xH5"/>
+                            <constraint firstItem="anw-52-zsK" firstAttribute="trailing" secondItem="Mds-1h-PA4" secondAttribute="trailing" id="rWA-tz-DlR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="anw-52-zsK"/>
+                    </view>
+                    <connections>
+                        <outlet property="footerConstrains" destination="0fj-0C-cy1" id="SPT-E7-kWW"/>
+                        <outlet property="footerView" destination="KcF-YR-yWq" id="7xg-ld-IH0"/>
+                        <outlet property="messageInput" destination="7Ke-o5-nkA" id="Zy0-zi-2dx"/>
+                        <outlet property="messagesTableView" destination="Mds-1h-PA4" id="guV-5M-1IP"/>
+                        <outlet property="sendButton" destination="8Fd-d5-UoK" id="ahb-Xh-nr1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOn-hU-UvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="155.17241379310346"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="send-inactive" width="39" height="33"/>
+    </resources>
+</document>

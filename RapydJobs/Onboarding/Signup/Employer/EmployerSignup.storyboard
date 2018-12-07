@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xa6-eo-iHY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Employer Signup OneVC-->
+        <scene sceneID="3mZ-HK-tVn">
+            <objects>
+                <viewController storyboardIdentifier="EmployerSignupOneVC" id="DZY-fk-fJy" customClass="EmployerSignupOneVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VNd-ZD-TLF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DXN-av-XFA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="THt-k1-BCj">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="awb-Co-Vs7">
+                            <connections>
+                                <action selector="goBack:" destination="DZY-fk-fJy" id="XEs-9o-tJk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Uwj-Ho-XQe" kind="show" identifier="EmployerCodeVC" id="15h-hq-kAp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zxi-Ge-R1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208.8" y="142.57871064467767"/>
+        </scene>
+        <!--Employer CodeVC-->
+        <scene sceneID="Bau-4c-2Gk">
+            <objects>
+                <viewController storyboardIdentifier="EmployerCodeVC" id="Uwj-Ho-XQe" customClass="EmployerCodeVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nWI-1z-TwF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rhW-sD-PM7"/>
+                    </view>
+                    <connections>
+                        <segue destination="Mnq-CW-QtJ" kind="show" identifier="EmployerSignupTwoVC" id="Kjh-N8-kbT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3x8-zj-8PG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2041" y="143"/>
+        </scene>
+        <!--Employer Signup TwoVC-->
+        <scene sceneID="IeD-uI-f6c">
+            <objects>
+                <viewController storyboardIdentifier="EmployerSignupTwoVC" id="Mnq-CW-QtJ" customClass="EmployerSignupTwoVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tpC-Md-U9i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xe7-4e-GPX"/>
+                    </view>
+                    <connections>
+                        <segue destination="mTg-4t-ZZl" kind="show" identifier="EmployerMapVC" id="eHQ-zG-XT3"/>
+                        <segue destination="uO2-CR-Xf8" kind="show" identifier="EmployerUploadLogoVC" id="NHg-w3-cRn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUy-Fl-Ydd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2887" y="143"/>
+        </scene>
+        <!--Employer Upload LogoVC-->
+        <scene sceneID="Vgo-Ef-xCW">
+            <objects>
+                <viewController storyboardIdentifier="EmployerUploadLogoVC" id="uO2-CR-Xf8" customClass="EmployerUploadLogoVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="osb-5C-ahs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnp-hc-HtO" customClass="GTProgressBar" customModule="GTProgressBar">
+                                <rect key="frame" x="0.0" y="657" width="375" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Ftd-vW-WjY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayLabel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barFillColor">
+                                        <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barBorderWidth">
+                                        <real key="value" value="-2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barFillInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vnp-hc-HtO" firstAttribute="leading" secondItem="oJZ-lf-j65" secondAttribute="leading" id="XJt-LQ-EmX"/>
+                            <constraint firstItem="oJZ-lf-j65" firstAttribute="bottom" secondItem="Vnp-hc-HtO" secondAttribute="bottom" id="fKb-e3-xAT"/>
+                            <constraint firstItem="oJZ-lf-j65" firstAttribute="trailing" secondItem="Vnp-hc-HtO" secondAttribute="trailing" id="q7E-RV-8Z9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oJZ-lf-j65"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="Vnp-hc-HtO" id="EKl-Wb-mR3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgS-J0-49K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2886" y="856"/>
+        </scene>
+        <!--Employer MapVC-->
+        <scene sceneID="b5h-H4-cmC">
+            <objects>
+                <viewController storyboardIdentifier="EmployerMapVC" id="mTg-4t-ZZl" customClass="EmployerMapVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="67d-me-cSB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="Pbo-Ip-bqm">
+                                <rect key="frame" x="174" y="297.5" width="27" height="36"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pbo-Ip-bqm" firstAttribute="centerX" secondItem="67d-me-cSB" secondAttribute="centerX" id="8Bi-IB-hTd"/>
+                            <constraint firstItem="Pbo-Ip-bqm" firstAttribute="bottom" secondItem="67d-me-cSB" secondAttribute="centerY" id="A7b-Ni-TVn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lKJ-0D-67J"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentLocationImg" destination="Pbo-Ip-bqm" id="iB8-2R-ZQL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVz-To-KKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3721" y="143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t78-EE-Bhl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xa6-eo-iHY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="it1-eQ-Gg9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DZY-fk-fJy" kind="relationship" relationship="rootViewController" id="Qtr-kD-4Z4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMp-ag-80J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269.60000000000002" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="15" height="25"/>
+        <image name="ic_location" width="27" height="36"/>
+    </resources>
+</document>

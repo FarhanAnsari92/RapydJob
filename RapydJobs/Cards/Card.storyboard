@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g1M-hC-can">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Card View Controller-->
+        <scene sceneID="yWE-tM-CuS">
+            <objects>
+                <viewController storyboardIdentifier="CardViewController" id="g1M-hC-can" customClass="CardViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQT-q2-JPO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJJ-vc-N86">
+                                <rect key="frame" x="20" y="84" width="335" height="406"/>
+                                <connections>
+                                    <segue destination="D7V-H4-Pbe" kind="embed" identifier="CardViewSegue" id="Imb-50-C5M"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ocB-EU-RNn">
+                                <rect key="frame" x="47.666666666666657" y="698" width="280" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr4-px-eEX" customClass="CardButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Dr4-px-eEX" secondAttribute="height" multiplier="1:1" id="hCC-Sl-jaA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="ic_redo"/>
+                                        <connections>
+                                            <action selector="didTapReloadButton:" destination="g1M-hC-can" eventType="touchUpInside" id="wpM-OG-N1N"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOe-94-ibL" customClass="CardButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vOe-94-ibL" secondAttribute="height" multiplier="1:1" id="tVF-mQ-vId"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="ic_cross_big"/>
+                                        <connections>
+                                            <action selector="didTapRejectButton:" destination="g1M-hC-can" eventType="touchUpInside" id="PvP-Ne-jiM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-SC-Qdg" customClass="CardButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="120" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Bzp-SC-Qdg" secondAttribute="height" multiplier="1:1" id="ECs-Le-aha"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="ic_star_yellow"/>
+                                        <connections>
+                                            <action selector="didTapStarButton:" destination="g1M-hC-can" eventType="touchUpInside" id="ydV-E4-qKU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjb-t9-rGg" customClass="CardButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="170" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="yjb-t9-rGg" secondAttribute="height" multiplier="1:1" id="Ex1-C9-EeA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="ic_tick_green"/>
+                                        <connections>
+                                            <action selector="didTapAcceptButton:" destination="g1M-hC-can" eventType="touchUpInside" id="cPl-Mk-yUB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dt-2b-6Oo" customClass="CardButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="240" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2dt-2b-6Oo" secondAttribute="height" multiplier="1:1" id="XXI-h8-kk9"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="ic_double-tick"/>
+                                        <connections>
+                                            <action selector="didTapShortlistButton:" destination="g1M-hC-can" eventType="touchUpInside" id="WqS-Mh-eYd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Bzp-SC-Qdg" secondAttribute="bottom" constant="10" id="0j7-KE-fkb"/>
+                                    <constraint firstItem="Bzp-SC-Qdg" firstAttribute="top" secondItem="ocB-EU-RNn" secondAttribute="top" constant="10" id="C4K-oJ-GMq"/>
+                                    <constraint firstItem="vOe-94-ibL" firstAttribute="height" secondItem="ocB-EU-RNn" secondAttribute="height" id="Cej-Ol-W5A"/>
+                                    <constraint firstItem="Bzp-SC-Qdg" firstAttribute="centerX" secondItem="ocB-EU-RNn" secondAttribute="centerX" id="G1N-iT-UyZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="IuD-VT-wh5"/>
+                                    <constraint firstItem="Dr4-px-eEX" firstAttribute="top" secondItem="ocB-EU-RNn" secondAttribute="top" constant="10" id="LLR-9W-1vV"/>
+                                    <constraint firstItem="yjb-t9-rGg" firstAttribute="height" secondItem="ocB-EU-RNn" secondAttribute="height" id="ROI-Y4-omc"/>
+                                    <constraint firstItem="2dt-2b-6Oo" firstAttribute="centerY" secondItem="ocB-EU-RNn" secondAttribute="centerY" id="RPl-21-LHh"/>
+                                    <constraint firstAttribute="bottom" secondItem="2dt-2b-6Oo" secondAttribute="bottom" constant="10" id="TbK-Mp-Nyu"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dr4-px-eEX" secondAttribute="bottom" constant="10" id="W6w-U2-7yn"/>
+                                    <constraint firstItem="vOe-94-ibL" firstAttribute="centerY" secondItem="ocB-EU-RNn" secondAttribute="centerY" id="Wgd-kE-UwY"/>
+                                    <constraint firstItem="yjb-t9-rGg" firstAttribute="centerY" secondItem="ocB-EU-RNn" secondAttribute="centerY" id="dw1-SP-nYo"/>
+                                    <constraint firstItem="2dt-2b-6Oo" firstAttribute="top" secondItem="ocB-EU-RNn" secondAttribute="top" constant="10" id="eA1-Qi-YXL"/>
+                                    <constraint firstItem="Dr4-px-eEX" firstAttribute="centerY" secondItem="ocB-EU-RNn" secondAttribute="centerY" id="nTt-mQ-E3b"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osz-WO-MMF" customClass="JobPickerButton" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="131.66666666666663" y="666" width="112" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <state key="normal" title="No Jobs Found" image="ic_dropdown">
+                                    <color key="titleColor" red="0.37254901959999998" green="0.73333333329999995" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.50980392159999999" green="0.80000000000000004" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapJobPickerButton:" destination="g1M-hC-can" eventType="touchUpInside" id="eo4-IP-wK8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nJJ-vc-N86" firstAttribute="leading" secondItem="PP3-nJ-eSF" secondAttribute="leading" constant="20" id="1eH-Kj-mHS"/>
+                            <constraint firstItem="Osz-WO-MMF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nJJ-vc-N86" secondAttribute="bottom" constant="20" id="4NL-Yk-glm"/>
+                            <constraint firstItem="ocB-EU-RNn" firstAttribute="centerX" secondItem="nQT-q2-JPO" secondAttribute="centerX" id="L2U-WF-4fp"/>
+                            <constraint firstItem="PP3-nJ-eSF" firstAttribute="trailing" secondItem="nJJ-vc-N86" secondAttribute="trailing" constant="20" id="Pxf-12-nOh"/>
+                            <constraint firstItem="nJJ-vc-N86" firstAttribute="top" secondItem="PP3-nJ-eSF" secondAttribute="top" constant="40" id="Q3Z-kg-9rI"/>
+                            <constraint firstItem="PP3-nJ-eSF" firstAttribute="bottom" secondItem="ocB-EU-RNn" secondAttribute="bottom" constant="20" id="Rh4-N2-sTX"/>
+                            <constraint firstItem="Osz-WO-MMF" firstAttribute="centerX" secondItem="nQT-q2-JPO" secondAttribute="centerX" id="T3R-9n-MZ0"/>
+                            <constraint firstItem="nJJ-vc-N86" firstAttribute="height" secondItem="nQT-q2-JPO" secondAttribute="height" multiplier="0.5" id="cIO-vN-8sS"/>
+                            <constraint firstItem="ocB-EU-RNn" firstAttribute="top" secondItem="Osz-WO-MMF" secondAttribute="bottom" constant="15" id="lTR-Tn-boW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PP3-nJ-eSF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xxd-GV-Mlf"/>
+                    <connections>
+                        <outlet property="acceptButton" destination="yjb-t9-rGg" id="BjF-yp-fQ5"/>
+                        <outlet property="jobSelectorButton" destination="Osz-WO-MMF" id="xun-E8-8eL"/>
+                        <outlet property="rejectButton" destination="vOe-94-ibL" id="jvj-Lb-F11"/>
+                        <outlet property="reloadButton" destination="Dr4-px-eEX" id="Tvu-B9-j5d"/>
+                        <outlet property="shortlistButton" destination="2dt-2b-6Oo" id="jmO-TX-aRZ"/>
+                        <outlet property="starButton" destination="Bzp-SC-Qdg" id="iis-dS-V4U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zg-et-i0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1116" y="119.1904047976012"/>
+        </scene>
+        <!--Card Container View Controller-->
+        <scene sceneID="RnN-Ho-20E">
+            <objects>
+                <viewController id="D7V-H4-Pbe" customClass="CardContainerViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MXg-lf-hpg">
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="406"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4g-jb-6xy" customClass="CardView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="372"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="m4g-jb-6xy" secondAttribute="trailing" id="F4j-pP-iDU"/>
+                            <constraint firstItem="m4g-jb-6xy" firstAttribute="top" secondItem="MXg-lf-hpg" secondAttribute="top" id="FYW-n0-18I"/>
+                            <constraint firstItem="m4g-jb-6xy" firstAttribute="leading" secondItem="MXg-lf-hpg" secondAttribute="leading" id="Zx4-fz-8wu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="m4g-jb-6xy" secondAttribute="bottom" id="kCP-Q8-iRg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sr8-dq-21V"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardView" destination="m4g-jb-6xy" id="tCz-LM-BR2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUz-4Z-WGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1885.5999999999999" y="118.74062968515743"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_cross_big" width="53" height="53"/>
+        <image name="ic_double-tick" width="27" height="45"/>
+        <image name="ic_dropdown" width="15" height="8"/>
+        <image name="ic_redo" width="39" height="38"/>
+        <image name="ic_star_yellow" width="47" height="43"/>
+        <image name="ic_tick_green" width="65" height="49"/>
+    </resources>
+</document>

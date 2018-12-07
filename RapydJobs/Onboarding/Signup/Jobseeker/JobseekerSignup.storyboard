@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nbK-fJ-2qx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jobseeker Signup OneVC-->
+        <scene sceneID="vQk-Q2-Dgo">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerSignupOneVC" id="y4W-te-GoR" customClass="JobseekerSignupOneVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jij-z7-M4S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2HC-7q-a44"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MdG-sp-epi">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="cE9-lN-vNc">
+                            <connections>
+                                <action selector="goBack:" destination="y4W-te-GoR" id="R5t-X2-3jM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="LJG-Ae-NG3" kind="show" identifier="JobseekerCodeVC" id="EVg-ru-OzW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tNl-ii-eKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="145.27736131934034"/>
+        </scene>
+        <!--Jobseeker CodeVC-->
+        <scene sceneID="asy-XG-PRO">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerCodeVC" id="LJG-Ae-NG3" customClass="JobseekerCodeVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wgg-Pp-nRS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9HZ-dx-44q"/>
+                    </view>
+                    <connections>
+                        <segue destination="QNc-MG-eFa" kind="show" identifier="JobseekerSignupTwoVC" id="OaY-l5-18T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEr-5G-L3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953" y="145"/>
+        </scene>
+        <!--Jobseeker MapVC-->
+        <scene sceneID="JrG-6l-WoM">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerMapVC" id="46G-zE-zpq" customClass="JobseekerMapVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yaX-Ed-adZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="azP-Yv-Tyz">
+                                <rect key="frame" x="174" y="297.5" width="27" height="36"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="azP-Yv-Tyz" firstAttribute="bottom" secondItem="yaX-Ed-adZ" secondAttribute="centerY" id="FNg-dZ-Ar9"/>
+                            <constraint firstItem="azP-Yv-Tyz" firstAttribute="centerX" secondItem="yaX-Ed-adZ" secondAttribute="centerX" id="j77-gl-4Xl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Bp-Ky-d8c"/>
+                    </view>
+                    <connections>
+                        <outlet property="centreMarker" destination="azP-Yv-Tyz" id="asW-jB-C32"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btP-uF-UcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2792.8000000000002" y="918.89055472263874"/>
+        </scene>
+        <!--Jobseeker Add New ExperiencesVC-->
+        <scene sceneID="YkA-tV-pO5">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerAddNewExperiencesVC" id="tUH-uQ-8yS" customClass="JobseekerAddNewExperiencesVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="99l-UY-F4F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QpI-93-7GR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jBe-Vn-ODF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3670" y="919"/>
+        </scene>
+        <!--Jobseeker Add New Educations-->
+        <scene sceneID="zP7-a3-XI9">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerAddNewEducations" id="lEX-Qr-F4t" customClass="JobseekerAddNewEducations" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BsV-fa-IEa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rqO-z5-Al6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ih5-IG-IIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4518" y="919"/>
+        </scene>
+        <!--Jobseeker Add New LanguageVC-->
+        <scene sceneID="jfe-Cx-0BF">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerAddNewLanguageVC" id="VyH-4T-1Ua" customClass="JobseekerAddNewLanguageVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5fC-7K-rQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9ts-GI-Rak"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ej1-nM-sEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5398" y="919"/>
+        </scene>
+        <!--Add Time Sheet View Controller-->
+        <scene sceneID="bAX-54-3k6">
+            <objects>
+                <viewController storyboardIdentifier="AddTimeSheetViewControllerID" id="D9b-Je-igX" customClass="AddTimeSheetViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SQh-yg-3Ls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyJ-8Z-XgO" customClass="WeekView" customModule="QVRWeekView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9K6-B1-gjC" firstAttribute="trailing" secondItem="kyJ-8Z-XgO" secondAttribute="trailing" id="1Pf-fZ-kxE"/>
+                            <constraint firstItem="kyJ-8Z-XgO" firstAttribute="leading" secondItem="9K6-B1-gjC" secondAttribute="leading" id="XYy-PU-r2E"/>
+                            <constraint firstItem="9K6-B1-gjC" firstAttribute="bottom" secondItem="kyJ-8Z-XgO" secondAttribute="bottom" id="fdZ-P3-dZC"/>
+                            <constraint firstItem="kyJ-8Z-XgO" firstAttribute="top" secondItem="9K6-B1-gjC" secondAttribute="top" id="seG-US-lnu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9K6-B1-gjC"/>
+                    </view>
+                    <connections>
+                        <outlet property="weekView" destination="kyJ-8Z-XgO" id="eQd-r7-KI3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3e6-2c-cOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6350" y="919"/>
+        </scene>
+        <!--Shift Time View Controller-->
+        <scene sceneID="nh2-iH-Ix4">
+            <objects>
+                <viewController storyboardIdentifier="ShiftTimeViewController" id="pic-Ef-myM" customClass="ShiftTimeViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9av-Xc-yKg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaB-Lm-7C9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4tR-oC-GDR">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="UPM-I8-jrb"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="gI0-vz-2fF">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionViewCellID" id="sMN-LQ-mGo" customClass="DateCollectionViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="12.5" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOo-YF-sNN">
+                                                            <rect key="frame" x="5" y="7" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW0-lb-oSz">
+                                                            <rect key="frame" x="5" y="25.5" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwt-fO-uPm">
+                                                            <rect key="frame" x="49" y="5" width="1" height="40"/>
+                                                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="bcr-cf-THe"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="NW0-lb-oSz" firstAttribute="leading" secondItem="sMN-LQ-mGo" secondAttribute="leading" constant="5" id="HxG-88-wVD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Nwt-fO-uPm" secondAttribute="bottom" constant="5" id="OAc-B7-CIi"/>
+                                                    <constraint firstItem="aOo-YF-sNN" firstAttribute="leading" secondItem="sMN-LQ-mGo" secondAttribute="leading" constant="5" id="haw-rC-0aH"/>
+                                                    <constraint firstItem="aOo-YF-sNN" firstAttribute="top" secondItem="sMN-LQ-mGo" secondAttribute="top" constant="7" id="jZM-eu-vxv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Nwt-fO-uPm" secondAttribute="trailing" id="p9G-rf-G0F"/>
+                                                    <constraint firstAttribute="bottom" secondItem="NW0-lb-oSz" secondAttribute="bottom" constant="10" id="wPt-lq-3GZ"/>
+                                                    <constraint firstItem="Nwt-fO-uPm" firstAttribute="leading" secondItem="NW0-lb-oSz" secondAttribute="trailing" constant="5" id="xfy-Zq-d9M"/>
+                                                    <constraint firstItem="Nwt-fO-uPm" firstAttribute="leading" secondItem="aOo-YF-sNN" secondAttribute="trailing" constant="5" id="y5h-kw-MgX"/>
+                                                    <constraint firstItem="Nwt-fO-uPm" firstAttribute="top" secondItem="sMN-LQ-mGo" secondAttribute="top" constant="5" id="zWl-5A-vH9"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="NW0-lb-oSz" id="TJu-A1-tlo"/>
+                                                    <outlet property="dayLabel" destination="aOo-YF-sNN" id="Alz-rc-7t7"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="pic-Ef-myM" id="EoO-ih-CiY"/>
+                                            <outlet property="delegate" destination="pic-Ef-myM" id="upC-Bn-9hn"/>
+                                        </connections>
+                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8Vn-gL-dUO">
+                                        <rect key="frame" x="5" y="115" width="365" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKV-NK-aX5" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AoK-Or-dUd" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="167.5" y="0.0" width="163.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJd-mS-58v">
+                                                <rect key="frame" x="335" y="0.0" width="30" height="30"/>
+                                                <state key="normal" title="Add">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="AoK-Or-dUd" firstAttribute="width" secondItem="fKV-NK-aX5" secondAttribute="width" id="w1Z-wn-9ye"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4tR-oC-GDR" firstAttribute="top" secondItem="eaB-Lm-7C9" secondAttribute="top" constant="20" id="EkG-Ob-otP"/>
+                                    <constraint firstAttribute="trailing" secondItem="4tR-oC-GDR" secondAttribute="trailing" id="LjY-Sl-cAl"/>
+                                    <constraint firstItem="8Vn-gL-dUO" firstAttribute="leading" secondItem="eaB-Lm-7C9" secondAttribute="leading" constant="5" id="S6U-6L-wCW"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Vn-gL-dUO" secondAttribute="trailing" constant="5" id="WDY-2f-LvN"/>
+                                    <constraint firstItem="4tR-oC-GDR" firstAttribute="leading" secondItem="eaB-Lm-7C9" secondAttribute="leading" id="lNP-hh-nQV"/>
+                                    <constraint firstItem="8Vn-gL-dUO" firstAttribute="top" secondItem="4tR-oC-GDR" secondAttribute="bottom" constant="20" id="p0e-ab-V9J"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eaB-Lm-7C9" firstAttribute="leading" secondItem="5sB-XT-6aB" secondAttribute="leading" id="0wZ-v4-YWS"/>
+                            <constraint firstItem="5sB-XT-6aB" firstAttribute="trailing" secondItem="eaB-Lm-7C9" secondAttribute="trailing" id="UbY-st-kJn"/>
+                            <constraint firstItem="eaB-Lm-7C9" firstAttribute="top" secondItem="5sB-XT-6aB" secondAttribute="top" id="jud-j7-Clq"/>
+                            <constraint firstItem="eaB-Lm-7C9" firstAttribute="bottom" secondItem="5sB-XT-6aB" secondAttribute="bottom" id="s8K-NV-sKD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5sB-XT-6aB"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="4tR-oC-GDR" id="2Vp-FE-Kil"/>
+                        <outlet property="endTime" destination="AoK-Or-dUd" id="WdW-ec-P5Z"/>
+                        <outlet property="startTime" destination="fKV-NK-aX5" id="vu4-WP-VTX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TeB-WO-hS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7325.6000000000004" y="918.89055472263874"/>
+        </scene>
+        <!--Week View Controller-->
+        <scene sceneID="pge-cI-CYJ">
+            <objects>
+                <viewController storyboardIdentifier="WeekViewController" id="uMz-Kc-22I" customClass="WeekViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fZx-Id-a7K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOf-nm-zlA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O3o-Pj-FVj">
+                                        <rect key="frame" x="0.0" y="164" width="375" height="483"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WeekTableViewCell" rowHeight="117" id="8Un-KR-kbY" customClass="WeekTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="117"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Un-KR-kbY" id="a5r-IT-dfg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IG1-mE-aCY">
+                                                            <rect key="frame" x="10" y="38.5" width="355" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iJ-DT-07B">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXN-AP-U5a">
+                                                                    <rect key="frame" x="0.0" y="22" width="355" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoO-E8-GoC">
+                                                            <rect key="frame" x="10" y="116" width="355" height="1"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="FyF-8p-woh"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="GoO-E8-GoC" firstAttribute="leading" secondItem="a5r-IT-dfg" secondAttribute="leading" constant="10" id="DSN-Z6-gzP"/>
+                                                        <constraint firstAttribute="bottom" secondItem="GoO-E8-GoC" secondAttribute="bottom" id="FpF-2C-iS7"/>
+                                                        <constraint firstItem="IG1-mE-aCY" firstAttribute="leading" secondItem="a5r-IT-dfg" secondAttribute="leading" constant="10" id="HzW-mQ-VYw"/>
+                                                        <constraint firstItem="IG1-mE-aCY" firstAttribute="centerY" secondItem="a5r-IT-dfg" secondAttribute="centerY" id="LDN-Ks-9lQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GoO-E8-GoC" secondAttribute="trailing" constant="10" id="OwA-cS-N0i"/>
+                                                        <constraint firstAttribute="trailing" secondItem="IG1-mE-aCY" secondAttribute="trailing" constant="10" id="cno-fI-uLB"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="day" destination="7iJ-DT-07B" id="W4H-Zc-Ksf"/>
+                                                    <outlet property="time" destination="dXN-AP-U5a" id="G30-Iy-lcB"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="uMz-Kc-22I" id="rMd-vY-zQH"/>
+                                            <outlet property="delegate" destination="uMz-Kc-22I" id="izw-fV-IbD"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="O3o-Pj-FVj" secondAttribute="trailing" id="7Q2-To-KAq"/>
+                                    <constraint firstItem="O3o-Pj-FVj" firstAttribute="leading" secondItem="QOf-nm-zlA" secondAttribute="leading" id="PX4-V2-pGp"/>
+                                    <constraint firstAttribute="bottom" secondItem="O3o-Pj-FVj" secondAttribute="bottom" id="ncy-kX-9mV"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-cX-NeU">
+                                <rect key="frame" x="5" y="135" width="365" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEb-mc-wBe" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3oM-g4-klO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="167.5" y="0.0" width="163.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewr-Hw-RZ7">
+                                        <rect key="frame" x="335" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="add:" destination="uMz-Kc-22I" eventType="touchUpInside" id="HS5-O9-Bka"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3oM-g4-klO" firstAttribute="width" secondItem="VEb-mc-wBe" secondAttribute="width" id="jen-QC-p5U"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hvh-BU-v02">
+                                <rect key="frame" x="0.0" y="40" width="375" height="75"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="8IU-an-fkf"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="wPR-Kp-yDl">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionViewCellID" id="TmX-YY-eyg" customClass="DateCollectionViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12.5" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BHQ-84-BdP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6L-V2-Ugd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-RL-ilY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="0.0"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqL-pe-WAB">
+                                                    <rect key="frame" x="49" y="5" width="1" height="40"/>
+                                                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="Iqh-g6-sDh"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="oqL-pe-WAB" firstAttribute="top" secondItem="TmX-YY-eyg" secondAttribute="top" constant="5" id="4M2-zl-VOI"/>
+                                            <constraint firstAttribute="trailing" secondItem="oqL-pe-WAB" secondAttribute="trailing" id="5tc-pc-BRz"/>
+                                            <constraint firstItem="oqL-pe-WAB" firstAttribute="leading" secondItem="BHQ-84-BdP" secondAttribute="trailing" id="Ezs-zV-PMh"/>
+                                            <constraint firstAttribute="bottom" secondItem="oqL-pe-WAB" secondAttribute="bottom" constant="5" id="gDd-BZ-8XX"/>
+                                            <constraint firstAttribute="bottom" secondItem="BHQ-84-BdP" secondAttribute="bottom" id="gWJ-z5-y0p"/>
+                                            <constraint firstItem="BHQ-84-BdP" firstAttribute="leading" secondItem="TmX-YY-eyg" secondAttribute="leading" id="j6x-VN-wI9"/>
+                                            <constraint firstItem="BHQ-84-BdP" firstAttribute="top" secondItem="TmX-YY-eyg" secondAttribute="top" id="ktr-dc-tTN"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="LRa-RL-ilY" id="fKF-lf-fY4"/>
+                                            <outlet property="dayLabel" destination="S6L-V2-Ugd" id="auU-VH-fbi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="uMz-Kc-22I" id="tWj-4a-pYG"/>
+                                    <outlet property="delegate" destination="uMz-Kc-22I" id="6Fn-H2-68W"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wXh-cX-NeU" firstAttribute="leading" secondItem="nit-yW-mQM" secondAttribute="leading" constant="5" id="4iC-dn-e6T"/>
+                            <constraint firstItem="nit-yW-mQM" firstAttribute="trailing" secondItem="wXh-cX-NeU" secondAttribute="trailing" constant="5" id="JYY-i0-bSH"/>
+                            <constraint firstItem="QOf-nm-zlA" firstAttribute="top" secondItem="nit-yW-mQM" secondAttribute="top" id="QI1-xs-tBF"/>
+                            <constraint firstItem="wXh-cX-NeU" firstAttribute="top" secondItem="Hvh-BU-v02" secondAttribute="bottom" constant="20" id="Qb9-iF-oUW"/>
+                            <constraint firstItem="O3o-Pj-FVj" firstAttribute="top" secondItem="VEb-mc-wBe" secondAttribute="bottom" constant="19" id="Xgp-pu-tac"/>
+                            <constraint firstItem="Hvh-BU-v02" firstAttribute="top" secondItem="nit-yW-mQM" secondAttribute="top" constant="20" id="f9q-o9-OPm"/>
+                            <constraint firstItem="QOf-nm-zlA" firstAttribute="leading" secondItem="nit-yW-mQM" secondAttribute="leading" id="hMR-DO-Tno"/>
+                            <constraint firstItem="nit-yW-mQM" firstAttribute="bottom" secondItem="QOf-nm-zlA" secondAttribute="bottom" id="meI-hW-7a9"/>
+                            <constraint firstItem="Hvh-BU-v02" firstAttribute="leading" secondItem="nit-yW-mQM" secondAttribute="leading" id="ncR-jT-wem"/>
+                            <constraint firstAttribute="trailing" secondItem="Hvh-BU-v02" secondAttribute="trailing" id="uz1-IH-DNI"/>
+                            <constraint firstItem="nit-yW-mQM" firstAttribute="trailing" secondItem="QOf-nm-zlA" secondAttribute="trailing" id="wlb-3w-7l9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nit-yW-mQM"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Hvh-BU-v02" id="rAg-VB-xIh"/>
+                        <outlet property="endTime" destination="3oM-g4-klO" id="39t-JN-d2d"/>
+                        <outlet property="startTime" destination="VEb-mc-wBe" id="UQb-Zx-KtG"/>
+                        <outlet property="tableView" destination="O3o-Pj-FVj" id="biN-cR-hEy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6U-i2-r7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8044" y="909.89505247376314"/>
+        </scene>
+        <!--Jobseeker LanguageVC-->
+        <scene sceneID="ZI8-YN-QmQ">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerLanguageVC" id="LZf-Jp-6Ct" customClass="JobseekerLanguageVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y7L-wC-Now">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9rx-ci-oix"/>
+                    </view>
+                    <connections>
+                        <segue destination="MC2-Y7-iu5" kind="show" identifier="JobseekerUploadResumeVC" id="0nU-1O-gAn"/>
+                        <segue destination="VyH-4T-1Ua" kind="show" identifier="JobseekerAddNewLanguageVC" id="L7Q-gu-cgf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CM-zi-RDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5399" y="145"/>
+        </scene>
+        <!--Jobseeker Upload ResumeVC-->
+        <scene sceneID="gyc-bT-S93">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerUploadResumeVC" id="MC2-Y7-iu5" customClass="JobseekerUploadResumeVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ZN-Mz-UVr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g44-IN-4Lp" customClass="GTProgressBar" customModule="GTProgressBar">
+                                <rect key="frame" x="0.0" y="657" width="375" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="wAv-yU-7o1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayLabel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barFillColor">
+                                        <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barBorderWidth">
+                                        <real key="value" value="-2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barFillInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xlh-Z0-6AX" firstAttribute="trailing" secondItem="g44-IN-4Lp" secondAttribute="trailing" id="0gf-yE-CJE"/>
+                            <constraint firstItem="xlh-Z0-6AX" firstAttribute="bottom" secondItem="g44-IN-4Lp" secondAttribute="bottom" id="Int-jG-eRO"/>
+                            <constraint firstItem="g44-IN-4Lp" firstAttribute="leading" secondItem="6ZN-Mz-UVr" secondAttribute="leading" id="ld3-BL-ls8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xlh-Z0-6AX"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="g44-IN-4Lp" id="XXs-dq-xEt"/>
+                        <segue destination="DY6-sJ-T9t" kind="show" identifier="JobseekerUploadPicture" id="rn3-Lk-vEv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HbA-fP-3jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6351" y="144"/>
+        </scene>
+        <!--Jobseeker Upload Picture-->
+        <scene sceneID="Kfx-0A-PYw">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerUploadPicture" id="DY6-sJ-T9t" customClass="JobseekerUploadPicture" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dFH-uJ-3t2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Hm-3I-Zsh" customClass="GTProgressBar" customModule="GTProgressBar">
+                                <rect key="frame" x="0.0" y="657" width="375" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="zeo-Yw-0wo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayLabel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barFillColor">
+                                        <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barBorderWidth">
+                                        <real key="value" value="-2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barFillInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Hm-3I-Zsh" firstAttribute="leading" secondItem="lZO-ou-GTU" secondAttribute="leading" id="4lV-sM-egf"/>
+                            <constraint firstItem="lZO-ou-GTU" firstAttribute="bottom" secondItem="2Hm-3I-Zsh" secondAttribute="bottom" id="LeG-Sv-uMr"/>
+                            <constraint firstAttribute="trailing" secondItem="2Hm-3I-Zsh" secondAttribute="trailing" id="ayR-rj-YSz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lZO-ou-GTU"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="2Hm-3I-Zsh" id="7Nt-WX-WUU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lDz-o3-mZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7327" y="143"/>
+        </scene>
+        <!--Jobseeker Signup TwoVC-->
+        <scene sceneID="Sqe-hn-hLk">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerSignupTwoVC" id="QNc-MG-eFa" customClass="JobseekerSignupTwoVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a65-Lq-Qt6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZL2-rH-KGK"/>
+                    </view>
+                    <connections>
+                        <segue destination="7AH-Sn-0sM" kind="show" identifier="JobseekerExperienceVC" id="vVb-Yx-G0y"/>
+                        <segue destination="46G-zE-zpq" kind="show" identifier="JobseekerMapVC" id="jiS-TM-uJZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OvI-fl-Rnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2793" y="145"/>
+        </scene>
+        <!--Jobseeker ExperienceVC-->
+        <scene sceneID="tZg-16-nrp">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerExperienceVC" id="7AH-Sn-0sM" customClass="JobseekerExperienceVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRU-Rf-rRP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7yl-Hd-6Go"/>
+                    </view>
+                    <connections>
+                        <segue destination="elz-tr-Roo" kind="show" identifier="JobseekerEducationVC" id="QQ8-P0-E70"/>
+                        <segue destination="tUH-uQ-8yS" kind="show" identifier="JobseekerAddNewExperiencesVC" id="tC5-VY-nps"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKo-4B-46B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3671" y="145"/>
+        </scene>
+        <!--Jobseeker EducationVC-->
+        <scene sceneID="7V3-sY-dpx">
+            <objects>
+                <viewController storyboardIdentifier="JobseekerEducationVC" id="elz-tr-Roo" customClass="JobseekerEducationVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zlw-lo-8dP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Lmi-1p-C17"/>
+                    </view>
+                    <connections>
+                        <segue destination="lEX-Qr-F4t" kind="show" identifier="JobseekerAddNewEducations" id="1iH-Pj-xmX"/>
+                        <segue destination="LZf-Jp-6Ct" kind="show" identifier="JobseekerLanguageVC" id="7Tm-PU-aRI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aAa-IH-xvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4518" y="145"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="bDp-S2-mIv">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewControllerID" id="DeQ-8x-KGA" customClass="EditProfileViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pdg-Sh-4jt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fPX-qJ-UgW"/>
+                    </view>
+                    <connections>
+                        <segue destination="QNc-MG-eFa" kind="show" identifier="segueAddressVC" id="E1m-DM-Kdx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mJD-j7-KHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="-615"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gyX-7K-pRx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nbK-fJ-2qx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wkh-vi-mdf">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y4W-te-GoR" kind="relationship" relationship="rootViewController" id="XpJ-80-WSP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIj-wj-FXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192.80000000000001" y="145.27736131934034"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="15" height="25"/>
+        <image name="ic_location" width="27" height="36"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OaY-l5-18T"/>
+    </inferredMetricsTieBreakers>
+</document>

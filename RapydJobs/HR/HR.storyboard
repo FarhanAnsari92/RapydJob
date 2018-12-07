@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bEz-Ly-dIB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--HRVC-->
+        <scene sceneID="b3F-LQ-qZt">
+            <objects>
+                <viewController storyboardIdentifier="HRVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bEz-Ly-dIB" customClass="HRVC" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QOz-Vp-ins">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="juL-kE-q60">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bEz-Ly-dIB" id="C3B-U8-A5d"/>
+                                    <outlet property="delegate" destination="bEz-Ly-dIB" id="Ff2-h6-nlh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="juL-kE-q60" firstAttribute="leading" secondItem="S5A-VI-a0m" secondAttribute="leading" id="LUw-bK-fXT"/>
+                            <constraint firstItem="S5A-VI-a0m" firstAttribute="bottom" secondItem="juL-kE-q60" secondAttribute="bottom" id="aYt-w4-oe2"/>
+                            <constraint firstItem="S5A-VI-a0m" firstAttribute="trailing" secondItem="juL-kE-q60" secondAttribute="trailing" id="gf2-sA-Qa2"/>
+                            <constraint firstItem="juL-kE-q60" firstAttribute="top" secondItem="S5A-VI-a0m" secondAttribute="top" id="xI8-jz-hXq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S5A-VI-a0m"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbl" destination="juL-kE-q60" id="wmP-1p-rbH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3c-Lc-X9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="174"/>
+        </scene>
+        <!--Manage Employee View Controller-->
+        <scene sceneID="3sD-vI-bRf">
+            <objects>
+                <viewController storyboardIdentifier="ManageEmployeeViewControllerID" id="YNp-G9-rL0" customClass="ManageEmployeeViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Xd-gd-oUb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-uw-xGU" customClass="Segmentio" customModule="Segmentio">
+                                <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8KD-E7-u9o"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wry-jX-GRe">
+                                <rect key="frame" x="0.0" y="60" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="aiR-TV-IAk"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oKD-l1-W6z">
+                                <rect key="frame" x="0.0" y="61" width="375" height="606"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YNp-G9-rL0" id="sfj-ow-zqw"/>
+                                    <outlet property="delegate" destination="YNp-G9-rL0" id="iPE-9H-XkV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u44-uw-xGU" firstAttribute="top" secondItem="V81-JB-Uf5" secondAttribute="top" id="AP0-LT-rXZ"/>
+                            <constraint firstItem="u44-uw-xGU" firstAttribute="leading" secondItem="0Xd-gd-oUb" secondAttribute="leading" id="EkG-hb-Pdg"/>
+                            <constraint firstItem="V81-JB-Uf5" firstAttribute="trailing" secondItem="oKD-l1-W6z" secondAttribute="trailing" id="QdY-QD-A38"/>
+                            <constraint firstItem="oKD-l1-W6z" firstAttribute="top" secondItem="Wry-jX-GRe" secondAttribute="bottom" id="Qr9-IE-pO0"/>
+                            <constraint firstItem="V81-JB-Uf5" firstAttribute="trailing" secondItem="u44-uw-xGU" secondAttribute="trailing" id="Vh2-AG-SNT"/>
+                            <constraint firstItem="Wry-jX-GRe" firstAttribute="top" secondItem="u44-uw-xGU" secondAttribute="bottom" id="YUO-Dy-Z57"/>
+                            <constraint firstItem="Wry-jX-GRe" firstAttribute="leading" secondItem="V81-JB-Uf5" secondAttribute="leading" id="cZT-fl-6p9"/>
+                            <constraint firstItem="oKD-l1-W6z" firstAttribute="leading" secondItem="V81-JB-Uf5" secondAttribute="leading" id="dQJ-25-L4A"/>
+                            <constraint firstItem="V81-JB-Uf5" firstAttribute="bottom" secondItem="oKD-l1-W6z" secondAttribute="bottom" id="t2e-dV-2i2"/>
+                            <constraint firstAttribute="trailing" secondItem="Wry-jX-GRe" secondAttribute="trailing" id="zuv-hK-wM5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V81-JB-Uf5"/>
+                    </view>
+                    <connections>
+                        <outlet property="segmentControl" destination="u44-uw-xGU" id="BTZ-jd-a5c"/>
+                        <outlet property="tableView" destination="oKD-l1-W6z" id="S01-ke-btp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytg-zP-CeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="173"/>
+        </scene>
+        <!--Signed Contract View Controller-->
+        <scene sceneID="ge4-Y8-keY">
+            <objects>
+                <viewController storyboardIdentifier="SignedContractViewControllerID" id="uwf-Lg-ogn" customClass="SignedContractViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g48-GS-CTC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nlh-5N-2PE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uwf-Lg-ogn" id="yp2-F4-hE1"/>
+                                    <outlet property="delegate" destination="uwf-Lg-ogn" id="dax-22-Uwb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ej8-fw-FAv" firstAttribute="bottom" secondItem="nlh-5N-2PE" secondAttribute="bottom" id="6hf-Al-Ij9"/>
+                            <constraint firstItem="ej8-fw-FAv" firstAttribute="trailing" secondItem="nlh-5N-2PE" secondAttribute="trailing" id="AQT-MU-Olg"/>
+                            <constraint firstItem="nlh-5N-2PE" firstAttribute="top" secondItem="ej8-fw-FAv" secondAttribute="top" id="mEu-sb-blY"/>
+                            <constraint firstItem="nlh-5N-2PE" firstAttribute="leading" secondItem="ej8-fw-FAv" secondAttribute="leading" id="zls-LL-fua"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ej8-fw-FAv"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nlh-5N-2PE" id="yxe-xq-btM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NkH-0j-gkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="179"/>
+        </scene>
+        <!--Organization Contract View Controller-->
+        <scene sceneID="UTF-is-w6q">
+            <objects>
+                <viewController storyboardIdentifier="OrganizationContractViewControllerID" id="V2C-jz-h1y" customClass="OrganizationContractViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MHw-9k-Kft">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5YO-9f-Nbh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="V2C-jz-h1y" id="0Bs-eN-2DV"/>
+                                    <outlet property="delegate" destination="V2C-jz-h1y" id="0co-ok-LpV"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11O-vn-aJw">
+                                <rect key="frame" x="305" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="11O-vn-aJw" secondAttribute="height" multiplier="1:1" id="dBf-Ob-ehN"/>
+                                    <constraint firstAttribute="height" constant="50" id="qeA-dq-uxV"/>
+                                </constraints>
+                                <state key="normal" image="ic_postajob"/>
+                                <connections>
+                                    <action selector="addContract:" destination="V2C-jz-h1y" eventType="touchUpInside" id="LaB-zW-pGh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5YO-9f-Nbh" firstAttribute="leading" secondItem="pXn-7W-yvI" secondAttribute="leading" id="8PU-gq-NzI"/>
+                            <constraint firstItem="pXn-7W-yvI" firstAttribute="bottom" secondItem="5YO-9f-Nbh" secondAttribute="bottom" id="B8f-QK-yBe"/>
+                            <constraint firstItem="pXn-7W-yvI" firstAttribute="bottom" secondItem="11O-vn-aJw" secondAttribute="bottom" constant="20" id="DHm-vj-4fp"/>
+                            <constraint firstItem="pXn-7W-yvI" firstAttribute="trailing" secondItem="11O-vn-aJw" secondAttribute="trailing" constant="20" id="h0K-fw-3dZ"/>
+                            <constraint firstItem="5YO-9f-Nbh" firstAttribute="top" secondItem="pXn-7W-yvI" secondAttribute="top" id="pXY-id-tsw"/>
+                            <constraint firstItem="pXn-7W-yvI" firstAttribute="trailing" secondItem="5YO-9f-Nbh" secondAttribute="trailing" id="xoC-gP-gVK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pXn-7W-yvI"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="5YO-9f-Nbh" id="gVd-j3-eiP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWQ-Xz-xip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2185" y="179"/>
+        </scene>
+        <!--Add Contract View Controller-->
+        <scene sceneID="lvx-EI-pfv">
+            <objects>
+                <viewController storyboardIdentifier="AddContractViewControllerID" id="7yt-0c-KMp" customClass="AddContractViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aej-MB-3H9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xu-hO-8PB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_postajob" translatesAutoresizingMaskIntoConstraints="NO" id="ddS-Ec-jBh">
+                                        <rect key="frame" x="112.5" y="20" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ddS-Ec-jBh" secondAttribute="height" multiplier="1:1" id="8F1-Fs-1J4"/>
+                                            <constraint firstAttribute="height" constant="150" id="caH-tp-Zov"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-yc-ufH" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="30" y="220" width="315" height="40.5"/>
+                                        <color key="tintColor" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                <color key="value" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineErrorColor">
+                                                <color key="value" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Contract Title"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                <color key="value" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                <color key="value" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-bx-ezF">
+                                        <rect key="frame" x="127.5" y="275.5" width="120" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="B9I-UO-CcT"/>
+                                            <constraint firstAttribute="width" constant="120" id="Jc9-ff-Hd6"/>
+                                        </constraints>
+                                        <state key="normal" title="Upload">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ddS-Ec-jBh" firstAttribute="centerX" secondItem="0xu-hO-8PB" secondAttribute="centerX" id="E1Q-XM-1dM"/>
+                                    <constraint firstItem="HaD-bx-ezF" firstAttribute="centerX" secondItem="0xu-hO-8PB" secondAttribute="centerX" id="NDs-nM-XXh"/>
+                                    <constraint firstItem="ddS-Ec-jBh" firstAttribute="top" secondItem="0xu-hO-8PB" secondAttribute="top" constant="20" id="Tvw-dM-ZGn"/>
+                                    <constraint firstAttribute="trailing" secondItem="BKH-yc-ufH" secondAttribute="trailing" constant="30" id="h7c-t6-ynA"/>
+                                    <constraint firstItem="BKH-yc-ufH" firstAttribute="leading" secondItem="0xu-hO-8PB" secondAttribute="leading" constant="30" id="uhf-EU-h3J"/>
+                                    <constraint firstItem="BKH-yc-ufH" firstAttribute="top" secondItem="ddS-Ec-jBh" secondAttribute="bottom" constant="50" id="xG2-Qj-6FE"/>
+                                    <constraint firstItem="HaD-bx-ezF" firstAttribute="top" secondItem="BKH-yc-ufH" secondAttribute="bottom" constant="15" id="xsi-vl-TzC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0xu-hO-8PB" firstAttribute="top" secondItem="bUF-Aj-49y" secondAttribute="top" id="Npd-bW-6Ds"/>
+                            <constraint firstItem="bUF-Aj-49y" firstAttribute="bottom" secondItem="0xu-hO-8PB" secondAttribute="bottom" id="QRh-60-m81"/>
+                            <constraint firstItem="bUF-Aj-49y" firstAttribute="trailing" secondItem="0xu-hO-8PB" secondAttribute="trailing" id="Wi9-Sq-vZa"/>
+                            <constraint firstItem="0xu-hO-8PB" firstAttribute="leading" secondItem="bUF-Aj-49y" secondAttribute="leading" id="jWb-0G-pcA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bUF-Aj-49y"/>
+                    </view>
+                    <connections>
+                        <outlet property="addImg" destination="ddS-Ec-jBh" id="Qb3-RQ-e3D"/>
+                        <outlet property="txtFileName" destination="BKH-yc-ufH" id="qjS-jO-f9z"/>
+                        <outlet property="uploadBtn" destination="HaD-bx-ezF" id="frE-6A-ATp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jm2-3X-iED" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2956" y="181.25937031484258"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_postajob" width="49" height="49"/>
+    </resources>
+</document>

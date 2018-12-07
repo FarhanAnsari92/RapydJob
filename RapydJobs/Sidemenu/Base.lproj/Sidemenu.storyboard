@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Side Menu Navigation View Controller-->
+        <scene sceneID="1q5-1v-RK0">
+            <objects>
+                <navigationController storyboardIdentifier="SideMenuNavigationViewController" navigationBarHidden="YES" id="sxD-U7-beO" customClass="SideMenuNavigationViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JY0-mE-Ruz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Bb9-Gc-nsR" kind="relationship" relationship="rootViewController" id="7YM-ol-wCG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBL-O8-ghf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1162" y="685"/>
+        </scene>
+        <!--Side Menu Main View Controller-->
+        <scene sceneID="T0S-Bg-adf">
+            <objects>
+                <viewController id="Bb9-Gc-nsR" customClass="SideMenuMainViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QGm-XM-AIO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PE8-vg-JlV">
+                                <rect key="frame" x="0.0" y="287.5" width="375" height="379.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vodafone.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nyd-tF-JsH">
+                                <rect key="frame" x="112.5" y="58.5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Nyd-tF-JsH" secondAttribute="height" multiplier="1:1" id="vTL-x3-biX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vodafone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIQ-Pb-0Zi">
+                                <rect key="frame" x="133" y="216.5" width="108" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="0.16090959821428572" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP 1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C0-y6-B0O">
+                                <rect key="frame" x="152" y="247.5" width="71" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" red="0.4549019608" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nyd-tF-JsH" firstAttribute="centerX" secondItem="QGm-XM-AIO" secondAttribute="centerX" id="3Z9-dZ-MTh"/>
+                            <constraint firstItem="9C0-y6-B0O" firstAttribute="top" secondItem="fIQ-Pb-0Zi" secondAttribute="bottom" constant="2" id="A6s-1Z-pAH"/>
+                            <constraint firstItem="fIQ-Pb-0Zi" firstAttribute="centerX" secondItem="QGm-XM-AIO" secondAttribute="centerX" id="Bv8-Sv-FV2"/>
+                            <constraint firstItem="Z0b-bP-grL" firstAttribute="bottom" secondItem="PE8-vg-JlV" secondAttribute="bottom" id="D32-Ug-Hb8"/>
+                            <constraint firstItem="Nyd-tF-JsH" firstAttribute="centerY" secondItem="QGm-XM-AIO" secondAttribute="centerY" multiplier="0.4" id="FPr-pf-iYT"/>
+                            <constraint firstItem="PE8-vg-JlV" firstAttribute="leading" secondItem="Z0b-bP-grL" secondAttribute="leading" id="Pd3-9Q-dlm"/>
+                            <constraint firstItem="fIQ-Pb-0Zi" firstAttribute="top" secondItem="Nyd-tF-JsH" secondAttribute="bottom" constant="8" id="PgS-zV-0bc"/>
+                            <constraint firstItem="PE8-vg-JlV" firstAttribute="trailing" secondItem="Z0b-bP-grL" secondAttribute="trailing" id="aSU-lA-goX"/>
+                            <constraint firstItem="PE8-vg-JlV" firstAttribute="top" secondItem="9C0-y6-B0O" secondAttribute="bottom" constant="20" id="id8-70-Uu1"/>
+                            <constraint firstItem="9C0-y6-B0O" firstAttribute="centerX" secondItem="QGm-XM-AIO" secondAttribute="centerX" id="sBD-39-QIH"/>
+                            <constraint firstItem="Nyd-tF-JsH" firstAttribute="width" secondItem="QGm-XM-AIO" secondAttribute="width" multiplier="0.4" id="y4r-FM-96U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z0b-bP-grL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rbH-Fp-Ppg"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="fIQ-Pb-0Zi" id="i9O-Az-qKX"/>
+                        <outlet property="profilePictureIV" destination="Nyd-tF-JsH" id="V9Y-aB-1fm"/>
+                        <outlet property="subtitleLabel" destination="9C0-y6-B0O" id="PTx-SM-xC6"/>
+                        <outlet property="tableView" destination="PE8-vg-JlV" id="Rws-oF-wtq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ey4-4S-AvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327.19999999999999" y="682.3088455772114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="vodafone.png" width="600" height="600"/>
+    </resources>
+</document>

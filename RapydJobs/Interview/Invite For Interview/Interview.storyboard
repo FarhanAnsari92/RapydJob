@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iO4-bv-g3m">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Interview View Controller-->
+        <scene sceneID="A1D-Q5-pEY">
+            <objects>
+                <viewController storyboardIdentifier="InterviewViewController" id="iO4-bv-g3m" customClass="InterviewViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YRk-CB-ABA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TP-qs-Rfd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="gVh-7k-MG5"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ofa-MH-lTb" customClass="BaseDropdownButton" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="112.5" y="104" width="150" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7CJ-Qy-XXm"/>
+                                    <constraint firstAttribute="height" constant="40" id="WtA-K4-znK"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0jZ-En-WbM">
+                                <rect key="frame" x="16" y="184" width="343" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="que-Cr-lwS"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="10" id="TSn-HX-0XP">
+                                    <size key="itemSize" width="40" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="day-selector" id="Esz-3k-wQf" customClass="DaySelectorCollectionViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="7.5" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-4d-hZM">
+                                                    <rect key="frame" x="4" y="10" width="32" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ow1-z7-lME">
+                                                    <rect key="frame" x="5" y="33" width="30" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ow1-z7-lME" firstAttribute="leading" secondItem="Esz-3k-wQf" secondAttribute="leading" constant="5" id="As7-7D-xyz"/>
+                                            <constraint firstItem="ow1-z7-lME" firstAttribute="top" secondItem="1cn-4d-hZM" secondAttribute="bottom" constant="7" id="FLC-uf-WdK"/>
+                                            <constraint firstItem="1cn-4d-hZM" firstAttribute="top" secondItem="Esz-3k-wQf" secondAttribute="top" constant="10" id="SaC-Vf-t5N"/>
+                                            <constraint firstAttribute="trailing" secondItem="ow1-z7-lME" secondAttribute="trailing" constant="5" id="Y5O-8A-Bx0"/>
+                                            <constraint firstItem="1cn-4d-hZM" firstAttribute="leading" secondItem="Esz-3k-wQf" secondAttribute="leading" constant="4" id="Z9b-qW-eHY"/>
+                                            <constraint firstAttribute="trailing" secondItem="1cn-4d-hZM" secondAttribute="trailing" constant="4" id="hGt-Co-FkP"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="day" destination="ow1-z7-lME" id="Ohk-xE-b3J"/>
+                                            <outlet property="weekday" destination="1cn-4d-hZM" id="egR-kM-Iw5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="iO4-bv-g3m" id="wht-OK-VVW"/>
+                                    <outlet property="delegate" destination="iO4-bv-g3m" id="wuy-NJ-EYe"/>
+                                </connections>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l2g-ex-8XX">
+                                <rect key="frame" x="32" y="291" width="311" height="348"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hzq-VG-60l" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="72"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RRK-Bv-5zP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                        <rect key="frame" x="0.0" y="92" width="311" height="72"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="uto-ZO-Wkn">
+                                        <rect key="frame" x="0.0" y="184" width="311" height="72"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8j-HP-kGn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="66D-Y0-oxG" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="161.5" y="0.0" width="149.5" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="Add-7X-09M"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dml-na-v3m">
+                                        <rect key="frame" x="0.0" y="276" width="311" height="72"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yf-lN-Hle" customClass="BaseButton" customModule="RapydJobs" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="13.5" width="64" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="Epb-wa-Zmq"/>
+                                                </constraints>
+                                                <state key="normal" title="Schedule"/>
+                                                <connections>
+                                                    <action selector="scheduleButtonTap:" destination="iO4-bv-g3m" eventType="touchUpInside" id="uy3-gt-0xu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="5yf-lN-Hle" firstAttribute="centerY" secondItem="Dml-na-v3m" secondAttribute="centerY" id="NdX-Ea-awc"/>
+                                            <constraint firstItem="5yf-lN-Hle" firstAttribute="leading" secondItem="Dml-na-v3m" secondAttribute="leading" id="bXY-0H-b36"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l2g-ex-8XX" firstAttribute="leading" secondItem="ooF-Fk-v2D" secondAttribute="leading" constant="32" id="7mT-5A-tVS"/>
+                            <constraint firstItem="Ofa-MH-lTb" firstAttribute="centerX" secondItem="YRk-CB-ABA" secondAttribute="centerX" id="HSG-PH-gob"/>
+                            <constraint firstItem="0jZ-En-WbM" firstAttribute="leading" secondItem="ooF-Fk-v2D" secondAttribute="leading" constant="16" id="alM-Ns-XiT"/>
+                            <constraint firstItem="ooF-Fk-v2D" firstAttribute="trailing" secondItem="l2g-ex-8XX" secondAttribute="trailing" constant="32" id="bSG-lt-w6K"/>
+                            <constraint firstItem="7TP-qs-Rfd" firstAttribute="top" secondItem="ooF-Fk-v2D" secondAttribute="top" id="fAM-is-LTh"/>
+                            <constraint firstAttribute="trailing" secondItem="7TP-qs-Rfd" secondAttribute="trailing" id="jgN-Eb-uwq"/>
+                            <constraint firstItem="7TP-qs-Rfd" firstAttribute="leading" secondItem="YRk-CB-ABA" secondAttribute="leading" id="kPs-HV-Wxf"/>
+                            <constraint firstItem="ooF-Fk-v2D" firstAttribute="trailing" secondItem="0jZ-En-WbM" secondAttribute="trailing" constant="16" id="ned-RR-Mp8"/>
+                            <constraint firstItem="Ofa-MH-lTb" firstAttribute="top" secondItem="ooF-Fk-v2D" secondAttribute="top" constant="84" id="oMd-fx-pRK"/>
+                            <constraint firstItem="0jZ-En-WbM" firstAttribute="top" secondItem="ooF-Fk-v2D" secondAttribute="top" constant="164" id="ojP-r6-ZNI"/>
+                            <constraint firstAttribute="bottom" secondItem="7TP-qs-Rfd" secondAttribute="bottom" id="rHw-pa-SMp"/>
+                            <constraint firstItem="l2g-ex-8XX" firstAttribute="top" secondItem="0jZ-En-WbM" secondAttribute="bottom" constant="32" id="ta3-Cy-Xu5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ooF-Fk-v2D"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9f3-hX-7Dn"/>
+                    <connections>
+                        <outlet property="candidateSelection" destination="RRK-Bv-5zP" id="oNk-05-Rmm"/>
+                        <outlet property="collectionView" destination="0jZ-En-WbM" id="5W1-nF-KC7"/>
+                        <outlet property="interviewEndTimeSelection" destination="66D-Y0-oxG" id="bGp-mA-Wjz"/>
+                        <outlet property="interviewStartTimeSelection" destination="w8j-HP-kGn" id="nvv-IX-Rfy"/>
+                        <outlet property="jobSelection" destination="Hzq-VG-60l" id="B3J-nE-8gl"/>
+                        <outlet property="monthSelection" destination="Ofa-MH-lTb" id="QVo-YM-LUn"/>
+                        <outlet property="scheduleButton" destination="5yf-lN-Hle" id="Noe-Dp-Yex"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXB-XP-803" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644" y="110.19490254872565"/>
+        </scene>
+        <!--InterviewV2 View Controller-->
+        <scene sceneID="gxA-u2-kEj">
+            <objects>
+                <viewController storyboardIdentifier="InterviewV2ViewControllerID" id="Wqh-R7-SQA" customClass="InterviewV2ViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YXw-Ci-xM7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6S-95-GvN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90K-hT-8bo" customClass="BaseDropdownButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="112.5" y="44" width="150" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="IPb-ZE-H8Q"/>
+                                            <constraint firstAttribute="height" constant="40" id="QeT-Lt-d1G"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hrT-K5-xIm">
+                                        <rect key="frame" x="15" y="124" width="345" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="YDQ-Y5-Y60"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="988-Ud-W4Y">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionViewCellID" id="JJV-55-NgJ" customClass="DateCollectionViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="12.5" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIO-b7-C96">
+                                                            <rect key="frame" x="5" y="7" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGu-A5-Dmz">
+                                                            <rect key="frame" x="5" y="25.5" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSd-ri-4pW">
+                                                            <rect key="frame" x="49" y="5" width="1" height="40"/>
+                                                            <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="GQU-Rj-lll"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="JSd-ri-4pW" firstAttribute="top" secondItem="JJV-55-NgJ" secondAttribute="top" constant="5" id="12d-1y-Ga5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JSd-ri-4pW" secondAttribute="trailing" id="20n-SS-IIh"/>
+                                                    <constraint firstItem="JSd-ri-4pW" firstAttribute="leading" secondItem="PGu-A5-Dmz" secondAttribute="trailing" constant="5" id="DC7-ti-88V"/>
+                                                    <constraint firstItem="kIO-b7-C96" firstAttribute="leading" secondItem="JJV-55-NgJ" secondAttribute="leading" constant="5" id="DKw-uu-sh2"/>
+                                                    <constraint firstItem="JSd-ri-4pW" firstAttribute="leading" secondItem="kIO-b7-C96" secondAttribute="trailing" constant="5" id="LGy-Uo-WSD"/>
+                                                    <constraint firstItem="kIO-b7-C96" firstAttribute="top" secondItem="JJV-55-NgJ" secondAttribute="top" constant="7" id="cj3-2n-hFW"/>
+                                                    <constraint firstItem="PGu-A5-Dmz" firstAttribute="leading" secondItem="JJV-55-NgJ" secondAttribute="leading" constant="5" id="oej-M4-IU5"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PGu-A5-Dmz" secondAttribute="bottom" constant="10" id="sRC-eI-jDW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="JSd-ri-4pW" secondAttribute="bottom" constant="5" id="tHs-zN-fMF"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="PGu-A5-Dmz" id="Fzg-Ae-MoU"/>
+                                                    <outlet property="dayLabel" destination="kIO-b7-C96" id="k6W-06-VWS"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Wqh-R7-SQA" id="5e0-rT-oLa"/>
+                                            <outlet property="delegate" destination="Wqh-R7-SQA" id="xMH-Ri-KGb"/>
+                                        </connections>
+                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="54F-Sq-brc">
+                                        <rect key="frame" x="20" y="229" width="335" height="348"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bui-PS-pSZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-OG-FDY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="92" width="335" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WwY-c4-gl5">
+                                                <rect key="frame" x="0.0" y="184" width="335" height="72"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dej-Yo-zD3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="72"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgd-Qi-Cx0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="173.5" y="0.0" width="161.5" height="72"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="J5m-IZ-MS6"/>
+                                                </constraints>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryi-up-bx1">
+                                                <rect key="frame" x="0.0" y="276" width="335" height="72"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg1-jY-IDE" customClass="BaseButton" customModule="RapydJobs" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="13.5" width="64" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="0T5-9J-CU1"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Schedule"/>
+                                                        <connections>
+                                                            <action selector="callScheduleAPI" destination="Wqh-R7-SQA" eventType="touchUpInside" id="Ec0-xB-6ou"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="wg1-jY-IDE" firstAttribute="centerY" secondItem="ryi-up-bx1" secondAttribute="centerY" id="K10-8R-bce"/>
+                                                    <constraint firstItem="wg1-jY-IDE" firstAttribute="leading" secondItem="ryi-up-bx1" secondAttribute="leading" id="fZQ-Rn-vmW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="54F-Sq-brc" secondAttribute="trailing" constant="20" id="2zk-9K-l6Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="hrT-K5-xIm" secondAttribute="trailing" constant="15" id="8Ce-BL-rR5"/>
+                                    <constraint firstItem="54F-Sq-brc" firstAttribute="top" secondItem="hrT-K5-xIm" secondAttribute="bottom" constant="30" id="LTy-rC-vB0"/>
+                                    <constraint firstItem="90K-hT-8bo" firstAttribute="centerX" secondItem="W6S-95-GvN" secondAttribute="centerX" id="Q87-WR-3lv"/>
+                                    <constraint firstItem="90K-hT-8bo" firstAttribute="top" secondItem="W6S-95-GvN" secondAttribute="top" constant="44" id="Txv-sq-mTK"/>
+                                    <constraint firstItem="hrT-K5-xIm" firstAttribute="leading" secondItem="W6S-95-GvN" secondAttribute="leading" constant="15" id="bwD-ft-EkJ"/>
+                                    <constraint firstItem="hrT-K5-xIm" firstAttribute="top" secondItem="90K-hT-8bo" secondAttribute="bottom" constant="40" id="dpK-t2-Kmw"/>
+                                    <constraint firstItem="54F-Sq-brc" firstAttribute="leading" secondItem="W6S-95-GvN" secondAttribute="leading" constant="20" id="vex-Hj-SeE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W6S-95-GvN" firstAttribute="top" secondItem="K5A-4h-UnI" secondAttribute="top" id="EuA-aT-Wtr"/>
+                            <constraint firstItem="K5A-4h-UnI" firstAttribute="bottom" secondItem="W6S-95-GvN" secondAttribute="bottom" id="cgP-mN-bSe"/>
+                            <constraint firstItem="K5A-4h-UnI" firstAttribute="trailing" secondItem="W6S-95-GvN" secondAttribute="trailing" id="o4O-BH-teM"/>
+                            <constraint firstItem="W6S-95-GvN" firstAttribute="leading" secondItem="K5A-4h-UnI" secondAttribute="leading" id="uXb-3l-DKv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K5A-4h-UnI"/>
+                    </view>
+                    <connections>
+                        <outlet property="candidateSelection" destination="sAS-OG-FDY" id="Ozs-Si-fDN"/>
+                        <outlet property="collectionView" destination="hrT-K5-xIm" id="XmD-Uc-AD6"/>
+                        <outlet property="interviewEndTimeSelection" destination="cgd-Qi-Cx0" id="udO-2C-hUF"/>
+                        <outlet property="interviewStartTimeSelection" destination="dej-Yo-zD3" id="6mS-ak-fgq"/>
+                        <outlet property="jobSelection" destination="bui-PS-pSZ" id="Wiv-BQ-TkU"/>
+                        <outlet property="monthSelection" destination="90K-hT-8bo" id="9Tl-jK-vc6"/>
+                        <outlet property="scheduleButton" destination="wg1-jY-IDE" id="J97-ef-1py"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0K-BE-nwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2485.5999999999999" y="109.29535232383809"/>
+        </scene>
+        <!--Reschedule Interview View Controller-->
+        <scene sceneID="xmr-bG-vvg">
+            <objects>
+                <viewController storyboardIdentifier="RescheduleInterviewViewControllerID" id="tLi-Nd-HjQ" customClass="RescheduleInterviewViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Zv-iJ-Y5g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dT-mE-EUj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drI-tM-3m3" customClass="BaseDropdownButton" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="112.5" y="44" width="150" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="5gz-FQ-5e0"/>
+                                            <constraint firstAttribute="height" constant="40" id="ILE-dO-N7Z"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-Di-0Wa">
+                                        <rect key="frame" x="15" y="124" width="345" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="wHd-he-oAX"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="qMF-h5-iVy">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionViewCellID" id="AXa-pU-xml" customClass="DateCollectionViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="12.5" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csn-2F-hzf">
+                                                            <rect key="frame" x="5" y="7" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezc-k9-h26">
+                                                            <rect key="frame" x="5" y="25.5" width="39" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yh9-AB-JYc">
+                                                            <rect key="frame" x="49" y="5" width="1" height="40"/>
+                                                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="tBv-bR-GwB"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="Yh9-AB-JYc" firstAttribute="leading" secondItem="csn-2F-hzf" secondAttribute="trailing" constant="5" id="3Jm-Kx-YP7"/>
+                                                    <constraint firstItem="Yh9-AB-JYc" firstAttribute="top" secondItem="AXa-pU-xml" secondAttribute="top" constant="5" id="8zf-XJ-BJD"/>
+                                                    <constraint firstItem="csn-2F-hzf" firstAttribute="top" secondItem="AXa-pU-xml" secondAttribute="top" constant="7" id="D2X-G4-NBV"/>
+                                                    <constraint firstItem="csn-2F-hzf" firstAttribute="leading" secondItem="AXa-pU-xml" secondAttribute="leading" constant="5" id="SZ4-jr-GRy"/>
+                                                    <constraint firstItem="ezc-k9-h26" firstAttribute="leading" secondItem="AXa-pU-xml" secondAttribute="leading" constant="5" id="UQ5-nv-3Yv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Yh9-AB-JYc" secondAttribute="trailing" id="eil-ZW-DZr"/>
+                                                    <constraint firstItem="Yh9-AB-JYc" firstAttribute="leading" secondItem="ezc-k9-h26" secondAttribute="trailing" constant="5" id="o1t-5D-4rA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ezc-k9-h26" secondAttribute="bottom" constant="10" id="s1v-3K-dFA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Yh9-AB-JYc" secondAttribute="bottom" constant="5" id="t50-tW-2NV"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="ezc-k9-h26" id="ZkV-JD-uar"/>
+                                                    <outlet property="dayLabel" destination="csn-2F-hzf" id="7dd-re-JFb"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="tLi-Nd-HjQ" id="39Z-ig-6j6"/>
+                                            <outlet property="delegate" destination="tLi-Nd-HjQ" id="EEz-Bz-djS"/>
+                                        </connections>
+                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8aM-KY-8gu">
+                                        <rect key="frame" x="20" y="229" width="335" height="348"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-m2-hwW" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlN-3m-t6J" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="92" width="335" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="uD5-Ca-s6G">
+                                                <rect key="frame" x="0.0" y="184" width="335" height="72"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-lM-Q5Y" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="72"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9a-T7-mKL" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="173.5" y="0.0" width="161.5" height="72"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="L5s-Qi-jcW"/>
+                                                </constraints>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T26-vB-4as">
+                                                <rect key="frame" x="0.0" y="276" width="335" height="72"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6F-oZ-0Ww" customClass="BaseButton" customModule="RapydJobs" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="13.5" width="64" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="a7R-f0-cMV"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Schedule"/>
+                                                        <connections>
+                                                            <action selector="callScheduleAPI" destination="tLi-Nd-HjQ" eventType="touchUpInside" id="X74-Ta-Thy"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="y6F-oZ-0Ww" firstAttribute="centerY" secondItem="T26-vB-4as" secondAttribute="centerY" id="Nh2-FA-Cvm"/>
+                                                    <constraint firstItem="y6F-oZ-0Ww" firstAttribute="leading" secondItem="T26-vB-4as" secondAttribute="leading" id="mPW-2W-CpS"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="chZ-Di-0Wa" secondAttribute="trailing" constant="15" id="3Z7-vW-aEC"/>
+                                    <constraint firstAttribute="trailing" secondItem="8aM-KY-8gu" secondAttribute="trailing" constant="20" id="DMj-vx-XY7"/>
+                                    <constraint firstItem="chZ-Di-0Wa" firstAttribute="leading" secondItem="0dT-mE-EUj" secondAttribute="leading" constant="15" id="MEl-gn-KH8"/>
+                                    <constraint firstItem="drI-tM-3m3" firstAttribute="top" secondItem="0dT-mE-EUj" secondAttribute="top" constant="44" id="Oy8-qP-uyL"/>
+                                    <constraint firstItem="chZ-Di-0Wa" firstAttribute="top" secondItem="drI-tM-3m3" secondAttribute="bottom" constant="40" id="WsW-XM-iT0"/>
+                                    <constraint firstItem="drI-tM-3m3" firstAttribute="centerX" secondItem="0dT-mE-EUj" secondAttribute="centerX" id="Wu9-R6-kGJ"/>
+                                    <constraint firstItem="8aM-KY-8gu" firstAttribute="leading" secondItem="0dT-mE-EUj" secondAttribute="leading" constant="20" id="hre-Fj-sVm"/>
+                                    <constraint firstItem="8aM-KY-8gu" firstAttribute="top" secondItem="chZ-Di-0Wa" secondAttribute="bottom" constant="30" id="rbx-Fx-otW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="V5n-nN-srC" firstAttribute="trailing" secondItem="0dT-mE-EUj" secondAttribute="trailing" id="cim-Dv-vPW"/>
+                            <constraint firstItem="0dT-mE-EUj" firstAttribute="leading" secondItem="7Zv-iJ-Y5g" secondAttribute="leading" id="hAv-VL-LLs"/>
+                            <constraint firstItem="0dT-mE-EUj" firstAttribute="top" secondItem="V5n-nN-srC" secondAttribute="top" id="oJH-nU-tm3"/>
+                            <constraint firstItem="V5n-nN-srC" firstAttribute="bottom" secondItem="0dT-mE-EUj" secondAttribute="bottom" id="zxW-Am-OBI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V5n-nN-srC"/>
+                    </view>
+                    <connections>
+                        <outlet property="candidateSelection" destination="qlN-3m-t6J" id="g3H-jC-Onu"/>
+                        <outlet property="collectionView" destination="chZ-Di-0Wa" id="fFS-U4-dMU"/>
+                        <outlet property="interviewEndTimeSelection" destination="G9a-T7-mKL" id="Euy-IA-3H1"/>
+                        <outlet property="interviewStartTimeSelection" destination="7GQ-lM-Q5Y" id="SXF-tf-yIc"/>
+                        <outlet property="jobSelection" destination="v4I-m2-hwW" id="vS5-tn-Ubh"/>
+                        <outlet property="monthSelection" destination="drI-tM-3m3" id="F4X-Y4-hKg"/>
+                        <outlet property="scheduleButton" destination="y6F-oZ-0Ww" id="Jvm-Mg-Fwr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uiG-Rt-3ZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3260" y="110"/>
+        </scene>
+    </scenes>
+</document>

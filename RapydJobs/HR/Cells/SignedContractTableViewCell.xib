@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SignedContractTableViewCellID" rowHeight="92" id="KGk-i7-Jjw" customClass="SignedContractTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="91.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbO-hG-Nld">
+                        <rect key="frame" x="20" y="10" width="360" height="71.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-Sx-Nz6">
+                                <rect key="frame" x="5" y="11" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dH6-Sx-Nz6" secondAttribute="height" multiplier="1:1" id="201-ho-qCi"/>
+                                    <constraint firstAttribute="height" constant="50" id="Mva-Dd-10u"/>
+                                    <constraint firstAttribute="width" constant="50" id="vcy-KB-ry7"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lg5-wj-tKu">
+                                <rect key="frame" x="60" y="16" width="295" height="39.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF2-nu-9Gs">
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="48z-In-wU0">
+                                        <rect key="frame" x="0.0" y="25" width="91.5" height="14.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-hs-2pC">
+                                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMf-js-dgG">
+                                                <rect key="frame" x="60.5" y="0.0" width="31" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.46666666666666667" green="0.74509803921568629" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lg5-wj-tKu" firstAttribute="leading" secondItem="dH6-Sx-Nz6" secondAttribute="trailing" constant="5" id="2Ha-J9-MT9"/>
+                            <constraint firstItem="lg5-wj-tKu" firstAttribute="centerY" secondItem="dH6-Sx-Nz6" secondAttribute="centerY" id="81w-Vp-X5P"/>
+                            <constraint firstItem="dH6-Sx-Nz6" firstAttribute="leading" secondItem="bbO-hG-Nld" secondAttribute="leading" constant="5" id="8zp-Tv-e8V"/>
+                            <constraint firstAttribute="trailing" secondItem="lg5-wj-tKu" secondAttribute="trailing" constant="5" id="Z0d-DO-bba"/>
+                            <constraint firstItem="dH6-Sx-Nz6" firstAttribute="centerY" secondItem="bbO-hG-Nld" secondAttribute="centerY" id="e83-1b-KVu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bbO-hG-Nld" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="T4M-oS-7GQ"/>
+                    <constraint firstAttribute="bottom" secondItem="bbO-hG-Nld" secondAttribute="bottom" constant="10" id="dnz-2a-saW"/>
+                    <constraint firstItem="bbO-hG-Nld" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="hv8-k0-t7B"/>
+                    <constraint firstAttribute="trailing" secondItem="bbO-hG-Nld" secondAttribute="trailing" constant="20" id="zjO-qo-lWK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contractImage" destination="dH6-Sx-Nz6" id="HQ9-CZ-NU5"/>
+                <outlet property="contractTitle" destination="mF2-nu-9Gs" id="ejx-5C-IXT"/>
+                <outlet property="parentVu" destination="bbO-hG-Nld" id="oxL-dV-b4W"/>
+                <outlet property="signedBy" destination="RMf-js-dgG" id="Qx6-hp-0KS"/>
+            </connections>
+            <point key="canvasLocation" x="201.59999999999999" y="145.72713643178412"/>
+        </tableViewCell>
+    </objects>
+</document>

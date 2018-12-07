@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="238" id="kh0-pT-EjA" customClass="DescriptionTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kh0-pT-EjA" id="S3C-OI-Xho">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="237.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cL-FE-0x2">
+                        <rect key="frame" x="16" y="8" width="343" height="221.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Nni-mY-xMg">
+                                <rect key="frame" x="16" y="8" width="311" height="205.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OG7-Jb-SdE">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="0.24263392859999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QNm-ne-hu6">
+                                        <rect key="frame" x="0.0" y="40" width="311" height="165.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="7AT-9R-IZL"/>
+                                        </constraints>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Nni-mY-xMg" secondAttribute="trailing" constant="16" id="2up-C6-HbX"/>
+                            <constraint firstAttribute="bottom" secondItem="Nni-mY-xMg" secondAttribute="bottom" constant="8" id="OSU-tF-uXM"/>
+                            <constraint firstItem="Nni-mY-xMg" firstAttribute="leading" secondItem="EUV-AG-dRt" secondAttribute="leading" constant="16" id="USy-5p-0FY"/>
+                            <constraint firstItem="Nni-mY-xMg" firstAttribute="top" secondItem="EUV-AG-dRt" secondAttribute="top" constant="8" id="XeB-Zk-4gj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EUV-AG-dRt"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9cL-FE-0x2" firstAttribute="top" secondItem="S3C-OI-Xho" secondAttribute="top" constant="8" id="1MH-hW-IIm"/>
+                    <constraint firstItem="9cL-FE-0x2" firstAttribute="leading" secondItem="S3C-OI-Xho" secondAttribute="leading" constant="16" id="AuP-Q2-rNe"/>
+                    <constraint firstAttribute="trailing" secondItem="9cL-FE-0x2" secondAttribute="trailing" constant="16" id="Kpr-8C-QZV"/>
+                    <constraint firstAttribute="bottom" secondItem="9cL-FE-0x2" secondAttribute="bottom" constant="8" id="z0o-kk-N0V"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionTextView" destination="QNm-ne-hu6" id="MJ2-kF-MIv"/>
+                <outlet property="rootView" destination="9cL-FE-0x2" id="2M1-lE-Ev4"/>
+            </connections>
+            <point key="canvasLocation" x="-258" y="53"/>
+        </tableViewCell>
+    </objects>
+</document>
