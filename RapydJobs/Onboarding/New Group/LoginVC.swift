@@ -336,7 +336,7 @@ class LoginVC: UIViewController {
         var params = [String:Any]()
         params["provider"] = "linkedin"
         params["email"] = linkedinData["emailAddress"] as? String ?? ""
-        params["fcm"] = ""
+        params["fcm"] = (UIApplication.shared.delegate as! AppDelegate).apnsToken
         print(params)
         
         let url = URLConstants.shared.getEndPointURL("social-register")
@@ -419,9 +419,10 @@ class LoginVC: UIViewController {
                                "password" : passwordInput.text!,
                                "grant_type" : "password",
                                "client_id" : "2",
-                               "client_secret" : "\(AppConstants.shared.clientSecret)"]
+                               "client_secret" : "\(AppConstants.shared.clientSecret)",
+                    "fcm": (UIApplication.shared.delegate as! AppDelegate).apnsToken]
                 
-                _ = APIClient.callAPI(request: APIClient.login(param: params), onSuccess: { (dictionary) in
+                _ = APIClient.callAPI(request: .login(param: params), onSuccess: { (dictionary) in
                     
                     let user: UserResponseModel = Mapper<UserResponseModel>().map(JSON: dictionary)!
                     print(user.toJSON())

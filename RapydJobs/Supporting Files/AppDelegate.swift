@@ -15,12 +15,15 @@ import GoogleMaps
 import GooglePlaces
 import SVProgressHUD
 import LinkedinSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
 
     var window: UIWindow?
 
+    var apnsToken: String!
+    
     let googleAPIKey = "AIzaSyBZA5rJQJNaRi8qq-16UaYnTB4tYTDUqiI"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -43,8 +46,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         IQKeyboardManager.shared.enable = true        
         IQKeyboardManager.shared.enableAutoToolbar = true
         
+        //Push Notification
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                [weak self] granted, error in
+                
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                self?.getNotificationSettings()
+                
+        }
         
         return true
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -58,6 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        self.apnsToken = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error.localizedDescription)")
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
     }
