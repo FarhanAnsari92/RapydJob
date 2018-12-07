@@ -62,16 +62,16 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jKM-tX-Esk">
-                                        <rect key="frame" x="0.0" y="75.5" width="212" height="20"/>
+                                        <rect key="frame" x="0.0" y="75.5" width="236" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcT-BT-vZE">
-                                                <rect key="frame" x="0.0" y="0.0" width="108" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132" height="20"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="6rA-mS-t50"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="Remake Timesheet">
+                                                <state key="normal" title="Amendment Timesheet">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -79,7 +79,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-QZ-5zS">
-                                                <rect key="frame" x="118" y="0.0" width="48" height="20"/>
+                                                <rect key="frame" x="142" y="0.0" width="48" height="20"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Rhh-8S-1Gh"/>
@@ -93,7 +93,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agl-L5-xrM">
-                                                <rect key="frame" x="176" y="0.0" width="36" height="20"/>
+                                                <rect key="frame" x="200" y="0.0" width="36" height="20"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="5eX-mn-YrE"/>
