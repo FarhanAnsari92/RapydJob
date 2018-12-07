@@ -13,6 +13,7 @@ class TimesheetRejectTableViewCell: UITableViewCell {
     @IBOutlet weak var parentVu: UIView!
     @IBOutlet weak var jobName: UILabel!
     @IBOutlet weak var perHour: UILabel!
+    @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var remakeBtn: UIButton! {
@@ -61,7 +62,8 @@ class TimesheetRejectTableViewCell: UITableViewCell {
         self.jobName.text = data.jobName ?? ""
         let perHourRate = "( \(data.hourlyRate ?? "0") per hour )"
         self.perHour.text = perHourRate
-        
+        let tAmount = String(data.totalAmount ?? 0.0)
+        self.totalAmount.text = "Total Amount: \(tAmount)"
 //        self.remakeBtn.isHidden = data.status == "reject"
 //        self.separator.isHidden = data.status == "reject"
     }
