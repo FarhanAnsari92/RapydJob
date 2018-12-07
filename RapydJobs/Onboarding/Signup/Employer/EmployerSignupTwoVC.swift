@@ -13,6 +13,7 @@ import JGProgressHUD
 import CoreLocation
 
 var address = ""
+var postalCode = ""
 
 class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -178,6 +179,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         try? VideoBackground.shared.play(view: videoView, videoName: "Background", videoType: "mp4")
         
         employerAddressInput.text = address
+        employerPostalCodeInput.text = postalCode
     }
     
     @objc func navigateToAddressVC() {
@@ -306,7 +308,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         
         vc.completion = { dictionary in
             self.centerCoordinate = dictionary["coordinate"] as? CLLocationCoordinate2D
-            self.selectedAddress = dictionary["address"] as? String ?? ""
+            self.selectedAddress = dictionary["address"] as? String ?? ""            
             self.employerAddressInput.text = self.selectedAddress
         }
         self.navigationController?.pushViewController(vc, animated: true)
