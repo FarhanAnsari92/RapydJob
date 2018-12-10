@@ -32,5 +32,5 @@ target 'RapydJobs' do
   pod 'LinkedinSwift', '~> 1.7.7'
   pod 'GTProgressBar'
   pod 'GrowingTextView'
-  
+  pod 'JZCalendarWeekView' #, '0.5.1'
 end
