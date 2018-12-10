@@ -34,6 +34,7 @@ PODS:
     - AFNetworking (>= 2.0.0)
   - IQKeyboardManagerSwift (6.2.0)
   - JGProgressHUD (2.0.3)
+  - JZCalendarWeekView (0.5.3)
   - Kingfisher (4.8.1)
   - Koloda (4.4):
     - pop (~> 1.0)
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - GTProgressBar
   - IQKeyboardManagerSwift
   - JGProgressHUD
+  - JZCalendarWeekView
   - Kingfisher (~> 4.0)
   - Koloda
   - LinkedinSwift (~> 1.7.7)
@@ -108,6 +110,7 @@ SPEC REPOS:
     - IOSLinkedInAPIFix
     - IQKeyboardManagerSwift
     - JGProgressHUD
+    - JZCalendarWeekView
     - Kingfisher
     - Koloda
     - LinkedinSwift
@@ -144,6 +147,7 @@ SPEC CHECKSUMS:
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  JZCalendarWeekView: 3342ada7ec7904128ee91463587ec19c6c8d1448
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   Koloda: 0f3c51580d9d547c66a5cd9e4771611afc3e259e
   LinkedinSwift: bab5724c2b18335233d02fa59a2cb3fbbccd9219
@@ -165,6 +169,6 @@ SPEC CHECKSUMS:
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
   WARangeSlider: 54b3e0853b8d16c444fd539005901aecee86837d
 
-PODFILE CHECKSUM: ff809df38d175f46f34822be9e409040bc0dfc27
+PODFILE CHECKSUM: dfa107fac1dcae17942b4d1d871d115569c0d0e4
 
 COCOAPODS: 1.5.3
