@@ -110,7 +110,8 @@ class CardViewController: BaseViewController {
     }
     
     @objc func didTapInterviewButton() {
-        let vc = PlannerVC()
+        let sb = UIStoryboard(name: "Card", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PlanerViewController") as! PlanerViewController        
         navigationController?.pushViewController(vc, animated: true)
     }
     
