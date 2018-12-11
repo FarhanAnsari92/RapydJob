@@ -362,6 +362,7 @@
 		A5F10542210E027C00179332 /* AddJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F10541210E027C00179332 /* AddJobRequest.swift */; };
 		C90D968621B5D94700191773 /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90D968421B5D94600191773 /* CardOverlayView.xib */; };
 		C90D968721B5D94700191773 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D968521B5D94700191773 /* CardOverlayView.swift */; };
+		C9167FE221C010E500BD11E7 /* PlanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9167FE121C010E500BD11E7 /* PlanerViewController.swift */; };
 		C924E56F2190F58400DDA461 /* ChatImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C924E56D2190F58400DDA461 /* ChatImageTableViewCell.swift */; };
 		C924E5702190F58400DDA461 /* ChatImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C924E56E2190F58400DDA461 /* ChatImageTableViewCell.xib */; };
 		C929E9DF2185D61C00A8AA8E /* JobList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C929E9DE2185D61C00A8AA8E /* JobList.storyboard */; };
@@ -817,6 +818,7 @@
 		A5F10541210E027C00179332 /* AddJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobRequest.swift; sourceTree = "<group>"; };
 		C90D968421B5D94600191773 /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
 		C90D968521B5D94700191773 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
+		C9167FE121C010E500BD11E7 /* PlanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanerViewController.swift; sourceTree = "<group>"; };
 		C924E56D2190F58400DDA461 /* ChatImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageTableViewCell.swift; sourceTree = "<group>"; };
 		C924E56E2190F58400DDA461 /* ChatImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatImageTableViewCell.xib; sourceTree = "<group>"; };
 		C929E9DE2185D61C00A8AA8E /* JobList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JobList.storyboard; sourceTree = "<group>"; };
@@ -1128,6 +1130,7 @@
 				0D47E4AC20DEE83700308ECE /* CardViewModel.swift */,
 				0D47E4AE20DEE86300308ECE /* CardViewItem.swift */,
 				0D3D1FA6210CBDD2002531E9 /* JobsDropDownItem.swift */,
+				C9167FE121C010E500BD11E7 /* PlanerViewController.swift */,
 				0DE319B620E16BEE00A75F93 /* Views */,
 			);
 			path = Cards;
@@ -2897,6 +2900,7 @@
 				A54D07EE20E01F75002C8449 /* FormStatementTableViewCell.swift in Sources */,
 				C9852F85218D8B9600E409DF /* Helper.swift in Sources */,
 				A54D07F020E01FB4002C8449 /* FormStatementViewModel.swift in Sources */,
+				C9167FE221C010E500BD11E7 /* PlanerViewController.swift in Sources */,
 				C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */,
 				0D42022620DE63F20063BB23 /* Storyboard.swift in Sources */,
 				4DD6DF2921691C6F00F8CA3A /* LoginAPIService.swift in Sources */,

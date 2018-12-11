@@ -18,15 +18,11 @@ class TimesheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         print(timeSheetData)
-        
         self.title = "Timesheet"
-        self.view.backgroundColor = Constants.Colors.primaryGreenColor // UIColor(white: 0.99, alpha: 0.8)
+        self.view.backgroundColor = Constants.Colors.primaryGreenColor
         
         self.setupWeekView()
     }
-    
-//    var events = [JZBaseEvent]()
     
     func setupWeekView() {
         
