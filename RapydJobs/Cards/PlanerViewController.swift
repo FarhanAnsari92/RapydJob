@@ -23,9 +23,8 @@ class PlanerViewController: UIViewController {
     
     var timeSheetData: TimesheetResponseModel?
     
-    var dropDownData = [JobsDropDownItem]();
-    var data = [EmployerJobsDropdownResponse]();
-    var selectedJob: JobsDropDownItem!
+    var dropDownData = [OrganizationHireDropdownModel]();
+    var selectedJob: OrganizationHireDropdownModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,21 @@ class PlanerViewController: UIViewController {
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
         self.setupWeekView()
+        self.getHiderDropDown()
         
+    }
+    
+    func getHiderDropDown() {
+        _ = APIClient.callAPI(request: .organizationHireDropdown, onSuccess: { (dictionary) in
+            print(dictionary)
+            //OrganizationHireDropdownModel
+            if let data = dictionary["data"] as? [[String:Any]] {
+                self.dropDownData = Mapper<OrganizationHireDropdownModel>().mapArray(JSONArray: data)
+            }
+
+        }, onFailure: { (errorDictionary, _) in
+            print(errorDictionary)
+        })
     }
     
     func setupView() {
@@ -50,14 +63,13 @@ class PlanerViewController: UIViewController {
         if self.dropDownData.count > 0 {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            for i in 0..<data.count {
-                actionSheet.addAction(UIAlertAction(title: data[i].title, style: .default, handler: { (action) in
-                    //self?.jobSelectorButton.setTitle(data[i].title, for: .normal)
-                    //AppContainer.shared.job.save(jobID: self.dropDownData[i].identifier)
-                    //self?.cardVC?.viewModel.service.getCardData()
+            for i in 0..<self.dropDownData.count {
+                actionSheet.addAction(UIAlertAction(title: self.dropDownData[i].jobName, style: .default, handler: { (action) in
+                    
                     self.selectedJob = self.dropDownData[i]
-                    self.getData(jobId: "\(self.dropDownData[i].identifier)")
+                    self.getData(jobId: "\(self.dropDownData[i].jobId)")
                     actionSheet.dismiss(animated: true, completion: nil)
+                    
                 }))
             }
             
@@ -67,31 +79,7 @@ class PlanerViewController: UIViewController {
     }
     
     private func getData(jobId: String = "") {
-        if AppContainer.shared.user.user?.accountType == "jobseeker" {
-            hud.show(in: view)
-            MatchesAPISevice.shared.getJobseekerMatches(limit: "20") { (jobMatches, error) in
-                self.hud.dismiss(animated: true)
-                if let err = error {
-                    print("Error : ", err)
-                } else {
-                    
-                    print(jobMatches)
-                    
-                }
-            }
-        } else {
-            hud.show(in: view)
-            MatchesAPISevice.shared.getEmployerMatches(jobId: jobId, limit: "20") { (matches, error) in
-                self.hud.dismiss(animated: true)
-                if let err = error {
-                    print("Error : ", err)
-                } else {
-                    
-                    print(matches)
-                    
-                }
-            }
-        }
+        print(jobId)
     }
     
     func setupWeekView() {

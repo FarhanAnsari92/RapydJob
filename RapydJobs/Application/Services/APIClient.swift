@@ -84,6 +84,7 @@ enum APIClient: URLRequestConvertible {
     case employerTimesheet(param: [String:Any])
     
     case socialRegister(param: [String:Any])
+    case organizationHireDropdown
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -122,6 +123,7 @@ enum APIClient: URLRequestConvertible {
                  .myReview,
                  .getJobseeker,
                  .review,
+                 .organizationHireDropdown,
                  .getInterView:
                 return .get
             case .updateInterview,
@@ -168,6 +170,7 @@ enum APIClient: URLRequestConvertible {
                  .deleteExperience,
                  .getJobseeker,
                  .review,
+                 .organizationHireDropdown,
                  .getInterView:
                 return nil
             case .likeEmployeeRequest(let param):
@@ -273,6 +276,7 @@ enum APIClient: URLRequestConvertible {
                  .employerTimesheet,
                  .updateTimesheet,
                  .socialRegister,
+                 .organizationHireDropdown,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
@@ -378,7 +382,9 @@ enum APIClient: URLRequestConvertible {
             case .updateTimesheet(_, let timesheetId):
                 return "timesheet/\(timesheetId)"
             case .socialRegister:
-                return "social-register"                
+                return "social-register"
+            case .organizationHireDropdown:
+                return "organization-hire-job-dropdown"
             }
         }()
 
@@ -408,7 +414,7 @@ enum APIClient: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         try urlRequest.setHeaders(header!)
         // Timeout interval for Webservice API request
-        urlRequest.timeoutInterval = 10
+        urlRequest.timeoutInterval = 15
         
         // Encoding parameters
         return try encoding.encode(urlRequest, with: params)
