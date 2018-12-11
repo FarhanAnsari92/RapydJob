@@ -172,6 +172,12 @@ extension JobseekerTimesheetViewController: UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SeekerTimesheetViewController") as! SeekerTimesheetViewController
+        vc.timeSheetData = self.timesheets[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension JobseekerTimesheetViewController: Initializable {

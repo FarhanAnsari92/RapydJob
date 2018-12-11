@@ -362,6 +362,7 @@
 		A5F10542210E027C00179332 /* AddJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F10541210E027C00179332 /* AddJobRequest.swift */; };
 		C90D968621B5D94700191773 /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90D968421B5D94600191773 /* CardOverlayView.xib */; };
 		C90D968721B5D94700191773 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D968521B5D94700191773 /* CardOverlayView.swift */; };
+		C9167FE421C03F3A00BD11E7 /* SeekerTimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */; };
 		C924E56F2190F58400DDA461 /* ChatImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C924E56D2190F58400DDA461 /* ChatImageTableViewCell.swift */; };
 		C924E5702190F58400DDA461 /* ChatImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C924E56E2190F58400DDA461 /* ChatImageTableViewCell.xib */; };
 		C929E9DF2185D61C00A8AA8E /* JobList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C929E9DE2185D61C00A8AA8E /* JobList.storyboard */; };
@@ -817,6 +818,7 @@
 		A5F10541210E027C00179332 /* AddJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobRequest.swift; sourceTree = "<group>"; };
 		C90D968421B5D94600191773 /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
 		C90D968521B5D94700191773 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
+		C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekerTimesheetViewController.swift; sourceTree = "<group>"; };
 		C924E56D2190F58400DDA461 /* ChatImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageTableViewCell.swift; sourceTree = "<group>"; };
 		C924E56E2190F58400DDA461 /* ChatImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatImageTableViewCell.xib; sourceTree = "<group>"; };
 		C929E9DE2185D61C00A8AA8E /* JobList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JobList.storyboard; sourceTree = "<group>"; };
@@ -2345,6 +2347,7 @@
 				C9C5AF4321AF1C5A00479D9C /* JobseekerTimesheetViewController.swift */,
 				C9A563DD21B060EF00AA0802 /* EmployerTimesheetViewController.swift */,
 				C93D346D21BEE9C600B66AA5 /* TimesheetViewController.swift */,
+				C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -2983,6 +2986,7 @@
 				4DD6DF2C21691CB000F8CA3A /* ForgotPasswordVC.swift in Sources */,
 				4DD6DF3F21691D4200F8CA3A /* AlertService.swift in Sources */,
 				0D3D1FA3210CACA7002531E9 /* PhoneVerificationRequest.swift in Sources */,
+				C9167FE421C03F3A00BD11E7 /* SeekerTimesheetViewController.swift in Sources */,
 				0D3D1FA7210CBDD2002531E9 /* JobsDropDownItem.swift in Sources */,
 				A54AD71D210BDE4F00C72F75 /* ShorlistedJobseekersRequest.swift in Sources */,
 				A54D086F20E2C417002C8449 /* DaySelector.swift in Sources */,

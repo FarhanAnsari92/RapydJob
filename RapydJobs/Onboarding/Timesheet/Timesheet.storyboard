@@ -140,5 +140,35 @@
             </objects>
             <point key="canvasLocation" x="1425" y="26"/>
         </scene>
+        <!--Seeker Timesheet View Controller-->
+        <scene sceneID="v7r-7b-pAj">
+            <objects>
+                <viewController storyboardIdentifier="SeekerTimesheetViewController" id="YAU-x6-2W6" customClass="SeekerTimesheetViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c42-T9-oAW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlj-rU-aVq" customClass="DefaultWeekView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jlj-rU-aVq" firstAttribute="leading" secondItem="c42-T9-oAW" secondAttribute="leading" id="4MV-53-FX9"/>
+                            <constraint firstItem="Jlj-rU-aVq" firstAttribute="top" secondItem="5qc-aR-IyJ" secondAttribute="top" id="Mb9-ag-O0S"/>
+                            <constraint firstItem="5qc-aR-IyJ" firstAttribute="trailing" secondItem="Jlj-rU-aVq" secondAttribute="trailing" id="N8A-Eu-lmI"/>
+                            <constraint firstItem="5qc-aR-IyJ" firstAttribute="bottom" secondItem="Jlj-rU-aVq" secondAttribute="bottom" id="tbI-uS-jug"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5qc-aR-IyJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="weekView" destination="Jlj-rU-aVq" id="KBN-PA-T1R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJ3-VN-MXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232" y="32"/>
+        </scene>
     </scenes>
 </document>
