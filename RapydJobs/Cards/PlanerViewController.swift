@@ -40,11 +40,21 @@ class PlanerViewController: UIViewController {
     func getHiderDropDown() {
         _ = APIClient.callAPI(request: .organizationHireDropdown, onSuccess: { (dictionary) in
             print(dictionary)
-            //OrganizationHireDropdownModel
+            
             if let data = dictionary["data"] as? [[String:Any]] {
                 self.dropDownData = Mapper<OrganizationHireDropdownModel>().mapArray(JSONArray: data)
             }
+            self.getPlannerData()
 
+        }, onFailure: { (errorDictionary, _) in
+            print(errorDictionary)
+        })
+    }
+    
+    func getPlannerData(id: Int? = nil) {
+        _ = APIClient.callAPI(request: APIClient.jobseekerPlanner(id: id), onSuccess: { (dictionary) in
+            print(dictionary)
+            print(dictionary)
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
         })
@@ -63,11 +73,16 @@ class PlanerViewController: UIViewController {
         if self.dropDownData.count > 0 {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
+            actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (action) in
+               self.getPlannerData()
+                actionSheet.dismiss(animated: true, completion: nil)
+            }))
+            
             for i in 0..<self.dropDownData.count {
                 actionSheet.addAction(UIAlertAction(title: self.dropDownData[i].jobName, style: .default, handler: { (action) in
                     
                     self.selectedJob = self.dropDownData[i]
-                    self.getData(jobId: "\(self.dropDownData[i].jobId)")
+                    self.getPlannerData(id: self.dropDownData[i].jobId)
                     actionSheet.dismiss(animated: true, completion: nil)
                     
                 }))
@@ -76,10 +91,6 @@ class PlanerViewController: UIViewController {
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(actionSheet, animated: true, completion: nil)
         }
-    }
-    
-    private func getData(jobId: String = "") {
-        print(jobId)
     }
     
     func setupWeekView() {
