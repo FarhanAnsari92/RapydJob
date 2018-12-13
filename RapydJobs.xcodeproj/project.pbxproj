@@ -449,6 +449,7 @@
 		C9CDEFDA21B5AC5900C57C4B /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */; };
 		C9CDEFDC21B5B16000C57C4B /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */; };
 		C9D32F3C21B2CFBB00126AC6 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */; };
+		C9DA8A9021C2F44B00ACD7FD /* EmployerPlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */; };
 		C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB2B1B2183A330005FBDFE /* APIClient.swift */; };
 		C9FDF9CD21824BCC00991F18 /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */; };
 		C9FDF9CF2182521600991F18 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CE2182521600991F18 /* AddressModel.swift */; };
@@ -908,6 +909,7 @@
 		C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 		C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerPlannerViewController.swift; sourceTree = "<group>"; };
 		C9EB2B1B2183A330005FBDFE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
 		C9FDF9CE2182521600991F18 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
@@ -1135,6 +1137,7 @@
 				0D47E4AE20DEE86300308ECE /* CardViewItem.swift */,
 				0D3D1FA6210CBDD2002531E9 /* JobsDropDownItem.swift */,
 				C9167FE121C010E500BD11E7 /* PlanerViewController.swift */,
+				C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */,
 				0DE319B620E16BEE00A75F93 /* Views */,
 			);
 			path = Cards;
@@ -2757,6 +2760,7 @@
 				A5D91DB120FB7B2400135FEE /* InterviewedCandidateViewModel.swift in Sources */,
 				A583387520F3A165001CCF35 /* SessionManagerStore.swift in Sources */,
 				8818957E20FF7C8400997994 /* RejectInterviewee.swift in Sources */,
+				C9DA8A9021C2F44B00ACD7FD /* EmployerPlannerViewController.swift in Sources */,
 				889DFBC921060EC80073A532 /* GetAllEmployees.swift in Sources */,
 				8818958020FF813500997994 /* HireEmployee.swift in Sources */,
 				0D3D1FA5210CB4C9002531E9 /* EmployerJobsDropdownRequest.swift in Sources */,

@@ -86,6 +86,7 @@ enum APIClient: URLRequestConvertible {
     case socialRegister(param: [String:Any])
     case organizationHireDropdown
     case jobseekerPlanner(id: Int?)
+    case organizationPlanner(id: Int?)
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -126,6 +127,7 @@ enum APIClient: URLRequestConvertible {
                  .review,
                  .organizationHireDropdown,
                  .jobseekerPlanner,
+                 .organizationPlanner,
                  .getInterView:
                 return .get
             case .updateInterview,
@@ -174,6 +176,7 @@ enum APIClient: URLRequestConvertible {
                  .review,
                  .organizationHireDropdown,
                  .jobseekerPlanner,
+                 .organizationPlanner,
                  .getInterView:
                 return nil
             case .likeEmployeeRequest(let param):
@@ -281,6 +284,7 @@ enum APIClient: URLRequestConvertible {
                  .socialRegister,
                  .organizationHireDropdown,
                  .jobseekerPlanner,
+                 .organizationPlanner,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
@@ -394,6 +398,11 @@ enum APIClient: URLRequestConvertible {
                     return "jobseeker-planner/\("\(jobId)" )"
                 }
                 return "jobseeker-planner"
+            case .organizationPlanner(let id):
+                if let jobId = id {
+                    return "organization-planner/\("\(jobId)" )"
+                }
+                return "organization-planner"
             }
         }()
 

@@ -110,14 +110,17 @@ class CardViewController: BaseViewController {
     }
     
     @objc func didTapInterviewButton() {
+        let sb = UIStoryboard(name: "Card", bundle: nil)
         
         if AppContainer.shared.user.user?.accountType == "organization" {
             
-            // Planer for employer will go here
+            
+            let vc = sb.instantiateViewController(withIdentifier: "EmployerPlannerViewController") as! EmployerPlannerViewController
+            navigationController?.pushViewController(vc, animated: true)
             
         } else {
             
-            let sb = UIStoryboard(name: "Card", bundle: nil)
+            
             let vc = sb.instantiateViewController(withIdentifier: "PlanerViewController") as! PlanerViewController
             navigationController?.pushViewController(vc, animated: true)
             
