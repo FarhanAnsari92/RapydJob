@@ -23,7 +23,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     private var maxSalVal = 0
     
     private var pickerView: UIPickerView!
-    private let pickerData = [ "10 mi", "20 mi", "30 mi"]
+    private let pickerData = [ "10 mi", "15 mi", "20 mi","25 mi", "30 mi", "35 mi","40 mi", "45 mi", "50 mi"]
     
     var selectedAddress = ""
     var selectedWeeks: [[String:Any]]?

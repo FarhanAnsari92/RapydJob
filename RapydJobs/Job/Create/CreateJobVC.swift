@@ -284,7 +284,7 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
     private var maxSalVal = 0
     //private let shiftTiming = ["Morning", "Afternoon", "Evening"]
     private let jobType = ["Part Time", "Full Time", "Permanent"]
-    private let lengthOfJob = ["1 week", "2 weeks", "3 weeks", "1 month"   , "2 months", "3 months"]
+    private let lengthOfJob = ["1 week", "2 weeks", "3 weeks", "1 month" , "2 months", "3 months", "4 month" , "5 months", "6 months", "7 month" , "8 months", "9 months", "10 month" , "11 months", "12 months"]
     private var shiftTimingPickerView: UIPickerView!
     private var jobTypePickerView: UIPickerView!
     private var lengthOfJobPickerView: UIPickerView!

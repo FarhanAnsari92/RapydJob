@@ -82,8 +82,8 @@ class LoginVC: UIViewController {
     
     private let userNameInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
-        input.placeholder = "Username"
-        input.title = "Username or email"
+        input.placeholder = "Email"
+        input.title = "Email"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         input.lineColor = AppConstants.shared.primaryBlueColor
