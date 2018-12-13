@@ -37,6 +37,20 @@ class TimesheetViewController: UIViewController {
         let date =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.first?.date!)!)
         
         self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+        
+        /*
+         open func setupCalendar(numOfDays: Int,
+         setDate: Date,
+         allEvents: [Date:[JZBaseEvent]],
+         scrollType: JZScrollType = .pageScroll,
+         firstDayOfWeek :DayOfWeek? = nil,
+         currentTimelineType: JZCurrentTimelineType = .section,
+         visibleTime: Date = Date(),
+         scrollableRange: (startDate: Date?, endDate: Date?)? = (nil, nil)) {
+         */
+        
+
+//        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()), scrollType: .pageScroll, scrollableRange: (startDate: Date(), endDate: Date()))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

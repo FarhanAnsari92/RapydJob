@@ -51,6 +51,10 @@ class PlanerViewController: UIViewController {
         })
     }
     
+    func completePlaner() {
+        
+    }
+    
     func getPlannerData(id: Int? = nil) {
         _ = APIClient.callAPI(request: APIClient.jobseekerPlanner(id: id), onSuccess: { (dictionary) in
             print(dictionary)
@@ -74,7 +78,7 @@ class PlanerViewController: UIViewController {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (action) in
-               self.getPlannerData()
+                self.completePlaner()
                 actionSheet.dismiss(animated: true, completion: nil)
             }))
             
