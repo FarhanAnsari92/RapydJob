@@ -1,18 +1,18 @@
 //
-//  PlanerViewController.swift
+//  EmployerPlannerViewController.swift
 //  RapydJobs
 //
-//  Created by Mohammad Farhan on 12/11/18.
+//  Created by Mohammad Farhan on 12/14/18.
 //  Copyright © 2018 chymps. All rights reserved.
 //
 
 import UIKit
+import ObjectMapper
 import JZCalendarWeekView
 import JGProgressHUD
-import ObjectMapper
 
-class PlanerViewController: UIViewController {
-    
+class EmployerPlannerViewController: UIViewController {
+
     @IBOutlet weak var weekView: DefaultWeekView!
     
     private let hud: JGProgressHUD = {
@@ -25,7 +25,7 @@ class PlanerViewController: UIViewController {
     
     var dropDownData = [OrganizationHireDropdownModel]();
     var selectedJob: OrganizationHireDropdownModel?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,14 +45,14 @@ class PlanerViewController: UIViewController {
                 self.dropDownData = Mapper<OrganizationHireDropdownModel>().mapArray(JSONArray: data)
             }
             self.getPlannerData()
-
+            
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
         })
     }
     
     func getPlannerData(id: Int? = nil) {
-        _ = APIClient.callAPI(request: .jobseekerPlanner(id: id), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .organizationPlanner(id: id), onSuccess: { (dictionary) in
             print(dictionary)
             print(dictionary)
         }, onFailure: { (errorDictionary, _) in
@@ -74,7 +74,7 @@ class PlanerViewController: UIViewController {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (action) in
-               self.getPlannerData()
+                self.getPlannerData()
                 actionSheet.dismiss(animated: true, completion: nil)
             }))
             

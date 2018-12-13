@@ -202,6 +202,36 @@
             </objects>
             <point key="canvasLocation" x="2793" y="119"/>
         </scene>
+        <!--Employer Planner View Controller-->
+        <scene sceneID="WyN-cX-YrU">
+            <objects>
+                <viewController storyboardIdentifier="EmployerPlannerViewController" id="gIw-q7-sKU" customClass="EmployerPlannerViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cMY-To-00T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4On-GT-wOz" customClass="DefaultWeekView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="08A-1c-Kan" firstAttribute="trailing" secondItem="4On-GT-wOz" secondAttribute="trailing" id="FOt-NH-woi"/>
+                            <constraint firstItem="08A-1c-Kan" firstAttribute="bottom" secondItem="4On-GT-wOz" secondAttribute="bottom" id="I25-G5-NlD"/>
+                            <constraint firstItem="4On-GT-wOz" firstAttribute="leading" secondItem="08A-1c-Kan" secondAttribute="leading" id="ZWZ-mA-vJ8"/>
+                            <constraint firstItem="4On-GT-wOz" firstAttribute="top" secondItem="08A-1c-Kan" secondAttribute="top" id="gcU-p4-rKV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="08A-1c-Kan"/>
+                    </view>
+                    <connections>
+                        <outlet property="weekView" destination="4On-GT-wOz" id="0Ol-Hw-qlc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9P1-kZ-ZTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3656" y="130"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_cross_big" width="53" height="53"/>
