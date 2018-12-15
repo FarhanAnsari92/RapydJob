@@ -70,7 +70,9 @@ extension CardContainerViewController: KolodaViewDelegate {
             if AppContainer.shared.user.user?.accountType ?? "" == "jobseeker" {            
                 let sb = UIStoryboard(name: "JobDetails", bundle: nil)
                 let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
-                vc.item = viewModel.data[index]
+                print(viewModel.data[index].jobId)
+                //vc.item = viewModel.data[index]
+                vc.jobId = viewModel.data[index].jobId
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let profileDetailsVC = JobSeekerProfileViewController.getInstance()

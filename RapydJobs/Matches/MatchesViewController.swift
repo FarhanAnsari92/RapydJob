@@ -192,37 +192,21 @@ extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if AppContainer.shared.user.user?.accountType == "jobseeker" {
+        
+        
+        if AppContainer.shared.user.user?.accountType ?? "" == "jobseeker" {
+            let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+            let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
             let item = jobseekerMatches[indexPath.row]
-            
-            let sb = UIStoryboard(name: "Chat", bundle: nil)
-            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
-            
-            
-            chatVC.jobSeekerId = item.userId
-            chatVC.conversationId = Int(item.conversationId)
-            chatVC.jobId = item.jobOwner.id
-            chatVC.title = item.title
-            chatVC.jobTitle = item.title
-            chatVC.seekerPicture = item.jobOwner.profileImage
             print(item)
-            self.navigationController?.pushViewController(chatVC, animated: true)
+            vc.jobId = "\(item.id)"
+            //vc.jobMatch = item
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let jobMatch = jobMatches[indexPath.row]
-            
-            let sb = UIStoryboard(name: "Chat", bundle: nil)
-            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
-            
-            
-            chatVC.jobSeekerId = jobMatch.pivot.jobseekerId
-            chatVC.conversationId = Int(jobMatch.pivot.conversationId)
-            chatVC.jobId = self.selectedJob.identifier
-            chatVC.jobTitle = self.selectedJob.title
-            chatVC.seekerName = jobMatch.username
-            chatVC.seekerPicture = jobMatch.profileImage
-            chatVC.title =  self.selectedJob.title
-            self.navigationController?.pushViewController(chatVC, animated: true)
-            
+            let profileDetailsVC = JobSeekerProfileViewController.getInstance()
+            let item = jobMatches[indexPath.row]
+            profileDetailsVC.jobseekerId = item.pivot.jobseekerId
+            self.navigationController?.pushViewController(profileDetailsVC, animated: true)
         }
         
     }
@@ -242,7 +226,42 @@ extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MatchesViewController: MatchesTableViewCellDelegate {
     func didTapMessageButtonOnCell(_ cell: MatchesTableViewCell) {
-        print("Message Button Tapped")
+        
+        let indexPath = self.tableView.indexPath(for: cell)
+        
+        if AppContainer.shared.user.user?.accountType == "jobseeker" {
+            let item = jobseekerMatches[indexPath!.row]
+            
+            let sb = UIStoryboard(name: "Chat", bundle: nil)
+            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+            
+            
+            chatVC.jobSeekerId = item.userId
+            chatVC.conversationId = Int(item.conversationId)
+            chatVC.jobId = item.jobOwner.id
+            chatVC.title = item.title
+            chatVC.jobTitle = item.title
+            chatVC.seekerPicture = item.jobOwner.profileImage
+            print(item)
+            self.navigationController?.pushViewController(chatVC, animated: true)
+        } else {
+            let jobMatch = jobMatches[indexPath!.row]
+            
+            let sb = UIStoryboard(name: "Chat", bundle: nil)
+            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+            
+            
+            chatVC.jobSeekerId = jobMatch.pivot.jobseekerId
+            chatVC.conversationId = Int(jobMatch.pivot.conversationId)
+            chatVC.jobId = self.selectedJob.identifier
+            chatVC.jobTitle = self.selectedJob.title
+            chatVC.seekerName = jobMatch.username
+            chatVC.seekerPicture = jobMatch.profileImage
+            chatVC.title = jobMatch.username
+            self.navigationController?.pushViewController(chatVC, animated: true)
+            
+        }
+        
     }
 }
 
