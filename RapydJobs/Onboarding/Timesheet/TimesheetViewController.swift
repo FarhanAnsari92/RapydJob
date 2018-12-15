@@ -34,23 +34,11 @@ class TimesheetViewController: UIViewController {
             return
         }
 
-        let date =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.first?.date!)!)
+        let startDate =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.first?.date!)!)
         
-        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+        let lastDate =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.last?.date!)!)
         
-        /*
-         open func setupCalendar(numOfDays: Int,
-         setDate: Date,
-         allEvents: [Date:[JZBaseEvent]],
-         scrollType: JZScrollType = .pageScroll,
-         firstDayOfWeek :DayOfWeek? = nil,
-         currentTimelineType: JZCurrentTimelineType = .section,
-         visibleTime: Date = Date(),
-         scrollableRange: (startDate: Date?, endDate: Date?)? = (nil, nil)) {
-         */
-        
-
-//        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()), scrollType: .pageScroll, scrollableRange: (startDate: Date(), endDate: Date()))
+        self.weekView.setupCalendar(numOfDays: 7, setDate: startDate!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()), scrollType: .pageScroll, scrollableRange: (startDate: startDate, endDate: lastDate))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

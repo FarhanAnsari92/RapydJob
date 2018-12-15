@@ -33,11 +33,11 @@ class EmployerPlannerViewController: UIViewController {
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
         self.setupWeekView()
-        self.getHiderDropDown()
+        self.getHiredDropDown()
         
     }
     
-    func getHiderDropDown() {
+    func getHiredDropDown() {
         _ = APIClient.callAPI(request: .organizationHireDropdown, onSuccess: { (dictionary) in
             print(dictionary)
             

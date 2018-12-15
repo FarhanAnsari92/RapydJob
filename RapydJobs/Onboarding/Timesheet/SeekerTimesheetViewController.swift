@@ -38,9 +38,11 @@ class SeekerTimesheetViewController: UIViewController {
             return
         }
         
-        let date =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.first?.date!)!)
+        let startDate =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.first?.date!)!)
         
-        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+        let lastDate =  dateFormatter.date(fromSwapiString: (self.timeSheetData?.timesheets?.last?.date!)!)
+        
+        self.weekView.setupCalendar(numOfDays: 7, setDate: startDate!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()), scrollType: .pageScroll, scrollableRange: (startDate: startDate, endDate: lastDate))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
