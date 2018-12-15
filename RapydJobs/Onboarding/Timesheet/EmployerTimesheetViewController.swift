@@ -125,7 +125,7 @@ class EmployerTimesheetViewController: BaseViewController {
         print(param)
         print(timesheetId)
         hud.show(in: view)
-        _ = APIClient.callAPI(request: APIClient.updateTimesheet(param: param, timesheetId: timesheetId), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .updateTimesheet(param: param, timesheetId: timesheetId), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             print(dictionary)
             if let _ = dictionary["status"] as? String {

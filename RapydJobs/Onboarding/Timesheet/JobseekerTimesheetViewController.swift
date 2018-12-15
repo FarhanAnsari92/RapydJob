@@ -100,7 +100,7 @@ class JobseekerTimesheetViewController: BaseViewController {
         let param = ["status": type]
         
         hud.show(in: view)
-        _ = APIClient.callAPI(request: APIClient.jobseekerTimesheet(param: param), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .jobseekerTimesheet(param: param), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             print(dictionary)
             guard let data = dictionary["data"] as? [[String:Any]] else {
