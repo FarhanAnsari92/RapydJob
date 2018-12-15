@@ -375,6 +375,7 @@
 		C929E9EA2185E88400A8AA8E /* JobSeekerOffersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929E9E92185E88400A8AA8E /* JobSeekerOffersResponse.swift */; };
 		C929E9EC2185EE7000A8AA8E /* UserDateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929E9EB2185EE7000A8AA8E /* UserDateData.swift */; };
 		C929E9EE2185F56800A8AA8E /* OrganizationSuperLikeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929E9ED2185F56800A8AA8E /* OrganizationSuperLikeResponse.swift */; };
+		C93A1BC921C5BD8300C51288 /* JobDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A1BC821C5BD8300C51288 /* JobDetailModel.swift */; };
 		C93D346E21BEE9C600B66AA5 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D346D21BEE9C600B66AA5 /* TimesheetViewController.swift */; };
 		C94AC51621B6F7380062E789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C94AC51521B6F7370062E789 /* GoogleService-Info.plist */; };
 		C954E47621BF047B00EBF927 /* DefaultWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C954E47321BF047B00EBF927 /* DefaultWeekView.swift */; };
@@ -834,6 +835,7 @@
 		C929E9E92185E88400A8AA8E /* JobSeekerOffersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekerOffersResponse.swift; sourceTree = "<group>"; };
 		C929E9EB2185EE7000A8AA8E /* UserDateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDateData.swift; sourceTree = "<group>"; };
 		C929E9ED2185F56800A8AA8E /* OrganizationSuperLikeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationSuperLikeResponse.swift; sourceTree = "<group>"; };
+		C93A1BC821C5BD8300C51288 /* JobDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailModel.swift; sourceTree = "<group>"; };
 		C93D346D21BEE9C600B66AA5 /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
 		C949A2D821BEF39F008CB2E0 /* JZCalendarWeekView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JZCalendarWeekView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94AC51521B6F7370062E789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1241,6 +1243,7 @@
 				C9C5AF4521AF26F500479D9C /* Timesheet.swift */,
 				C9C5AF4721AF284300479D9C /* TimesheetResponseModel.swift */,
 				C9167FE521C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift */,
+				C93A1BC821C5BD8300C51288 /* JobDetailModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2733,6 +2736,7 @@
 				4DD6DF6721691E5B00F8CA3A /* JobseekerExperienceVC.swift in Sources */,
 				A54AD707210BCC0800C72F75 /* EmployerOnboardingService.swift in Sources */,
 				C9167FE621C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift in Sources */,
+				C93A1BC921C5BD8300C51288 /* JobDetailModel.swift in Sources */,
 				883D4DC02107332600FF9B09 /* GetJobSeekerDetailsRequest.swift in Sources */,
 				A54AD6B0210A54EB00C72F75 /* UserContainer.swift in Sources */,
 				3E9D82E92132FFFB00DC50F0 /* ChatMessageCell.swift in Sources */,
