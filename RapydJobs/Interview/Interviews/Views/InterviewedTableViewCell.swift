@@ -36,6 +36,7 @@ class InterviewedTableViewCell: ShdaowBaseTableViewCell {
     
     var makeOfferCompletion: (() -> Void)?
     var rejectOfferCompletion: (() -> Void)?
+    var profilePictureCompletion: (() -> Void)?
     
     @IBAction func makeOffer(_ sender: UIButton) {
         makeOfferCompletion?()
@@ -43,6 +44,19 @@ class InterviewedTableViewCell: ShdaowBaseTableViewCell {
     
     @IBAction func reject(_ sender: UIButton) {
         rejectOfferCompletion?()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.displayImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtPicture))
+        self.displayImageView.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func tapAtPicture() {
+        self.profilePictureCompletion?()
     }
     
     func update(_ data: InterviewModel) {        

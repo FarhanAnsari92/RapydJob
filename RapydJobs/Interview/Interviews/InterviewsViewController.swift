@@ -191,6 +191,17 @@ extension InterviewsViewController: UITableViewDataSource {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
+            cell.profilePictureCompletion = {
+                guard let interv = self.interviews,
+                    let userId = interv[indexPath.row].userId else {
+                        return
+                }
+                
+                let profileDetailsVC = JobSeekerProfileViewController.getInstance()
+                profileDetailsVC.jobseekerId = userId
+                self.navigationController?.pushViewController(profileDetailsVC, animated: true)
+            }
+            
             cell.update(self.interviews![indexPath.row])
             
             cell.shouldDrawFullShadow = true
@@ -219,9 +230,21 @@ extension InterviewsViewController: UITableViewDataSource {
                     let interviewId = interv[indexPath.row].interviewId else {
                         return
                 }
-                cell.rejectOfferCompletion = {
-                    self.reject(interviewId: interviewId, row: indexPath.row)
+                self.reject(interviewId: interviewId, row: indexPath.row)
+                
+            }
+            
+            cell.profilePictureCompletion = {
+                guard let interv = self.interviews,
+                    let userId = interv[indexPath.row].userId else {
+                        return
                 }
+                
+                let profileDetailsVC = JobSeekerProfileViewController.getInstance()
+                profileDetailsVC.jobseekerId = userId
+                self.navigationController?.pushViewController(profileDetailsVC, animated: true)
+                
+                
             }
             
             cell.shouldDrawFullShadow = true

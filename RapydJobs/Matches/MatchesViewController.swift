@@ -200,7 +200,6 @@ extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
             let item = jobseekerMatches[indexPath.row]
             print(item)
             vc.jobId = "\(item.id)"
-            //vc.jobMatch = item
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let profileDetailsVC = JobSeekerProfileViewController.getInstance()

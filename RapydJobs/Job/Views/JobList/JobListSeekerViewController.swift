@@ -196,6 +196,21 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
             print("reject")
             self.acceptOffer(status: "reject", row: indexPath.row)
         }
+        cell.profilePictureCompletion = {
+            guard let jobId = self.jobOffers[indexPath.row].id else {
+                return
+            }
+            
+            let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+            let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
+            
+            print(self.jobOffers[indexPath.row].toJSON())
+            
+            
+            vc.jobId = "\(jobId)"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         cell.updateData(self.jobOffers[indexPath.row])
         return cell
     }

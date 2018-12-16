@@ -19,6 +19,7 @@ class JobOfferTableViewCell: UITableViewCell {
     var timeSheetCompletion: (() -> Void)?
     var acceptCompletion: (() -> Void)?
     var rejectCompletion: (() -> Void)?
+    var profilePictureCompletion: (() -> Void)?
     
     @IBOutlet weak var makeTimesheet: UIButton! {
         didSet {
@@ -48,10 +49,18 @@ class JobOfferTableViewCell: UITableViewCell {
             rejectCompletion?()
         }
     }
+    
+    @objc func tapAtImage() {
+        profilePictureCompletion?()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.jobSeekerImage.layer.cornerRadius = 37.0
+        self.jobSeekerImage.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtImage))
+        self.jobSeekerImage.addGestureRecognizer(tapGesture)
         
         parentVu.backgroundColor = .white
         parentVu.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0.1176470588, alpha: 1)

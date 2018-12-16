@@ -38,6 +38,7 @@ class ScheduledTableViewCell: ShdaowBaseTableViewCell {
     
     var updateInterviewCompletion: (() -> Void)?
     var rescheduleInterviewCompletion: (() -> Void)?
+    var profilePictureCompletion: (() -> Void)?
     
     @IBAction func updateInterview(_ sender: UIButton) {
         updateInterviewCompletion?()
@@ -45,6 +46,19 @@ class ScheduledTableViewCell: ShdaowBaseTableViewCell {
     
     @IBAction func rescheduleInterview(_ sender: UIButton) {
         rescheduleInterviewCompletion?()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.displayImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtPicture))
+        self.displayImageView.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func tapAtPicture() {
+        self.profilePictureCompletion?()
     }
     
     func update(_ data: InterviewModel) {
