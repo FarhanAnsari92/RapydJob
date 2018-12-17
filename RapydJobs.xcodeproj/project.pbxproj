@@ -446,6 +446,7 @@
 		C9C5AF4D21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4B21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib */; };
 		C9C5AF5021AF316100479D9C /* TimesheetRejectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */; };
 		C9C5AF5121AF316100479D9C /* TimesheetRejectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */; };
+		C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */; };
 		C9CDEFD821B5921F00C57C4B /* ShiftTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFD721B5921F00C57C4B /* ShiftTimeViewController.swift */; };
 		C9CDEFDA21B5AC5900C57C4B /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */; };
 		C9CDEFDC21B5B16000C57C4B /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */; };
@@ -907,6 +908,7 @@
 		C9C5AF4B21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSheetJobseekerTableViewCell.xib; sourceTree = "<group>"; };
 		C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetRejectTableViewCell.swift; sourceTree = "<group>"; };
 		C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetRejectTableViewCell.xib; sourceTree = "<group>"; };
+		C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDataResponseModel.swift; sourceTree = "<group>"; };
 		C9CDEFD721B5921F00C57C4B /* ShiftTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTimeViewController.swift; sourceTree = "<group>"; };
 		C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
@@ -1244,6 +1246,7 @@
 				C9C5AF4721AF284300479D9C /* TimesheetResponseModel.swift */,
 				C9167FE521C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift */,
 				C93A1BC821C5BD8300C51288 /* JobDetailModel.swift */,
+				C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2929,6 +2932,7 @@
 				883D4DDD21075E2A00FF9B09 /* GetJobOffers.swift in Sources */,
 				0DE319B320E1535100A75F93 /* ProfileDetailsTableReviewCell.swift in Sources */,
 				C983C42D218B07E800754866 /* DateCollectionViewCell.swift in Sources */,
+				C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */,
 				4DD6DF3121691CDF00F8CA3A /* ForgotPasswordAPIService.swift in Sources */,
 				4D2C637D2169EF300076B718 /* JobseekerEducation.swift in Sources */,
 				4D2C637F2169EF300076B718 /* JobseekerModel.swift in Sources */,

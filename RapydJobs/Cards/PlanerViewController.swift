@@ -21,7 +21,7 @@ class PlanerViewController: UIViewController {
         return hud
     }()
     
-    var timeSheetData: TimesheetResponseModel?
+    var plannerData = [PlannerDataResponseModel]();
     
     var dropDownData = [OrganizationHireDropdownModel]();
     var selectedJob: OrganizationHireDropdownModel?
@@ -38,7 +38,7 @@ class PlanerViewController: UIViewController {
     }
     
     func getHiderDropDown() {
-        _ = APIClient.callAPI(request: .organizationHireDropdown, onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .jobseekerHireDropdown, onSuccess: { (dictionary) in
             print(dictionary)
             
             if let data = dictionary["data"] as? [[String:Any]] {
@@ -53,8 +53,12 @@ class PlanerViewController: UIViewController {
     
     func getPlannerData(id: Int? = nil) {
         _ = APIClient.callAPI(request: .jobseekerPlanner(id: id), onSuccess: { (dictionary) in
+            
             print(dictionary)
-            print(dictionary)
+            if let data = dictionary["data"] as? [[String:Any]] {
+                self.plannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
+                self.setupWeekView()
+            }
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
         })
@@ -96,14 +100,14 @@ class PlanerViewController: UIViewController {
     func setupWeekView() {
         
         weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
-        let dateFormatter = DateFormatter()
-        guard let timesheet = self.timeSheetData else {
+//        let dateFormatter = DateFormatter()
+//        guard let timesheet = self.timeSheetData else {
             self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
-            return
-        }
-        let date =  dateFormatter.date(fromSwapiString: (timesheet.timesheets?.first?.date!)!)
-        
-        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+//            return
+//        }
+//        let date =  dateFormatter.date(fromSwapiString: (timesheet.timesheets?.first?.date!)!)
+//
+//        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -113,12 +117,10 @@ class PlanerViewController: UIViewController {
     private func scheduleTimes() -> [DefaultEvent] {
         let dateFormatter = DateFormatter()
         var schedules = [DefaultEvent]()
-        guard let timesheet = self.timeSheetData else {
-            return [DefaultEvent]()
-        }
-        for item in timesheet.timesheets! {
+        
+        for item in self.plannerData {
             
-            let date =  dateFormatter.date(fromSwapiString: item.date!) //.datefrom //.date(from: item.date!)
+            let date =  dateFormatter.date(fromSwapiString: item.dayOfMonth!) //.datefrom //.date(from: item.date!)
             let startTimeSplit = item.startTime?.components(separatedBy: ":")
             let endTimeSplit = item.endTime?.components(separatedBy: ":")
             

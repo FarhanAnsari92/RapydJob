@@ -85,6 +85,7 @@ enum APIClient: URLRequestConvertible {
     
     case socialRegister(param: [String:Any])
     case organizationHireDropdown
+    case jobseekerHireDropdown
     case jobseekerPlanner(id: Int?)
     case organizationPlanner(id: Int?)
     case getJobDetail(jobId: String)
@@ -127,6 +128,7 @@ enum APIClient: URLRequestConvertible {
                  .getJobseeker,
                  .review,
                  .organizationHireDropdown,
+                 .jobseekerHireDropdown,
                  .jobseekerPlanner,
                  .organizationPlanner,
                  .getJobDetail,
@@ -177,6 +179,7 @@ enum APIClient: URLRequestConvertible {
                  .getJobseeker,
                  .review,
                  .organizationHireDropdown,
+                 .jobseekerHireDropdown,
                  .jobseekerPlanner,
                  .organizationPlanner,
                  .getJobDetail,
@@ -286,6 +289,7 @@ enum APIClient: URLRequestConvertible {
                  .updateTimesheet,
                  .socialRegister,
                  .organizationHireDropdown,
+                 .jobseekerHireDropdown,
                  .jobseekerPlanner,
                  .organizationPlanner,
                  .getJobDetail,
@@ -397,6 +401,8 @@ enum APIClient: URLRequestConvertible {
                 return "social-register"
             case .organizationHireDropdown:
                 return "organization-hire-job-dropdown"
+            case .jobseekerHireDropdown:
+                return "jobseeker-hire-job-dropdown"
             case .jobseekerPlanner(let id):
                 if let jobId = id {
                     return "jobseeker-planner/\("\(jobId)" )"
