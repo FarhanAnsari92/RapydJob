@@ -30,6 +30,7 @@ struct InitialSignUpAPIService {
                                    "password"       : password,
                                    "c_password"     : password,
                                    "account_type"   : accountType.lowercased(),
+                                   "device_type"    : "ios",
             "fcm": (UIApplication.shared.delegate as! AppDelegate).apnsToken]
         print("🌎 Params : ", params)
         

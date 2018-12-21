@@ -433,6 +433,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, 
         params["provider"] = "linkedin"
         params["email"] = linkedinData["emailAddress"] as? String ?? ""
         params["fcm"] = (UIApplication.shared.delegate as! AppDelegate).apnsToken
+        params["device_type"] = "ios"
         print(params)
         
         let url = URLConstants.shared.getEndPointURL("social-register")

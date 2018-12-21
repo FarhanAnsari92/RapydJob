@@ -28,6 +28,7 @@ struct LoginAPIService {
                                    "grant_type" : "password",
                                    "client_id" : "2",
                                    "client_secret" : "\(AppConstants.shared.clientSecret)",
+                                   "device_type"    : "ios",
             "fcm": (UIApplication.shared.delegate as! AppDelegate).apnsToken]
         print(params)
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: header).response { (response) in
