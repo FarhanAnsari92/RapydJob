@@ -21,7 +21,8 @@ class PlanerViewController: UIViewController {
         return hud
     }()
     
-    var plannerData = [PlannerDataResponseModel]();
+    var timePlannerData = [PlannerDataResponseModel]();
+    var interviewPlannerData = [InterviewPlannerDataResponseModel]();
     
     var dropDownData = [OrganizationHireDropdownModel]();
     var selectedJob: OrganizationHireDropdownModel?
@@ -55,10 +56,18 @@ class PlanerViewController: UIViewController {
         _ = APIClient.callAPI(request: .jobseekerPlanner(id: id), onSuccess: { (dictionary) in
             
             print(dictionary)
-            if let data = dictionary["data"] as? [[String:Any]] {
-                self.plannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
-                self.setupWeekView()
+            if let data = dictionary["time_planner"] as? [[String:Any]] {
+                self.timePlannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
+                print(self.timePlannerData.toJSON())
             }
+            
+            if let data = dictionary["interview_planner"] as? [[String:Any]] {
+                self.interviewPlannerData = Mapper<InterviewPlannerDataResponseModel>().mapArray(JSONArray: data)
+                print(self.interviewPlannerData.toJSON())
+            }
+            
+            self.setupWeekView()
+            
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
         })
@@ -100,14 +109,10 @@ class PlanerViewController: UIViewController {
     func setupWeekView() {
         
         weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
-//        let dateFormatter = DateFormatter()
-//        guard let timesheet = self.timeSheetData else {
-            self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
-//            return
-//        }
-//        let date =  dateFormatter.date(fromSwapiString: (timesheet.timesheets?.first?.date!)!)
-//
-//        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+
+        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -118,7 +123,7 @@ class PlanerViewController: UIViewController {
         let dateFormatter = DateFormatter()
         var schedules = [DefaultEvent]()
         
-        for item in self.plannerData {
+        for item in self.timePlannerData {
             
             let date =  dateFormatter.date(fromSwapiString: item.dayOfMonth!) //.datefrom //.date(from: item.date!)
             let startTimeSplit = item.startTime?.components(separatedBy: ":")
@@ -127,7 +132,21 @@ class PlanerViewController: UIViewController {
             let start = date!.add(component: .hour, value: Int(startTimeSplit![0])!).add(component: .minute, value: Int(startTimeSplit![1])!)
             let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
             
-            let event = DefaultEvent(id: "1", title: "", startDate: start, endDate: end, location: "")
+            let event = DefaultEvent(id: "1", title: item.jobName ?? "", startDate: start, endDate: end, location: "")
+            schedules.append(event)
+            
+        }
+        
+        for item in self.interviewPlannerData {
+            
+            let date =  dateFormatter.date(fromSwapiString: item.dayOfMonth!) //.datefrom //.date(from: item.date!)
+            let startTimeSplit = item.startTime?.components(separatedBy: ":")
+            let endTimeSplit = item.endTime?.components(separatedBy: ":")
+            
+            let start = date!.add(component: .hour, value: Int(startTimeSplit![0])!).add(component: .minute, value: Int(startTimeSplit![1])!)
+            let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
+            
+            let event = DefaultEvent(id: "1", title: item.jobName ?? "", startDate: start, endDate: end, location: "Interview Schedule")
             schedules.append(event)
             
         }
