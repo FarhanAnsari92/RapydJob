@@ -23,7 +23,8 @@ class EmployerPlannerViewController: UIViewController {
     
     
     var dropDownData = [OrganizationHireDropdownModel]();
-    var plannerData = [PlannerDataResponseModel]();
+    var timePlannerData = [PlannerDataResponseModel]();
+    var interviewPlannerData = [InterviewPlannerDataResponseModel]();
     var selectedJob: OrganizationHireDropdownModel?
     
     override func viewDidLoad() {
@@ -54,10 +55,19 @@ class EmployerPlannerViewController: UIViewController {
     func getPlannerData(id: Int? = nil) {
         _ = APIClient.callAPI(request: .organizationPlanner(id: id), onSuccess: { (dictionary) in
             print(dictionary)
-            if let data = dictionary["data"] as? [[String:Any]] {
-                self.plannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
-                self.setupWeekView()
+            
+            print(dictionary)
+            if let data = dictionary["time_planner"] as? [[String:Any]] {
+                self.timePlannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
+                print(self.timePlannerData.toJSON())
             }
+            
+            if let data = dictionary["interview_planner"] as? [[String:Any]] {
+                self.interviewPlannerData = Mapper<InterviewPlannerDataResponseModel>().mapArray(JSONArray: data)
+                print(self.interviewPlannerData.toJSON())
+            }
+            
+            self.setupWeekView()
             
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
@@ -119,7 +129,7 @@ class EmployerPlannerViewController: UIViewController {
         let dateFormatter = DateFormatter()
         var schedules = [DefaultEvent]()
         
-        for item in self.plannerData {
+        for item in self.timePlannerData {
             
             let date =  dateFormatter.date(fromSwapiString: item.dayOfMonth!) //.datefrom //.date(from: item.date!)
             let startTimeSplit = item.startTime?.components(separatedBy: ":")
@@ -129,6 +139,20 @@ class EmployerPlannerViewController: UIViewController {
             let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
             
             let event = DefaultEvent(id: "1", title: "", startDate: start, endDate: end, location: "")
+            schedules.append(event)
+            
+        }
+        
+        for item in self.interviewPlannerData {
+            
+            let date =  dateFormatter.date(fromSwapiString: item.dayOfMonth!) //.datefrom //.date(from: item.date!)
+            let startTimeSplit = item.startTime?.components(separatedBy: ":")
+            let endTimeSplit = item.endTime?.components(separatedBy: ":")
+            
+            let start = date!.add(component: .hour, value: Int(startTimeSplit![0])!).add(component: .minute, value: Int(startTimeSplit![1])!)
+            let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
+            
+            let event = DefaultEvent(id: "1", title: item.candidateName ?? "", startDate: start, endDate: end, location: item.jobName ?? "")
             schedules.append(event)
             
         }

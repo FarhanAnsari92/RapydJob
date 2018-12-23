@@ -87,12 +87,7 @@ extension UpdateRelatedFieldsViewController: UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? RelatedFieldsCollectionViewCell else {
-//            return
-//        }
-        
-        
-        
+
         self.sectors[indexPath.row].isSelected = !self.sectors[indexPath.row].isSelected
         self.collectionView.reloadItems(at: [indexPath])
         

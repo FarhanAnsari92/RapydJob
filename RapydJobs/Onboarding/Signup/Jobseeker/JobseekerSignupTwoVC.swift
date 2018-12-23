@@ -311,7 +311,6 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
             
             self.relatedFieldsInput.text = relatedFieldsSring
-            newRelatedFielfds = relatedFieldArr
         }
         
         self.minSalaryValue.text = user.jobSeeker?.minSalaryString ?? ""
@@ -521,10 +520,19 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         view.endEditing(true)
         let sb = UIStoryboard(name: "RelatedFields", bundle: nil)
         let vc = sb.instantiateInitialViewController() as! RelatedFieldsViewController
-        vc.completion = { relatedFieldArr in
-            for field in relatedFieldArr {
-                self.relatedFieldsInput.text?.append("\(field),")
-            }
+        
+        if self.relatedFieldsInput.text?.count ?? 0 > 0 {
+            vc.selectedSectors = self.relatedFieldsInput.text?.components(separatedBy: ",")
+        } else {
+            vc.selectedSectors = [String]()
+        }
+        
+        vc.selectedSectorCompletion = { relatedFieldArr in
+            
+            print(relatedFieldArr)
+            self.relatedFieldsInput.text = relatedFieldArr.joined(separator: ",")
+            print(relatedFieldArr)
+            
         }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -562,15 +570,23 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     
         print(lat)
         
+        let relatedFields = self.relatedFieldsInput.text?.split(separator: ",")
+        
+        var fields = [String]()
+        for item in relatedFields! {
+            fields.append(String(item))
+        }
+        
+        print(fields)
+        
         hud.show(in: view)
-        JobseekerSignupAPIService.shared.updateAddress(schedule: slctdWeeks ,address: jobseekerAddressInput.text!, maxSalary: "\(maxSalVal)", minSalary: "\(minSalVal)", relatedFielfds: newRelatedFielfds, distance: String(distance), lat: lat, lng: lng) { (error) in
+        JobseekerSignupAPIService.shared.updateAddress(schedule: slctdWeeks ,address: jobseekerAddressInput.text!, maxSalary: "\(maxSalVal)", minSalary: "\(minSalVal)", relatedFielfds: fields, distance: String(distance), lat: lat, lng: lng) { (error) in
             if let err = error {
                 self.hud.dismiss(animated: true)
                 print("Error : ", err)
             } else {
                 self.hud.dismiss(animated: true)
                 address = ""
-                newRelatedFielfds.removeAll()
                 UserDefaults.standard.removeObject(forKey: "JOB_SECTORS")
                 self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
             }

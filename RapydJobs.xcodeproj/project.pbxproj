@@ -452,6 +452,7 @@
 		C9CDEFDC21B5B16000C57C4B /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */; };
 		C9D32F3C21B2CFBB00126AC6 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */; };
 		C9DA8A9021C2F44B00ACD7FD /* EmployerPlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */; };
+		C9DD258321CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */; };
 		C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB2B1B2183A330005FBDFE /* APIClient.swift */; };
 		C9FDF9CD21824BCC00991F18 /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */; };
 		C9FDF9CF2182521600991F18 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CE2182521600991F18 /* AddressModel.swift */; };
@@ -914,6 +915,7 @@
 		C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 		C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerPlannerViewController.swift; sourceTree = "<group>"; };
+		C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPlannerDataResponseModel.swift; sourceTree = "<group>"; };
 		C9EB2B1B2183A330005FBDFE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
 		C9FDF9CE2182521600991F18 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
@@ -1247,6 +1249,7 @@
 				C9167FE521C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift */,
 				C93A1BC821C5BD8300C51288 /* JobDetailModel.swift */,
 				C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */,
+				C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2934,6 +2937,7 @@
 				C983C42D218B07E800754866 /* DateCollectionViewCell.swift in Sources */,
 				C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */,
 				4DD6DF3121691CDF00F8CA3A /* ForgotPasswordAPIService.swift in Sources */,
+				C9DD258321CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift in Sources */,
 				4D2C637D2169EF300076B718 /* JobseekerEducation.swift in Sources */,
 				4D2C637F2169EF300076B718 /* JobseekerModel.swift in Sources */,
 				889DFBC621060A460073A532 /* UpdateContract.swift in Sources */,
