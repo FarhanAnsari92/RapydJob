@@ -15,13 +15,27 @@ class RelatedFieldsViewController: BaseViewController {
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var viewModel: RelatedFieldsViewModel = RelatedFieldsViewModel()
-    var completion: (([String]) -> Void)?
+    
+    var sectors = Helper.getSectors()
+    var selectedSectors: [String]?
+    var selectedSectorCompletion: (([String]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         self.title = "Job Sectors"
+        
+        if let selectedSectors = self.selectedSectors, selectedSectors.count > 0 {
+            for sectorItem in sectors {
+                for selectedSectorItem in selectedSectors {
+                    let trimmedString = selectedSectorItem.trimmingCharacters(in: .whitespaces)
+                    if sectorItem.sectorTitle == trimmedString {
+                        sectorItem.isSelected = true
+                    }
+                }
+            }
+        }
+        print(sectors)
         
         navigationItem.leftBarButtonItem = nil
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTapSaveButton))
@@ -42,11 +56,12 @@ class RelatedFieldsViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        viewModel.data.removeAll()
     }
     
     @objc func didTapSaveButton() {
-        completion?(newRelatedFielfds)
+        if let sectrs = self.selectedSectors {
+            selectedSectorCompletion?(sectrs)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -58,7 +73,7 @@ extension RelatedFieldsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItems()
+        return self.sectors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,7 +81,7 @@ extension RelatedFieldsViewController: UICollectionViewDelegate, UICollectionVie
             return UICollectionViewCell()
         }
         
-        cell.populateWithCellModel(viewModel.data[indexPath.row])
+        cell.updateData(self.sectors[indexPath.row])
 
         return cell
     }
@@ -75,26 +90,22 @@ extension RelatedFieldsViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.cellForItem(at: indexPath) as? RelatedFieldsCollectionViewCell else {
             return
         }
-        let model = viewModel.data[indexPath.row]
-        model.isActive = !model.isActive
-        cell.populateWithCellModel(model)
         
-        if model.isActive {
-            newRelatedFielfds.append(model.title)
+        self.sectors[indexPath.row].isSelected = !self.sectors[indexPath.row].isSelected
+        self.collectionView.reloadItems(at: [indexPath])
+        
+        if self.sectors[indexPath.row].isSelected {
+            self.selectedSectors?.append(self.sectors[indexPath.row].sectorTitle)
         } else {
-            for (i, item) in newRelatedFielfds.enumerated() {
-                if model.title.lowercased() == item.lowercased() {
-                    newRelatedFielfds.remove(at: i)
+            for (i, item) in (self.selectedSectors?.enumerated())! {
+                let trimmedString = item.trimmingCharacters(in: .whitespaces)
+                if trimmedString == self.sectors[indexPath.row].sectorTitle {
+                    self.selectedSectors?.remove(at: i)
                     break
                 }
             }
         }
-        
-        print(newRelatedFielfds)
-        
-        var jobSectors = AppContainer.shared.job.jobSectors
-        jobSectors[model.title] = model.isActive
-        AppContainer.shared.job.save(jobSectors: jobSectors)
+        print(self.selectedSectors!)
     }
 }
 
