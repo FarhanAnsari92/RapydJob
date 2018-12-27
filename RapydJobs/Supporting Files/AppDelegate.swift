@@ -82,7 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         self.apnsToken = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("*** token ***")
         print(self.apnsToken)
+        print("*** token ***")
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

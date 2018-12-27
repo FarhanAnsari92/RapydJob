@@ -15,11 +15,17 @@ class ScheduleInterviewTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var organizationPicture: UIImageView!
+    
+    var profilePictureCompletion: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.organizationPicture.layer.cornerRadius = 30.0
+        self.organizationPicture.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtImage))
+        self.organizationPicture.addGestureRecognizer(tapGesture)
         
         parentVu.backgroundColor = .white
         parentVu.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0.1176470588, alpha: 1)
@@ -27,6 +33,10 @@ class ScheduleInterviewTableViewCell: UITableViewCell {
         parentVu.layer.shadowOpacity = 0.3
         parentVu.layer.shadowOffset = CGSize(width: -2, height: 0.5)
         parentVu.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func tapAtImage() {
+        profilePictureCompletion?()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

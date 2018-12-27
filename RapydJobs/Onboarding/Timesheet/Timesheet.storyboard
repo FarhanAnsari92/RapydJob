@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,8 +25,15 @@
                                     <constraint firstAttribute="height" constant="40" id="eqZ-pc-bUr"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkN-gw-IEr">
+                                <rect key="frame" x="0.0" y="60" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="dcy-gD-eq0"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIc-D2-HNT">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="606"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rf8-VA-vzs" id="Skb-6V-jgK"/>
@@ -39,9 +46,12 @@
                             <constraint firstItem="Zfw-6R-1Cj" firstAttribute="top" secondItem="78k-ms-0dA" secondAttribute="top" id="6BE-WX-FDU"/>
                             <constraint firstItem="yIc-D2-HNT" firstAttribute="leading" secondItem="78k-ms-0dA" secondAttribute="leading" id="MsA-kN-OfG"/>
                             <constraint firstItem="Zfw-6R-1Cj" firstAttribute="leading" secondItem="gDD-RN-HEy" secondAttribute="leading" id="Oii-Pe-eZa"/>
+                            <constraint firstItem="yIc-D2-HNT" firstAttribute="top" secondItem="NkN-gw-IEr" secondAttribute="bottom" id="SF5-2f-LJZ"/>
                             <constraint firstItem="78k-ms-0dA" firstAttribute="bottom" secondItem="yIc-D2-HNT" secondAttribute="bottom" id="Zfj-E7-Xfx"/>
-                            <constraint firstItem="yIc-D2-HNT" firstAttribute="top" secondItem="Zfw-6R-1Cj" secondAttribute="bottom" id="hjv-Kp-O7V"/>
+                            <constraint firstItem="NkN-gw-IEr" firstAttribute="top" secondItem="Zfw-6R-1Cj" secondAttribute="bottom" id="bvI-bB-L1R"/>
+                            <constraint firstAttribute="trailing" secondItem="NkN-gw-IEr" secondAttribute="trailing" id="kpk-XI-4al"/>
                             <constraint firstItem="78k-ms-0dA" firstAttribute="trailing" secondItem="yIc-D2-HNT" secondAttribute="trailing" id="lPU-Jh-Ep5"/>
+                            <constraint firstItem="NkN-gw-IEr" firstAttribute="leading" secondItem="gDD-RN-HEy" secondAttribute="leading" id="pB9-SF-h48"/>
                             <constraint firstItem="78k-ms-0dA" firstAttribute="trailing" secondItem="Zfw-6R-1Cj" secondAttribute="trailing" id="sde-vu-amE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="78k-ms-0dA"/>
@@ -53,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="786-rI-VVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="37"/>
+            <point key="canvasLocation" x="-336.80000000000001" y="36.431784107946029"/>
         </scene>
         <!--Employer Timesheet View Controller-->
         <scene sceneID="oLp-hw-7wl">

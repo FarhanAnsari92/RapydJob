@@ -105,7 +105,6 @@ extension RelatedFieldsViewController: UICollectionViewDelegate, UICollectionVie
                 }
             }
         }
-        print(self.selectedSectors!)
     }
 }
 
