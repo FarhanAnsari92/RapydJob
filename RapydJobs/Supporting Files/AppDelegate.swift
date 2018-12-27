@@ -85,6 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         print(self.apnsToken)
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+    }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error.localizedDescription)")
     }
