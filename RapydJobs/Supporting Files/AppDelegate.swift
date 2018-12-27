@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         self.apnsToken = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(self.apnsToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

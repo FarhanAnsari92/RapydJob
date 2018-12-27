@@ -250,7 +250,7 @@ extension FormViewController: FormViewModelDelegate {
     func presentReleatedFields(selected: @escaping (String) -> Void) {
         let controller: RelatedFieldsViewController = .getInstance()
         let viewModel = RelatedFieldsViewModel(selected: selected)
-        controller.viewModel = viewModel
+       // controller.viewModel = viewModel
         
         present(controller, animated: true, completion: nil)
     }
