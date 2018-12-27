@@ -62,9 +62,11 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
                 if let jobDetail = item["job_detail"] as? [String:Any],
                     let user = jobDetail["user"] as? [String:Any],
                     let organizationPicture = user["profile_image"] as? String,
-                    let organizationName = user["username"] {
+                    let organizationName = user["username"],
+                    let jobId = item["job_id"] as? Int {
                     dic["organizationPicture"] = organizationPicture
                     dic["organizationName"] = organizationName
+                    dic["jobId"] = jobId
                 }
                 
                 arrOfObj.append(dic)
@@ -86,6 +88,24 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleInterviewTableViewCellID", for: indexPath) as! ScheduleInterviewTableViewCell
         cell.updateData(self.jobOffers[indexPath.row])
+        
+        cell.profilePictureCompletion = {
+            
+            guard let jobId = self.jobOffers[indexPath.row]["jobId"] as? Int else {
+                return
+            }
+            
+            let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+            let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
+            
+            print(self.jobOffers[indexPath.row])
+            
+            
+            vc.jobId = "40" // "\(jobId)"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
         return cell
     }
     

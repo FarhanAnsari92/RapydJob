@@ -298,16 +298,11 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        for field in newRelatedFielfds {
-            jobSectorInput.text?.append("\(field), ")
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         view.endEditing(true)
-        jobSectorInput.text = ""
     }
     
     private func setupViews() {
@@ -536,7 +531,20 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
         self.view.endEditing(true)
         textField.resignFirstResponder()
         let sb = UIStoryboard(name: "RelatedFields", bundle: nil)
-        let vc = sb.instantiateInitialViewController()!
+        let vc = sb.instantiateInitialViewController() as! RelatedFieldsViewController
+        if self.jobSectorInput.text?.count ?? 0 > 0 {
+            vc.selectedSectors = self.jobSectorInput.text?.components(separatedBy: ",")
+        } else {
+            vc.selectedSectors = [String]()
+        }
+        
+        vc.selectedSectorCompletion = { relatedFieldArr in
+            
+            print(relatedFieldArr)
+            self.jobSectorInput.text = relatedFieldArr.joined(separator: ",")
+            print(relatedFieldArr)
+            
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -547,7 +555,6 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
     private func jobPosted() {
         AlertService.shared.alert(in: self, "Job created successfully")
         AppRouter.shared.proceed()
-        newRelatedFielfds.removeAll()
         UserDefaults.standard.removeObject(forKey: "JOB_SECTORS")
     }
     
@@ -565,7 +572,17 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
                         if jobTypeInput.text != "" {
                             if lengthOfContractInput.text != "" {
                                 hud.show(in: view)
-                                CreateJobAPIService.shared.create(schedule: slctdWeeks, title: jobTitleInput.text!, description: jobDescriptionInput.text!, minSalary: "\(minSalVal)", maxSalary: "\(maxSalVal)", jobType: jobTypeInput.text!, contractLength: lengthOfContractInput.text!, relatedFields: newRelatedFielfds) { (error, isError) in
+                                
+                                let relatedFields = self.jobSectorInput.text?.split(separator: ",")
+                                
+                                var fields = [String]()
+                                for item in relatedFields! {
+                                    fields.append(String(item))
+                                }
+                                
+                                print(fields)
+                                
+                                CreateJobAPIService.shared.create(schedule: slctdWeeks, title: jobTitleInput.text!, description: jobDescriptionInput.text!, minSalary: "\(minSalVal)", maxSalary: "\(maxSalVal)", jobType: jobTypeInput.text!, contractLength: lengthOfContractInput.text!, relatedFields: fields) { (error, isError) in
                                     if isError {
                                         if let err = error {
                                             self.jobPostFailed(error: err)
