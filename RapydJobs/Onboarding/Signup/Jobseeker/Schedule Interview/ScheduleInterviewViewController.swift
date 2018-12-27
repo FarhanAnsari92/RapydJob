@@ -101,7 +101,7 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
             print(self.jobOffers[indexPath.row])
             
             
-            vc.jobId = "40" // "\(jobId)"
+            vc.jobId = "\(jobId)"
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
