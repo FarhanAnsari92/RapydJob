@@ -34,7 +34,7 @@ class ChatMessageCell: UITableViewCell {
     
     let sentBubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.5319186449, green: 0.7813578248, blue: 0.5775188804, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.7803921569, blue: 0.5764705882, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = true
