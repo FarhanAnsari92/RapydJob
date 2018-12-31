@@ -151,7 +151,9 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func setupViews() {
         messagesTableView.register(UINib(nibName: "ChatImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatImageTableViewCellID")
-////        view.backgroundColor = Constants.Colors.primaryGreenColor
+        
+        messagesTableView.register(ScheduleChatTableViewCell.cellNib, forCellReuseIdentifier: ScheduleChatTableViewCell.cellIdentifier)
+        
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
@@ -166,47 +168,11 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         //messageInput.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (messageInput.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
-        //placeholderLabel.isHidden = !messageInput.text.isEmpty
         
         
-////        
-////        view.addSubview(footerView)
-////        footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-////        footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-////        footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-////        footerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-////
-////        footerView.addSubview(footerStackView)
-////        footerStackView.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 5).isActive = true
-////        footerStackView.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -5).isActive = true
-////        footerStackView.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 5).isActive = true
-////        footerStackView.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -5).isActive = true
-////
-////        sendButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-////        sendButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
-////        sendButton.addTarget(self, action: #selector(sendMessageTapped(_:)), for: .touchUpInside)
-////
-////        messageInput.delegate = self
-////
-////        footerStackView.addArrangedSubview(messageInput)
-////        footerStackView.addArrangedSubview(sendButton)
-////
-////        let topFrameHeight = UIApplication.shared.statusBarFrame.height + 44
-////
-////        view.addSubview(messagesTableView)
-////        messagesTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: topFrameHeight).isActive = true
-////        messagesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-////        messagesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-////        messagesTableView.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: 0).isActive = true
-////        messagesTableView.separatorColor = .clear
-////        messagesTableView.rowHeight = UITableViewAutomaticDimension
-////        messagesTableView.estimatedRowHeight = 300
-////        messagesTableView.autoresizingMask = .flexibleHeight
         messagesTableView.register(ChatMessageCell.self, forCellReuseIdentifier: ChatMessageCell.identifier)
-//
-//        messagesTableView.delegate = self
-//        messagesTableView.dataSource = self
-    
+
+        
         guard let convId = self.conversationId else {
             print("Conversation id not found")
             return
@@ -333,6 +299,49 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChatImageTableViewCellID", for: indexPath) as! ChatImageTableViewCell
                 cell.populate(message: message)
+                
+                return cell
+                
+            } else if message.type == "jobofferNotification" {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
+                cell.populateData(message: message)
+                
+                cell.viewInSchedule = { btn in
+                    if btn.tag == 1 {  // receiver left
+                        
+                    } else {
+                        
+                    }
+                }
+                return cell
+                
+                
+            } else if message.type == "hireNotification" {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
+                cell.populateData(message: message)
+                cell.viewInSchedule = { btn in
+                    if btn.tag == 1 {  // receiver left
+                        
+                    } else {
+                        
+                    }
+                }
+                
+                return cell
+                
+            } else if message.type == "interviewNotification" {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
+                cell.populateData(message: message)
+                cell.viewInSchedule = { btn in
+                    if btn.tag == 1 {  // receiver left
+                        
+                    } else {
+                        
+                    }
+                }
                 
                 return cell
                 
