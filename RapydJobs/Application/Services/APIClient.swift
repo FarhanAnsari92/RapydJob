@@ -2,7 +2,7 @@
 //  APIClient.swift
 //  BYKEA
 //
-//  Created by BYKEA - Muhammad Ahsan Iqbal on 23/01/2018.
+//  Created by BYKEA - Muhammad Farhan on 23/01/2018.
 //  Copyright © 2018 Bykea Technologies. All rights reserved.
 //
 

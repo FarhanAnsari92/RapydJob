@@ -309,9 +309,9 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
-                        
+                        // Download contract screen
                     } else {
-                        
+                        // Download contract screen
                     }
                 }
                 return cell
@@ -323,9 +323,37 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.populateData(message: message)
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
-                        
+                        // job detail vc
+                        /*
+                         guard let jobId = self.jobOffers[indexPath.row].id else {
+                         return
+                         }
+                         
+                         let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+                         let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
+                         
+                         print(self.jobOffers[indexPath.row].toJSON())
+                         
+                         
+                         vc.jobId = "\(jobId)"
+                         self.navigationController?.pushViewController(vc, animated: true)
+                         */
                     } else {
-                        
+                        // job detail vc
+                        /*
+                         guard let jobId = self.jobOffers[indexPath.row].id else {
+                         return
+                         }
+                         
+                         let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+                         let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
+                         
+                         print(self.jobOffers[indexPath.row].toJSON())
+                         
+                         
+                         vc.jobId = "\(jobId)"
+                         self.navigationController?.pushViewController(vc, animated: true)
+                         */
                     }
                 }
                 
@@ -337,9 +365,9 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.populateData(message: message)
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
-                        
+                        // schedule interview vc
                     } else {
-                        
+                     // schedule interview vc
                     }
                 }
                 
