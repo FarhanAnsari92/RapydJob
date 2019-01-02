@@ -396,6 +396,7 @@
 		C97293FD218EE36E000CB61F /* SignedContractTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97293FB218EE36E000CB61F /* SignedContractTableViewCell.swift */; };
 		C97293FE218EE36E000CB61F /* SignedContractTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97293FC218EE36E000CB61F /* SignedContractTableViewCell.xib */; };
 		C983C42D218B07E800754866 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C983C42C218B07E800754866 /* DateCollectionViewCell.swift */; };
+		C985052C21DD2CCD00F2EC46 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C985052B21DD2CCD00F2EC46 /* Downloader.swift */; };
 		C9852F83218D898F00E409DF /* UpdateRelatedFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9852F82218D898F00E409DF /* UpdateRelatedFieldsViewController.swift */; };
 		C9852F85218D8B9600E409DF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9852F84218D8B9600E409DF /* Helper.swift */; };
 		C9852F87218D8BD200E409DF /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9852F86218D8BD200E409DF /* Sector.swift */; };
@@ -861,6 +862,7 @@
 		C97293FB218EE36E000CB61F /* SignedContractTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedContractTableViewCell.swift; sourceTree = "<group>"; };
 		C97293FC218EE36E000CB61F /* SignedContractTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignedContractTableViewCell.xib; sourceTree = "<group>"; };
 		C983C42C218B07E800754866 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		C985052B21DD2CCD00F2EC46 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		C9852F82218D898F00E409DF /* UpdateRelatedFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRelatedFieldsViewController.swift; sourceTree = "<group>"; };
 		C9852F84218D8B9600E409DF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C9852F86218D8BD200E409DF /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
@@ -1940,6 +1942,7 @@
 				A54AD6FE210BCC0800C72F75 /* GetCardsForEmployerService.swift */,
 				A54AD6FF210BCC0800C72F75 /* UpdateInterviewService.swift */,
 				A54AD720210BE84D00C72F75 /* CardService.swift */,
+				C985052B21DD2CCD00F2EC46 /* Downloader.swift */,
 			);
 			name = Services;
 			path = RapydJobs/Application/Services;
@@ -2727,6 +2730,7 @@
 				A583388220F3A920001CCF35 /* Signin.swift in Sources */,
 				0DCE240720E9016600577153 /* SettingsViewController.swift in Sources */,
 				C9C5AF4621AF26F500479D9C /* Timesheet.swift in Sources */,
+				C985052C21DD2CCD00F2EC46 /* Downloader.swift in Sources */,
 				883D4DCC21074E2200FF9B09 /* StoreLanguage.swift in Sources */,
 				C993F69F21876CF000CE11EE /* ShortListViewController.swift in Sources */,
 				0D3D1FAE210E126A002531E9 /* ShorlistedJobsRequest.swift in Sources */,

@@ -205,6 +205,38 @@ class JobSeekerProfileViewController: UIViewController {
             }
         }
     }
+    
+    func downloadFile() {
+        guard let cv = self.jobSeeker?.jobSeeker?.cv else {
+            AlertService.shared.alert(in: self, "No CV Found")
+            return
+        }
+//        let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv"
+//        let url = URL(string: cv, relativeTo: URL(string: baseurl))
+        
+        let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
+        
+        let url = URL(string: baseurl)
+        
+        
+        print(url?.absoluteString)
+        
+        
+        var docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print(docDirectory)
+        
+        let dataPath = docDirectory.appendingPathComponent("RapydJOB")
+        let fileName = self.jobSeeker?.userName ?? "rapyd_user"
+        let destination = dataPath.appendingPathComponent("/" + fileName)
+        print(destination)
+                DispatchQueue.main.async {
+                    Downloader.load(url: url!, to: dataPath, completion: {
+                        print("Downloded succefully")
+                    });
+                }
+            
+    
+    }
 }
 
 extension JobSeekerProfileViewController: UITableViewDelegate {
@@ -279,14 +311,9 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     return cell
                 case 1:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    /*
-                     if self.payRate > 0 {
-                     self.basicInfos.append(ProfileBasicInfoModel("£\(self.payRate) Per Hour", "ic_wallet"))
-                     }
-                     self.basicInfos.append(ProfileBasicInfoModel(self.location, "ic_location"))
-                     self.basicInfos.append(ProfileBasicInfoModel("Download or view CV", "ic_download"))
-                     */
                     
+                    infoCell.titleLabel.isHidden = false
+                    infoCell.downloadBtn.isHidden = true
                     
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
@@ -301,6 +328,8 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                 case 2:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
                     
+                    infoCell.titleLabel.isHidden = false
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
@@ -316,8 +345,14 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
                     
                     infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
-                    infoCell.titleLabel.text = "View CV"
+                    
+                    infoCell.titleLabel.isHidden = true
+                    infoCell.downloadBtn.isHidden = false
+                    
+                    infoCell.downloadCompletion = {
+                        self.downloadFile()
+                    }
+                    
                     infoCell.iconView?.image = UIImage(named: "ic_download")
                     
                     cell = infoCell
@@ -348,6 +383,10 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    
+                    infoCell.titleLabel.isHidden = false
+                    infoCell.downloadBtn.isHidden = true
+                    
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor
@@ -380,6 +419,10 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    
+                    infoCell.titleLabel.isHidden = false
+                    infoCell.downloadBtn.isHidden = true
+                    
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor
@@ -408,6 +451,10 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    
+                    infoCell.titleLabel.isHidden = false
+                    infoCell.downloadBtn.isHidden = true
+                    
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor

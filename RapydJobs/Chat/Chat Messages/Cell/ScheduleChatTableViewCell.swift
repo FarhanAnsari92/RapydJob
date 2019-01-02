@@ -25,6 +25,8 @@ class ScheduleChatTableViewCell: UITableViewCell {
             sentBubbleView.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var senderScheduleBtn: UIButton!
+    @IBOutlet weak var receiverScheduleBtn: UIButton!
     
     @IBOutlet weak var sentMessageDate: UILabel!
     @IBOutlet weak var receivedMessageDate: UILabel!
@@ -47,11 +49,32 @@ class ScheduleChatTableViewCell: UITableViewCell {
         }
     }
     
-    func populateData(message: Message) {
+    func populateData(message: Message, messageType: String) {
         
         let userId = AppContainer.shared.user.user?.userId
         
         if Int(message.senderId) != userId {
+            
+            if messageType == "jobofferNotification" {
+                
+                if AppContainer.shared.user.user?.accountType == "organization" {
+                    self.receiverScheduleBtn.isHidden = true
+                } else {
+                    self.receiverScheduleBtn.isHidden = false
+                    self.receiverScheduleBtn.titleLabel?.text = "View Job Offer"
+                }
+                
+            } else if messageType == "hireNotification" {
+                
+                if AppContainer.shared.user.user?.accountType == "organization" {
+                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Candidate"
+                } else {
+                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Job"
+                }
+                
+            } else if messageType == "interviewNotification" {
+                self.receiverScheduleBtn.titleLabel?.text = "Open Schedule Interview"
+            }
             
             receivedBubbleView.isHidden = false
             receivedMessageDate.isHidden = false
@@ -62,6 +85,25 @@ class ScheduleChatTableViewCell: UITableViewCell {
             receivedMessageDate.text = message.message
             
         } else {
+            
+            if messageType == "jobofferNotification" {
+                if AppContainer.shared.user.user?.accountType == "organization" {
+                    self.senderScheduleBtn.isHidden = true
+                } else {
+                    self.senderScheduleBtn.isHidden = false
+                    self.senderScheduleBtn.titleLabel?.text = "View Job Offer"
+                }
+            } else if messageType == "hireNotification" {
+                
+                if AppContainer.shared.user.user?.accountType == "organization" {
+                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Candidate"
+                } else {
+                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Job"
+                }
+                
+            } else if messageType == "interviewNotification" {
+                self.senderScheduleBtn.titleLabel?.text = "Open Schedule Interview"
+            }
             
             receivedBubbleView.isHidden = true
             receivedMessageDate.isHidden = true

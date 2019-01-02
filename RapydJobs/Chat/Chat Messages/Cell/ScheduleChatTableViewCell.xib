@@ -122,6 +122,8 @@
             <connections>
                 <outlet property="receivedBubbleView" destination="Yeg-H1-33F" id="vh3-Ez-Bj6"/>
                 <outlet property="receivedMessageDate" destination="9Ph-7D-wQb" id="2Yc-Gu-Kdh"/>
+                <outlet property="receiverScheduleBtn" destination="qSo-tm-gQk" id="O4W-16-iet"/>
+                <outlet property="senderScheduleBtn" destination="egU-uN-m2I" id="5S4-2N-iZv"/>
                 <outlet property="sentBubbleView" destination="amy-Xl-ZNS" id="Fk9-EV-1gg"/>
                 <outlet property="sentMessageDate" destination="HMI-y1-MIx" id="hu2-cW-tQC"/>
             </connections>

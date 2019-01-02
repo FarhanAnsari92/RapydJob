@@ -16,7 +16,7 @@ enum APIClient: URLRequestConvertible {
     /// Base URL for webservice - Configure in Constants.swift
     
     //http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/public/api/
-    
+    //http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/
     static let scheme = "http://"
      
      static let host = "ec2-18-191-9-134.us-east-2.compute.amazonaws.com/"

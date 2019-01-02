@@ -305,12 +305,24 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else if message.type == "jobofferNotification" {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
-                cell.populateData(message: message)
+                cell.populateData(message: message, messageType: message.type)
                 
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                            
+                        } else {
+                            let vc = JobListSeekerViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                         // Download contract screen
                     } else {
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                            
+                        } else {
+                            let vc = JobListSeekerViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                         // Download contract screen
                     }
                 }
@@ -320,40 +332,30 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else if message.type == "hireNotification" {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
-                cell.populateData(message: message)
+                cell.populateData(message: message, messageType: message.type)
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
-                        // job detail vc
-                        /*
-                         guard let jobId = self.jobOffers[indexPath.row].id else {
-                         return
-                         }
-                         
-                         let sb = UIStoryboard(name: "JobDetails", bundle: nil)
-                         let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
-                         
-                         print(self.jobOffers[indexPath.row].toJSON())
-                         
-                         
-                         vc.jobId = "\(jobId)"
-                         self.navigationController?.pushViewController(vc, animated: true)
-                         */
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                            let sb = UIStoryboard(name: "HR", bundle: nil)
+                            let vc = sb.instantiateViewController(withIdentifier: "ManageEmployeeViewControllerID") as! ManageEmployeeViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            let vc = JobListSeekerViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
                     } else {
-                        // job detail vc
-                        /*
-                         guard let jobId = self.jobOffers[indexPath.row].id else {
-                         return
-                         }
-                         
-                         let sb = UIStoryboard(name: "JobDetails", bundle: nil)
-                         let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
-                         
-                         print(self.jobOffers[indexPath.row].toJSON())
-                         
-                         
-                         vc.jobId = "\(jobId)"
-                         self.navigationController?.pushViewController(vc, animated: true)
-                         */
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                           
+                            let sb = UIStoryboard(name: "HR", bundle: nil)
+                            let vc = sb.instantiateViewController(withIdentifier: "ManageEmployeeViewControllerID") as! ManageEmployeeViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
+                            
+                        } else {
+                            let vc = JobListSeekerViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
                     }
                 }
                 
@@ -362,12 +364,29 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else if message.type == "interviewNotification" {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleChatTableViewCell.cellIdentifier, for: indexPath) as! ScheduleChatTableViewCell
-                cell.populateData(message: message)
+                cell.populateData(message: message, messageType: message.type)
                 cell.viewInSchedule = { btn in
                     if btn.tag == 1 {  // receiver left
                         // schedule interview vc
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                            let vc = InterviewsViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            let vc = ScheduleInterviewViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
                     } else {
                      // schedule interview vc
+                        if AppContainer.shared.user.user?.accountType == "organization" {
+                            let vc = InterviewsViewController.getInstance()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            let vc = ScheduleInterviewViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                     }
                 }
                 

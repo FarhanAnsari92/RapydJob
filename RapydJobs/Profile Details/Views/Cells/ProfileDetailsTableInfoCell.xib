@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,6 +35,16 @@
                                 <color key="textColor" red="0.4549019608" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-fk-INM">
+                                <rect key="frame" x="68" y="5.5" width="88" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Download CV">
+                                    <color key="titleColor" red="0.45490196078431372" green="0.46274509803921571" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="download:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xJF-T2-H6M"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvY-b9-XIs">
                                 <rect key="frame" x="240" y="5" width="30" height="30"/>
                                 <constraints>
@@ -57,6 +67,7 @@
                         <constraints>
                             <constraint firstItem="6qO-nU-uNl" firstAttribute="top" secondItem="IvY-b9-XIs" secondAttribute="bottom" constant="2" id="1ok-Kc-Ifl"/>
                             <constraint firstItem="KBo-HO-R9C" firstAttribute="centerX" secondItem="p8W-7g-hUT" secondAttribute="centerX" id="EJj-7D-MX5"/>
+                            <constraint firstItem="qL5-fk-INM" firstAttribute="centerY" secondItem="Vb1-iJ-jbv" secondAttribute="centerY" id="LK0-Os-zzH"/>
                             <constraint firstAttribute="trailing" secondItem="6qO-nU-uNl" secondAttribute="trailing" constant="40" id="MpY-wh-yyu"/>
                             <constraint firstItem="KBo-HO-R9C" firstAttribute="leading" secondItem="Vb1-iJ-jbv" secondAttribute="trailing" constant="20" id="WzT-vz-ccI"/>
                             <constraint firstItem="6qO-nU-uNl" firstAttribute="leading" secondItem="KBo-HO-R9C" secondAttribute="leading" id="Ybh-hy-ltQ"/>
@@ -64,6 +75,7 @@
                             <constraint firstAttribute="bottom" secondItem="6qO-nU-uNl" secondAttribute="bottom" constant="10" id="cgZ-RL-ZSV"/>
                             <constraint firstItem="Vb1-iJ-jbv" firstAttribute="top" secondItem="p8W-7g-hUT" secondAttribute="top" constant="10" id="dHk-Vz-gyj"/>
                             <constraint firstItem="IvY-b9-XIs" firstAttribute="top" secondItem="p8W-7g-hUT" secondAttribute="top" constant="5" id="jzI-ti-ruJ"/>
+                            <constraint firstItem="qL5-fk-INM" firstAttribute="leading" secondItem="KBo-HO-R9C" secondAttribute="leading" id="mf1-hE-1np"/>
                             <constraint firstItem="KBo-HO-R9C" firstAttribute="centerY" secondItem="Vb1-iJ-jbv" secondAttribute="centerY" id="pxw-TL-B0e"/>
                             <constraint firstItem="Vb1-iJ-jbv" firstAttribute="leading" secondItem="p8W-7g-hUT" secondAttribute="leadingMargin" constant="20" id="uDE-Lo-MRf"/>
                         </constraints>
@@ -71,21 +83,24 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="p8W-7g-hUT" secondAttribute="trailing" constant="20" id="61h-A6-p05"/>
+                    <constraint firstItem="p8W-7g-hUT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9qg-3L-PYT"/>
                     <constraint firstItem="p8W-7g-hUT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BQD-FG-gXZ"/>
                     <constraint firstItem="p8W-7g-hUT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JDm-up-L9w"/>
                     <constraint firstAttribute="bottom" secondItem="p8W-7g-hUT" secondAttribute="bottom" id="ONP-Oz-T2N"/>
                     <constraint firstItem="p8W-7g-hUT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oz6-ku-el9"/>
+                    <constraint firstAttribute="bottom" secondItem="p8W-7g-hUT" secondAttribute="bottom" id="vBw-vF-scM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="detailsStackView" destination="6qO-nU-uNl" id="y2Z-vP-EGg"/>
+                <outlet property="downloadBtn" destination="qL5-fk-INM" id="vPp-T1-HSb"/>
                 <outlet property="iconView" destination="Vb1-iJ-jbv" id="FiP-1h-q79"/>
                 <outlet property="rootView" destination="p8W-7g-hUT" id="wWD-u4-ijW"/>
                 <outlet property="titleLabel" destination="KBo-HO-R9C" id="8Ff-AN-FDn"/>
                 <outlet property="toggleButton" destination="IvY-b9-XIs" id="lbh-u2-JG4"/>
             </connections>
-            <point key="canvasLocation" x="34" y="72.5"/>
+            <point key="canvasLocation" x="33.600000000000001" y="72.413793103448285"/>
         </tableViewCell>
     </objects>
     <resources>

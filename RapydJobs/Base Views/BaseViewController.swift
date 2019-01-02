@@ -18,8 +18,10 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Setting nav items
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showSideMenu))
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if EventFlowManager.shouldShowBackButton == false {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showSideMenu))
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
 
         // Side Menu
         if (self.navigationController != nil) {
@@ -55,4 +57,8 @@ class BaseViewController: UIViewController {
         }
         activeCallCounter -= 1
     }
+}
+
+class EventFlowManager {
+    static var shouldShowBackButton: Bool = false
 }

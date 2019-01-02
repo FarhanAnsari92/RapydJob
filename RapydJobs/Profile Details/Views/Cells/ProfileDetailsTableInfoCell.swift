@@ -19,7 +19,9 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
 
     weak var delegate:ProfileDetailsTableInfoCellDelegate?
     @IBOutlet weak var detailsStackView: UIStackView!
+    var downloadCompletion: (() -> Void)?
 
+    @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var toggleButton: UIButton!
@@ -77,6 +79,10 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
         }
         
         self.delegate?.infoCellLayoutChanged(self)
+    }
+    
+    @IBAction func download(_ sender: UIButton) {
+        self.downloadCompletion?()
     }
 }
 
