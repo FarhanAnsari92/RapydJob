@@ -43,6 +43,10 @@ class JobListSeekerViewController: BaseViewController {
         segmentControl.selectedSegmentioIndex = 0
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     func setupSegment() {
         let segmentioOptions = SegmentioOptions(
             backgroundColor: .white,

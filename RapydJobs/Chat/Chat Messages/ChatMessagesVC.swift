@@ -105,6 +105,19 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let convId = self.conversationId else {
+            print("Conversation id not found")
+            return
+        }
+        
+        SocketService.getChatConversation(conversationId: "\(String(describing: convId))") { [weak self] (messages, error) in
+            if let err = error {
+                print("🔥 Error : ", err)
+            } else {
+                self?.messages = messages!
+                self?.messagesTableView.reloadData()
+            }
+        }
         self.scrollToBottom()
         IQKeyboardManager.shared.enable = false
     }
@@ -172,21 +185,6 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         messagesTableView.register(ChatMessageCell.self, forCellReuseIdentifier: ChatMessageCell.identifier)
 
-        
-        guard let convId = self.conversationId else {
-            print("Conversation id not found")
-            return
-        }
-        
-        SocketService.getChatConversation(conversationId: "\(String(describing: convId))") { [weak self] (messages, error) in
-            if let err = error {
-                print("🔥 Error : ", err)
-            } else {
-                self?.messages = messages!
-                self?.messagesTableView.reloadData()
-            }
-        }
-        
     }
     
     func rightBarButtonItems() -> [UIBarButtonItem] {
@@ -313,6 +311,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
                         } else {
                             let vc = JobListSeekerViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
                         // Download contract screen
@@ -321,6 +320,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
                         } else {
                             let vc = JobListSeekerViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
                         // Download contract screen
@@ -341,6 +341,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let vc = JobListSeekerViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
                         
@@ -353,6 +354,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
                         } else {
                             let vc = JobListSeekerViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
                         
@@ -370,6 +372,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         // schedule interview vc
                         if AppContainer.shared.user.user?.accountType == "organization" {
                             let vc = InterviewsViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let vc = ScheduleInterviewViewController.getInstance()
@@ -381,6 +384,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                      // schedule interview vc
                         if AppContainer.shared.user.user?.accountType == "organization" {
                             let vc = InterviewsViewController.getInstance()
+                            EventFlowManager.shouldShowBackButton = true
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let vc = ScheduleInterviewViewController.getInstance()

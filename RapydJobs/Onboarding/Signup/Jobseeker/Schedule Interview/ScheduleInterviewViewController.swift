@@ -41,6 +41,10 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
         self.getInterviews()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     func getInterviews() {
         hud.show(in: view)
         _ = APIClient.callAPI(request: .getJobseekerInterview(page: self.currentPage), onSuccess: { (dictionary) in

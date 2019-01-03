@@ -44,6 +44,10 @@ class InterviewsViewController: BaseViewController {
         self.setupSegment()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     func setupSegment() {
         let segmentioOptions = SegmentioOptions(
             backgroundColor: .white,

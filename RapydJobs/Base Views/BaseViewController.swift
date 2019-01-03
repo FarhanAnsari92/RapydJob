@@ -38,6 +38,11 @@ class BaseViewController: UIViewController {
         activeCallCounter = 0
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        EventFlowManager.shouldShowBackButton = false
+    }
+    
     @objc func showSideMenu() {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
