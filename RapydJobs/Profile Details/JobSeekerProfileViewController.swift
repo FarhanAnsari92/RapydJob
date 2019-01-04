@@ -226,11 +226,14 @@ class JobSeekerProfileViewController: UIViewController {
         print(docDirectory)
         
         let dataPath = docDirectory.appendingPathComponent("RapydJOB")
+        
+        try? FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
+        
         let fileName = self.jobSeeker?.userName ?? "rapyd_user"
         let destination = dataPath.appendingPathComponent("/" + fileName)
         print(destination)
                 DispatchQueue.main.async {
-                    Downloader.load(url: url!, to: dataPath, completion: {
+                    Downloader.load(url: url!, to: destination, completion: {
                         print("Downloded succefully")
                     });
                 }

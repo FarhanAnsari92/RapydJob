@@ -72,6 +72,8 @@
 	<string>We need to access your current location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to send images we need your permission</string>
+	<key>Support opening documents in place</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Black.otf</string>
