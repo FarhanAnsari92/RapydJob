@@ -211,34 +211,30 @@ class JobSeekerProfileViewController: UIViewController {
             AlertService.shared.alert(in: self, "No CV Found")
             return
         }
-//        let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv"
-//        let url = URL(string: cv, relativeTo: URL(string: baseurl))
         
         let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
         
         let url = URL(string: baseurl)
         
+        let fileType = String(cv.split(separator: ".").last ?? "")
         
-        print(url?.absoluteString)
-        
-        
-        var docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print(docDirectory)
         
         let dataPath = docDirectory.appendingPathComponent("RapydJOB")
         
         try? FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
         
-        let fileName = self.jobSeeker?.userName ?? "rapyd_user"
-        let destination = dataPath.appendingPathComponent("/" + fileName)
+        
+        let fileName = self.jobSeeker?.email?.split(separator: "@").first ?? "rapyd_user"
+        //let destination = dataPath.appendingPathComponent("/" + fileName)
+        let destination = dataPath.appendingPathComponent("/\(fileName).\(String(describing: fileType))")
         print(destination)
                 DispatchQueue.main.async {
                     Downloader.load(url: url!, to: destination, completion: {
                         print("Downloded succefully")
-                    });
-                }
-            
-    
+                    })
+        }
     }
 }
 
