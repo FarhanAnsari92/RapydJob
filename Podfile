@@ -33,4 +33,5 @@ target 'RapydJobs' do
   pod 'GTProgressBar'
   pod 'GrowingTextView'
   pod 'JZCalendarWeekView' #, '0.5.1'
+  pod 'SwiftWebVC'
 end
