@@ -228,7 +228,7 @@ class JobSeekerProfileViewController: UIViewController {
         
         let fileName = self.jobSeeker?.email?.split(separator: "@").first ?? "rapyd_user"
         //let destination = dataPath.appendingPathComponent("/" + fileName)
-        let destination = dataPath.appendingPathComponent("/\(fileName).\(String(describing: fileType))")
+        let destination = dataPath.appendingPathComponent("\(fileName).\(String(describing: fileType))")
         print(destination)
                 DispatchQueue.main.async {
                     Downloader.load(url: url!, to: destination, completion: {
