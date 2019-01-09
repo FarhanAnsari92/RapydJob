@@ -208,9 +208,11 @@ class JobSeekerProfileViewController: UIViewController {
     }
     
     func downloadFile() {
-        guard let cv = self.jobSeeker?.jobSeeker?.cv else {
-            AlertService.shared.alert(in: self, "No CV Found")
-            return
+        
+        guard let jobSeeker = self.jobSeeker,
+            let cv = jobSeeker.jobSeeker?.cv else {
+                AlertService.shared.alert(in: self, "No CV Found")
+                return
         }
         
         let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
