@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import IQKeyboardManagerSwift
 import GrowingTextView
+import JGProgressHUD
 
 var chat: ChatList?
 
@@ -39,6 +40,12 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var footerConstrains: NSLayoutConstraint!
     @IBOutlet weak var txtViewBottomBonstraint: NSLayoutConstraint!
     
+    private let hud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        hud.vibrancyEnabled = true
+        return hud
+    }()
+    
     var messages = [Message]()
     var jobSeekerId: Int?
     var conversationId: Int?
@@ -46,6 +53,11 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var seekerPicture: String?
     var seekerName: String?
     var jobTitle: String?
+    
+    var currentPage = 1
+    var lastPage = 0
+    var isLoadMore: Bool = false
+    var isLoading: Bool = false
     
     var toast: JYToast!
     
@@ -105,21 +117,64 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.getConversation()
+    }
+    
+    func getConversation() {
+        
         guard let convId = self.conversationId else {
             print("Conversation id not found")
             return
         }
         
-        SocketService.getChatConversation(conversationId: "\(String(describing: convId))") { [weak self] (messages, error) in
-            if let err = error {
-                print("🔥 Error : ", err)
-            } else {
-                self?.messages = messages!
-                self?.messagesTableView.reloadData()
+        self.isLoading = true
+        hud.show(in: view)
+        _ = APIClient.callAPI(request: .getConversation(conversationId: "\(String(describing: convId))", page: self.currentPage), onSuccess: { (dictionary) in
+            print(dictionary)
+            self.hud.dismiss(animated: true)
+            self.isLoading = false
+            
+            let lastPage = dictionary["last_page"] as? Int ?? 0
+            self.lastPage = lastPage + 1
+            
+            dictionary["current_page"] as? Int ?? 0
+            dictionary["total"] as? Int ?? 0
+            
+            guard let data = dictionary["data"] as? [[String:Any]] else {
+                print("No messages found")
+                return
             }
+            
+            if data.count > 0 {
+                self.currentPage += 1
+                for item in data {
+                    let replied_to = item["replied_to"] as? String ?? ""
+                    let updatedAt = item["updated_at"] as? String ?? ""
+                    let newId = item["id"] as? Int ?? 0
+                    let conversationId = item["conversation_id"] as? String ?? ""
+                    let sender_id = item["sender_id"] as? Int ?? 0
+                    let createdAt = item["created_at"] as? String ?? ""
+                    let message = item["message"] as? String ?? ""
+                    let type = item["type"] as? String ?? ""
+                    
+                    let newMsg = Message(repliedTo: replied_to, updatedAt: updatedAt, id: newId, conversationId: conversationId, senderId: sender_id, createdAt: createdAt, message: message, type: type)
+                    print(newMsg)
+                    self.messages.append(newMsg)
+                }
+                
+            }
+            
+            self.messagesTableView.reloadData()
+            
+        }) { (errorDictionary, _) in
+            self.isLoading = false
+            self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
+            self.hud.dismiss(animated: true)
         }
+        
         self.scrollToBottom()
         IQKeyboardManager.shared.enable = false
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,7 +196,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let type = (data[0] as! [String: Any])["type"] as? String ?? ""
             let conversationId = (data[0] as! [String: Any])["conversation_id"] as? String ?? ""
             
-            let chat = Message(repliedTo: repliedTo, updatedAt: updatedAt, id: id, conversationId: conversationId, senderId: "\(senderId)", createdAt: createdAt, message: message, type: type)
+            let chat = Message(repliedTo: repliedTo, updatedAt: updatedAt, id: id, conversationId: conversationId, senderId: senderId, createdAt: createdAt, message: message, type: type)
             
             self?.messages.append(chat)
             self?.messagesTableView.reloadData()
@@ -277,6 +332,24 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: animate)
             messagesTableView.reloadData()
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        // UITableView only moves in one direction, y axis
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        // Change 10.0 to adjust the distance from bottom
+        if maximumOffset - currentOffset <= 10.0 {
+            print("Load mare")
+            self.isLoadMore = true
+            if self.currentPage < lastPage, !self.isLoading {
+                self.getConversation()
+            }
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -445,7 +518,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             _ = APIClient.callAPI(request: .sendMessage(param: param), onSuccess: { (dictionary) in
                 
                 let message = dictionary["message"] as? String ?? "N/A"
-                let userId = String(AppContainer.shared.user.user?.userId ?? 0)
+                let userId = AppContainer.shared.user.user?.userId ?? 0
                 
                 let msg = Message(repliedTo: "", updatedAt: "", id: 0, conversationId: String(self.conversationId ?? 0), senderId: userId, createdAt: dictionary["created_at"] as? String ?? "" , message: message, type: "text")
                 
@@ -531,7 +604,7 @@ extension ChatMessagesVC: UIImagePickerControllerDelegate & UINavigationControll
                             
                             
                             let message = dictionary["message"] as? String ?? "N/A"
-                            let userId = String(AppContainer.shared.user.user?.userId ?? 0)
+                            let userId = AppContainer.shared.user.user?.userId ?? 0
                             
                             let msg = Message(repliedTo: "", updatedAt: "", id: 0, conversationId: String(self.conversationId ?? 0), senderId: userId, createdAt: dictionary["created_at"] as? String ?? "" , message: message, type: "file")
                             

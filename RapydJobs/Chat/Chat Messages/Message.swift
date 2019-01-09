@@ -14,7 +14,7 @@ struct Message {
     let updatedAt: String
     let id: Int
     let conversationId: String
-    let senderId: String
+    let senderId: Int
     let createdAt: String
     let message: String
     let type: String
