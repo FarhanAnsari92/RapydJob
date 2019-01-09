@@ -31,6 +31,9 @@ class ScheduleChatTableViewCell: UITableViewCell {
     @IBOutlet weak var sentMessageDate: UILabel!
     @IBOutlet weak var receivedMessageDate: UILabel!
     
+    @IBOutlet weak var receiverSeparator: UIView!
+    @IBOutlet weak var senderSeparator: UIView!
+    
     var viewInSchedule: ((UIButton) -> Void)?
     
     class var cellIdentifier: String {
@@ -59,6 +62,7 @@ class ScheduleChatTableViewCell: UITableViewCell {
                 
                 if AppContainer.shared.user.user?.accountType == "organization" {
                     self.receiverScheduleBtn.isHidden = true
+                    self.receiverSeparator.isHidden = true
                 } else {
                     self.receiverScheduleBtn.isHidden = false
                     self.receiverScheduleBtn.titleLabel?.text = "View Job Offer"
@@ -89,6 +93,7 @@ class ScheduleChatTableViewCell: UITableViewCell {
             if messageType == "jobofferNotification" {
                 if AppContainer.shared.user.user?.accountType == "organization" {
                     self.senderScheduleBtn.isHidden = true
+                    self.senderSeparator.isHidden = true
                 } else {
                     self.senderScheduleBtn.isHidden = false
                     self.senderScheduleBtn.titleLabel?.text = "View Job Offer"

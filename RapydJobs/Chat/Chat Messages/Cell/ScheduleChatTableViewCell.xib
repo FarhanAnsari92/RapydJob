@@ -22,88 +22,97 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amy-Xl-ZNS">
                         <rect key="frame" x="129" y="5" width="312" height="101.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-31-aEB">
-                                <rect key="frame" x="15" y="65.5" width="282" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Yj4-y9-F2R">
+                                <rect key="frame" x="15" y="5" width="282" height="91.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-y1-MIx">
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="51.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-31-aEB">
+                                        <rect key="frame" x="0.0" y="53.5" width="282" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="pTl-vp-dd0"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egU-uN-m2I">
+                                        <rect key="frame" x="0.0" y="56.5" width="282" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="B2l-0t-Dkv"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="JZX-qp-rO0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="View in Schedule">
+                                            <color key="titleColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="viewInScheduleHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uWQ-BM-bQ8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="pTl-vp-dd0"/>
+                                    <constraint firstItem="egU-uN-m2I" firstAttribute="leading" secondItem="Yj4-y9-F2R" secondAttribute="leading" id="1s6-u3-s03"/>
+                                    <constraint firstAttribute="bottom" secondItem="egU-uN-m2I" secondAttribute="bottom" id="IhZ-iQ-VoA"/>
+                                    <constraint firstItem="HMI-y1-MIx" firstAttribute="leading" secondItem="Yj4-y9-F2R" secondAttribute="leading" id="jO3-hX-I7G"/>
+                                    <constraint firstItem="ntI-31-aEB" firstAttribute="top" secondItem="HMI-y1-MIx" secondAttribute="bottom" constant="2" id="lQr-OH-YJo"/>
+                                    <constraint firstItem="egU-uN-m2I" firstAttribute="top" secondItem="ntI-31-aEB" secondAttribute="bottom" constant="2" id="lfG-8d-mpn"/>
+                                    <constraint firstItem="HMI-y1-MIx" firstAttribute="top" secondItem="Yj4-y9-F2R" secondAttribute="top" id="pQg-Og-gso"/>
+                                    <constraint firstAttribute="trailing" secondItem="HMI-y1-MIx" secondAttribute="trailing" id="zFc-fZ-QyM"/>
+                                    <constraint firstAttribute="trailing" secondItem="egU-uN-m2I" secondAttribute="trailing" id="zuv-Cz-uVn"/>
                                 </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egU-uN-m2I">
-                                <rect key="frame" x="0.0" y="66.5" width="312" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="B2l-0t-Dkv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="View in Schedule">
-                                    <color key="titleColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="viewInScheduleHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uWQ-BM-bQ8"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-y1-MIx">
-                                <rect key="frame" x="15" y="5" width="282" height="55.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.53333333333333333" green="0.7803921568627451" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="HMI-y1-MIx" secondAttribute="trailing" constant="15" id="0Wv-0S-ab8"/>
-                            <constraint firstItem="HMI-y1-MIx" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" constant="15" id="LWs-uh-svO"/>
-                            <constraint firstAttribute="trailing" secondItem="ntI-31-aEB" secondAttribute="trailing" constant="15" id="N3T-o6-svN"/>
-                            <constraint firstItem="ntI-31-aEB" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" constant="15" id="Rp7-y6-BYX"/>
-                            <constraint firstAttribute="trailing" secondItem="egU-uN-m2I" secondAttribute="trailing" id="VXz-Lz-lMQ"/>
-                            <constraint firstAttribute="bottom" secondItem="egU-uN-m2I" secondAttribute="bottom" id="Zi8-wt-3ff"/>
-                            <constraint firstItem="ntI-31-aEB" firstAttribute="top" secondItem="HMI-y1-MIx" secondAttribute="bottom" constant="5" id="ciN-QB-FCq"/>
-                            <constraint firstItem="egU-uN-m2I" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" id="dWU-aW-23O"/>
-                            <constraint firstItem="egU-uN-m2I" firstAttribute="top" secondItem="ntI-31-aEB" secondAttribute="bottom" id="qCn-b8-szM"/>
-                            <constraint firstItem="HMI-y1-MIx" firstAttribute="top" secondItem="amy-Xl-ZNS" secondAttribute="top" constant="5" id="qkP-De-Nli"/>
+                            <constraint firstItem="Yj4-y9-F2R" firstAttribute="top" secondItem="amy-Xl-ZNS" secondAttribute="top" constant="5" id="5iL-Db-LxE"/>
+                            <constraint firstItem="Yj4-y9-F2R" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" constant="15" id="8fp-Nt-hin"/>
+                            <constraint firstAttribute="trailing" secondItem="Yj4-y9-F2R" secondAttribute="trailing" constant="15" id="DkE-lk-gk3"/>
+                            <constraint firstAttribute="bottom" secondItem="Yj4-y9-F2R" secondAttribute="bottom" constant="5" id="Lxw-xe-igX"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-H1-33F">
                         <rect key="frame" x="5" y="5" width="312" height="101.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-ql-At3">
-                                <rect key="frame" x="15" y="65.5" width="282" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Xrb-Xl-WQh"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-7D-wQb">
-                                <rect key="frame" x="15" y="5" width="282" height="55.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSo-tm-gQk">
-                                <rect key="frame" x="0.0" y="66.5" width="312" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="YmC-4r-7D4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="View in Schedule">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="viewInScheduleHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wqh-G3-lVA"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1tU-0a-N0i">
+                                <rect key="frame" x="15" y="5" width="282" height="91.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-7D-wQb">
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="51.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-ql-At3">
+                                        <rect key="frame" x="0.0" y="53.5" width="282" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Xrb-Xl-WQh"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSo-tm-gQk">
+                                        <rect key="frame" x="0.0" y="56.5" width="282" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="YmC-4r-7D4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="View in Schedule">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="viewInScheduleHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wqh-G3-lVA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="l8C-ql-At3" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" constant="15" id="8ck-fr-2Y1"/>
-                            <constraint firstItem="qSo-tm-gQk" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" id="EyJ-rL-YVt"/>
-                            <constraint firstAttribute="trailing" secondItem="l8C-ql-At3" secondAttribute="trailing" constant="15" id="N10-S3-0wP"/>
-                            <constraint firstAttribute="trailing" secondItem="9Ph-7D-wQb" secondAttribute="trailing" constant="15" id="O4L-cg-AVT"/>
-                            <constraint firstItem="9Ph-7D-wQb" firstAttribute="top" secondItem="Yeg-H1-33F" secondAttribute="top" constant="5" id="O5f-H9-HNY"/>
-                            <constraint firstItem="l8C-ql-At3" firstAttribute="top" secondItem="9Ph-7D-wQb" secondAttribute="bottom" constant="5" id="SBk-oO-4PB"/>
-                            <constraint firstItem="9Ph-7D-wQb" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" constant="15" id="X6n-cL-knA"/>
-                            <constraint firstItem="qSo-tm-gQk" firstAttribute="top" secondItem="l8C-ql-At3" secondAttribute="bottom" id="bNa-9K-de6"/>
-                            <constraint firstAttribute="trailing" secondItem="qSo-tm-gQk" secondAttribute="trailing" id="g76-b2-jQB"/>
-                            <constraint firstAttribute="bottom" secondItem="qSo-tm-gQk" secondAttribute="bottom" id="n68-xb-CdW"/>
+                            <constraint firstItem="1tU-0a-N0i" firstAttribute="top" secondItem="Yeg-H1-33F" secondAttribute="top" constant="5" id="2MI-eh-dki"/>
+                            <constraint firstAttribute="trailing" secondItem="1tU-0a-N0i" secondAttribute="trailing" constant="15" id="3mj-S5-vug"/>
+                            <constraint firstItem="1tU-0a-N0i" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" constant="15" id="Rz2-EG-7Wi"/>
+                            <constraint firstAttribute="bottom" secondItem="1tU-0a-N0i" secondAttribute="bottom" constant="5" id="oWa-UP-zGS"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -117,13 +126,20 @@
                     <constraint firstItem="Yeg-H1-33F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="r7V-VJ-gRx"/>
                     <constraint firstItem="amy-Xl-ZNS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="u94-F6-0dU"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="amy-Xl-ZNS"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="receivedBubbleView" destination="Yeg-H1-33F" id="vh3-Ez-Bj6"/>
                 <outlet property="receivedMessageDate" destination="9Ph-7D-wQb" id="2Yc-Gu-Kdh"/>
                 <outlet property="receiverScheduleBtn" destination="qSo-tm-gQk" id="O4W-16-iet"/>
+                <outlet property="receiverSeparator" destination="l8C-ql-At3" id="ghO-8j-EmN"/>
                 <outlet property="senderScheduleBtn" destination="egU-uN-m2I" id="5S4-2N-iZv"/>
+                <outlet property="senderSeparator" destination="ntI-31-aEB" id="W5q-tG-6qq"/>
                 <outlet property="sentBubbleView" destination="amy-Xl-ZNS" id="Fk9-EV-1gg"/>
                 <outlet property="sentMessageDate" destination="HMI-y1-MIx" id="hu2-cW-tQC"/>
             </connections>
