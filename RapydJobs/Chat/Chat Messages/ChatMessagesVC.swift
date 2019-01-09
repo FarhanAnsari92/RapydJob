@@ -110,14 +110,41 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
-        SocketService.getChatConversation(conversationId: "\(String(describing: convId))") { [weak self] (messages, error) in
-            if let err = error {
-                print("🔥 Error : ", err)
-            } else {
-                self?.messages = messages!
-                self?.messagesTableView.reloadData()
+        _ = APIClient.callAPI(request: .getConversation(conversationId: "\(String(describing: convId))", page: 1), onSuccess: { (dictionary) in
+            print(dictionary)
+            
+            dictionary["last_page"] as? Int ?? 0
+            dictionary["current_page"] as? Int ?? 0
+            dictionary["total"] as? Int ?? 0
+            
+            guard let data = dictionary["data"] as? [[String:Any]] else {
+                print("No messages found")
+                return
             }
+            
+            var msgs = [Message]()
+            
+            for item in data {
+                let replied_to = item["replied_to"] as? String ?? ""
+                let updatedAt = item["updated_at"] as? String ?? ""
+                let newId = item["id"] as? Int ?? 0
+                let conversationId = item["conversation_id"] as? String ?? ""
+                let sender_id = item["sender_id"] as? String ?? ""
+                let createdAt = item["created_at"] as? String ?? ""
+                let message = item["message"] as? String ?? ""
+                let type = item["type"] as? String ?? ""
+                
+                let newMsg = Message(repliedTo: replied_to, updatedAt: updatedAt, id: newId, conversationId: conversationId, senderId: sender_id, createdAt: createdAt, message: message, type: type)
+                
+                msgs.append(newMsg)
+            }
+            self.messages = msgs
+            self.messagesTableView.reloadData()
+            
+        }) { (errorDictionary, _) in
+            print(errorDictionary)
         }
+        
         self.scrollToBottom()
         IQKeyboardManager.shared.enable = false
     }
