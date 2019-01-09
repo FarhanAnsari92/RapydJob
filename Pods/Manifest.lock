@@ -58,6 +58,7 @@ PODS:
   - Starscream (3.0.5)
   - SVProgressHUD (2.2.4)
   - SwiftVideoBackground (3.0.0)
+  - SwiftWebVC (0.4.2)
   - SwiftyJSON (4.2.0)
   - Validator (3.0.2)
   - WARangeSlider (1.1.1)
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift
   - SVProgressHUD
   - SwiftVideoBackground (~> 3.0)
+  - SwiftWebVC
   - SwiftyJSON
   - Validator
   - WARangeSlider
@@ -128,6 +130,7 @@ SPEC REPOS:
     - Starscream
     - SVProgressHUD
     - SwiftVideoBackground
+    - SwiftWebVC
     - SwiftyJSON
     - Validator
     - WARangeSlider
@@ -165,10 +168,11 @@ SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SVProgressHUD: 2d23fffab9a1425617e80eaf6eb249403553e120
   SwiftVideoBackground: 15c69b74458ad57f123c52f55a5bf6865eaf4eae
+  SwiftWebVC: ecc4feaabe5a3f75e059a0a345d3386bb0d16c44
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
   WARangeSlider: 54b3e0853b8d16c444fd539005901aecee86837d
 
-PODFILE CHECKSUM: dfa107fac1dcae17942b4d1d871d115569c0d0e4
+PODFILE CHECKSUM: 0ca5ddfe4e16b0bc13785bc7f05a2ed1f1daccf4
 
 COCOAPODS: 1.5.3

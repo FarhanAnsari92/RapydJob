@@ -10,6 +10,7 @@ import UIKit
 import Segmentio
 import Cosmos
 import ObjectMapper
+import SwiftWebVC
 
 class JobSeekerProfileViewController: UIViewController {
     let sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
@@ -207,34 +208,44 @@ class JobSeekerProfileViewController: UIViewController {
     }
     
     func downloadFile() {
-        guard let cv = self.jobSeeker?.jobSeeker?.cv else {
-            AlertService.shared.alert(in: self, "No CV Found")
-            return
+        
+        guard let jobSeeker = self.jobSeeker,
+            let cv = jobSeeker.jobSeeker?.cv else {
+                AlertService.shared.alert(in: self, "No CV Found")
+                return
         }
         
         let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
         
-        let url = URL(string: baseurl)
+//        let webVC = SwiftWebVC(urlString: baseurl) //"http://google.com"
+//        self.navigationController?.pushViewController(webVC, animated: true)
         
-        let fileType = String(cv.split(separator: ".").last ?? "")
+        let webVC = SwiftModalWebVC(urlString: baseurl) //"http://google.com"
+        self.present(webVC, animated: true, completion: nil)
         
-        let docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        print(docDirectory)
+        //Below code is for downloading
         
-        let dataPath = docDirectory.appendingPathComponent("RapydJOB")
-        
-        try? FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
-        
-        
-        let fileName = self.jobSeeker?.email?.split(separator: "@").first ?? "rapyd_user"
-        //let destination = dataPath.appendingPathComponent("/" + fileName)
-        let destination = dataPath.appendingPathComponent("\(fileName).\(String(describing: fileType))")
-        print(destination)
-                DispatchQueue.main.async {
-                    Downloader.load(url: url!, to: destination, completion: {
-                        print("Downloded succefully")
-                    })
-        }
+//        let url = URL(string: baseurl)
+//
+//        let fileType = String(cv.split(separator: ".").last ?? "")
+//
+//        let docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        print(docDirectory)
+//
+//        let dataPath = docDirectory.appendingPathComponent("RapydJOB")
+//
+//        try? FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
+//
+//
+//        let fileName = self.jobSeeker?.email?.split(separator: "@").first ?? "rapyd_user"
+//        //let destination = dataPath.appendingPathComponent("/" + fileName)
+//        let destination = dataPath.appendingPathComponent("\(fileName).\(String(describing: fileType))")
+//        print(destination)
+//                DispatchQueue.main.async {
+//                    Downloader.load(url: url!, to: destination, completion: {
+//                        print("Downloded succefully")
+//                    })
+//        }
     }
 }
 
