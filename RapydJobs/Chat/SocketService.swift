@@ -107,7 +107,7 @@ struct SocketService {
                             let updatedAt = msg["updated_at"].stringValue
                             let newId = msg["id"].intValue
                             let conversationId = msg["conversation_id"].stringValue
-                            let sender_id = msg["sender_id"].stringValue
+                            let sender_id = msg["sender_id"].intValue
                             let createdAt = msg["created_at"].stringValue
                             let message = msg["message"].stringValue
                             let type = msg["type"].stringValue
@@ -186,7 +186,7 @@ struct SocketService {
                         let updatedAt = item["updated_at"].stringValue
                         let newId = item["id"].intValue
                         let conversationId = item["conversation_id"].stringValue
-                        let sender_id = item["sender_id"].stringValue
+                        let sender_id = item["sender_id"].intValue
                         let createdAt = item["created_at"].stringValue
                         let message = item["message"].stringValue
                         let type = item["type"].stringValue
