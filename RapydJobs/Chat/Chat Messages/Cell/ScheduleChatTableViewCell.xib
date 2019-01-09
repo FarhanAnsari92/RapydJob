@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-y1-MIx">
-                                <rect key="frame" x="15" y="0.0" width="282" height="65.5"/>
+                                <rect key="frame" x="15" y="5" width="282" height="55.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -57,10 +57,10 @@
                             <constraint firstItem="ntI-31-aEB" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" constant="15" id="Rp7-y6-BYX"/>
                             <constraint firstAttribute="trailing" secondItem="egU-uN-m2I" secondAttribute="trailing" id="VXz-Lz-lMQ"/>
                             <constraint firstAttribute="bottom" secondItem="egU-uN-m2I" secondAttribute="bottom" id="Zi8-wt-3ff"/>
-                            <constraint firstItem="ntI-31-aEB" firstAttribute="top" secondItem="HMI-y1-MIx" secondAttribute="bottom" id="ciN-QB-FCq"/>
+                            <constraint firstItem="ntI-31-aEB" firstAttribute="top" secondItem="HMI-y1-MIx" secondAttribute="bottom" constant="5" id="ciN-QB-FCq"/>
                             <constraint firstItem="egU-uN-m2I" firstAttribute="leading" secondItem="amy-Xl-ZNS" secondAttribute="leading" id="dWU-aW-23O"/>
                             <constraint firstItem="egU-uN-m2I" firstAttribute="top" secondItem="ntI-31-aEB" secondAttribute="bottom" id="qCn-b8-szM"/>
-                            <constraint firstItem="HMI-y1-MIx" firstAttribute="top" secondItem="amy-Xl-ZNS" secondAttribute="top" id="qkP-De-Nli"/>
+                            <constraint firstItem="HMI-y1-MIx" firstAttribute="top" secondItem="amy-Xl-ZNS" secondAttribute="top" constant="5" id="qkP-De-Nli"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-H1-33F">
@@ -74,7 +74,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-7D-wQb">
-                                <rect key="frame" x="15" y="0.0" width="282" height="65.5"/>
+                                <rect key="frame" x="15" y="5" width="282" height="55.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -98,8 +98,8 @@
                             <constraint firstItem="qSo-tm-gQk" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" id="EyJ-rL-YVt"/>
                             <constraint firstAttribute="trailing" secondItem="l8C-ql-At3" secondAttribute="trailing" constant="15" id="N10-S3-0wP"/>
                             <constraint firstAttribute="trailing" secondItem="9Ph-7D-wQb" secondAttribute="trailing" constant="15" id="O4L-cg-AVT"/>
-                            <constraint firstItem="9Ph-7D-wQb" firstAttribute="top" secondItem="Yeg-H1-33F" secondAttribute="top" id="O5f-H9-HNY"/>
-                            <constraint firstItem="l8C-ql-At3" firstAttribute="top" secondItem="9Ph-7D-wQb" secondAttribute="bottom" id="SBk-oO-4PB"/>
+                            <constraint firstItem="9Ph-7D-wQb" firstAttribute="top" secondItem="Yeg-H1-33F" secondAttribute="top" constant="5" id="O5f-H9-HNY"/>
+                            <constraint firstItem="l8C-ql-At3" firstAttribute="top" secondItem="9Ph-7D-wQb" secondAttribute="bottom" constant="5" id="SBk-oO-4PB"/>
                             <constraint firstItem="9Ph-7D-wQb" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" constant="15" id="X6n-cL-knA"/>
                             <constraint firstItem="qSo-tm-gQk" firstAttribute="top" secondItem="l8C-ql-At3" secondAttribute="bottom" id="bNa-9K-de6"/>
                             <constraint firstAttribute="trailing" secondItem="qSo-tm-gQk" secondAttribute="trailing" id="g76-b2-jQB"/>
