@@ -207,7 +207,7 @@ class JobSeekerProfileViewController: UIViewController {
         }
     }
     
-    func downloadFile() {
+    func viewCV() {
         
         guard let jobSeeker = self.jobSeeker,
             let cv = jobSeeker.jobSeeker?.cv else {
@@ -217,35 +217,9 @@ class JobSeekerProfileViewController: UIViewController {
         
         let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
         
-//        let webVC = SwiftWebVC(urlString: baseurl) //"http://google.com"
-//        self.navigationController?.pushViewController(webVC, animated: true)
-        
         let webVC = SwiftModalWebVC(urlString: baseurl) //"http://google.com"
         self.present(webVC, animated: true, completion: nil)
         
-        //Below code is for downloading
-        
-//        let url = URL(string: baseurl)
-//
-//        let fileType = String(cv.split(separator: ".").last ?? "")
-//
-//        let docDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//        print(docDirectory)
-//
-//        let dataPath = docDirectory.appendingPathComponent("RapydJOB")
-//
-//        try? FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
-//
-//
-//        let fileName = self.jobSeeker?.email?.split(separator: "@").first ?? "rapyd_user"
-//        //let destination = dataPath.appendingPathComponent("/" + fileName)
-//        let destination = dataPath.appendingPathComponent("\(fileName).\(String(describing: fileType))")
-//        print(destination)
-//                DispatchQueue.main.async {
-//                    Downloader.load(url: url!, to: destination, completion: {
-//                        print("Downloded succefully")
-//                    })
-//        }
     }
 }
 
@@ -360,7 +334,7 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     infoCell.downloadBtn.isHidden = false
                     
                     infoCell.downloadCompletion = {
-                        self.downloadFile()
+                        self.viewCV()
                     }
                     
                     infoCell.iconView?.image = UIImage(named: "ic_download")

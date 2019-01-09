@@ -10,6 +10,7 @@ import UIKit
 import Segmentio
 import Cosmos
 import ObjectMapper
+import SwiftWebVC
 
 class ProfileDetailsViewController: BaseViewController {
     
@@ -172,6 +173,24 @@ class ProfileDetailsViewController: BaseViewController {
             }
         }
     }
+    
+    func viewCV() {
+        
+        print(AppContainer.shared.user.user?.toJSON())
+        
+        guard let user = AppContainer.shared.user.user,
+            let jobSeeker = user.jobSeeker,
+            let cv = jobSeeker.cv else {
+                AlertService.shared.alert(in: self, "No CV Found")
+                return
+        }
+  
+        let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(cv)"
+
+        let webVC = SwiftModalWebVC(urlString: baseurl)
+        self.present(webVC, animated: true, completion: nil)
+        
+    }
 }
 
 extension ProfileDetailsViewController: UITableViewDelegate {
@@ -254,6 +273,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                      self.basicInfos.append(ProfileBasicInfoModel(self.location, "ic_location"))
                      self.basicInfos.append(ProfileBasicInfoModel("Download or view CV", "ic_download"))
                      */
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = AppContainer.shared.user.user?.address?.address ?? "" // basicInfo.text
@@ -266,7 +286,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                 case 2:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
@@ -280,12 +300,15 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                 case 3:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
+                    //infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
-                    infoCell.titleLabel.text = "Download or view CV"
+//                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
+//                    infoCell.titleLabel.text = "Download or view CV"
+                    infoCell.titleLabel.isHidden = true
                     infoCell.iconView?.image = UIImage(named: "ic_download")
-                    
+                    infoCell.downloadCompletion = {
+                        self.viewCV()
+                    }
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -314,6 +337,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor
@@ -346,6 +370,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor
@@ -374,6 +399,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     }
                     
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    infoCell.downloadBtn.isHidden = true
                     infoCell.toggleButton.isHidden = false
                     infoCell.delegate = self
                     infoCell.titleLabel.textColor = infoCell.experienceLabelColor
