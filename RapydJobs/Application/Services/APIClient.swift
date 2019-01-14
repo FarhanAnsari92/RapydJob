@@ -508,6 +508,9 @@ enum APIClient: URLRequestConvertible {
                     return
                 }
             case .failure(let error):
+                if error.localizedDescription.contains("offline") {
+                    REACHABILITY_HELPER.internetConnected = false
+                }
                 handleFailure(["message": error.localizedDescription], "Unable to parse JSON", error)
             }
         }

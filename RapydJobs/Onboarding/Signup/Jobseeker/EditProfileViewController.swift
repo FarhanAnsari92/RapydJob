@@ -127,7 +127,6 @@ class EditProfileViewController: UIViewController,  UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toast = JYToast()
-        self.setupNavigation()
         self.setupViews()
         self.setupData()
     }
@@ -141,20 +140,6 @@ class EditProfileViewController: UIViewController,  UITextFieldDelegate {
         self.descriptionInput.text = user.jobSeeker?.description ?? ""
     }
     
-    func setupNavigation() {
-//        let backBtnImage = UIImage(named: "ic_back") //ic_bar
-//        self.navigationController?.navigationBar.backIndicatorImage = backBtnImage
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtnImage
-//        self.navigationController?.navigationBar.backItem?.title = "Custom"
-//        navigationItem.leftItemsSupplementBackButton = true
-        
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_button"), style: .plain, target: self, action: #selector(self.backBtnTap)) //ic_back
-        
-        navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
     @objc func backBtnTap() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -166,6 +151,11 @@ class EditProfileViewController: UIViewController,  UITextFieldDelegate {
     }
     
     private func setupViews() {
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .plain, target: self, action: #selector(self.backBtnTap))
+        
+        navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()

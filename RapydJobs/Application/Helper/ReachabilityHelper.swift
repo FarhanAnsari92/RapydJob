@@ -27,7 +27,7 @@ public class ReachabilityHelper: NSObject {
     fileprivate var _reachability:NetworkReachabilityManager?;
     
     fileprivate var _internetConnected:Bool = false;
-    fileprivate var internetConnected:Bool {
+    public var internetConnected:Bool {
         get {
             return _internetConnected;
         }
