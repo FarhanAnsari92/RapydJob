@@ -38,6 +38,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         
         AppRouter.shared.startLaunchFlow()
         
+        /*
+        // -- JOB OFFER RECEIVE - SEEKER SIDE
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = JobListSeekerViewController.getInstance()
+        let navController = BaseNavigationViewController(rootViewController: vc)
+        self.window?.setRootViewController(navController)
+        self.window?.makeKeyAndVisible()
+        */
+        
+        /*
+        // -- SCHEDULE INTERVIEW - SEEKER SIDE
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = ScheduleInterviewViewController.getInstance()
+        let navController = BaseNavigationViewController(rootViewController: vc)
+        self.window?.setRootViewController(navController)
+        self.window?.makeKeyAndVisible()
+        */
+        
+        /*
+        // -- JOBOFFER ACCEPT - EMPLOYER SIDE
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let home = CardViewController.getInstance()
+        home.cardFlow = .dashboard
+        
+        let hrVC = HRVC.getInstance()
+        
+        let sb = UIStoryboard(name: "HR", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ManageEmployeeViewControllerID") as! ManageEmployeeViewController
+        
+        let navController = BaseNavigationViewController()
+        navController.setViewControllers([home,hrVC,vc], animated: true)
+        
+        self.window?.setRootViewController(navController)
+        self.window?.makeKeyAndVisible()
+         */
+        
+        /*
+         // -- CHAT - BITH SIDES
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let home = CardViewController.getInstance()
+        home.cardFlow = .dashboard
+        
+        let chatListVC = ChatListVC()
+        
+        let sb = UIStoryboard(name: "Chat", bundle: nil)
+        let chatMessageVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+        chatMessageVC.conversationId = 16
+        
+        let navController = BaseNavigationViewController()
+        navController.setViewControllers([home, chatListVC, chatMessageVC], animated: true)
+        
+        self.window?.setRootViewController(navController)
+        self.window?.makeKeyAndVisible()
+        */
+        
+        
         GMSServices.provideAPIKey(googleAPIKey)
         GMSPlacesClient.provideAPIKey(googleAPIKey)
         
@@ -89,10 +147,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
+        guard let _ = UserContainer().user else {
+            return
+        }        
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error.localizedDescription)")
+        print("Failed to register: \(error.localizedDescription)") // called in background when tap notification/ foreground when receive notification
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
