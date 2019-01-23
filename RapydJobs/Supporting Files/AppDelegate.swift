@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         
         //IQKeyboardManager.shared.enable = false
         
-        AppRouter.shared.startLaunchFlow()
-        
         /*
         // -- JOB OFFER RECEIVE - SEEKER SIDE
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -115,6 +113,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
                 
         }
         
+        AppRouter.shared.startLaunchFlow()
+        
         return true
     }
     
@@ -149,7 +149,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         print(userInfo)
         guard let _ = UserContainer().user else {
             return
-        }        
+        }
+        if let data = userInfo["custom data"] as? [String:Any],
+            let actionClick = data["action_click"] as? String {
+            
+            if actionClick == "interviewNotification" {
+                
+                let refId = data["ref_id"] as? Int
+                
+            } else if actionClick == "JobseekerChat" {
+                let conversationId = data["conversation_id"] as? Int
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                
+                let home = CardViewController.getInstance()
+                home.cardFlow = .dashboard
+                
+                let chatListVC = ChatListVC()
+                
+                let sb = UIStoryboard(name: "Chat", bundle: nil)
+                let chatMessageVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+                chatMessageVC.conversationId = conversationId
+                
+                let navController = BaseNavigationViewController()
+                navController.setViewControllers([home, chatListVC, chatMessageVC], animated: true)
+                
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
+                
+            }
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
