@@ -16,7 +16,7 @@ import ObjectMapper
 class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     private var pickerView: UIPickerView!
-    private let pickerData = [ "Expert", "Intermediate", "Beginner"]
+    private let pickerData = [ "Beginner level", "Conversational level", "Business level", "Fluent level"]
     var languageModel: LanguageModel?
     var languageIndex: Int?
     

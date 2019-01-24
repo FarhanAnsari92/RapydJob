@@ -71,6 +71,13 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         return label
     }()
     
+    private let separator: UIView = {
+        let vu = UIView()
+        vu.backgroundColor = .gray
+        vu.translatesAutoresizingMaskIntoConstraints = false
+        return vu
+    }()
+    
     private let dropdownImage: UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "ic_dropdown")
@@ -370,8 +377,11 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         
+        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(titleMessageLabel)
+        titleStackView.addArrangedSubview(separator)
         
         dropdownImage.heightAnchor.constraint(equalToConstant: 10).isActive = true
         dropdownImage.widthAnchor.constraint(equalToConstant: 18).isActive = true

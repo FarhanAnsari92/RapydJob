@@ -39,6 +39,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var footerConstrains: NSLayoutConstraint!
     @IBOutlet weak var txtViewBottomBonstraint: NSLayoutConstraint!
+    @IBOutlet weak var noMessageView: UIView!
     
     private let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
@@ -164,9 +165,15 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
             }
             
-            self.messagesTableView.reloadData()
-            
+            if self.messages.count == 0 {
+                self.noMessageView.isHidden = false
+            } else {
+                self.noMessageView.isHidden = true
+                self.messagesTableView.reloadData()
+            }
+        
         }) { (errorDictionary, _) in
+            self.noMessageView.isHidden = !(self.messages.count == 0)
             self.isLoading = false
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
             self.hud.dismiss(animated: true)

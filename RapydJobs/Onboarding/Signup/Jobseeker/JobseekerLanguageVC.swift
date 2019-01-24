@@ -61,6 +61,13 @@ class JobseekerLanguageVC: UIViewController, UITableViewDelegate, UITableViewDat
         return label
     }()
     
+    private let separator: UIView = {
+        let vu = UIView()
+        vu.backgroundColor = .gray
+        vu.translatesAutoresizingMaskIntoConstraints = false
+        return vu
+    }()
+    
     let addLanguageButton: UIButton = {
         let btn = UIButton()
         btn.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
@@ -151,8 +158,11 @@ class JobseekerLanguageVC: UIViewController, UITableViewDelegate, UITableViewDat
         titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleStackView.trailingAnchor.constraint(equalTo: addLanguageButton.leadingAnchor, constant: -30).isActive = true
         
+        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(titleMessageLabel)
+        titleStackView.addArrangedSubview(separator)
         
         view.addSubview(nextButton)
         nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true

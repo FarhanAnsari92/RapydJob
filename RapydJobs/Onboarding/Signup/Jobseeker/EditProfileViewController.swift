@@ -56,6 +56,13 @@ class EditProfileViewController: UIViewController,  UITextFieldDelegate {
         return label
     }()
     
+    private let separator: UIView = {
+        let vu = UIView()
+        vu.backgroundColor = .gray
+        vu.translatesAutoresizingMaskIntoConstraints = false
+        return vu
+    }()
+    
     private let mainStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
@@ -179,8 +186,11 @@ class EditProfileViewController: UIViewController,  UITextFieldDelegate {
         titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         
+        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(titleMessageLabel)
+        titleStackView.addArrangedSubview(separator)
         
         view.addSubview(mainStackView)
         mainStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 40).isActive = true

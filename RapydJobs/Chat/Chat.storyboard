@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,6 +88,25 @@
                                     <outlet property="delegate" destination="xVn-3B-9pU" id="pSg-gZ-dCK"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eF-0r-WUy">
+                                <rect key="frame" x="0.0" y="298.5" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No messages yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPd-hW-9vf">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7rv-xc-eD0"/>
+                                    <constraint firstAttribute="trailing" secondItem="XPd-hW-9vf" secondAttribute="trailing" id="VHQ-Sx-Dha"/>
+                                    <constraint firstAttribute="bottom" secondItem="XPd-hW-9vf" secondAttribute="bottom" id="XG4-3F-3st"/>
+                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="leading" secondItem="9eF-0r-WUy" secondAttribute="leading" id="eu7-dx-2Qp"/>
+                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="top" secondItem="9eF-0r-WUy" secondAttribute="top" id="pzm-gM-4fn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.46666666666666667" green="0.74509803921568629" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -95,9 +114,12 @@
                             <constraint firstItem="Mds-1h-PA4" firstAttribute="top" secondItem="anw-52-zsK" secondAttribute="top" id="6UL-aI-gxW"/>
                             <constraint firstItem="KcF-YR-yWq" firstAttribute="top" secondItem="Mds-1h-PA4" secondAttribute="bottom" id="H6Z-Tl-EYT"/>
                             <constraint firstItem="anw-52-zsK" firstAttribute="trailing" secondItem="KcF-YR-yWq" secondAttribute="trailing" id="QeP-nH-E6S"/>
+                            <constraint firstItem="9eF-0r-WUy" firstAttribute="centerY" secondItem="jgo-qp-LUp" secondAttribute="centerY" id="TNF-qQ-ePE"/>
                             <constraint firstItem="KcF-YR-yWq" firstAttribute="leading" secondItem="anw-52-zsK" secondAttribute="leading" id="Uki-og-i2L"/>
+                            <constraint firstItem="9eF-0r-WUy" firstAttribute="leading" secondItem="anw-52-zsK" secondAttribute="leading" id="Vlq-8h-3h9"/>
                             <constraint firstItem="Mds-1h-PA4" firstAttribute="leading" secondItem="anw-52-zsK" secondAttribute="leading" id="fEB-X5-xH5"/>
                             <constraint firstItem="anw-52-zsK" firstAttribute="trailing" secondItem="Mds-1h-PA4" secondAttribute="trailing" id="rWA-tz-DlR"/>
+                            <constraint firstItem="9eF-0r-WUy" firstAttribute="trailing" secondItem="anw-52-zsK" secondAttribute="trailing" id="x8e-zh-skC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="anw-52-zsK"/>
                     </view>
@@ -106,6 +128,7 @@
                         <outlet property="footerView" destination="KcF-YR-yWq" id="7xg-ld-IH0"/>
                         <outlet property="messageInput" destination="7Ke-o5-nkA" id="Zy0-zi-2dx"/>
                         <outlet property="messagesTableView" destination="Mds-1h-PA4" id="guV-5M-1IP"/>
+                        <outlet property="noMessageView" destination="9eF-0r-WUy" id="vUA-ym-Hpf"/>
                         <outlet property="sendButton" destination="8Fd-d5-UoK" id="ahb-Xh-nr1"/>
                     </connections>
                 </viewController>
