@@ -66,6 +66,8 @@ class JobSeekerProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "ProfileDetailsTableInfoCell", bundle: Bundle.main), forCellReuseIdentifier: "infoCell")
         tableView.register(UINib(nibName: "ProfileDetailsTableReviewCell", bundle: Bundle.main), forCellReuseIdentifier: "reviewCell")
         tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ReviewTableViewCellID")
+        tableView.register(UINib(nibName: "ProfileInfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileInfoTableViewCellID")
+        tableView.register(UINib(nibName: "DownloadResumeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "DownloadResumeTableViewCellID")
         
         
         // Setting profile image view
@@ -294,18 +296,10 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     
                     return cell
                 case 1:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
-                    infoCell.titleLabel.isHidden = false
-                    infoCell.downloadBtn.isHidden = true
-                    
-                    infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = self.jobSeeker?.address?.address ?? "" // basicInfo.text
                     infoCell.iconView?.image = UIImage(named: "ic_location")
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -313,17 +307,11 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     
                     return cell
                 case 2:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
                     infoCell.titleLabel.isHidden = false
-                    infoCell.downloadBtn.isHidden = true
-                    infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -331,21 +319,13 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     
                     return cell
                 case 3:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
-                    infoCell.toggleButton.isHidden = true
-                    
-                    infoCell.titleLabel.isHidden = true
-                    infoCell.downloadBtn.isHidden = false
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "DownloadResumeTableViewCellID", for: indexPath) as! DownloadResumeTableViewCell
                     
                     infoCell.downloadCompletion = {
                         self.viewCV()
                     }
                     
                     infoCell.iconView?.image = UIImage(named: "ic_download")
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
