@@ -28,38 +28,15 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
 
     var organisationLabel = ProfileInfoLabel()
     var durationLabel = ProfileInfoLabel()
+    var gradeLabel = ProfileInfoLabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         organisationLabel = ProfileInfoLabel(frame: CGRect(x: 40, y: 0, width: self.rootView.bounds.size.width - 80, height: 20))
         durationLabel = ProfileInfoLabel(frame: CGRect(x: 40, y: 0, width: self.rootView.bounds.size.width - 80, height: 20))
-    }
-    
-    func populateWithBasicInfo(_ basicInfo: ProfileBasicInfoModel) {
-        self.toggleButton.isHidden = true
-        self.titleLabel.textColor = grayLabelColor
-        self.titleLabel.text = basicInfo.text
-        self.iconView?.image = basicInfo.image
-    }
-    
-    func populateWithExperienceModel(_ experience: ProfileExperienceModel) {
-        self.toggleButton.isHidden = false
-        self.titleLabel.textColor = experienceLabelColor
-        self.titleLabel.text = experience.jobTitle
-        self.organisationLabel.text = experience.organisationName
-        self.durationLabel.text = experience.durationString
-        self.iconView?.image = UIImage(named: "ic_jobs")
-    }
-    
-    func experience(_ experience: ExperienceModel) {
-        self.toggleButton.isHidden = false
-        self.titleLabel.textColor = experienceLabelColor
-        self.titleLabel.text = experience.title ?? ""
-        self.organisationLabel.text = experience.companyName ?? ""
-        let duration = (experience.from ?? "") + " - " + (experience.to ?? "")
-        self.durationLabel.text = duration
-        self.iconView?.image = UIImage(named: "ic_jobs")
+        gradeLabel = ProfileInfoLabel(frame: CGRect(x: 40, y: 0, width: self.rootView.bounds.size.width - 80, height: 20))
+        gradeLabel.isHidden = true
     }
     
     @IBAction func didTapToggleButton(_ sender: Any) {
@@ -67,6 +44,7 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
         let button = sender as! UIButton
         if button.isSelected {
             detailsStackView.removeArrangedSubview(organisationLabel)
+            detailsStackView.removeArrangedSubview(gradeLabel)
             detailsStackView.removeArrangedSubview(durationLabel)
             button.isSelected = false
             detailsStackView.isHidden = true
@@ -74,6 +52,7 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
         else {
             detailsStackView.isHidden = false
             detailsStackView.addArrangedSubview(organisationLabel)
+            detailsStackView.addArrangedSubview(gradeLabel)
             detailsStackView.addArrangedSubview(durationLabel)
             button.isSelected = true
         }

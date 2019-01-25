@@ -112,6 +112,19 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
         return input
     }()
     
+    private let gradeInput: SkyFloatingLabelTextField = {
+        let input = SkyFloatingLabelTextField()
+        input.placeholder = "Grade"
+        input.title = "Grade"
+        input.font = AppConstants.shared.textFieldFont
+        input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        input.lineColor = AppConstants.shared.primaryBlueColor
+        input.selectedLineColor = AppConstants.shared.primaryBlueColor
+        input.selectedTitleColor = AppConstants.shared.primaryBlueColor
+        input.translatesAutoresizingMaskIntoConstraints = false
+        return input
+    }()
+    
     private let toInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
         input.placeholder = "To"
@@ -228,6 +241,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
         mainStackView.addArrangedSubview(educationTitleInput)
         mainStackView.addArrangedSubview(institutionNameInput)
         mainStackView.addArrangedSubview(descriptionInput)
+        mainStackView.addArrangedSubview(gradeInput)
         mainStackView.addArrangedSubview(fromInput)
         mainStackView.addArrangedSubview(toInput)        
         
@@ -246,6 +260,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             educationTitleInput.text = eduModel.title ?? ""
             institutionNameInput.text = eduModel.instituteName ?? ""
             descriptionInput.text = eduModel.description ?? ""
+            gradeInput.text = eduModel.grade ?? ""
             toInput.text = eduModel.to ?? ""
             fromInput.text = eduModel.from ?? ""
             self.addButton.setTitle("UPDATE", for: .normal)
@@ -256,6 +271,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             educationTitleInput.text = edu.educationTitle
             institutionNameInput.text = edu.institutionName
             descriptionInput.text = edu.description
+            gradeInput.text = edu.grade
             toInput.text = edu.to
             fromInput.text = edu.from
             self.addButton.setTitle("UPDATE", for: .normal)
@@ -356,7 +372,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
                                 }
                                 
                             } else {
-                                let education = SignupEducation(educationTitle: educationTitleInput.text!, institutionName: institutionNameInput.text!, description: descriptionInput.text!, to: toInput.text!, from: fromInput.text!)
+                                let education = SignupEducation(educationTitle: educationTitleInput.text!, institutionName: institutionNameInput.text!, description: descriptionInput.text!, grade: gradeInput.text!, to: toInput.text!, from: fromInput.text!)
                                 if let index = self.educationIndex {
                                     educations.remove(at: index)
                                 }
@@ -389,7 +405,8 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
                 "institute_name": self.institutionNameInput.text!,
                 "to": self.toInput.text!,
                 "from": self.fromInput.text!,
-                "description": self.descriptionInput.text!
+                "description": self.descriptionInput.text!,
+                "grade": self.gradeInput.text!
             ]
         ]
         print(param)
@@ -426,7 +443,8 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             "institute_name": self.institutionNameInput.text!,
             "to": self.toInput.text!,
             "from": self.fromInput.text!,
-            "description": self.descriptionInput.text!
+            "description": self.descriptionInput.text!,
+            "grade": self.gradeInput.text!
         ]
         print(param)
         _ = APIClient.callAPI(request: .updateEducation(param: param, id: id), onSuccess: { (dictionary) in

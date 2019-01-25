@@ -16,6 +16,7 @@ class EducationModel: Mappable {
     var to: String?
     var id: Int?
     var instituteName: String?
+    var grade: String?
     var title: String?
     var userId: Int?
     var duration: String {
@@ -34,6 +35,7 @@ class EducationModel: Mappable {
         from <- map["from"]
         to <- map["to"]
         instituteName <- map["institute_name"]
+        grade <- map["grade"]
         title <- map["title"]
         id <- map["id"]
         userId <- map["user_id"]

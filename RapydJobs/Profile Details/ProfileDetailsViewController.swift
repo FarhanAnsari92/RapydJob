@@ -277,6 +277,9 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = AppContainer.shared.user.user?.address?.address ?? "" // basicInfo.text
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     infoCell.iconView?.image = UIImage(named: "ic_location")
                     cell = infoCell
                     
@@ -290,6 +293,9 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     infoCell.toggleButton.isHidden = true
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     
                     cell = infoCell
@@ -305,6 +311,9 @@ extension ProfileDetailsViewController: UITableViewDataSource {
 //                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
 //                    infoCell.titleLabel.text = "Download or view CV"
                     infoCell.titleLabel.isHidden = true
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     infoCell.iconView?.image = UIImage(named: "ic_download")
                     infoCell.downloadCompletion = {
                         self.viewCV()
@@ -378,6 +387,8 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     infoCell.organisationLabel.text = education.instituteName ?? "" //organisationName
                     infoCell.durationLabel.text = education.duration
                     infoCell.iconView?.image = UIImage(named: "ic_jobs")
+                    infoCell.gradeLabel.isHidden = false
+                    infoCell.gradeLabel.text = "Grade : " + String(education.grade ?? "-")
                     
                     cell = infoCell
                     
@@ -420,36 +431,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             
             }
-            
-//            if indexPath.row == 0 {
-//                let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-//                headerCell.titleLabel.text = self.sectionArray[indexPath.section] // viewModel.titleForSection(indexPath.section)
-//                cell = headerCell
-//
-//            } else {
-//
-//                let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-//
-//
-//                if indexPath.section == 0 {
-//                    infoCell.populateWithBasicInfo(viewModel.data.basicInfos[indexPath.row - 1])
-//                } else if indexPath.section == 1 {
-//                    guard let expArr = AppContainer.shared.user.user?.experience, expArr.count > 0 else {
-//                        return UITableViewCell()
-//                    }
-//                    infoCell.experience((expArr[indexPath.row - 1]))
-//                } else if indexPath.section == 2 {
-//                    infoCell.populateWithExperienceModel(viewModel.data.education[indexPath.row - 1])
-//                }
-//
-//                infoCell.delegate = self
-//                cell = infoCell
-//            }
-//
-//            cell.isFirstCell = indexPath.row == 0
-//            cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-
-        } else {
+        } else { // segment index 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCellID", for: indexPath) as! ReviewTableViewCell
             guard let review = self.reviews?[indexPath.row] else {
                 return UITableViewCell()

@@ -13,6 +13,7 @@ struct SignupEducation {
     let educationTitle: String
     let institutionName: String
     let description: String
+    let grade: String
     let to: String
     let from: String
 }

@@ -189,6 +189,7 @@ struct JobseekerSignupAPIService {
             let data: Parameters = [ "title" : item.educationTitle,
                                      "institute_name" : item.institutionName,
                                      "description" : item.description,
+                                     "grade" : item.grade,
                                      "to" : item.to,
                                      "from" : item.from ]
             param.append(data)

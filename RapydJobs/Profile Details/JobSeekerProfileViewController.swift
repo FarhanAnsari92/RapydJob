@@ -303,6 +303,9 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = self.jobSeeker?.address?.address ?? "" // basicInfo.text
                     infoCell.iconView?.image = UIImage(named: "ic_location")
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -318,7 +321,9 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     infoCell.titleLabel.textColor = infoCell.grayLabelColor
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
-                    
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -338,7 +343,9 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     }
                     
                     infoCell.iconView?.image = UIImage(named: "ic_download")
-                    
+                    infoCell.gradeLabel.isHidden = true
+                    infoCell.organisationLabel.isHidden = true
+                    infoCell.durationLabel.isHidden = true
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -415,6 +422,9 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     infoCell.durationLabel.text = education.duration
                     infoCell.iconView?.image = UIImage(named: "ic_jobs")
                     
+                    infoCell.gradeLabel.isHidden = false
+                    infoCell.gradeLabel.text = "Grade : " + String(education.grade ?? "-")
+                    
                     cell = infoCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -459,36 +469,7 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                 return UITableViewCell()
                 
             }
-            
-            //            if indexPath.row == 0 {
-            //                let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-            //                headerCell.titleLabel.text = self.sectionArray[indexPath.section] // viewModel.titleForSection(indexPath.section)
-            //                cell = headerCell
-            //
-            //            } else {
-            //
-            //                let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-            //
-            //
-            //                if indexPath.section == 0 {
-            //                    infoCell.populateWithBasicInfo(viewModel.data.basicInfos[indexPath.row - 1])
-            //                } else if indexPath.section == 1 {
-            //                    guard let expArr = AppContainer.shared.user.user?.experience, expArr.count > 0 else {
-            //                        return UITableViewCell()
-            //                    }
-            //                    infoCell.experience((expArr[indexPath.row - 1]))
-            //                } else if indexPath.section == 2 {
-            //                    infoCell.populateWithExperienceModel(viewModel.data.education[indexPath.row - 1])
-            //                }
-            //
-            //                infoCell.delegate = self
-            //                cell = infoCell
-            //            }
-            //
-            //            cell.isFirstCell = indexPath.row == 0
-            //            cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-            
-        } else {
+        } else { // segment index 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCellID", for: indexPath) as! ReviewTableViewCell
             guard let review = self.reviews?[indexPath.row] else {
                 return UITableViewCell()

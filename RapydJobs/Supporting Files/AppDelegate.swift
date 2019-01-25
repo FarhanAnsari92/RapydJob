@@ -178,7 +178,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
                 self.window?.makeKeyAndVisible()
                 
             } else if actionClick == "OrganisationTimesheet" {
+                
                 let refId = data["ref_id"] as? Int
+                
+            } else if actionClick == "JobSeekerTimesheet" {
+                
+                let refId = data["ref_id"] as? Int
+                
             }
         }
     }
