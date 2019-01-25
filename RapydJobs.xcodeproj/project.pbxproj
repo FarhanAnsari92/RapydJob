@@ -450,6 +450,10 @@
 		C9C5AF5021AF316100479D9C /* TimesheetRejectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */; };
 		C9C5AF5121AF316100479D9C /* TimesheetRejectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */; };
 		C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */; };
+		C9CD8D5021FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */; };
+		C9CD8D5121FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */; };
+		C9CD8D5421FB9DA700C6FE5E /* DownloadResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD8D5221FB9DA700C6FE5E /* DownloadResumeTableViewCell.swift */; };
+		C9CD8D5521FB9DA700C6FE5E /* DownloadResumeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CD8D5321FB9DA700C6FE5E /* DownloadResumeTableViewCell.xib */; };
 		C9CDEFD821B5921F00C57C4B /* ShiftTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFD721B5921F00C57C4B /* ShiftTimeViewController.swift */; };
 		C9CDEFDA21B5AC5900C57C4B /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */; };
 		C9CDEFDC21B5B16000C57C4B /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */; };
@@ -916,6 +920,10 @@
 		C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetRejectTableViewCell.swift; sourceTree = "<group>"; };
 		C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetRejectTableViewCell.xib; sourceTree = "<group>"; };
 		C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDataResponseModel.swift; sourceTree = "<group>"; };
+		C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
+		C9CD8D5221FB9DA700C6FE5E /* DownloadResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadResumeTableViewCell.swift; sourceTree = "<group>"; };
+		C9CD8D5321FB9DA700C6FE5E /* DownloadResumeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadResumeTableViewCell.xib; sourceTree = "<group>"; };
 		C9CDEFD721B5921F00C57C4B /* ShiftTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTimeViewController.swift; sourceTree = "<group>"; };
 		C9CDEFD921B5AC5900C57C4B /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		C9CDEFDB21B5B16000C57C4B /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
@@ -1112,6 +1120,10 @@
 				0DE319B220E1535100A75F93 /* ProfileDetailsTableReviewCell.xib */,
 				C9C54D70219C96F700834E26 /* ReviewTableViewCell.swift */,
 				C9C54D71219C96F700834E26 /* ReviewTableViewCell.xib */,
+				C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */,
+				C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */,
+				C9CD8D5221FB9DA700C6FE5E /* DownloadResumeTableViewCell.swift */,
+				C9CD8D5321FB9DA700C6FE5E /* DownloadResumeTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2468,12 +2480,14 @@
 				A57E30D520EC084100BF6CE9 /* BaseButtonView.xib in Resources */,
 				C90D968621B5D94700191773 /* CardOverlayView.xib in Resources */,
 				0DCE240520E9015800577153 /* Settings.storyboard in Resources */,
+				C9CD8D5521FB9DA700C6FE5E /* DownloadResumeTableViewCell.xib in Resources */,
 				0DEB4A17210BAEE90083E78C /* Poppins-ExtraBoldItalic.otf in Resources */,
 				C9C54D73219C96F700834E26 /* ReviewTableViewCell.xib in Resources */,
 				0D42023020DE6D1E0063BB23 /* Sidemenu.storyboard in Resources */,
 				A536D9B92101FE8200E6BEFC /* BaseEntryView.xib in Resources */,
 				C9A756702193755D005CD41C /* ScheduleInterview.storyboard in Resources */,
 				0DEB4A0A210BAEE90083E78C /* Poppins-Thin.otf in Resources */,
+				C9CD8D5121FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib in Resources */,
 				C97293FE218EE36E000CB61F /* SignedContractTableViewCell.xib in Resources */,
 				C9639612218CF7D6001FEFCD /* PreviousJobTableViewCell.xib in Resources */,
 				0DEB4A12210BAEE90083E78C /* Poppins-BlackItalic.otf in Resources */,
@@ -2808,6 +2822,7 @@
 				C929E9EE2185F56800A8AA8E /* OrganizationSuperLikeResponse.swift in Sources */,
 				A54AD6AD210A538900C72F75 /* AppNetworkRepository.swift in Sources */,
 				C9872C8E21A01CB600CEE43D /* JYToast.swift in Sources */,
+				C9CD8D5421FB9DA700C6FE5E /* DownloadResumeTableViewCell.swift in Sources */,
 				A54D082920E17090002C8449 /* UIWindow+Transition.swift in Sources */,
 				A54AD6E2210B474400C72F75 /* Account.swift in Sources */,
 				883D4DCA21074D2A00FF9B09 /* UpdateLanguage.swift in Sources */,
@@ -2892,6 +2907,7 @@
 				C9CDEFDC21B5B16000C57C4B /* WeekTableViewCell.swift in Sources */,
 				4DD6DF3B21691D1100F8CA3A /* SignupExperience.swift in Sources */,
 				C9852F87218D8BD200E409DF /* Sector.swift in Sources */,
+				C9CD8D5021FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift in Sources */,
 				0D42023720DE6DF40063BB23 /* SideMenuItem.swift in Sources */,
 				4DD6DF7C21691ED700F8CA3A /* JobseekerSignupAPIService.swift in Sources */,
 				C916EC7021DA99E60005680D /* ScheduleChatTableViewCell.swift in Sources */,
