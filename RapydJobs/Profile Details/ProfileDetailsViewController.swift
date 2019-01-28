@@ -22,6 +22,8 @@ class ProfileDetailsViewController: BaseViewController {
     var isLoadMore: Bool = false
     var isLoading: Bool = false
     
+    var user: UserResponseModel?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -57,6 +59,8 @@ class ProfileDetailsViewController: BaseViewController {
         tableView.register(UINib(nibName: "ProfileDetailsTableInfoCell", bundle: Bundle.main), forCellReuseIdentifier: "infoCell")
         tableView.register(UINib(nibName: "ProfileDetailsTableReviewCell", bundle: Bundle.main), forCellReuseIdentifier: "reviewCell")
         tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ReviewTableViewCellID")
+        tableView.register(UINib(nibName: "ProfileInfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileInfoTableViewCellID")
+        tableView.register(UINib(nibName: "DownloadResumeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "DownloadResumeTableViewCellID")
         
 
         // Setting profile image view
@@ -89,11 +93,16 @@ class ProfileDetailsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let usr = AppContainer.shared.user.user else {
+            return
+        }
+        self.user = usr
      
-        self.title = AppContainer.shared.user.user?.userName ?? "" // "John Smith"
-        self.nameLabel.text = AppContainer.shared.user.user?.userName ?? "" // "John Smith"
-        self.coverImageView.setImageWithName(AppContainer.shared.user.user?.profileImage ?? "")
-        self.profileImageView.setImageWithName(AppContainer.shared.user.user?.profileImage ?? "")
+        self.title = self.user?.userName ?? "" // "John Smith"
+        self.nameLabel.text = self.user?.userName ?? "" // "John Smith"
+        self.coverImageView.setImageWithName(self.user?.profileImage ?? "")
+        self.profileImageView.setImageWithName(self.user?.profileImage ?? "")
         
         self.tableView.reloadData()
     
@@ -176,9 +185,9 @@ class ProfileDetailsViewController: BaseViewController {
     
     func viewCV() {
         
-        print(AppContainer.shared.user.user?.toJSON())
+        print(self.user?.toJSON())
         
-        guard let user = AppContainer.shared.user.user,
+        guard let user = self.user,
             let jobSeeker = user.jobSeeker,
             let cv = jobSeeker.cv else {
                 AlertService.shared.alert(in: self, "No CV Found")
@@ -227,7 +236,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.segmentControl.selectedSegmentioIndex == 0 {
 
-            guard let user = AppContainer.shared.user.user else {
+            guard let user = self.user else {
                 return 0
             }
             
@@ -265,21 +274,9 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     
                     return cell
                 case 1:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    /*
-                     if self.payRate > 0 {
-                     self.basicInfos.append(ProfileBasicInfoModel("£\(self.payRate) Per Hour", "ic_wallet"))
-                     }
-                     self.basicInfos.append(ProfileBasicInfoModel(self.location, "ic_location"))
-                     self.basicInfos.append(ProfileBasicInfoModel("Download or view CV", "ic_download"))
-                     */
-                    infoCell.downloadBtn.isHidden = true
-                    infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
-                    infoCell.titleLabel.text = AppContainer.shared.user.user?.address?.address ?? "" // basicInfo.text
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
+                    
+                    infoCell.titleLabel.text = self.user?.address?.address ?? "" // basicInfo.text
                     infoCell.iconView?.image = UIImage(named: "ic_location")
                     cell = infoCell
                     
@@ -288,14 +285,8 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     
                     return cell
                 case 2:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    infoCell.downloadBtn.isHidden = true
-                    infoCell.toggleButton.isHidden = true
-                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     infoCell.titleLabel.text = "-" // "£0 Per Hour"
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     
                     cell = infoCell
@@ -305,15 +296,8 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     
                     return cell
                 case 3:
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    //infoCell.downloadBtn.isHidden = true
-                    infoCell.toggleButton.isHidden = true
-//                    infoCell.titleLabel.textColor = infoCell.grayLabelColor
-//                    infoCell.titleLabel.text = "Download or view CV"
-                    infoCell.titleLabel.isHidden = true
-                    infoCell.gradeLabel.isHidden = true
-                    infoCell.organisationLabel.isHidden = true
-                    infoCell.durationLabel.isHidden = true
+                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "DownloadResumeTableViewCellID", for: indexPath) as! DownloadResumeTableViewCell
+                    
                     infoCell.iconView?.image = UIImage(named: "ic_download")
                     infoCell.downloadCompletion = {
                         self.viewCV()
@@ -341,7 +325,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                     
                 } else {
-                    guard let experience = AppContainer.shared.user.user?.experience?[indexPath.row - 1] else {
+                    guard let experience = self.user?.experience?[indexPath.row - 1] else {
                         return UITableViewCell()
                     }
                     
@@ -374,7 +358,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     
                    return cell
                 } else {
-                    guard let education = AppContainer.shared.user.user?.education?[indexPath.row - 1] else {
+                    guard let education = self.user?.education?[indexPath.row - 1] else {
                         return UITableViewCell()
                     }
                     
@@ -405,7 +389,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                 } else {
                     
-                    guard let language = AppContainer.shared.user.user?.language?[indexPath.row - 1] else {
+                    guard let language = self.user?.language?[indexPath.row - 1] else {
                         return UITableViewCell()
                     }
                     
