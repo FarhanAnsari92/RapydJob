@@ -147,12 +147,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
+        application.applicationIconBadgeNumber = 0
         guard let _ = UserContainer().user else {
             return
         }
-        if let data = userInfo["custom data"] as? [String:Any],
-            let actionClick = data["action_click"] as? String {
+        
+        guard let data = userInfo["custom data"] as? [String:Any],
+            let actionClick = data["action_click"] as? String else {
+                return
+        }
+        
+        if application.applicationState == .active { // foreground
             
+            print(data)
+            
+        } else {
             if actionClick == "interviewNotification" {
                 
                 let refId = data["ref_id"] as? Int
