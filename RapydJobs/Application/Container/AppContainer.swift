@@ -16,16 +16,19 @@ final class AppContainer {
     let job: JobContainer
     let secretsContainer: SecretsContainer
     let networkRepository: NetworkRepository
+    let notificationContainer: NotificationContainer
     
     private init(user: UserContainer = .init(),
                  job: JobContainer = .init(),
                  networkRepository: NetworkRepository = AppNetworkRepository(),
-                 secretsContainer: SecretsContainer = .init()) {
+                 secretsContainer: SecretsContainer = .init(),
+                 notificationContainer: NotificationContainer = .init()) {
         
         self.user = user
         self.job = job
         self.secretsContainer = secretsContainer
         self.networkRepository = networkRepository
+        self.notificationContainer = notificationContainer
     }
     
     var isAnyUserSignedIn: Bool {

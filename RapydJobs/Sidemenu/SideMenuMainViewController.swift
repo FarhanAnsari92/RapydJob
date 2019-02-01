@@ -62,6 +62,7 @@ class SideMenuMainViewController: UIViewController {
         if let profileImage = user.profileImage {
             self.profilePictureIV.setImageWithName(profileImage)
         }
+        self.tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,6 +86,18 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = viewModel.data[indexPath.row].viewController
+        let title = viewModel.data[indexPath.row].title
+        switch title {
+        case "Scheduled Interviews":
+            AppContainer.shared.notificationContainer.save(InterviewSchedule: false)
+        case "Job Offers":
+            AppContainer.shared.notificationContainer.save(JobOfferSend: false)
+        case "Jobseeker Timesheet":
+            AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: false)
+        default:
+            break
+        }
+        
         if (self.navigationController?.topViewController != vc) {
             self.navigationController?.pushViewController(vc, animated: true)
         }

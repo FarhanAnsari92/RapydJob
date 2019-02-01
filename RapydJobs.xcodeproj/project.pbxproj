@@ -461,6 +461,8 @@
 		C9DA8A9021C2F44B00ACD7FD /* EmployerPlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */; };
 		C9DD258321CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */; };
 		C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB2B1B2183A330005FBDFE /* APIClient.swift */; };
+		C9F14FF7220380BE00AF16ED /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF6220380BE00AF16ED /* NotificationType.swift */; };
+		C9F14FF92203906500AF16ED /* NotificationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF82203906500AF16ED /* NotificationContainer.swift */; };
 		C9FDF9CD21824BCC00991F18 /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */; };
 		C9FDF9CF2182521600991F18 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CE2182521600991F18 /* AddressModel.swift */; };
 		C9FDF9D12182541300991F18 /* OrganizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9D02182541300991F18 /* OrganizationModel.swift */; };
@@ -931,6 +933,8 @@
 		C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerPlannerViewController.swift; sourceTree = "<group>"; };
 		C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPlannerDataResponseModel.swift; sourceTree = "<group>"; };
 		C9EB2B1B2183A330005FBDFE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C9F14FF6220380BE00AF16ED /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		C9F14FF82203906500AF16ED /* NotificationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContainer.swift; sourceTree = "<group>"; };
 		C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
 		C9FDF9CE2182521600991F18 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		C9FDF9D02182541300991F18 /* OrganizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModel.swift; sourceTree = "<group>"; };
@@ -1812,6 +1816,7 @@
 				A54AD6B1210A56A200C72F75 /* AppContainer.swift */,
 				A54AD6C2210A697C00C72F75 /* SecretsContainer.swift */,
 				0D3D1FA8210CEE2E002531E9 /* JobContainer.swift */,
+				C9F14FF82203906500AF16ED /* NotificationContainer.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -1836,6 +1841,7 @@
 				A54AD6D7210A7AB900C72F75 /* DateFormatter+Rapyd.swift */,
 				A54AD6E8210BBCB500C72F75 /* UserDefaults+Codable.swift */,
 				C9852F84218D8B9600E409DF /* Helper.swift */,
+				C9F14FF6220380BE00AF16ED /* NotificationType.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2746,6 +2752,7 @@
 				A583388220F3A920001CCF35 /* Signin.swift in Sources */,
 				0DCE240720E9016600577153 /* SettingsViewController.swift in Sources */,
 				C9C5AF4621AF26F500479D9C /* Timesheet.swift in Sources */,
+				C9F14FF7220380BE00AF16ED /* NotificationType.swift in Sources */,
 				C985052C21DD2CCD00F2EC46 /* Downloader.swift in Sources */,
 				883D4DCC21074E2200FF9B09 /* StoreLanguage.swift in Sources */,
 				C993F69F21876CF000CE11EE /* ShortListViewController.swift in Sources */,
@@ -2937,6 +2944,7 @@
 				0D3D1FB2210E1CD4002531E9 /* JobResponseDTO.swift in Sources */,
 				A55FA58720DE6A010010C3B3 /* FormViewModel.swift in Sources */,
 				4DD6DF6921691E5B00F8CA3A /* JobseekerUploadResumeVC.swift in Sources */,
+				C9F14FF92203906500AF16ED /* NotificationContainer.swift in Sources */,
 				A536D9BF21020B4400E6BEFC /* FormEntryViewModel.swift in Sources */,
 				889DFBB62105F7320073A532 /* UpdateEmployee.swift in Sources */,
 				889DFBAE2105F2B90073A532 /* UpdateJob.swift in Sources */,
