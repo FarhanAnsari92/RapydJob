@@ -26,11 +26,10 @@ protocol NotificationProvider {
     var JobSeekerTimesheet: Bool { get }
     var InterviewSchedule: Bool { get }
     var JobOfferSend: Bool { get }
-    var JobseekerChat: Bool { get }
+    var Chat: Bool { get }
     
     var OrganisationTimesheet: Bool { get }
     var JobOfferResponse: Bool { get }
-    var OrganizationChat: Bool { get }
     
     var interviewNotification: Bool { get }
 }
@@ -39,11 +38,10 @@ protocol NotificationStorer {
     func save(JobSeekerTimesheet: Bool)
     func save(InterviewSchedule: Bool)
     func save(JobOfferSend: Bool)
-    func save(JobseekerChat: Bool)
+    func save(Chat: Bool)
     
     func save(OrganisationTimesheet: Bool)
     func save(JobOfferResponse: Bool)
-    func save(OrganizationChat: Bool)
     
     func save(interviewNotification: Bool)
 }
@@ -54,12 +52,11 @@ class NotificationContainer {
         static let JobSeekerTimesheet = "JobSeekerTimesheet"
         static let InterviewSchedule = "InterviewSchedule"
         static let JobOfferSend = "JobOfferSend"
-        static let JobseekerChat = "JobseekerChat"
+        static let chat = "JobseekerChat"
         
         //Employer Notifications Type:
         static let OrganisationTimesheet = "OrganisationTimesheet"
         static let JobOfferResponse = "JobOfferResponse"
-        static let OrganizationChat = "OrganizationChat"
         
         static let interviewNotification = "interviewNotification"
     }
@@ -67,6 +64,16 @@ class NotificationContainer {
     var defaults: UserDefaults
     init() {
         defaults = UserDefaults.standard
+    }
+    
+    func removeAllNotification(){
+        self.save(JobSeekerTimesheet: false)
+        self.save(InterviewSchedule: false)
+        self.save(JobOfferSend: false)
+        self.save(Chat: false)
+        self.save(OrganisationTimesheet: false)
+        self.save(JobOfferResponse: false)
+        self.save(interviewNotification: false)
     }
 }
 
@@ -83,8 +90,8 @@ extension NotificationContainer: NotificationProvider {
         return defaults.bool(forKey: Constants.JobOfferSend)
     }
     
-    var JobseekerChat: Bool {
-        return defaults.bool(forKey: Constants.JobseekerChat)
+    var Chat: Bool {
+        return defaults.bool(forKey: Constants.chat)
     }
     
     var OrganisationTimesheet: Bool {
@@ -93,10 +100,6 @@ extension NotificationContainer: NotificationProvider {
     
     var JobOfferResponse: Bool {
         return defaults.bool(forKey: Constants.JobOfferResponse)
-    }
-    
-    var OrganizationChat: Bool {
-        return defaults.bool(forKey: Constants.OrganizationChat)
     }
     
     var interviewNotification: Bool {
@@ -117,8 +120,8 @@ extension NotificationContainer: NotificationStorer {
         defaults.set(JobOfferSend, forKey: Constants.JobOfferSend)
     }
     
-    func save(JobseekerChat: Bool) {
-        defaults.set(JobseekerChat, forKey: Constants.JobseekerChat)
+    func save(Chat: Bool) {
+        defaults.set(chat, forKey: Constants.chat)
     }
     
     func save(OrganisationTimesheet: Bool) {
@@ -127,10 +130,6 @@ extension NotificationContainer: NotificationStorer {
     
     func save(JobOfferResponse: Bool) {
         defaults.set(JobOfferResponse, forKey: Constants.JobOfferResponse)
-    }
-    
-    func save(OrganizationChat: Bool) {
-        defaults.set(OrganizationChat, forKey: Constants.OrganizationChat)
     }
     
     func save(interviewNotification: Bool) {

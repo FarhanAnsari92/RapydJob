@@ -170,7 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
                 AppContainer.shared.notificationContainer.save(JobOfferSend: true)
             case .JobseekerChat?:
                 NotificationCenter.default.post(name: .messageNotificationName, object: nil)
-                AppContainer.shared.notificationContainer.save(JobseekerChat: true)
+                AppContainer.shared.notificationContainer.save(Chat: true)
                 
             //Organization
             case .OrganisationTimesheet?:
@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
                 AppContainer.shared.notificationContainer.save(JobOfferResponse: true)
             case .OrganizationChat?:
                 NotificationCenter.default.post(name: .messageNotificationName, object: nil)
-                AppContainer.shared.notificationContainer.save(OrganizationChat: true)
+                AppContainer.shared.notificationContainer.save(Chat: true)
             default:
                 // interview notification
                 AppContainer.shared.notificationContainer.save(interviewNotification: true)

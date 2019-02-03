@@ -38,6 +38,7 @@ class CardViewController: BaseViewController {
     var isLastActionDeleted: Bool = false
     
     let messageBadgeView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 15, height: 15)))
+    var shouldShowMessageBadgeView: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +51,15 @@ class CardViewController: BaseViewController {
     }
     
     @objc func didReceiveMessage() {
-        self.messageBadgeView.isHidden = false
+        if self.shouldShowMessageBadgeView {
+            self.messageBadgeView.isHidden = false
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.shouldShowMessageBadgeView = true
+        self.messageBadgeView.isHidden = !AppContainer.shared.notificationContainer.Chat
         //
         //These codes moved from didLoad to viewAppear
         viewModel = CardFlowViewModel(withFlow: cardFlow)
@@ -119,6 +123,7 @@ class CardViewController: BaseViewController {
     @objc func didTapMessageButton() {
         let vc = ChatListVC()
         self.messageBadgeView.isHidden = true
+        self.shouldShowMessageBadgeView = false
         navigationController?.pushViewController(vc, animated: true)
     }
     

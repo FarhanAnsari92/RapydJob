@@ -52,10 +52,10 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //        SocketService.connectToServerWithNickname(userId: userId)
     }
 //
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        SocketService.closeConnection()
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppContainer.shared.notificationContainer.save(Chat: false)
+    }
     
 
     private func setupViews() {
