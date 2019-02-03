@@ -37,9 +37,20 @@ class CardViewController: BaseViewController {
     var toast: JYToast!
     var isLastActionDeleted: Bool = false
     
+    let messageBadgeView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 15, height: 15)))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toast = JYToast()
+        self.messageBadgeView.layer.cornerRadius = 7.5
+        self.messageBadgeView.backgroundColor = UIColor.red
+        self.messageBadgeView.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveMessage), name: .messageNotificationName, object: nil)
+    }
+    
+    @objc func didReceiveMessage() {
+        self.messageBadgeView.isHidden = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +105,7 @@ class CardViewController: BaseViewController {
         messageBtn.setImage(UIImage(named: "ic_message")?.withRenderingMode(.alwaysOriginal), for: .normal)
         messageBtn.addTarget(self, action: #selector(didTapMessageButton), for: .touchUpInside)
         messageBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        messageBtn.addSubview(self.messageBadgeView)
         let messageBarBtn = UIBarButtonItem(customView: messageBtn)
         
         switch cardFlow {
@@ -106,6 +118,7 @@ class CardViewController: BaseViewController {
     
     @objc func didTapMessageButton() {
         let vc = ChatListVC()
+        self.messageBadgeView.isHidden = true
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,12 +31,22 @@
                         <color key="textColor" white="0.6018415178571429" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtW-zp-lI6">
+                        <rect key="frame" x="77.5" y="13" width="10" height="10"/>
+                        <color key="backgroundColor" red="0.91607064260563376" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jtW-zp-lI6" secondAttribute="height" multiplier="1:1" id="el0-v6-TVI"/>
+                            <constraint firstAttribute="height" constant="10" id="jI3-Tc-0KG"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="jtW-zp-lI6" firstAttribute="centerX" secondItem="qU4-U2-jjn" secondAttribute="trailing" constant="-2" id="0pp-cY-gEZ"/>
                     <constraint firstItem="qU4-U2-jjn" firstAttribute="centerX" secondItem="LEZ-4L-bG2" secondAttribute="centerX" multiplier="0.45" id="Gy7-oB-qhC"/>
                     <constraint firstItem="nV2-g5-4sn" firstAttribute="leading" secondItem="qU4-U2-jjn" secondAttribute="trailing" constant="20" id="KMy-3a-MNN"/>
                     <constraint firstItem="qU4-U2-jjn" firstAttribute="centerY" secondItem="LEZ-4L-bG2" secondAttribute="centerY" id="PSb-aw-v1P"/>
+                    <constraint firstItem="jtW-zp-lI6" firstAttribute="centerY" secondItem="qU4-U2-jjn" secondAttribute="top" constant="3" id="teX-q4-PYy"/>
                     <constraint firstItem="nV2-g5-4sn" firstAttribute="centerY" secondItem="LEZ-4L-bG2" secondAttribute="centerY" id="yU3-yM-8UK"/>
                 </constraints>
             </tableViewCellContentView>
@@ -47,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="ror-Hh-mg7"/>
             <connections>
                 <outlet property="iconView" destination="qU4-U2-jjn" id="i9E-d3-wNK"/>
+                <outlet property="notificationView" destination="jtW-zp-lI6" id="85t-Ny-eEF"/>
                 <outlet property="titleLabel" destination="nV2-g5-4sn" id="Bt9-Ey-zV9"/>
             </connections>
             <point key="canvasLocation" x="34" y="-69.5"/>

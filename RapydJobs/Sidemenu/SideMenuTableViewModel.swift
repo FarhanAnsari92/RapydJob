@@ -40,9 +40,9 @@ class SideMenuTableViewModel: NSObject {
         let profileItem = SideMenuItem("My Profile", "ic_my_profile", ProfileDetailsViewController.getInstance())
         let scheduledIntItem = SideMenuItem("Scheduled Interviews", "ic_interviews", ScheduleInterviewViewController.getInstance())
         
-        let jobseekerTimesheet = SideMenuItem("Timesheet","ic_interviews", JobseekerTimesheetViewController.getInstance())
+        let jobseekerTimesheet = SideMenuItem("Jobseeker Timesheet","ic_interviews", JobseekerTimesheetViewController.getInstance())
         
-        let employerTimesheet = SideMenuItem("Timesheet","ic_interviews", EmployerTimesheetViewController.getInstance())
+        let employerTimesheet = SideMenuItem("Employer Timesheet","ic_interviews", EmployerTimesheetViewController.getInstance())
 
         switch accountType {
         case "organization":

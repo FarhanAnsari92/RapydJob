@@ -147,17 +147,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
+        application.applicationIconBadgeNumber = 0
         guard let _ = UserContainer().user else {
             return
         }
-        if let data = userInfo["custom data"] as? [String:Any],
-            let actionClick = data["action_click"] as? String {
+        
+        guard let data = userInfo["custom data"] as? [String:Any],
+            let actionClick = data["action_click"] as? String else {
+                return
+        }
+        
+        if application.applicationState == .active { // foreground
             
-            if actionClick == "interviewNotification" {
+            print(data)
+            switch NotificationType(rawValue: actionClick) {
+            // Job seeker
+            case .JobSeekerTimesheet?:
+                AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: true)
+            case .InterviewSchedule?:
+                AppContainer.shared.notificationContainer.save(InterviewSchedule: true)
+            case .JobOfferSend?:
+                AppContainer.shared.notificationContainer.save(JobOfferSend: true)
+            case .JobseekerChat?:
+                NotificationCenter.default.post(name: .messageNotificationName, object: nil)
+                AppContainer.shared.notificationContainer.save(JobseekerChat: true)
                 
-                let refId = data["ref_id"] as? Int
+            //Organization
+            case .OrganisationTimesheet?:
+                AppContainer.shared.notificationContainer.save(OrganisationTimesheet: true)
+            case .JobOfferResponse?:
+                AppContainer.shared.notificationContainer.save(JobOfferResponse: true)
+            case .OrganizationChat?:
+                NotificationCenter.default.post(name: .messageNotificationName, object: nil)
+                AppContainer.shared.notificationContainer.save(OrganizationChat: true)
+            default:
+                // interview notification
+                AppContainer.shared.notificationContainer.save(interviewNotification: true)
+            }
+            
+        } else { // Background
+            
+            switch NotificationType(rawValue: actionClick) {
+                // Job seeker
+            case .JobSeekerTimesheet?:
                 
-            } else if actionClick == "JobseekerChat" {
+//                let refId = data["ref_id"] as? Int
+//                print(refId)
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let vc = JobseekerTimesheetViewController.getInstance()
+                let navController = BaseNavigationViewController(rootViewController: vc)
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
+                
+            case .InterviewSchedule?:
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let vc = ScheduleInterviewViewController.getInstance()
+                let navController = BaseNavigationViewController(rootViewController: vc)
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
+                
+            case .JobOfferSend?:
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let vc = JobListSeekerViewController.getInstance()
+                let navController = BaseNavigationViewController(rootViewController: vc)
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
+                
+            case .JobseekerChat?:
                 let conversationId = data["conversation_id"] as? Int
                 
                 self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -177,15 +236,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
                 self.window?.setRootViewController(navController)
                 self.window?.makeKeyAndVisible()
                 
-            } else if actionClick == "OrganisationTimesheet" {
-                
+            //Organization
+            case .OrganisationTimesheet?:
                 let refId = data["ref_id"] as? Int
+                print(refId)
                 
-            } else if actionClick == "JobSeekerTimesheet" {
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let vc = EmployerTimesheetViewController.getInstance()
+                let navController = BaseNavigationViewController(rootViewController: vc)
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
                 
+            case .JobOfferResponse?:
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let vc = HRVC.getInstance()
+                let navController = BaseNavigationViewController(rootViewController: vc)
+                self.window?.setRootViewController(navController)
+                self.window?.makeKeyAndVisible()
+                
+            case .OrganizationChat?:
+                break
+            default:
+                // interview notification
                 let refId = data["ref_id"] as? Int
-                
+                print(refId)
             }
+            
+//            if actionClick == "interviewNotification" {
+//
+//                let refId = data["ref_id"] as? Int
+//
+//            } else if actionClick == "JobseekerChat" {
+//                let conversationId = data["conversation_id"] as? Int
+//
+//                self.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//                let home = CardViewController.getInstance()
+//                home.cardFlow = .dashboard
+//
+//                let chatListVC = ChatListVC()
+//
+//                let sb = UIStoryboard(name: "Chat", bundle: nil)
+//                let chatMessageVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+//                chatMessageVC.conversationId = conversationId
+//
+//                let navController = BaseNavigationViewController()
+//                navController.setViewControllers([home, chatListVC, chatMessageVC], animated: true)
+//
+//                self.window?.setRootViewController(navController)
+//                self.window?.makeKeyAndVisible()
+//
+//            } else if actionClick == "OrganisationTimesheet" {
+//
+//                let refId = data["ref_id"] as? Int
+//
+//            } else if actionClick == "JobSeekerTimesheet" {
+//
+//                let refId = data["ref_id"] as? Int
+//
+//            }
         }
     }
     

@@ -12,16 +12,28 @@ class SideMenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var notificationView: UIView!
     
     var sideMenuItem:SideMenuItem? {
         didSet {
             titleLabel.text = sideMenuItem?.title
             iconView.image = sideMenuItem?.image
+            switch sideMenuItem?.title {
+            case "Scheduled Interviews":
+                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.InterviewSchedule)
+            case "Job Offers":
+                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobOfferSend)
+            case "Jobseeker Timesheet":
+                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobSeekerTimesheet)
+            default:
+                self.notificationView.isHidden = true
+            }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectedBackgroundView = UIView()
+        self.notificationView.layer.cornerRadius = 5
     }
 }
