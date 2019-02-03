@@ -19,12 +19,19 @@ class SideMenuTableViewCell: UITableViewCell {
             titleLabel.text = sideMenuItem?.title
             iconView.image = sideMenuItem?.image
             switch sideMenuItem?.title {
+                //seeker
             case "Scheduled Interviews":
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.InterviewSchedule)
             case "Job Offers":
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobOfferSend)
             case "Jobseeker Timesheet":
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobSeekerTimesheet)
+                
+                //Employeer
+            case "Employer Timesheet":
+                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.OrganisationTimesheet)
+            case "HR":
+                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobOfferResponse)                
             default:
                 self.notificationView.isHidden = true
             }

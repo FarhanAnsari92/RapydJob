@@ -88,12 +88,19 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
         let vc = viewModel.data[indexPath.row].viewController
         let title = viewModel.data[indexPath.row].title
         switch title {
+            //Seeker
         case "Scheduled Interviews":
             AppContainer.shared.notificationContainer.save(InterviewSchedule: false)
         case "Job Offers":
             AppContainer.shared.notificationContainer.save(JobOfferSend: false)
         case "Jobseeker Timesheet":
             AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: false)
+            
+            //Employeer
+        case "Employer Timesheet":
+            AppContainer.shared.notificationContainer.save(OrganisationTimesheet: false)
+        case "HR":
+            AppContainer.shared.notificationContainer.save(JobOfferResponse: false)
         default:
             break
         }
