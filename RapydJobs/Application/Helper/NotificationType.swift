@@ -24,3 +24,7 @@ enum NotificationType: String {
     case interviewNotification
  
 }
+
+extension Notification.Name {
+    static let messageNotificationName = Notification.Name("messageNotificationName")
+}
