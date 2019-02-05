@@ -85,7 +85,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
                 }
             }
-            footerConstrains.constant =  endFrame.size.height + 44 //keyboardHeight + 20
+            footerConstrains.constant =  endFrame.size.height
             view.layoutIfNeeded()
         }
     }
@@ -120,6 +120,8 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidAppear(animated)
         self.getConversation()
     }
+    
+    //MARK:- Get Conversation
     
     func getConversation() {
         
@@ -190,6 +192,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         IQKeyboardManager.shared.enable = true
     }
     
+    //MARK:- Receive Message
     func receiveMessage() {
         SocketService.socket.on("message") { [weak self] (data, ack) in
             print(data)
@@ -206,7 +209,12 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let chat = Message(repliedTo: repliedTo, updatedAt: updatedAt, id: id, conversationId: conversationId, senderId: senderId, createdAt: createdAt, message: message, type: type)
             
             self?.messages.append(chat)
-            self?.messagesTableView.reloadData()
+            if self?.messages.count == 0 {
+                self?.noMessageView.isHidden = false
+            } else {
+                self?.noMessageView.isHidden = true
+                self?.messagesTableView.reloadData()
+            }
             self?.moveToBottom(false)
             return
         }
@@ -505,6 +513,8 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //MARK:- Send Message
+    
     @IBAction private func sendMessageTapped(_ sender: UIButton) {
         
         if messageInput.text != "" { //} || messageInput.text != "Type a message" {
@@ -530,7 +540,12 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let msg = Message(repliedTo: "", updatedAt: "", id: 0, conversationId: String(self.conversationId ?? 0), senderId: userId, createdAt: dictionary["created_at"] as? String ?? "" , message: message, type: "text")
                 
                 self.messages.append(msg)
-                self.messagesTableView.reloadData()
+                if self.messages.count == 0 {
+                    self.noMessageView.isHidden = false
+                } else {
+                    self.noMessageView.isHidden = true
+                    self.messagesTableView.reloadData()
+                }
                 self.moveToBottom()
                 
             }) { (errorDictionary, _) in
