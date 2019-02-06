@@ -78,16 +78,16 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let endFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
-            if #available(iOS 11, *) {
-                if keyboardHeight > 0 {
-                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
-                }
-            }
-            footerConstrains.constant =  endFrame.size.height
-            view.layoutIfNeeded()
-        }
+//        if let endFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
+//            if #available(iOS 11, *) {
+//                if keyboardHeight > 0 {
+//                    keyboardHeight = keyboardHeight + view.safeAreaInsets.bottom
+//                }
+//            }
+//            footerConstrains.constant =  endFrame.size.height
+//            view.layoutIfNeeded()
+//        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -101,19 +101,19 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
-//        if let endFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
-//            if #available(iOS 11, *) {
-//                if keyboardHeight > 0 {
-//                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
-//                }
-//            }
-//
-//            //txtViewBottomBonstraint.constant = -keyboardHeight - 8
-//            //txtViewBottomBonstraint.constant = keyboardHeight + 8
-//            footerConstrains.constant = keyboardHeight + 8
-//            view.layoutIfNeeded()
-//        }
+
+        guard let userInfo = (notification as Notification).userInfo,
+            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                return
+        }
+        let newHeight: CGFloat
+        if #available(iOS 11.0, *) {
+            newHeight = value.cgRectValue.height - view.safeAreaInsets.bottom
+        } else {
+            newHeight = value.cgRectValue.height
+        }
+        footerConstrains.constant = newHeight
+        view.layoutIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -245,7 +245,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         messageInput.delegate = self
         placeholderLabel = UILabel()
-        placeholderLabel.text = "Text Message"
+        placeholderLabel.text = "Type a message"
         placeholderLabel.font = UIFont.italicSystemFont(ofSize: (messageInput.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         //messageInput.addSubview(placeholderLabel)
