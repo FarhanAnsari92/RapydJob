@@ -278,13 +278,6 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == employerAddressInput {
-            return false
-        }
-        return true
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == employerAddressInput {
             employerAddressInput.resignFirstResponder()

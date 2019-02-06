@@ -388,15 +388,16 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         locationImage.heightAnchor.constraint(equalToConstant: 18).isActive = true
         locationImage.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        locationImage.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(moveToMapVC(_:)))
+        jobseekerAddressInput.addGestureRecognizer(tap)
+        locationImage.addGestureRecognizer(tap)
         
         view.addSubview(mainStackView)
         mainStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 40).isActive = true
         mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(moveToMapVC(_:)))
-        jobseekerAddressInput.addGestureRecognizer(tap)
-        jobseekerAddressInput.inputView = UIView()
         jobseekerAddressInput.rightView = locationImage
         jobseekerAddressInput.rightViewMode = .always
         
