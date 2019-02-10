@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XVo-sg-ewF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XVo-sg-ewF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,6 +39,14 @@
                                     <outlet property="delegate" destination="XVo-sg-ewF" id="qku-yA-aUq"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpo-oc-7eZ" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="248.5" width="250" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fpo-oc-7eZ" secondAttribute="height" multiplier="1:1" id="80M-gS-AjX"/>
+                                    <constraint firstAttribute="height" constant="250" id="UfM-6j-IZv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -48,7 +55,9 @@
                             <constraint firstItem="OBp-lO-oG1" firstAttribute="trailing" secondItem="xu3-ne-miR" secondAttribute="trailing" id="WWm-tQ-56T"/>
                             <constraint firstItem="OBp-lO-oG1" firstAttribute="trailing" secondItem="CbR-9I-wpR" secondAttribute="trailing" id="YbK-J4-hWV"/>
                             <constraint firstItem="AE4-dL-jO5" firstAttribute="top" secondItem="CbR-9I-wpR" secondAttribute="bottom" id="Z7i-Ey-0wu"/>
+                            <constraint firstItem="Fpo-oc-7eZ" firstAttribute="centerX" secondItem="ndK-Ii-gQb" secondAttribute="centerX" id="ehq-hD-6Hp"/>
                             <constraint firstItem="CbR-9I-wpR" firstAttribute="top" secondItem="OBp-lO-oG1" secondAttribute="top" id="lnG-qE-Qxm"/>
+                            <constraint firstItem="Fpo-oc-7eZ" firstAttribute="centerY" secondItem="ndK-Ii-gQb" secondAttribute="centerY" constant="40" id="m32-nw-nLP"/>
                             <constraint firstItem="xu3-ne-miR" firstAttribute="top" secondItem="AE4-dL-jO5" secondAttribute="bottom" id="nZI-yc-wbx"/>
                             <constraint firstItem="CbR-9I-wpR" firstAttribute="leading" secondItem="OBp-lO-oG1" secondAttribute="leading" id="t9i-fM-jgS"/>
                             <constraint firstItem="OBp-lO-oG1" firstAttribute="trailing" secondItem="AE4-dL-jO5" secondAttribute="trailing" id="tZe-84-cH9"/>
@@ -57,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="OBp-lO-oG1"/>
                     </view>
                     <connections>
+                        <outlet property="emptyPlaceholderView" destination="Fpo-oc-7eZ" id="2nB-ib-SBC"/>
                         <outlet property="segmentControl" destination="CbR-9I-wpR" id="1MY-Ar-FIo"/>
                         <outlet property="tableView" destination="xu3-ne-miR" id="mrf-la-VVO"/>
                     </connections>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -95,15 +94,25 @@
                                     <outlet property="delegate" destination="PpN-aC-PKY" id="fzl-fj-OJ1"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kq0-Kl-tTy" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="248.5" width="250" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="08f-gk-1YE"/>
+                                    <constraint firstAttribute="width" secondItem="Kq0-Kl-tTy" secondAttribute="height" multiplier="1:1" id="Otu-c4-6Ck"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kZc-ew-fdR" firstAttribute="top" secondItem="zaB-xK-Z4i" secondAttribute="bottom" id="0mY-WG-kTd"/>
+                            <constraint firstItem="Kq0-Kl-tTy" firstAttribute="centerX" secondItem="JGj-OB-44l" secondAttribute="centerX" id="1hH-cn-lOn"/>
                             <constraint firstItem="zaB-xK-Z4i" firstAttribute="top" secondItem="5qb-Sp-rBN" secondAttribute="bottom" id="3cJ-04-3KF"/>
                             <constraint firstAttribute="trailing" secondItem="5qb-Sp-rBN" secondAttribute="trailing" id="J78-Nq-69J"/>
                             <constraint firstItem="5qb-Sp-rBN" firstAttribute="top" secondItem="pxR-fM-NHV" secondAttribute="top" id="Npi-H9-aFy"/>
                             <constraint firstItem="5qb-Sp-rBN" firstAttribute="leading" secondItem="pxR-fM-NHV" secondAttribute="leading" id="Q6v-pP-0ZQ"/>
                             <constraint firstItem="zaB-xK-Z4i" firstAttribute="leading" secondItem="JGj-OB-44l" secondAttribute="leading" id="Uuw-Rw-QCt"/>
+                            <constraint firstItem="Kq0-Kl-tTy" firstAttribute="centerY" secondItem="JGj-OB-44l" secondAttribute="centerY" constant="40" id="YfU-cc-4Zz"/>
                             <constraint firstAttribute="trailing" secondItem="kZc-ew-fdR" secondAttribute="trailing" id="Z51-cN-RhH"/>
                             <constraint firstItem="kZc-ew-fdR" firstAttribute="leading" secondItem="pxR-fM-NHV" secondAttribute="leading" id="apn-S2-xUl"/>
                             <constraint firstAttribute="bottom" secondItem="kZc-ew-fdR" secondAttribute="bottom" id="mGU-AK-rtD"/>
@@ -112,6 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="pxR-fM-NHV"/>
                     </view>
                     <connections>
+                        <outlet property="emptyPlaceholderView" destination="Kq0-Kl-tTy" id="79L-W2-wsw"/>
                         <outlet property="segmentControl" destination="5qb-Sp-rBN" id="4zO-rk-ESd"/>
                         <outlet property="tableView" destination="kZc-ew-fdR" id="ptW-EY-WYW"/>
                     </connections>

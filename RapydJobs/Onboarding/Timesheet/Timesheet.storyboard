@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,13 +39,23 @@
                                     <outlet property="delegate" destination="rf8-VA-vzs" id="cWh-Q9-Wjg"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kro-Qr-Mtn" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="248.5" width="250" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kro-Qr-Mtn" secondAttribute="height" multiplier="1:1" id="6YN-4e-5FS"/>
+                                    <constraint firstAttribute="height" constant="250" id="X2W-lw-t9l"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Zfw-6R-1Cj" firstAttribute="top" secondItem="78k-ms-0dA" secondAttribute="top" id="6BE-WX-FDU"/>
+                            <constraint firstItem="kro-Qr-Mtn" firstAttribute="centerY" secondItem="gDD-RN-HEy" secondAttribute="centerY" constant="40" id="COP-Wk-bwR"/>
                             <constraint firstItem="yIc-D2-HNT" firstAttribute="leading" secondItem="78k-ms-0dA" secondAttribute="leading" id="MsA-kN-OfG"/>
                             <constraint firstItem="Zfw-6R-1Cj" firstAttribute="leading" secondItem="gDD-RN-HEy" secondAttribute="leading" id="Oii-Pe-eZa"/>
                             <constraint firstItem="yIc-D2-HNT" firstAttribute="top" secondItem="NkN-gw-IEr" secondAttribute="bottom" id="SF5-2f-LJZ"/>
+                            <constraint firstItem="kro-Qr-Mtn" firstAttribute="centerX" secondItem="gDD-RN-HEy" secondAttribute="centerX" id="YuS-kW-4y8"/>
                             <constraint firstItem="78k-ms-0dA" firstAttribute="bottom" secondItem="yIc-D2-HNT" secondAttribute="bottom" id="Zfj-E7-Xfx"/>
                             <constraint firstItem="NkN-gw-IEr" firstAttribute="top" secondItem="Zfw-6R-1Cj" secondAttribute="bottom" id="bvI-bB-L1R"/>
                             <constraint firstAttribute="trailing" secondItem="NkN-gw-IEr" secondAttribute="trailing" id="kpk-XI-4al"/>
@@ -57,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="78k-ms-0dA"/>
                     </view>
                     <connections>
+                        <outlet property="emptyPlaceholderView" destination="kro-Qr-Mtn" id="8MZ-hb-3rv"/>
                         <outlet property="segmentControl" destination="Zfw-6R-1Cj" id="jqF-6F-2Gd"/>
                         <outlet property="tbl" destination="yIc-D2-HNT" id="iMi-lH-Jtn"/>
                     </connections>
@@ -95,16 +105,26 @@
                                     <outlet property="delegate" destination="lqM-fw-hLu" id="nBW-r9-iU8"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loV-rZ-iMO" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="248.5" width="250" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="PXJ-fx-ns3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bol-8G-9Ef" firstAttribute="bottom" secondItem="bLh-Of-s6g" secondAttribute="bottom" id="2cu-vy-uZQ"/>
                             <constraint firstItem="bLh-Of-s6g" firstAttribute="leading" secondItem="Bol-8G-9Ef" secondAttribute="leading" id="3n2-hj-6rq"/>
+                            <constraint firstItem="loV-rZ-iMO" firstAttribute="centerY" secondItem="JcU-yb-Qac" secondAttribute="centerY" constant="40" id="4mM-H7-hYv"/>
+                            <constraint firstItem="loV-rZ-iMO" firstAttribute="centerX" secondItem="JcU-yb-Qac" secondAttribute="centerX" id="9q6-LE-U00"/>
                             <constraint firstItem="JVi-EX-Fvx" firstAttribute="top" secondItem="Bol-8G-9Ef" secondAttribute="top" id="Q7l-E1-zFp"/>
                             <constraint firstItem="Bol-8G-9Ef" firstAttribute="trailing" secondItem="bLh-Of-s6g" secondAttribute="trailing" id="XqZ-JD-BUB"/>
                             <constraint firstItem="Bol-8G-9Ef" firstAttribute="trailing" secondItem="ErR-g7-1b7" secondAttribute="trailing" id="dhK-nm-ihO"/>
                             <constraint firstItem="bLh-Of-s6g" firstAttribute="top" secondItem="ErR-g7-1b7" secondAttribute="bottom" id="hdl-Eh-2Nu"/>
                             <constraint firstItem="ErR-g7-1b7" firstAttribute="top" secondItem="JVi-EX-Fvx" secondAttribute="bottom" id="os5-XE-6DC"/>
+                            <constraint firstItem="loV-rZ-iMO" firstAttribute="width" secondItem="loV-rZ-iMO" secondAttribute="height" multiplier="1:1" id="p6I-8X-dlW"/>
                             <constraint firstItem="JVi-EX-Fvx" firstAttribute="leading" secondItem="Bol-8G-9Ef" secondAttribute="leading" id="qZ3-FQ-pP6"/>
                             <constraint firstAttribute="trailing" secondItem="JVi-EX-Fvx" secondAttribute="trailing" id="tIB-Ji-ICs"/>
                             <constraint firstItem="ErR-g7-1b7" firstAttribute="leading" secondItem="Bol-8G-9Ef" secondAttribute="leading" id="te1-yB-zOw"/>
@@ -112,6 +132,7 @@
                         <viewLayoutGuide key="safeArea" id="Bol-8G-9Ef"/>
                     </view>
                     <connections>
+                        <outlet property="emptyPlaceholderView" destination="loV-rZ-iMO" id="ESc-qi-2AY"/>
                         <outlet property="segmentControl" destination="JVi-EX-Fvx" id="j0e-iV-CoI"/>
                         <outlet property="tbl" destination="bLh-Of-s6g" id="6Td-Sp-MTB"/>
                     </connections>

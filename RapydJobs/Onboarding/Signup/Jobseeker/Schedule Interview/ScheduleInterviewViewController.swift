@@ -13,6 +13,11 @@ import JGProgressHUD
 class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView! {
+        didSet {
+            self.emptyPlaceholderView.message.text = "You have no scheduled meetings yet"
+        }
+    }
     var jobOffers = [[String:Any]]()
     
     var currentPage = 1
@@ -77,6 +82,9 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
             }
             self.jobOffers = arrOfObj
             self.tableView.reloadData()
+            if self.jobOffers.count == 0 {
+                self.emptyPlaceholderView.isHidden = false
+            }
             
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)

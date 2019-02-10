@@ -15,6 +15,7 @@ class EmployerTimesheetViewController: BaseViewController {
     
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var segmentControl: Segmentio!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     var timesheets: [TimesheetResponseModel] = [TimesheetResponseModel]()
     
     private let hud: JGProgressHUD = {
@@ -83,6 +84,7 @@ class EmployerTimesheetViewController: BaseViewController {
         segmentControl.valueDidChange = { segmentio, segmentIndex in
             self.hud.dismiss(animated: true)
             self.timesheets.removeAll()
+            self.emptyPlaceholderView.isHidden = true
             self.tbl.reloadData()
             if segmentIndex == 0 {
                 self.getTimesheet(type: ["approve"])
@@ -108,16 +110,27 @@ class EmployerTimesheetViewController: BaseViewController {
             }
             
             self.timesheets = Mapper<TimesheetResponseModel>().mapArray(JSONArray: data)
-            
-            print(self.timesheets.toJSON())
-            
             self.tbl.reloadData()
+            if self.timesheets.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
             
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)
             
             print(errorDictionary)
         }
+    }
+    
+    private func showEmptyPlaceholderView() {
+        if self.segmentControl.selectedSegmentioIndex == 0 {
+            self.emptyPlaceholderView.message.text = "You haven't approved any timesheet yet"
+        } else if self.segmentControl.selectedSegmentioIndex == 1 {
+            self.emptyPlaceholderView.message.text = "You haven't received new timesheet yet"
+        } else {
+            self.emptyPlaceholderView.message.text = "You haven't rejected timesheet yet"
+        }
+        self.emptyPlaceholderView.isHidden = false
     }
     
     func change(status: String, timesheetId: Int, indexPath: IndexPath) {
@@ -131,6 +144,9 @@ class EmployerTimesheetViewController: BaseViewController {
             if let _ = dictionary["status"] as? String {
                 self.timesheets.remove(at: indexPath.row)
                 self.tbl.reloadData()
+                if self.timesheets.count == 0 {
+                    self.showEmptyPlaceholderView()
+                }
             }
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)

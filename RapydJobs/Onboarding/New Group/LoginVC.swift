@@ -427,7 +427,7 @@ class LoginVC: UIViewController {
                     
                     let user: UserResponseModel = Mapper<UserResponseModel>().map(JSON: dictionary)!
                     print(user.toJSON())
-                    
+                    AppContainer.shared.user.save(isLogin: true)
                     let account_type = user.accountType!
                     let username = user.userName!
                     let access_token = user.accessToken!

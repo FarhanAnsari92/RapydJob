@@ -14,6 +14,7 @@ import JGProgressHUD
 class InterviewsViewController: BaseViewController {
     @IBOutlet weak var segmentControl: Segmentio!    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     
     private let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
@@ -21,17 +22,7 @@ class InterviewsViewController: BaseViewController {
         return hud
     }()
     
-    var interviews: [InterviewModel]?
-    
-    var viewModl: ProfileDetailsViewModel = ProfileDetailsViewModel()
-    
-    var viewModel: InterviewsViewModel! = InterviewsViewModel(interviews: [
-        Interview(candidate: Candidate(name: "Harvey Dent", title: "DA Gotham", image: nil), time: Time(start: Date(), end: Date(), formatter: Time.defaultFormatter)),
-        Interview(candidate: Candidate(name: "Harvey Dent", title: "DA Gotham", image: nil), time: Time(start: Date(), end: Date(), formatter: Time.defaultFormatter))
-        ], interviewed: [
-            Candidate(name: "Batman", title: "Saviour, Gotham City", image: nil),
-            Candidate(name: "Harvey Dent", title: "DA, Gotham", image: nil)
-        ])
+    var interviews: [InterviewModel] = [InterviewModel]()
     
     var toast: JYToast!
     
@@ -98,8 +89,9 @@ class InterviewsViewController: BaseViewController {
 //            }
             
             self.hud.dismiss(animated: true)
-            self.interviews?.removeAll()
+            self.interviews.removeAll()
             self.tableView.reloadData()
+            self.emptyPlaceholderView.isHidden = true
             self.callAPI(type: segmentIndex == 0 ? "scheduled" : "interviewed")
 //
             
@@ -120,6 +112,9 @@ class InterviewsViewController: BaseViewController {
             }
             self.interviews = Mapper<InterviewModel>().mapArray(JSONArray: interviewsDictArr)
             self.tableView.reloadData()
+            if self.interviews.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -130,8 +125,11 @@ class InterviewsViewController: BaseViewController {
         print(interviewId)
         _ = APIClient.callAPI(request: APIClient.reject(interviewId: interviewId), onSuccess: { (dictionary) in
             print(dictionary)
-            self.interviews?.remove(at: row)
+            self.interviews.remove(at: row)
             self.tableView.reloadData()
+            if self.interviews.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
@@ -143,12 +141,25 @@ class InterviewsViewController: BaseViewController {
         _ = APIClient.callAPI(request: APIClient.updateInterview(interviewId: interviewId, param: param), onSuccess: { (dictionary) in
             
             print(dictionary)
-            self.interviews?.remove(at: row)
+            self.interviews.remove(at: row)
             self.tableView.reloadData()
+            if self.interviews.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
             
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
+    }
+    
+    private func showEmptyPlaceholderView() {
+        // In case the message is asked to be different by PM/Client
+        if self.segmentControl.selectedSegmentioIndex == 0 {
+            self.emptyPlaceholderView.message.text = "You haven't scheduled meetings yet"
+        } else {
+            self.emptyPlaceholderView.message.text = "You haven't scheduled meetings yet"
+        }
+        self.emptyPlaceholderView.isHidden = false
     }
     
     private func registerCells(tableView: UITableView) {
@@ -163,31 +174,28 @@ class InterviewsViewController: BaseViewController {
 
 extension InterviewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.interviews?.count ?? 0
+        return self.interviews.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentControl.selectedSegmentioIndex < 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "scheduled-tableview") as! ScheduledTableViewCell
 
             cell.updateInterviewCompletion = {
-                guard let interv = self.interviews,
-                let interviewId = interv[indexPath.row].interviewId else {
+                guard let interviewId = self.interviews[indexPath.row].interviewId else {
                     return
                 }
                 self.updateInterview(interviewId: interviewId, row: indexPath.row)
             }
             
             cell.rescheduleInterviewCompletion = {
-                guard let interv = self.interviews else {
-                        return
-                }
+                let interv = self.interviews
                 let sb = UIStoryboard(name: "Interview", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "RescheduleInterviewViewControllerID") as! RescheduleInterviewViewController
                 vc.interviewModel = interv[indexPath.row]
                 
                 vc.completion = { () in
                     
-                    self.interviews?.removeAll()
+                    self.interviews.removeAll()
                     self.tableView.reloadData()
                     self.callAPI(type: "scheduled")
                 }
@@ -196,8 +204,7 @@ extension InterviewsViewController: UITableViewDataSource {
             }
             
             cell.profilePictureCompletion = {
-                guard let interv = self.interviews,
-                    let userId = interv[indexPath.row].userId else {
+                guard let userId = self.interviews[indexPath.row].userId else {
                         return
                 }
                 
@@ -206,7 +213,7 @@ extension InterviewsViewController: UITableViewDataSource {
                 self.navigationController?.pushViewController(profileDetailsVC, animated: true)
             }
             
-            cell.update(self.interviews![indexPath.row])
+            cell.update(self.interviews[indexPath.row])
             
             cell.shouldDrawFullShadow = true
             //cell.setup(viewModel: cellVM)
@@ -216,9 +223,7 @@ extension InterviewsViewController: UITableViewDataSource {
             
             cell.makeOfferCompletion = {
                 
-                guard let interv = self.interviews else {
-                        return
-                }
+                let interv = self.interviews
                 
                 let storyboard = UIStoryboard(name: "Offer", bundle: nil)
                 let makeOfferVc = storyboard.instantiateViewController(withIdentifier: "MakeOfferViewControllerID") as! MakeOfferViewController
@@ -230,8 +235,7 @@ extension InterviewsViewController: UITableViewDataSource {
             }
             
             cell.rejectOfferCompletion = {
-                guard let interv = self.interviews,
-                    let interviewId = interv[indexPath.row].interviewId else {
+                guard let interviewId = self.interviews[indexPath.row].interviewId else {
                         return
                 }
                 self.reject(interviewId: interviewId, row: indexPath.row)
@@ -239,8 +243,7 @@ extension InterviewsViewController: UITableViewDataSource {
             }
             
             cell.profilePictureCompletion = {
-                guard let interv = self.interviews,
-                    let userId = interv[indexPath.row].userId else {
+                guard let userId = self.interviews[indexPath.row].userId else {
                         return
                 }
                 
@@ -252,7 +255,7 @@ extension InterviewsViewController: UITableViewDataSource {
             }
             
             cell.shouldDrawFullShadow = true
-            cell.update(self.interviews![indexPath.row])
+            cell.update(self.interviews[indexPath.row])
             //cell.setup(viewModel: cellVM)
             return cell
         }
