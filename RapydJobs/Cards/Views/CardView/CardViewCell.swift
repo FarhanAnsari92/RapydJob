@@ -34,6 +34,20 @@ class CardViewCell: UIView {
 
         self.imageView.layer.cornerRadius = self.imageView.bounds.size.width/2
         self.imageView.layer.masksToBounds = true
+        if AppContainer.shared.user.user?.accountType == "organization" {
+            if EditProfileFlowManager.shared().isHomeScreen {
+                self.noDataLabel.text = "NO SEEKER FOR THIS JOB"
+            } else {
+                self.noDataLabel.text = "NO SEEKER SHORTLISTED"
+            }            
+        } else {
+            if EditProfileFlowManager.shared().isHomeScreen {
+                self.noDataLabel.text = "NO JOB FOUND"
+            } else {
+                self.noDataLabel.text = "NO JOB SHORTLISTED"
+            }
+            
+        }
     }
     
     func populateWithCardItem(_ cardItem:CardViewItem) {

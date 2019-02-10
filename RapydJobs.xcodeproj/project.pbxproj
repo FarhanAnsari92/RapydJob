@@ -362,6 +362,8 @@
 		A5F10542210E027C00179332 /* AddJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F10541210E027C00179332 /* AddJobRequest.swift */; };
 		C90D968621B5D94700191773 /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90D968421B5D94600191773 /* CardOverlayView.xib */; };
 		C90D968721B5D94700191773 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D968521B5D94700191773 /* CardOverlayView.swift */; };
+		C911FC002210A05C0031C7C5 /* EmptyPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C911FBFF2210A05C0031C7C5 /* EmptyPlaceholderView.xib */; };
+		C911FC022210A07A0031C7C5 /* EmptyPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911FC012210A07A0031C7C5 /* EmptyPlaceholderView.swift */; };
 		C9167FE221C010E500BD11E7 /* PlanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9167FE121C010E500BD11E7 /* PlanerViewController.swift */; };
 		C9167FE421C03F3A00BD11E7 /* SeekerTimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */; };
 		C9167FE621C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9167FE521C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift */; };
@@ -833,6 +835,8 @@
 		A5F10541210E027C00179332 /* AddJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobRequest.swift; sourceTree = "<group>"; };
 		C90D968421B5D94600191773 /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
 		C90D968521B5D94700191773 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
+		C911FBFF2210A05C0031C7C5 /* EmptyPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyPlaceholderView.xib; sourceTree = "<group>"; };
+		C911FC012210A07A0031C7C5 /* EmptyPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholderView.swift; sourceTree = "<group>"; };
 		C9167FE121C010E500BD11E7 /* PlanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanerViewController.swift; sourceTree = "<group>"; };
 		C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekerTimesheetViewController.swift; sourceTree = "<group>"; };
 		C9167FE521C05C0D00BD11E7 /* OrganizationHireDropdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationHireDropdownModel.swift; sourceTree = "<group>"; };
@@ -1040,6 +1044,7 @@
 		0D42022720DE65C10063BB23 /* Base Views */ = {
 			isa = PBXGroup;
 			children = (
+				C911FBFE2210A02E0031C7C5 /* Empty Placeholder view */,
 				0D42022A20DE66100063BB23 /* BaseViewController.swift */,
 				0D42023E20DE6E760063BB23 /* BaseButton.swift */,
 				A57E30D420EC084100BF6CE9 /* BaseButtonView.xib */,
@@ -2289,6 +2294,15 @@
 			path = Jobseeker;
 			sourceTree = "<group>";
 		};
+		C911FBFE2210A02E0031C7C5 /* Empty Placeholder view */ = {
+			isa = PBXGroup;
+			children = (
+				C911FBFF2210A05C0031C7C5 /* EmptyPlaceholderView.xib */,
+				C911FC012210A07A0031C7C5 /* EmptyPlaceholderView.swift */,
+			);
+			path = "Empty Placeholder view";
+			sourceTree = "<group>";
+		};
 		C929E9E02185D6DB00A8AA8E /* JobList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2523,6 +2537,7 @@
 				C9A756762193807A005CD41C /* ScheduleInterviewTableViewCell.xib in Resources */,
 				4DD6DF7021691E5B00F8CA3A /* JobseekerSignup.storyboard in Resources */,
 				0DEB4A1A210BAEE90083E78C /* Poppins-Italic.otf in Resources */,
+				C911FC002210A05C0031C7C5 /* EmptyPlaceholderView.xib in Resources */,
 				0DEB4A0E210BAEE90083E78C /* Poppins-BoldItalic.otf in Resources */,
 				A54D086D20E2BDF3002C8449 /* Interview.storyboard in Resources */,
 				C9C07BAE218B9DF0006CBEEB /* Offer.storyboard in Resources */,
@@ -2972,6 +2987,7 @@
 				0DCE241C20E94E1F00577153 /* RelatedFieldsCollectionViewCell.swift in Sources */,
 				883D4DDD21075E2A00FF9B09 /* GetJobOffers.swift in Sources */,
 				0DE319B320E1535100A75F93 /* ProfileDetailsTableReviewCell.swift in Sources */,
+				C911FC022210A07A0031C7C5 /* EmptyPlaceholderView.swift in Sources */,
 				C983C42D218B07E800754866 /* DateCollectionViewCell.swift in Sources */,
 				C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */,
 				4DD6DF3121691CDF00F8CA3A /* ForgotPasswordAPIService.swift in Sources */,

@@ -15,6 +15,7 @@ class JobListSeekerViewController: BaseViewController {
 
     @IBOutlet weak var segmentControl: Segmentio!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     var jobOffers = [JobOfferData]()
     
     var currentPage = 1
@@ -89,7 +90,7 @@ class JobListSeekerViewController: BaseViewController {
             self.lastPage = 0
             self.isLoadMore = false
             self.isLoading = false
-            
+            self.emptyPlaceholderView.isHidden = true
             if segmentIndex == 0 {
                 self.getOffers(type: "active")
             } else if segmentIndex == 1 {
@@ -128,8 +129,12 @@ class JobListSeekerViewController: BaseViewController {
                     self.jobOffers = offer
                 }
             }
-            
             self.tableView.reloadData()
+            
+            if self.jobOffers.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
+            
             
         }) { (errorDictionary, _) in
             self.isLoading = true
@@ -137,6 +142,17 @@ class JobListSeekerViewController: BaseViewController {
             self.hud.dismiss(animated: true)
             print(errorDictionary)
         }
+    }
+    
+    private func showEmptyPlaceholderView() {
+        if self.segmentControl.selectedSegmentioIndex == 0 {
+            self.emptyPlaceholderView.message.text = "You have no job offers at this time"
+        } else if self.segmentControl.selectedSegmentioIndex == 1 {
+            self.emptyPlaceholderView.message.text = "You have no pending job offers at this time"
+        } else {
+            self.emptyPlaceholderView.message.text = "You have no unsuccessfull job offers at this time"
+        }
+        self.emptyPlaceholderView.isHidden = false
     }
     
 }
@@ -229,7 +245,11 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
             self.hud.dismiss(animated: true)
             print(dictionary)
             self.jobOffers.remove(at: row)
+            if self.jobOffers.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
             self.tableView.reloadData()
+            
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
             self.hud.dismiss(animated: true)
