@@ -474,6 +474,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, 
                         let user: UserResponseModel = Mapper<UserResponseModel>().map(JSON: dictionary)!
                         print(user.toJSON())
                         AppContainer.shared.user.save(user: user)
+                        AppContainer.shared.user.save(isLogin: false)
                         
                         
                         let account_type = dictionary["account_type"] as? String ?? ""

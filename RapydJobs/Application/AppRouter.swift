@@ -26,7 +26,7 @@ class AppRouter {
         /// WE CAN CUSTOMIZE IT ONCE WE NEED STUFF IN THE
         window.makeKeyAndVisible()
         
-        if let _ = UserContainer().user {
+        if let _ = UserContainer().user, AppContainer.shared.user.isLogin {
             proceed()
         } else {
             signin()

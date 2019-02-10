@@ -323,6 +323,7 @@ class EmployerCodeVC: UIViewController {
                 if let err = error {
                     AlertService.shared.alert(in: self, "Wrong code, please insert write code to proceed further")
                 } else {
+                    AppContainer.shared.user.save(isLogin: true)
                     self.completion?()
                     self.dismiss(animated: true, completion: nil)
                 }

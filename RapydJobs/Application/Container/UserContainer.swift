@@ -21,6 +21,7 @@ protocol UserProvider {
     var accountType: AccountType { get }
     var profileImage: String { get }
     var userId: String { get }
+    var isLogin: Bool { get }
 }
 
 protocol UserStorer {
@@ -31,6 +32,7 @@ protocol UserStorer {
     func save(accountType: String)
     func save(profileImage: String?)
     func save(userId: String)
+    func save(isLogin: Bool)
 }
  
 final class UserContainer {
@@ -43,6 +45,7 @@ final class UserContainer {
         static let profileImage = "USER_PROFILEIMAGE"
         static let userId = "USER_ID"
         static let user = "APP_USER"
+        static let isLogin = "IS_LOGIN"
     }
     
     let defaults: UserDefaults
@@ -54,6 +57,10 @@ final class UserContainer {
 }
 
 extension UserContainer: UserProvider {
+    var isLogin: Bool {
+        return defaults.bool(forKey: Constants.isLogin) 
+    }
+    
     var username: String {
         return defaults.string(forKey: Constants.username) ?? ""
     }
@@ -95,6 +102,10 @@ extension UserContainer: UserProvider {
 }
 
 extension UserContainer: UserStorer {
+    func save(isLogin: Bool) {
+        defaults.set(isLogin, forKey: Constants.isLogin)
+    }
+    
     
     func save(username: String) {
         defaults.set(username, forKey: Constants.username)
