@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import Koloda
 
-private let overlayRightImageName = "ic_tick_green"
-private let overlayLeftImageName = "ic_cross_big"
-private let overlayUptImageName = "ic_double-tick"
-private let overlayDownImageName = "ic_star_yellow"
+private let overlayRightImageName = "checked"
+private let overlayLeftImageName = "cross"
+private let overlayUptImageName = "redo"
+private let overlayDownImageName = "star"
 
 class CardOverlayView: OverlayView {
     

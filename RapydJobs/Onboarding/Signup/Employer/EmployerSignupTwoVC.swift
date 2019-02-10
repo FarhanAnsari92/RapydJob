@@ -105,8 +105,8 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     
     private let employerBuildingFloorInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
-        input.placeholder = "Building Floor"
-        input.title = "Building Floor (Optional)"
+        input.placeholder = "Building No."
+        input.title = "Building No. (Optional)"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         input.lineColor = AppConstants.shared.primaryBlueColor
