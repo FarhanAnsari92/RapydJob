@@ -35,13 +35,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-YR-yWq">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fd-d5-UoK">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fd-d5-UoK">
                                         <rect key="frame" x="310" y="7.5" width="60" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="mOK-xA-NJO"/>
                                             <constraint firstAttribute="width" constant="60" id="uQL-7y-zhe"/>
                                         </constraints>
-                                        <state key="normal" image="send-inactive"/>
+                                        <state key="normal" image="sendMsg"/>
                                         <connections>
                                             <action selector="sendMessageTapped:" destination="xVn-3B-9pU" eventType="touchUpInside" id="eYt-Fg-8jA"/>
                                         </connections>
@@ -137,6 +137,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="send-inactive" width="39" height="33"/>
+        <image name="sendMsg" width="48" height="48"/>
     </resources>
 </document>

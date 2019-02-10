@@ -328,7 +328,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         if textView.text == "" || textView.text == "Type a message" {
             textView.textColor = .black
             textView.text = ""
-            sendButton.setImage(#imageLiteral(resourceName: "send-active"), for: .normal)
+            sendButton.setImage(UIImage(named: "sendMsg"), for: .normal)
         }
     }
     
@@ -336,7 +336,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         if textView.text == "" {
             textView.text = "Type a message"
             textView.textColor = .lightGray
-            sendButton.setImage(#imageLiteral(resourceName: "send-inactive"), for: .normal)
+            sendButton.setImage(UIImage(named: "sendMsg"), for: .normal)
         }
     }
     
@@ -554,7 +554,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             messageInput.textColor = .lightGray
             messageInput.text = "Type a message"
-            sendButton.setImage(#imageLiteral(resourceName: "send-inactive"), for: .normal)
+            sendButton.setImage(UIImage(named: "sendMsg"), for: .normal)
             moveToBottom()
         }
     }

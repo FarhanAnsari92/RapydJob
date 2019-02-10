@@ -182,8 +182,7 @@ class LoginVC: UIViewController {
     private let linkedInButton: UIButton = {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFit
-        button.setImage(#imageLiteral(resourceName: "ic_linkedin"), for: .normal)
-        button.setTitle("   LOGIN USING LINKEDIN", for: .normal)
+        button.setTitle("LOGIN USING LINKEDIN", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
