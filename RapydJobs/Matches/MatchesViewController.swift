@@ -34,6 +34,11 @@ class MatchesViewController: BaseViewController {
     var data = [EmployerJobsDropdownResponse]();
     var selectedJob: JobsDropDownItem!
     
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView! {
+        didSet {
+            self.emptyPlaceholderView.message.text = "You haven't matches yet"
+        }
+    }
     
     var toast: JYToast!
     
@@ -92,6 +97,11 @@ class MatchesViewController: BaseViewController {
                     self.jobseekerJobMatches = jobMatches!
                     self.reloadTable()
                     self.hideProgress()
+                    if self.jobseekerMatches.count == 0 {
+                        self.emptyPlaceholderView.isHidden = false
+                    } else {
+                        self.emptyPlaceholderView.isHidden = true
+                    }
                 }
             }
         } else {
@@ -105,6 +115,11 @@ class MatchesViewController: BaseViewController {
                     self.jobMatches = matches!.jobMatches
                     self.reloadTable()
                     self.hideProgress()
+                    if self.jobMatches.count == 0 {
+                        self.emptyPlaceholderView.isHidden = false
+                    } else {
+                        self.emptyPlaceholderView.isHidden = true
+                    }
                 }
             }
         }

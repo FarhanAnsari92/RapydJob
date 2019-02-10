@@ -88,6 +88,10 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
         let vc = viewModel.data[indexPath.row].viewController
         let title = viewModel.data[indexPath.row].title
         switch title {
+        case "Home":
+            EditProfileFlowManager.shared().isHomeScreen = true
+        case "Shortlisted":
+            EditProfileFlowManager.shared().isHomeScreen = false
             //Seeker
         case "Scheduled Interviews":
             AppContainer.shared.notificationContainer.save(InterviewSchedule: false)

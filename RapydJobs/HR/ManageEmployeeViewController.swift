@@ -16,6 +16,7 @@ class ManageEmployeeViewController: UIViewController {
     @IBOutlet weak var segmentControl: Segmentio!
     @IBOutlet weak var tableView: UITableView!
     var employees = [ManagedEmployees]()
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     
     private let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
@@ -82,6 +83,7 @@ class ManageEmployeeViewController: UIViewController {
         
         segmentControl.valueDidChange = { segmentio, segmentIndex in
             self.hud.dismiss(animated: true)
+            self.emptyPlaceholderView.isHidden = true
             self.callAPI(type: segmentIndex == 0 ? "start" : "stop")
         }
     }
@@ -96,6 +98,9 @@ class ManageEmployeeViewController: UIViewController {
             self.employees.removeAll()
             self.employees = Mapper<ManagedEmployees>().mapArray(JSONArray: rawData)
             self.tableView.reloadData()
+            if self.employees.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
             
             
         }) { (errorDictionary, _) in
@@ -122,6 +127,9 @@ class ManageEmployeeViewController: UIViewController {
             } else {
                 self.employees.remove(at: row)
                 self.tableView.reloadData()
+                if self.employees.count == 0 {
+                    self.showEmptyPlaceholderView()
+                }
             }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -143,6 +151,9 @@ class ManageEmployeeViewController: UIViewController {
             self.hud.dismiss(animated: true)
             self.employees.remove(at: row)
             self.tableView.reloadData()
+            if self.employees.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
             self.hud.dismiss(animated: true)
@@ -155,9 +166,21 @@ class ManageEmployeeViewController: UIViewController {
             print(dictionary)
             self.employees.remove(at: row)
             self.tableView.reloadData()
+            if self.employees.count == 0 {
+                self.showEmptyPlaceholderView()
+            }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
+    }
+    
+    private func showEmptyPlaceholderView() {
+        if self.segmentControl.selectedSegmentioIndex == 0 {
+            self.emptyPlaceholderView.message.text = "You haven't hired any candidate yet"
+        } else {
+            self.emptyPlaceholderView.message.text = "You haven't any previous candidate yet"
+        }
+        self.emptyPlaceholderView.isHidden = false
     }
 }
 

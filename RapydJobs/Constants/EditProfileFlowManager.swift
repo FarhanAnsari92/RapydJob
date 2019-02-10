@@ -21,5 +21,6 @@ class EditProfileFlowManager {
     }
     
     var isEditProfile: Bool = false
+    var isHomeScreen: Bool = true
     
 }
