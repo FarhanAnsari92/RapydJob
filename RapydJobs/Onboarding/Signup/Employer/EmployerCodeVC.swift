@@ -150,7 +150,7 @@ class EmployerCodeVC: UIViewController {
         button.setTitle("Send Again", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(editMobile), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sendCodeAgain), for: .touchUpInside)
         return button
     }()
     
@@ -293,22 +293,15 @@ class EmployerCodeVC: UIViewController {
     }
     
     @objc private func sendCodeAgain() {
-        if let number = UserDefaults.standard.value(forKey: "contactNumber") as? String {
-            hud.show(in: view)
-            EmployerSignupAPIService.shared.sendSMS(contactNumber: number) { (error) in
-                if let err = error {
-                    self.hud.dismiss(animated: true)
-                    print("Error : ", err)
-                } else {
-                    self.hud.dismiss(animated: true)
-                    AlertService.shared.alert(in: self, "Code resent successfully to \(number)")
-                }
+        
+        _ = APIClient.callAPI(request: APIClient.resendCode, onSuccess: { (dictionary) in
+            print(dictionary)
+            if let message = dictionary["message"] as? String {
+                AlertService.shared.alert(in: self, message)
             }
+        }) { (errorDictionary, _) in
+            print(errorDictionary)
         }
-    }
-    
-    @objc private func editMobile() {
-        AlertService.shared.alert(in: self, "Editing not allowed at this moment, please try again later")
     }
     
     @objc private func moveToNext() {

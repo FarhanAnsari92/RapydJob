@@ -293,14 +293,14 @@ class JobseekerCodeVC: UIViewController {
     }
     
     @objc private func sendCodeAgain() {
-        if let number = UserDefaults.standard.value(forKey: "contactNumber") as? String {
-            EmployerSignupAPIService.shared.sendSMS(contactNumber: number) { (error) in
-                if let err = error {
-                    print("Error : ", err)
-                } else {
-                    AlertService.shared.alert(in: self, "Code resent successfully to \(number)")
-                }
+        
+        _ = APIClient.callAPI(request: APIClient.resendCode, onSuccess: { (dictionary) in
+            print(dictionary)
+            if let message = dictionary["message"] as? String {
+                AlertService.shared.alert(in: self, message)
             }
+        }) { (errorDictionary, _) in
+            print(errorDictionary)
         }
     }
     
