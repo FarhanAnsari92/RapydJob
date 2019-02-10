@@ -100,6 +100,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             UserDefaults.standard.removeObject(forKey: "USER_TOKEN")
             UserDefaults.standard.removeObject(forKey: "APP_USER")
             
+            EditProfileFlowManager.shared().isEditProfile = false
             let name = Storyboards.Login.name()
             let sb = UIStoryboard(name: name, bundle: nil)
             let vc = sb.instantiateInitialViewController()!
