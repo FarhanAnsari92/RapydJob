@@ -101,6 +101,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             UserDefaults.standard.removeObject(forKey: "APP_USER")
             AppContainer.shared.user.save(isLogin: false)
             EditProfileFlowManager.shared().isEditProfile = false
+            EditProfileFlowManager.shared().isHomeScreen = true
             let name = Storyboards.Login.name()
             let sb = UIStoryboard(name: name, bundle: nil)
             let vc = sb.instantiateInitialViewController()!

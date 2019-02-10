@@ -26,7 +26,7 @@
                     <color key="textColor" red="0.4549019608" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="0Wg-qV-yLe">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="0Wg-qV-yLe">
                     <rect key="frame" x="137.5" y="30" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="0Wg-qV-yLe" secondAttribute="height" multiplier="1:1" id="cZA-YZ-ijt"/>
@@ -48,6 +48,6 @@
         </view>
     </objects>
     <resources>
-        <image name="star" width="48" height="48"/>
+        <image name="warning" width="400.69564819335938" height="400.69564819335938"/>
     </resources>
 </document>
