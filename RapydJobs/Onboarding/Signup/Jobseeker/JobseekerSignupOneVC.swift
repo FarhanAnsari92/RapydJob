@@ -192,8 +192,12 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-                        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .plain, target: self, action: #selector(self.backBtnTap))
+        
+        navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         pickerView = UIPickerView()
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -260,6 +264,10 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
         nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    @objc func backBtnTap() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -168,8 +168,6 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
             
             navigationController?.navigationBar.tintColor = UIColor.black
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            
-            
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_button"), style: .plain, target: self, action: #selector(self.backBtnTap))
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "ADDRESS>", style: .plain, target: self, action: #selector(navigateToAddressVC))
@@ -178,6 +176,9 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            navigationController?.navigationBar.tintColor = UIColor.black            
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_button"), style: .plain, target: self, action: #selector(self.backBtnTap))
         }
         
         videoView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: view.frame.height + 100))
