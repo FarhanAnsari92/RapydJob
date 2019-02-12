@@ -39,6 +39,11 @@ class JobSeekerProfileViewController: UIViewController {
     @IBOutlet weak var segmentControl: SegmentControl!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView! {
+        didSet {
+            self.emptyPlaceholderView.message.text = "No review found"
+        }
+    }
     
     var viewModel: ProfileDetailsViewModel = ProfileDetailsViewModel()
     
@@ -82,6 +87,7 @@ class JobSeekerProfileViewController: UIViewController {
         self.segmentControl.content = viewModel.segmentData
         self.segmentControl.valueDidChange = { segmentio, segmentIndex in
             if segmentIndex == 0 {
+                self.emptyPlaceholderView.isHidden = true
                 self.currentPage = 1
                 self.lastPage = 0
                 self.isLoadMore = false
@@ -174,6 +180,11 @@ class JobSeekerProfileViewController: UIViewController {
             
             //self.reviews = Mapper<SeekerReview>().mapArray(JSONArray: data)
             self.tableView.reloadData()
+            if self.reviews?.count == 0 {
+                self.emptyPlaceholderView.isHidden = false
+            } else {
+                self.emptyPlaceholderView.isHidden = true
+            }
         }) { (errorDictionary, _) in
             self.isLoading = false
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")

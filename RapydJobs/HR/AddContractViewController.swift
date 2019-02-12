@@ -193,11 +193,10 @@ extension AddContractViewController {
                 
                 upload.response { response in
                     self.progressBar.isHidden = true
-                    print(response)
+                    
                     do {
                         _ = response.response?.statusCode
                         let json = try JSON(data: response.data!);
-                        print(json.dictionaryObject)
                         
                         if let dictionary = json.dictionaryObject,
                             let dict = dictionary["errors"] as? [String:Any],

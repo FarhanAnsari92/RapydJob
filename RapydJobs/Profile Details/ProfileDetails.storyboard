@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -161,6 +160,13 @@
                                     <outlet property="delegate" destination="M2R-h4-9kw" id="pqR-h1-doi"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhV-wF-aQY" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="74" y="390" width="227" height="227"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OhV-wF-aQY" secondAttribute="height" multiplier="1:1" id="t96-8w-3fs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -168,8 +174,11 @@
                             <constraint firstItem="hbo-jC-09J" firstAttribute="leading" secondItem="UJc-ER-jTY" secondAttribute="leading" id="0uu-Hb-RoY"/>
                             <constraint firstItem="A6K-6F-vs4" firstAttribute="bottom" secondItem="Kyk-5a-dj7" secondAttribute="bottom" constant="40" id="5Yv-Cy-IQa"/>
                             <constraint firstItem="AME-EA-WAB" firstAttribute="top" secondItem="Kyk-5a-dj7" secondAttribute="bottom" id="6Je-nU-5Xn"/>
+                            <constraint firstItem="OhV-wF-aQY" firstAttribute="top" secondItem="8c3-T7-JQK" secondAttribute="top" constant="50" id="8w3-cA-xS5"/>
                             <constraint firstItem="8c3-T7-JQK" firstAttribute="top" secondItem="hbo-jC-09J" secondAttribute="bottom" id="CYA-Xh-LaP"/>
+                            <constraint firstItem="UJc-ER-jTY" firstAttribute="bottom" secondItem="OhV-wF-aQY" secondAttribute="bottom" constant="50" id="ESJ-Gr-osR"/>
                             <constraint firstItem="UJc-ER-jTY" firstAttribute="trailing" secondItem="FZN-Xm-Kbs" secondAttribute="trailing" constant="30" id="Fyh-d2-uEb"/>
+                            <constraint firstItem="OhV-wF-aQY" firstAttribute="centerX" secondItem="I1d-40-I6s" secondAttribute="centerX" id="GCr-qm-ae6"/>
                             <constraint firstItem="8c3-T7-JQK" firstAttribute="leading" secondItem="UJc-ER-jTY" secondAttribute="leading" id="Kds-wD-mhe"/>
                             <constraint firstItem="xZk-cj-VVr" firstAttribute="top" secondItem="A6K-6F-vs4" secondAttribute="bottom" constant="10" id="Kxu-w3-HvU"/>
                             <constraint firstItem="UJc-ER-jTY" firstAttribute="trailing" secondItem="xZk-cj-VVr" secondAttribute="trailing" constant="30" id="M0z-AQ-SNq"/>
@@ -192,6 +201,7 @@
                     <connections>
                         <outlet property="acceptButton" destination="48R-po-Q64" id="mLb-Di-Ixj"/>
                         <outlet property="coverImageView" destination="Kyk-5a-dj7" id="o17-Xh-ccx"/>
+                        <outlet property="emptyPlaceholderView" destination="OhV-wF-aQY" id="Sef-Fk-dre"/>
                         <outlet property="nameLabel" destination="tC1-uk-IlO" id="98H-KQ-TEK"/>
                         <outlet property="profileImageView" destination="A6K-6F-vs4" id="p6u-eT-g6P"/>
                         <outlet property="ratingView" destination="Jpf-wM-Nuf" id="WHt-Dm-RQC"/>
@@ -237,7 +247,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hoR-oM-pDz">
-                                <rect key="frame" x="30" y="203.5" width="315" height="66.5"/>
+                                <rect key="frame" x="30" y="203.5" width="315" height="96.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLo-0y-Xrb">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="26.5"/>
@@ -252,7 +262,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z32-4X-1PW" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="0.0" y="46.5" width="315" height="20"/>
+                                        <rect key="frame" x="0.0" y="46.5" width="315" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -281,7 +291,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8th-FN-KGr" customClass="SegmentControl" customModule="RapydJobs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="300" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AvT-zp-3zR"/>
@@ -350,7 +360,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="lDo-LW-DQL">
-                                <rect key="frame" x="0.0" y="340" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="370" width="375" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
