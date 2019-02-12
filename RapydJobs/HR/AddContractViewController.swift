@@ -148,6 +148,7 @@ extension AddContractViewController {
         let fileName = self.txtFileName.text
         
         let mimeType = isPdf ? "application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        
         print(mimeType)
         
         guard let token = AppContainer.shared.user.user?.accessToken else {
@@ -196,8 +197,16 @@ extension AddContractViewController {
                     do {
                         _ = response.response?.statusCode
                         let json = try JSON(data: response.data!);
-                        print(json)
-                        self.toast.isShow("Uploaded successfully")
+                        print(json.dictionaryObject)
+                        
+                        if let dictionary = json.dictionaryObject,
+                            let dict = dictionary["errors"] as? [String:Any],
+                            let arr = dict["contract"] as? NSArray {
+                            let errorMessage = arr.firstObject as? String ?? ""
+                            self.toast.isShow(errorMessage)
+                        } else {
+                            self.toast.isShow("Uploaded successfully")
+                        }
                     } catch {
                         self.toast.isShow("Something went wrong.")
                     }
