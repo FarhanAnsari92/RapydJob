@@ -423,6 +423,61 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
         maxSalaryValue.text = "£ \(maxSalVal)"
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case jobSectorInput:
+            self.view.endEditing(true)
+            
+            let sb = UIStoryboard(name: "RelatedFields", bundle: nil)
+            let vc = sb.instantiateInitialViewController() as! RelatedFieldsViewController
+            if self.jobSectorInput.text?.count ?? 0 > 0 {
+                vc.selectedSectors = self.jobSectorInput.text?.components(separatedBy: ",")
+            } else {
+                vc.selectedSectors = [String]()
+            }
+            
+            vc.selectedSectorCompletion = { relatedFieldArr in
+                
+                print(relatedFieldArr)
+                self.jobSectorInput.text = relatedFieldArr.joined(separator: ",")
+                print(relatedFieldArr)
+                
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return false
+        case shiftTimingInput:
+            
+            view.endEditing(true)
+            let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
+            
+            vc.completion = { weeks in
+                guard let wks = weeks, wks.count > 0 else {
+                    return
+                }
+                
+                
+                var str = ""
+                for item in wks {
+                    str += "\(item["day"] as? String ?? ""),"
+                }
+                str.remove(at: str.index(before: str.endIndex))
+                
+                self.shiftTimingInput.text = str
+                self.selectedWeeks = weeks
+            }
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return false
+        default:
+            return true
+        }
+        
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -502,50 +557,11 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     @objc private func didTapShiftTime() {
-        view.endEditing(true)
-        let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
         
-        let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
-        
-        vc.completion = { weeks in
-            guard let wks = weeks, wks.count > 0 else {
-                return
-            }
-            
-            
-            var str = ""
-            for item in wks {
-                str += "\(item["day"] as? String ?? ""),"
-            }
-            str.remove(at: str.index(before: str.endIndex))
-            
-            self.shiftTimingInput.text = str
-            self.selectedWeeks = weeks
-        }
-        
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func moveToRelatedFieldVC(_ textField: UITextField) {
-        
-        self.view.endEditing(true)
-        textField.resignFirstResponder()
-        let sb = UIStoryboard(name: "RelatedFields", bundle: nil)
-        let vc = sb.instantiateInitialViewController() as! RelatedFieldsViewController
-        if self.jobSectorInput.text?.count ?? 0 > 0 {
-            vc.selectedSectors = self.jobSectorInput.text?.components(separatedBy: ",")
-        } else {
-            vc.selectedSectors = [String]()
-        }
-        
-        vc.selectedSectorCompletion = { relatedFieldArr in
-            
-            print(relatedFieldArr)
-            self.jobSectorInput.text = relatedFieldArr.joined(separator: ",")
-            print(relatedFieldArr)
-            
-        }
-        navigationController?.pushViewController(vc, animated: true)
+    
     }
     
     private func jobPostFailed(error: Error) {

@@ -201,7 +201,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xu-hO-8PB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_postajob" translatesAutoresizingMaskIntoConstraints="NO" id="ddS-Ec-jBh">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="ddS-Ec-jBh">
                                         <rect key="frame" x="112.5" y="20" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ddS-Ec-jBh" secondAttribute="height" multiplier="1:1" id="8F1-Fs-1J4"/>
@@ -209,7 +209,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-yc-ufH" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="30" y="220" width="315" height="30"/>
+                                        <rect key="frame" x="30" y="220" width="315" height="40.5"/>
                                         <color key="tintColor" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -234,7 +234,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-bx-ezF">
-                                        <rect key="frame" x="127.5" y="265" width="120" height="40"/>
+                                        <rect key="frame" x="127.5" y="275.5" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="B9I-UO-CcT"/>
                                             <constraint firstAttribute="width" constant="120" id="Jc9-ff-Hd6"/>
@@ -277,6 +277,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="192" height="192"/>
         <image name="ic_postajob" width="49" height="49"/>
     </resources>
 </document>

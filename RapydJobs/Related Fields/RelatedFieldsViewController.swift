@@ -49,8 +49,6 @@ class RelatedFieldsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        view.endEditing(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
