@@ -43,7 +43,7 @@ class WeekViewController: UIViewController {
     
     let days = [
         "monday",
-        "tueday",
+        "tuesday",
         "wednesday",
         "thursday",
         "friday",

@@ -274,7 +274,7 @@ class JobseekerEducationVC: UIViewController, UITableViewDataSource, UITableView
                                 print(dictionary["message"] as! String)
                                 
                                 if let msg = dictionary["message"] as? String {
-                                    self.toast.isShow(msg)
+                                    self.toast.isShow("Education deleted successfully")
                                     let user = AppContainer.shared.user.user
                                     user?.education?.remove(at: row)
                                     AppContainer.shared.user.save(user: user!)
@@ -318,7 +318,10 @@ class JobseekerEducationVC: UIViewController, UITableViewDataSource, UITableView
                     print("Error : ", err)
                 } else {
                     self.hud.dismiss(animated: true)
-                    self.performSegue(withIdentifier: self.segueJobseekerLanguageVC, sender: nil)
+                    self.toast.isShow("Experience added successfully")
+                    Helper.delay(0.3, closure: {
+                        self.performSegue(withIdentifier: self.segueJobseekerLanguageVC, sender: nil)
+                    })
                 }
             }
         } else {

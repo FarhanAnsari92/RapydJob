@@ -28,6 +28,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     var selectedAddress = ""
     var selectedWeeks: [[String:Any]]?
     var centerCoordinate: CLLocationCoordinate2D?
+    var toast: JYToast!
     
     private lazy var videoView: UIView = {
         let view = UIView()
@@ -291,6 +292,11 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
 
         setupViews()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if EditProfileFlowManager.shared().isEditProfile {
             self.setupForEditProfile()
         }
@@ -352,6 +358,8 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        self.toast = JYToast()
         
         if EditProfileFlowManager.shared().isEditProfile {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "EXPERIENCE >", style: .plain, target: self, action: #selector(experienceScreen))
@@ -507,6 +515,9 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
         
         let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
+        if let slctdWks = self.selectedWeeks {
+            vc.selectedWeek = slctdWks
+        }
         
         vc.completion = { weeks in
             guard let wks = weeks, wks.count > 0 else {
@@ -562,7 +573,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     @objc private func moveToNext() {
         
-        let distance = self.distanceInput.text?.split(separator: " ").first ?? ""
+        let distance = self.distanceInput.text?.split(separator: " ").first ?? "" // 25 mi
         print(distance)
         
         guard let latitude = self.centerCoordinate?.latitude,
@@ -597,8 +608,10 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
                 print("Error : ", err)
             } else {
                 self.hud.dismiss(animated: true)
+                self.toast.isShow("Profile Updated successfully")
                 address = ""
                 UserDefaults.standard.removeObject(forKey: "JOB_SECTORS")
+                // JobseekerExperienceVC
                 self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
             }
         }

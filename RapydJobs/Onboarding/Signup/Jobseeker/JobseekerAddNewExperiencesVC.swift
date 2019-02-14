@@ -21,6 +21,8 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
     var experienceModel: ExperienceModel?
     var experienceIndex: Int?
     
+    var toast: JYToast!
+    
     private lazy var videoView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -181,6 +183,8 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
         
         toDatePicker = UIDatePicker()
         fromDatePicker = UIDatePicker()
+        
+        self.toast = JYToast()
         
         selectToDate()
         selectFromDate()
@@ -404,6 +408,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
             guard let expArray = dictionary["data"] as? [[String:Any]] else {
                 return
             }
+            self.toast.isShow("Experience added successfully")
             let expModel: [ExperienceModel] = Mapper<ExperienceModel>().mapArray(JSONArray: expArray)
             let user = AppContainer.shared.user.user
             if user?.experience == nil {
@@ -412,7 +417,9 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
                 user?.experience?.append(expModel.first!)
             }
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
 
         }) { (errorDictionary, _) in
             print(errorDictionary)
@@ -430,7 +437,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
             guard let expModel: ExperienceModel = Mapper<ExperienceModel>().map(JSON: dictionary) else {
                 return
             }
-            print(expModel.toJSON())
+            self.toast.isShow("Experience updated successfully")
             let user = AppContainer.shared.user.user
             
             if let index = user?.experience?.firstIndex(where: {$0.id == expModel.id}) {
@@ -439,7 +446,10 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
             
             user?.experience?.append(expModel)
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            
         }) { (errorDictionary, _) in
             print(errorDictionary)
         }

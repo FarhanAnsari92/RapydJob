@@ -19,6 +19,7 @@ class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPicke
     private let pickerData = [ "Beginner level", "Conversational level", "Business level", "Fluent level"]
     var languageModel: LanguageModel?
     var languageIndex: Int?
+    var toast: JYToast!
     
     private lazy var videoView: UIView = {
         let view = UIView()
@@ -132,6 +133,8 @@ class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPicke
     private func setupViews() {
         
         languageLevelInput.text = "Expert"
+        
+        self.toast = JYToast()
         
         pickerView = UIPickerView()
         pickerView.delegate = self
@@ -276,10 +279,12 @@ class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPicke
             if let index = user?.language?.firstIndex(where: {$0.id == lngModel.id}) {
                 user?.language?.remove(at: index)
             }
-            
+            self.toast.isShow("Language updated successfully")
             user?.language?.append(lngModel)
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)
@@ -307,9 +312,11 @@ class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPicke
             } else {
                 user?.language?.append(languageModel.first!)
             }
-            
+            self.toast.isShow("Language added successfully")
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
         }) { (errorDictionary, _) in
             print(errorDictionary)

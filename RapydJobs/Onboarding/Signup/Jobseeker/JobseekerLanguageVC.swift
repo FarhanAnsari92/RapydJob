@@ -268,7 +268,7 @@ class JobseekerLanguageVC: UIViewController, UITableViewDelegate, UITableViewDat
                                 print(dictionary["message"] as! String)
                                 
                                 if let msg = dictionary["message"] as? String {
-                                    self.toast.isShow(msg)
+                                    self.toast.isShow("Language deleted successfully")
                                     let user = AppContainer.shared.user.user
                                     user?.language?.remove(at: row)
                                     AppContainer.shared.user.save(user: user!)
@@ -311,7 +311,10 @@ class JobseekerLanguageVC: UIViewController, UITableViewDelegate, UITableViewDat
                     print("Error : ", err)
                 } else {
                     self.hud.dismiss(animated: true)
-                    self.performSegue(withIdentifier: self.segueJobseekerUploadResumeVC, sender: nil)
+                    self.toast.isShow("Language added successfully")
+                    Helper.delay(0.3, closure: {
+                        self.performSegue(withIdentifier: self.segueJobseekerUploadResumeVC, sender: nil)
+                    })
                 }
             }
         } else {

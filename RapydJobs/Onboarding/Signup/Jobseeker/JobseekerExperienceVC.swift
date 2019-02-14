@@ -254,13 +254,13 @@ class JobseekerExperienceVC: UIViewController, UITableViewDelegate, UITableViewD
                 
                 self.hud.dismiss(animated: true)
                 if let msg = dictionary["message"] as? String {
-                    self.toast.isShow(msg)
+                    self.toast.isShow("Experience deleted successfully")
                     let user = AppContainer.shared.user.user
                     user?.experience?.remove(at: row)
                     AppContainer.shared.user.save(user: user!)
                     self.getExperience()
                 } else {
-                    self.toast.isShow("Something went wring")
+                    self.toast.isShow("Something went wrong")
                 }
                 
             }) { (errorDictionary, _) in
@@ -291,7 +291,10 @@ class JobseekerExperienceVC: UIViewController, UITableViewDelegate, UITableViewD
                     print("Error : ", err)
                 } else {
                     self.hud.dismiss(animated: true)
-                    self.performSegue(withIdentifier: self.segueJobseekerEducationVC, sender: nil)
+                    self.toast.isShow("Experience added successfully")
+                    Helper.delay(0.3, closure: {
+                        self.performSegue(withIdentifier: self.segueJobseekerEducationVC, sender: nil)
+                    })
                 }
             }
         } else {

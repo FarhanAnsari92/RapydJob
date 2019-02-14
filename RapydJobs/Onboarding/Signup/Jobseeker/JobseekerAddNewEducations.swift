@@ -21,6 +21,8 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
     var educationModel: EducationModel?
     var educationIndex: Int?
     
+    var toast: JYToast!
+    
     private lazy var videoView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -191,6 +193,8 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
     }
 
     private func setupViews() {
+        
+        self.toast = JYToast()
         
         toDatePicker = UIDatePicker()
         fromDatePicker = UIDatePicker()
@@ -418,6 +422,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             guard let educationArray = dictionary["data"] as? [[String:Any]] else {
                 return
             }
+            self.toast.isShow("Education added successfully")
             let educationModel: [EducationModel] = Mapper<EducationModel>().mapArray(JSONArray: educationArray)
             let user = AppContainer.shared.user.user
             if user?.education == nil {
@@ -427,7 +432,9 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             }
             
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
         }) { (errorDictionary, _) in
             print(errorDictionary)
@@ -453,7 +460,9 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             guard let eduModel: EducationModel = Mapper<EducationModel>().map(JSON: dictionary) else {
                 return
             }
-            print(eduModel.toJSON())
+            
+            self.toast.isShow("Education Updated successfully")
+            
             let user = AppContainer.shared.user.user
             
             if let index = user?.education?.firstIndex(where: {$0.id == eduModel.id}) {
@@ -462,7 +471,9 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
             
             user?.education?.append(eduModel)
             AppContainer.shared.user.save(user: user!)
-            self.navigationController?.popViewController(animated: true)
+            Helper.delay(0.3, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
         }) { (errorDictionary, _) in
             print(errorDictionary)
