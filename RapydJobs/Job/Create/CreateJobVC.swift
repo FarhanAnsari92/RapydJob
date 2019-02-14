@@ -452,6 +452,9 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
             let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
             
             let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
+            if let slctdWks = self.selectedWeeks {
+                vc.selectedWeek = slctdWks
+            }
             
             vc.completion = { weeks in
                 guard let wks = weeks, wks.count > 0 else {
