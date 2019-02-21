@@ -33,7 +33,8 @@ class ScheduleChatTableViewCell: UITableViewCell {
     
     @IBOutlet weak var receiverSeparator: UIView!
     @IBOutlet weak var senderSeparator: UIView!
-    
+    @IBOutlet weak var receivedDate: UILabel!
+    @IBOutlet weak var sentDate: UILabel!
     var viewInSchedule: ((UIButton) -> Void)?
     
     class var cellIdentifier: String {
@@ -85,9 +86,11 @@ class ScheduleChatTableViewCell: UITableViewCell {
             if sentBubbleView != nil {
                 sentBubbleView.isHidden = true
                 sentBubbleView.removeFromSuperview()
+                sentMessageDate.isHidden = true
+                sentDate.isHidden = true
             }
-            sentMessageDate.isHidden = true
             
+            receivedDate.text = message.createdAt
             receivedMessageDate.text = message.message
             
         } else {
@@ -114,12 +117,14 @@ class ScheduleChatTableViewCell: UITableViewCell {
             if receivedBubbleView != nil {
                 receivedBubbleView.isHidden = true
                 receivedBubbleView.removeFromSuperview()
+                receivedDate.isHidden = true
+                receivedMessageDate.isHidden = true
             }
-            receivedMessageDate.isHidden = true
+            
             
             sentBubbleView.isHidden = false
             sentMessageDate.isHidden = false
-            
+            sentDate.text = message.createdAt
             sentMessageDate.text = message.message
             
         }

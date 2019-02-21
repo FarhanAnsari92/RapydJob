@@ -11,34 +11,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleChatTableViewCellID" rowHeight="112" id="KGk-i7-Jjw" customClass="ScheduleChatTableViewCell" customModule="RapydJobs" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="446" height="112"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleChatTableViewCellID" rowHeight="193" id="KGk-i7-Jjw" customClass="ScheduleChatTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="446" height="193"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="446" height="111.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="446" height="192.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amy-Xl-ZNS">
-                        <rect key="frame" x="129" y="5" width="312" height="101.5"/>
+                        <rect key="frame" x="129" y="5" width="312" height="163"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Yj4-y9-F2R">
-                                <rect key="frame" x="15" y="5" width="282" height="91.5"/>
+                                <rect key="frame" x="15" y="5" width="282" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-y1-MIx">
-                                        <rect key="frame" x="0.0" y="0.0" width="282" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="113"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-31-aEB">
-                                        <rect key="frame" x="0.0" y="53.5" width="282" height="1"/>
+                                        <rect key="frame" x="0.0" y="115" width="282" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="pTl-vp-dd0"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egU-uN-m2I">
-                                        <rect key="frame" x="0.0" y="56.5" width="282" height="35"/>
+                                        <rect key="frame" x="0.0" y="118" width="282" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="B2l-0t-Dkv"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="JZX-qp-rO0"/>
@@ -72,26 +72,32 @@
                             <constraint firstAttribute="bottom" secondItem="Yj4-y9-F2R" secondAttribute="bottom" constant="5" id="Lxw-xe-igX"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-zT-44v">
+                        <rect key="frame" x="410" y="173" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-H1-33F">
-                        <rect key="frame" x="5" y="5" width="312" height="101.5"/>
+                        <rect key="frame" x="5" y="5" width="312" height="163"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1tU-0a-N0i">
-                                <rect key="frame" x="15" y="5" width="282" height="91.5"/>
+                                <rect key="frame" x="15" y="5" width="282" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your interview scheduled on _ at _" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-7D-wQb">
-                                        <rect key="frame" x="0.0" y="0.0" width="282" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="113"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-ql-At3">
-                                        <rect key="frame" x="0.0" y="53.5" width="282" height="1"/>
+                                        <rect key="frame" x="0.0" y="115" width="282" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Xrb-Xl-WQh"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSo-tm-gQk">
-                                        <rect key="frame" x="0.0" y="56.5" width="282" height="35"/>
+                                        <rect key="frame" x="0.0" y="118" width="282" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="YmC-4r-7D4"/>
                                         </constraints>
@@ -114,30 +120,42 @@
                             <constraint firstAttribute="bottom" secondItem="1tU-0a-N0i" secondAttribute="bottom" constant="5" id="oWa-UP-zGS"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHv-Vf-rXc">
+                        <rect key="frame" x="5" y="173" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Yeg-H1-33F" secondAttribute="bottom" constant="5" id="Zxq-Bt-2gq"/>
+                    <constraint firstItem="Vdc-zT-44v" firstAttribute="trailing" secondItem="amy-Xl-ZNS" secondAttribute="trailing" id="2zh-l4-ssw"/>
+                    <constraint firstAttribute="bottom" secondItem="Vdc-zT-44v" secondAttribute="bottom" constant="5" id="93d-xB-BwT"/>
+                    <constraint firstAttribute="bottom" secondItem="gHv-Vf-rXc" secondAttribute="bottom" constant="5" id="bSa-jK-4fe"/>
                     <constraint firstAttribute="trailing" secondItem="amy-Xl-ZNS" secondAttribute="trailing" constant="5" id="hXU-4M-ZQN"/>
-                    <constraint firstAttribute="bottom" secondItem="amy-Xl-ZNS" secondAttribute="bottom" constant="5" id="jJt-XQ-bLV"/>
+                    <constraint firstItem="gHv-Vf-rXc" firstAttribute="top" secondItem="Yeg-H1-33F" secondAttribute="bottom" constant="5" id="hpv-68-kii"/>
                     <constraint firstItem="Yeg-H1-33F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="jYG-uS-Iod"/>
+                    <constraint firstItem="Vdc-zT-44v" firstAttribute="top" secondItem="amy-Xl-ZNS" secondAttribute="bottom" constant="5" id="l4N-vK-SSx"/>
                     <constraint firstItem="amy-Xl-ZNS" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="nXL-pY-bM1"/>
                     <constraint firstItem="Yeg-H1-33F" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="p4d-h2-Fse"/>
                     <constraint firstItem="Yeg-H1-33F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="r7V-VJ-gRx"/>
                     <constraint firstItem="amy-Xl-ZNS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="u94-F6-0dU"/>
+                    <constraint firstItem="gHv-Vf-rXc" firstAttribute="leading" secondItem="Yeg-H1-33F" secondAttribute="leading" id="vrL-Js-CIo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="receivedBubbleView" destination="Yeg-H1-33F" id="vh3-Ez-Bj6"/>
+                <outlet property="receivedDate" destination="gHv-Vf-rXc" id="bTg-aE-Zi7"/>
                 <outlet property="receivedMessageDate" destination="9Ph-7D-wQb" id="2Yc-Gu-Kdh"/>
                 <outlet property="receiverScheduleBtn" destination="qSo-tm-gQk" id="O4W-16-iet"/>
                 <outlet property="receiverSeparator" destination="l8C-ql-At3" id="ghO-8j-EmN"/>
                 <outlet property="senderScheduleBtn" destination="egU-uN-m2I" id="5S4-2N-iZv"/>
                 <outlet property="senderSeparator" destination="ntI-31-aEB" id="W5q-tG-6qq"/>
                 <outlet property="sentBubbleView" destination="amy-Xl-ZNS" id="Fk9-EV-1gg"/>
+                <outlet property="sentDate" destination="Vdc-zT-44v" id="S1k-ZV-HwT"/>
                 <outlet property="sentMessageDate" destination="HMI-y1-MIx" id="hu2-cW-tQC"/>
             </connections>
-            <point key="canvasLocation" x="153.59999999999999" y="154.72263868065968"/>
+            <point key="canvasLocation" x="153.59999999999999" y="191.1544227886057"/>
         </tableViewCell>
     </objects>
 </document>
