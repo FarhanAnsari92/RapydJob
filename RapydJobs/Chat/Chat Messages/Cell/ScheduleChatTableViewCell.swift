@@ -82,8 +82,10 @@ class ScheduleChatTableViewCell: UITableViewCell {
             
             receivedBubbleView.isHidden = false
             receivedMessageDate.isHidden = false
-            
-            sentBubbleView.isHidden = true
+            if sentBubbleView != nil {
+                sentBubbleView.isHidden = true
+                sentBubbleView.removeFromSuperview()
+            }
             sentMessageDate.isHidden = true
             
             receivedMessageDate.text = message.message
@@ -109,8 +111,10 @@ class ScheduleChatTableViewCell: UITableViewCell {
             } else if messageType == "interviewNotification" {
                 self.senderScheduleBtn.titleLabel?.text = "Open Schedule Interview"
             }
-            
-            receivedBubbleView.isHidden = true
+            if receivedBubbleView != nil {
+                receivedBubbleView.isHidden = true
+                receivedBubbleView.removeFromSuperview()
+            }
             receivedMessageDate.isHidden = true
             
             sentBubbleView.isHidden = false
