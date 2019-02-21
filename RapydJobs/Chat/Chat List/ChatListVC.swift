@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -27,17 +28,25 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return tv
     }()
     
+    private let hud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        hud.vibrancyEnabled = true
+        return hud
+    }()
+    
     var chatLists = [ChatList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupViews()
-        
+        hud.show(in: view)
         SocketService.getChatList { [weak self] (chatLists, error) in
             if let err = error {
+                self?.hud.dismiss(animated: true)
                 print("🔥 Error : ", err)
             } else {
+                self?.hud.dismiss(animated: true)
                 self?.chatLists = chatLists!
                 self?.messagesTableView.reloadData()
             }
