@@ -47,7 +47,7 @@ class EmployerUploadLogoVC: UIViewController, UINavigationControllerDelegate, UI
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Employer!"
+        label.text = "Employer"
         label.textAlignment = .left
         label.font = AppConstants.shared.appTitleFont
         label.translatesAutoresizingMaskIntoConstraints = false

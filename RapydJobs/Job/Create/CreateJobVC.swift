@@ -140,7 +140,7 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.spacing = 0
-        sv.distribution = .fill
+        sv.distribution = .equalCentering
         sv.alignment = .fill
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv

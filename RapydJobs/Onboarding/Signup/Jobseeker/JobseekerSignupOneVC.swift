@@ -43,7 +43,7 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Jobseeker!"
+        label.text = "Jobseeker"
         label.textAlignment = .left
         label.font = AppConstants.shared.appTitleFont
         label.translatesAutoresizingMaskIntoConstraints = false

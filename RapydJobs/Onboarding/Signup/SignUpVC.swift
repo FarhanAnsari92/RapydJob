@@ -103,8 +103,8 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, 
     
     private let userNameInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
-        input.placeholder = "Username"
-        input.title = "Username"
+        input.placeholder = "Full Name"
+        input.title = "Full Name"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         input.lineColor = AppConstants.shared.primaryBlueColor
