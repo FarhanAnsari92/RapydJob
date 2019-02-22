@@ -18,6 +18,7 @@ class JobListSeekerViewController: BaseViewController {
     @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     var jobOffers = [JobOfferData]()
     
+    let limit = 10
     var currentPage = 1
     var lastPage = 0
     var isLoadMore: Bool = false
@@ -91,6 +92,7 @@ class JobListSeekerViewController: BaseViewController {
             self.isLoadMore = false
             self.isLoading = false
             self.emptyPlaceholderView.isHidden = true
+            self.jobOffers.removeAll()
             if segmentIndex == 0 {
                 self.getOffers(type: "active")
             } else if segmentIndex == 1 {
@@ -105,8 +107,8 @@ class JobListSeekerViewController: BaseViewController {
     func getOffers(type: String) {
         self.isLoading = true
         hud.show(in: view)
-        _ = APIClient.callAPI(request: .getJobOffers(type: type, page: self.currentPage), onSuccess: { (dictionary) in
-            self.isLoading = true
+        _ = APIClient.callAPI(request: .getJobOffers(type: type, limit: self.limit, page: self.currentPage), onSuccess: { (dictionary) in
+            self.isLoading = false
             self.hud.dismiss(animated: true)
             
             let lastPage = dictionary["last_page"] as? Int ?? 0

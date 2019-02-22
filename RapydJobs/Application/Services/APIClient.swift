@@ -57,7 +57,7 @@ enum APIClient: URLRequestConvertible {
     case shortListSeeker(param: [String:Any])
     case likeJobRequest(param: [String:Any])
     case sendMessage(param: [String:Any])
-    case getJobOffers(type: String, page: Int)
+    case getJobOffers(type: String, limit: Int, page: Int)
     case acceptJoboffer(param: [String:Any])
     case getJobseekerInterview(page: Int)
     case deleteContract(contractId: Int)
@@ -369,8 +369,8 @@ enum APIClient: URLRequestConvertible {
                 return "add-swipe-job"
             case .sendMessage:
                 return "message"
-            case .getJobOffers(let type, let page):
-                return "joboffer/\(page)/\(type)"
+            case .getJobOffers(let type, let limit, let page):
+                return "joboffer/\(limit)/\(type)?page=\(page)"
             case .acceptJoboffer:
                 return "accept-joboffer"
             case .getJobseekerInterview(let page):
