@@ -208,7 +208,9 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
             cell.reject.isHidden = true
         }
         cell.timeSheetCompletion = {
-            print("time sheet")
+            let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "CreateUpdateTimeSheetViewControllerID") as! CreateUpdateTimeSheetViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.acceptCompletion = {
             print("accept")
@@ -233,6 +235,7 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
+        print(self.jobOffers.toJSON())
         cell.updateData(self.jobOffers[indexPath.row])
         return cell
     }
