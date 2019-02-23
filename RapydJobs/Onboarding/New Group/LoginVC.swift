@@ -16,6 +16,7 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
+
 class LoginVC: UIViewController {
     
     let linkedinHelper = LinkedinSwiftHelper(configuration:
@@ -281,17 +282,20 @@ class LoginVC: UIViewController {
     
     @objc private func loginViaLinkedin() {
         
+        
+        
         if !LinkedinSwiftHelper.isLinkedinAppInstalled() {
             AlertService.shared.alert(in: self, "You must install Linkedin App to login via Linkedin")
             return
         }
         
         hud.show(in: view)
+        
         linkedinHelper.authorizeSuccess({ (lsToken) -> Void in
             //Login success lsToken
             print(lsToken)
             
-            let url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,headline,public-profile-url,picture-url,email-address,picture-urls::(original))?format=json";
+            let url = "https://www.linkedin.com/oauth/v2/authorization" // "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,headline,public-profile-url,picture-url,email-address,picture-urls::(original))?format=json";
             
             //Check if the user user is logged in and perform and action if they are.
             if self.linkedinHelper.lsAccessToken != nil {
