@@ -66,6 +66,75 @@ class Constants: NSObject {
         static let fieldTextField: UIFont = .systemFont(ofSize: 20.0)
         static let button: UIFont = .systemFont(ofSize: 16.0, weight: .semibold)
     }
+    
+    static func getMonthNumber(_ month: String) -> Int {
+        switch month {
+        case "January":
+            return 1
+        case "February":
+            return 2
+        case "March":
+            return 3
+        case "April":
+            return 4
+        case "May":
+            return 5
+        case "June":
+            return 6
+        case "July":
+            return 7
+        case "August":
+            return 8
+        case "September":
+            return 9
+        case "October":
+            return 10
+        case "November":
+            return 11
+        case "December":
+            return 12
+        default:
+            return 0
+        }
+    }
+    
+    static func generateDatesArrayBetweenTwoDates(startDate: Date , endDate:Date) ->[Date] {
+        var datesArray: [Date] =  [Date]()
+        var startDate = startDate
+        let calendar = Calendar.current
+        
+        let fmt = DateFormatter()
+        fmt.dateFormat = "yyyy-MM-dd"
+        
+        while startDate <= endDate {
+            datesArray.append(startDate)
+            startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
+            
+        }
+        return datesArray
+    }
+    
+    // get all days for a specific month
+    static func getAllDates(month: Int, year: Int) -> [Date] {
+        let dateComponents = DateComponents(year: year, month: month)
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let numDays = range.count
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+        var arrDates = [Date]()
+        for day in 1...numDays {
+            let dateString = "\(year) \(month) \(day)"
+            if let date = formatter.date(from: dateString) {
+                arrDates.append(date)
+            }
+        }
+        
+        return arrDates
+    }
 }
 
 let displayStyle: (UIImageView) -> Void = { imageView in

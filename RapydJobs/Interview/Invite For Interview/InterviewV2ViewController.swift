@@ -66,7 +66,7 @@ class InterviewV2ViewController: UIViewController {
         self.monthSelection.titleLabel.text = self.getMonths().first ?? ""
         
         let date = Date()
-        self.dates = self.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
+        self.dates = Constants.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
         self.collectionView.reloadData()
         
 //        endTimePicker.minimumDate = date
@@ -88,7 +88,7 @@ class InterviewV2ViewController: UIViewController {
             self.monthSelection.titleLabel.text = item
             
             let strMonth = String(item.split(separator: " ").first ?? "")
-            let month = self.getMonthNumber(strMonth)
+            let month = Constants.getMonthNumber(strMonth)
             let year = Int(item.split(separator: " ").last ?? "") ?? 0
             
             let dateComponents = DateComponents(year: year, month: month) //, day: 23)
@@ -97,14 +97,14 @@ class InterviewV2ViewController: UIViewController {
             
             if date.compare(.isThisMonth) {
                 //let date = Date()
-                let dateArr = self.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
+                let dateArr = Constants.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
                 if dateArr.count == 0 {
                     self.dates = [Date()]
                 } else {
                     self.dates = dateArr
                 }
             } else {
-                self.dates = self.getAllDates(month: month, year: year)
+                self.dates = Constants.getAllDates(month: month, year: year)
             }
             self.collectionView.reloadData()
             self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
@@ -308,76 +308,6 @@ extension InterviewV2ViewController {
         }
         return stringDate
         
-    }
-    
-    func getMonthNumber(_ month: String) -> Int {
-        switch month {
-        case "January":
-            return 1
-        case "February":
-            return 2
-        case "March":
-            return 3
-        case "April":
-            return 4
-        case "May":
-            return 5
-        case "June":
-            return 6
-        case "July":
-            return 7
-        case "August":
-            return 8
-        case "September":
-            return 9
-        case "October":
-            return 10
-        case "November":
-            return 11
-        case "December":
-            return 12
-        default:
-            return 0
-        }
-    }
-    
-    //get dat array from - to
-    func generateDatesArrayBetweenTwoDates(startDate: Date , endDate:Date) ->[Date] {
-        var datesArray: [Date] =  [Date]()
-        var startDate = startDate
-        let calendar = Calendar.current
-        
-        let fmt = DateFormatter()
-        fmt.dateFormat = "yyyy-MM-dd"
-        
-        while startDate <= endDate {
-            datesArray.append(startDate)
-            startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
-            
-        }
-        return datesArray
-    }
-    
-    // get all days for a specific month
-    func getAllDates(month: Int, year: Int) -> [Date] {
-        let dateComponents = DateComponents(year: year, month: month)
-        let calendar = Calendar.current
-        let date = calendar.date(from: dateComponents)!
-        
-        let range = calendar.range(of: .day, in: .month, for: date)!
-        let numDays = range.count
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-        var arrDates = [Date]()
-        for day in 1...numDays {
-            let dateString = "\(year) \(month) \(day)"
-            if let date = formatter.date(from: dateString) {
-                arrDates.append(date)
-            }
-        }
-        
-        return arrDates
     }
     
 }

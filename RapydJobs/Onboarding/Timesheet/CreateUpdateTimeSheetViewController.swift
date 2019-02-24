@@ -24,6 +24,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     let dropDown = DropDown()
     var dates = [Date]()
     var selectedDate: Date?
+    var dateToEdit: Date?
     
     var selectedWeek = [[String:Any]]()
 //    var selectedDay: String?
@@ -202,8 +203,8 @@ extension CreateUpdateTimeSheetViewController: UITableViewDataSource, UITableVie
         
         let week = self.selectedWeek[indexPath.row]
 //        let day = week["day"] as? String ?? ""
-        let date = week["date"] as? String ?? ""
-        let month = week["month"] as? String ?? ""
+//        let date = week["date"] as? String ?? ""
+//        let month = week["month"] as? String ?? ""
         let startTime = week["start_time"] as? String ?? ""
         let endTime = week["end_time"] as? String ?? ""
         cell.day.text = week["complete_date"] as? String ?? "" // "\(date) \(month)"
@@ -231,6 +232,46 @@ extension CreateUpdateTimeSheetViewController: UITableViewDataSource, UITableVie
         return true
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let slctdWeek = self.selectedWeek[indexPath.row]
+        
+        let monthWithYear = slctdWeek["month"] as? String ?? ""
+        let startTime = slctdWeek["start_time"] as? String ?? ""
+        let endTime = slctdWeek["end_time"] as? String ?? ""
+        
+        // ---
+        
+        let week = self.selectedWeek[indexPath.row]
+        let str = week["complete_date"] as? String ?? ""
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM yyyy"
+        self.dateToEdit = formatter.date(from: str)
+        
+        // ---
+        
+        if monthWithYear != self.monthSelection.titleLabel.text {
+            
+            let monthStr = String(monthWithYear.split(separator: " ").first ?? "")
+            let month = Constants.getMonthNumber(monthStr)
+            let year = Int(String(monthWithYear.split(separator: " ").last ?? "")) ?? 0
+            
+            self.dates = Constants.getAllDates(month: month, year: year)
+        
+        }
+        self.collectionView.reloadData()
+        //self.dates.index
+        //self.collectionView.scro
+        self.monthSelection.titleLabel.text = monthWithYear
+        self.startTime.text = slctdWeek["start_time"] as? String ?? ""
+        self.endTime.text = slctdWeek["end_time"] as? String ?? ""
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
+        let startDateTime = df.date(from: startTime)
+        let endDateTime = df.date(from: endTime)
+        self.startTimePicker.setDate(startDateTime!, animated: true)
+        self.endTimePicker.setDate(endDateTime!, animated: true)
+    }
+    
 }
 
 extension CreateUpdateTimeSheetViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -241,7 +282,12 @@ extension CreateUpdateTimeSheetViewController: UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionViewCellID", for: indexPath) as! DateCollectionViewCell
-        cell.updateData(date: self.dates[indexPath.row])
+        let dt = self.dates[indexPath.row]
+        if let editDate = self.dateToEdit {
+            cell.isSelected = dt.isSameDayAs(editDate)
+        }
+        
+        cell.updateData(date: dt)
         return cell
     }
     
