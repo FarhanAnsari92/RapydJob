@@ -325,27 +325,24 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         print(lat)
         
         if employerAddressInput.text != "" {
-            if employerBuildingFloorInput.text != "" {
-                if employerPostalCodeInput.text != "" {
-                    hud.show(in: view)
-                    EmployerSignupAPIService.shared.updateAddress(address: employerAddressInput.text!, floor: employerBuildingFloorInput.text!, postCode: employerPostalCodeInput.text!, distance: String(distance), lat: lat, lng: lng) { (error) in
-                        if let err = error {
-                            self.hud.dismiss(animated: true)
-                            print("Error : ", err)
-                        } else {
-                            self.hud.dismiss(animated: true)
-                            self.toast.isShow("Profile Updated successfully")
-                            if !EditProfileFlowManager.shared().isEditProfile {
-                                self.performSegue(withIdentifier: self.segueEmployerUploadLogoVC, sender: nil)
-                            }
+            if employerPostalCodeInput.text != "" {
+                hud.show(in: view)
+                EmployerSignupAPIService.shared.updateAddress(address: employerAddressInput.text!, floor: employerBuildingFloorInput.text!, postCode: employerPostalCodeInput.text!, distance: String(distance), lat: lat, lng: lng) { (error) in
+                    if let err = error {
+                        self.hud.dismiss(animated: true)
+                        print("Error : ", err)
+                    } else {
+                        self.hud.dismiss(animated: true)
+                        self.toast.isShow("Profile Updated successfully")
+                        if !EditProfileFlowManager.shared().isEditProfile {
+                            self.performSegue(withIdentifier: self.segueEmployerUploadLogoVC, sender: nil)
                         }
                     }
-                } else {
-                    AlertService.shared.alert(in: self, "Please insert postal code to proceed")
                 }
             } else {
-                AlertService.shared.alert(in: self, "Please insert floor / building to proceed")
+                AlertService.shared.alert(in: self, "Please insert postal code to proceed")
             }
+            
         } else {
             AlertService.shared.alert(in: self, "Please insert address to proceed")
         }
