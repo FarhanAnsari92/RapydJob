@@ -463,6 +463,7 @@
 		C9D32F3C21B2CFBB00126AC6 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */; };
 		C9DA8A9021C2F44B00ACD7FD /* EmployerPlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */; };
 		C9DD258321CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */; };
+		C9E789092221452500F50F9D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E789082221452500F50F9D /* linkedin-sdk.framework */; };
 		C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB2B1B2183A330005FBDFE /* APIClient.swift */; };
 		C9F14FF7220380BE00AF16ED /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF6220380BE00AF16ED /* NotificationType.swift */; };
 		C9F14FF92203906500AF16ED /* NotificationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF82203906500AF16ED /* NotificationContainer.swift */; };
@@ -938,6 +939,8 @@
 		C9D32F3B21B2CFBB00126AC6 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		C9DA8A8F21C2F44B00ACD7FD /* EmployerPlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerPlannerViewController.swift; sourceTree = "<group>"; };
 		C9DD258221CD5CA10042D6B7 /* InterviewPlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPlannerDataResponseModel.swift; sourceTree = "<group>"; };
+		C9E789082221452500F50F9D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
+		C9E7890B222146A700F50F9D /* RapydJobs-Bridging-Header.h.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RapydJobs-Bridging-Header.h.h"; sourceTree = "<group>"; };
 		C9EB2B1B2183A330005FBDFE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C9F14FF6220380BE00AF16ED /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		C9F14FF82203906500AF16ED /* NotificationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContainer.swift; sourceTree = "<group>"; };
@@ -955,6 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0AE5ED79936BECE7D4D5B7 /* Pods_RapydJobs.framework in Frameworks */,
+				C9E789092221452500F50F9D /* linkedin-sdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,7 +987,7 @@
 		0D42020920DE62070063BB23 /* RapydJobs */ = {
 			isa = PBXGroup;
 			children = (
-				C9B15A0121B331D3005C4607 /* HeaderFiles */,
+				C9E7890A2221468400F50F9D /* Headers */,
 				C9B159FE21B32EA0005C4607 /* LinkedinFramework */,
 				4D91B747215D4F0000468F00 /* RapydJobs.entitlements */,
 				4D624E772168FFBB00299D2E /* Onboarding */,
@@ -2355,15 +2359,9 @@
 		C9B159FE21B32EA0005C4607 /* LinkedinFramework */ = {
 			isa = PBXGroup;
 			children = (
+				C9E789082221452500F50F9D /* linkedin-sdk.framework */,
 			);
 			path = LinkedinFramework;
-			sourceTree = "<group>";
-		};
-		C9B15A0121B331D3005C4607 /* HeaderFiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HeaderFiles;
 			sourceTree = "<group>";
 		};
 		C9B9228C218E3A22000A633B /* Cells */ = {
@@ -2423,6 +2421,14 @@
 				C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C9E7890A2221468400F50F9D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C9E7890B222146A700F50F9D /* RapydJobs-Bridging-Header.h.h */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3269,7 +3275,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3299,7 +3305,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

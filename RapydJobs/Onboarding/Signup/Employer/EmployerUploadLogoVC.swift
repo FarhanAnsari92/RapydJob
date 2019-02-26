@@ -115,7 +115,6 @@ class EmployerUploadLogoVC: UIViewController, UINavigationControllerDelegate, UI
     var toast: JYToast!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.toast = JYToast()
         setupViews()
     }
     
@@ -126,7 +125,7 @@ class EmployerUploadLogoVC: UIViewController, UINavigationControllerDelegate, UI
     }
 
     private func setupViews() {
-        
+        self.toast = JYToast()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

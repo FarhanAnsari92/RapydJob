@@ -23,6 +23,8 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     
     
     var centerCoordinate: CLLocationCoordinate2D!
+    var address: String = ""
+    var postalCode = ""
     var completion: (([String:Any]) -> Void)?
 
     lazy var mapView: GMSMapView = {
@@ -97,9 +99,7 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             let longitude = Double("-0.2416818") ?? 0.0
             
             self.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            
-            self.showMap(with: self.centerCoordinate.latitude, and: self.centerCoordinate.longitude, and: nil)
-            
+
             locationManager.requestWhenInUseAuthorization()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
@@ -150,10 +150,12 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             self.centerCoordinate = location.coordinate
             reverseCodeGeocoordinate(with: location.coordinate)
             locationManager.stopUpdatingLocation()
+//
+//            let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: lat, longitude: lng), zoom: 16)
+//
+//            mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
             
-            let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: lat, longitude: lng), zoom: 16)
-            
-            mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+            self.showMap(with: lat, and: lng, and: nil)
             
         }
     }
@@ -190,7 +192,8 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             } else {
                 if let addres = response?.firstResult() {
                     if let lines = addres.lines {
-                        address = lines[0]
+                        self.address = lines[0]
+                        self.postalCode = addres.postalCode ?? ""
                     }
                 }
             }
@@ -272,6 +275,7 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         var selectedAddress = [String:Any]()
         selectedAddress["coordinate"] = self.centerCoordinate
         selectedAddress["address"] = address
+        selectedAddress["postalCode"] = self.postalCode
         
         self.completion?(selectedAddress)
         navigationController?.popViewController(animated: true)

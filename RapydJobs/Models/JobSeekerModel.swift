@@ -21,6 +21,7 @@ class JobSeekerModel: Mappable {
     var gender: String?
     var contact: String?
     var id: Int?
+    var dates: [[String:Any]]?
     
     init() { }
     
@@ -39,6 +40,7 @@ class JobSeekerModel: Mappable {
         gender          <- map["gender"]
         contact         <- map["contact"]
         id              <- map["id"]
+        dates           <- map["dates"]
         
     }
     

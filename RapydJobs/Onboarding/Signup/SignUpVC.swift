@@ -319,6 +319,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, 
         linkedInButton.bottomAnchor.constraint(equalTo: loginStackView.topAnchor, constant: -20).isActive = true
         linkedInButton.leadingAnchor.constraint(equalTo: scrollingView.leadingAnchor, constant: 30).isActive = true
         linkedInButton.trailingAnchor.constraint(equalTo: scrollingView.trailingAnchor, constant: -30).isActive = true
+        linkedInButton.isHidden = true
      
         if isSocialLogin {
             self.emailInput.text = email
