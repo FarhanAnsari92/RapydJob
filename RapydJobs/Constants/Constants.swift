@@ -15,6 +15,7 @@ class Constants: NSObject {
         static let clientID = "86gmqwtl9kgi1z"
         static let clientSecret = "PZEKSNaZhlzhF3u3"
         static let applicationId = "22939066"
+        static let state = "linkedin\(Int(NSDate().timeIntervalSince1970))"
     }
 
     public struct Colors {

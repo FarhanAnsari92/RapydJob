@@ -26,6 +26,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     private let pickerData = [ "10 mi", "15 mi", "20 mi","25 mi", "30 mi", "35 mi","40 mi", "45 mi", "50 mi"]
     
     var selectedAddress = ""
+    var postalCode = ""
     var selectedWeeks: [[String:Any]]?
     var centerCoordinate: CLLocationCoordinate2D?
     var toast: JYToast!
@@ -189,7 +190,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.spacing = 0
-        sv.distribution = .fill
+        sv.distribution = .equalCentering
         sv.alignment = .fill
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
@@ -291,15 +292,13 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         super.viewDidLoad()
 
         setupViews()
-        
+        if EditProfileFlowManager.shared().isEditProfile {
+            self.setupForEditProfile()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if EditProfileFlowManager.shared().isEditProfile {
-            self.setupForEditProfile()
-        }
         
     }
     
@@ -338,6 +337,18 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         self.distanceInput.text = "\(user.address?.distance ?? "") mi"
+        if let wks = user.jobSeeker?.dates {
+            var str = ""
+            for item in wks {
+                str += "\(item["day"] as? String ?? ""),"
+            }
+            str.remove(at: str.index(before: str.endIndex))
+            
+            self.shiftTimeInput.text = str
+            self.selectedWeeks = wks
+            
+            self.shiftTimeInput.text = str
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -521,6 +532,8 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         vc.completion = { weeks in
             guard let wks = weeks, wks.count > 0 else {
+                self.shiftTimeInput.text = ""
+                self.selectedWeeks?.removeAll()
                 return
             }
             
@@ -566,6 +579,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         vc.completion = { dictionary in
             self.centerCoordinate = dictionary["coordinate"] as? CLLocationCoordinate2D
             self.selectedAddress = dictionary["address"] as? String ?? ""
+            self.postalCode = dictionary["postalCode"] as? String ?? ""
             self.jobseekerAddressInput.text = self.selectedAddress
         }
         self.navigationController?.pushViewController(vc, animated: true)
@@ -609,7 +623,6 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
             } else {
                 self.hud.dismiss(animated: true)
                 self.toast.isShow("Profile Updated successfully")
-                address = ""
                 UserDefaults.standard.removeObject(forKey: "JOB_SECTORS")
                 // JobseekerExperienceVC
                 self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)

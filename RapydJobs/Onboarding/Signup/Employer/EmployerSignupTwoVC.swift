@@ -12,9 +12,6 @@ import SwiftVideoBackground
 import JGProgressHUD
 import CoreLocation
 
-var address = ""
-var postalCode = ""
-
 class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let segueEmployerMapVC = "EmployerMapVC"
@@ -25,6 +22,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     
     var selectedAddress = ""
     var centerCoordinate: CLLocationCoordinate2D?
+    var toast: JYToast!
     
     private lazy var videoView: UIView = {
         let view = UIView()
@@ -177,9 +175,6 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         super.viewWillAppear(animated)
         
         try? VideoBackground.shared.play(view: videoView, videoName: "Background", videoType: "mp4")
-        
-        employerAddressInput.text = address
-        employerPostalCodeInput.text = postalCode
     }
     
     @objc func navigateToAddressVC() {
@@ -187,6 +182,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     }
 
     private func setupViews() {
+        self.toast = JYToast()
         if EditProfileFlowManager.shared().isEditProfile == true {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "CHANGE LOGO>", style: .plain, target: self, action: #selector(navigateToAddressVC))
         } else {
@@ -261,7 +257,6 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
                 return
             }
             
-            address = user.address?.address ?? ""
             employerAddressInput.text = user.address?.address ?? ""
             employerBuildingFloorInput.text = user.address?.buildingFloor ?? ""
             employerPostalCodeInput.text = user.address?.postalCode ?? ""
@@ -339,6 +334,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
                             print("Error : ", err)
                         } else {
                             self.hud.dismiss(animated: true)
+                            self.toast.isShow("Profile Updated successfully")
                             if !EditProfileFlowManager.shared().isEditProfile {
                                 self.performSegue(withIdentifier: self.segueEmployerUploadLogoVC, sender: nil)
                             }

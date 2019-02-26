@@ -6,7 +6,7 @@
 
 #ifndef LISDKSession_h
 #define LISDKSession_h
-
+#import <UIKit/UIKit.h>
 @class LISDKAccessToken;
 
 /**

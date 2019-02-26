@@ -16,6 +16,7 @@ import GooglePlaces
 import SVProgressHUD
 import LinkedinSwift
 import UserNotifications
+import IOSLinkedInAPIFix
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
@@ -134,8 +135,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
         // Linkedin sdk handle redirect
-        if LinkedinSwiftHelper.shouldHandle(url) {
-            return LinkedinSwiftHelper.application(app, open: url, sourceApplication: nil, annotation: nil)
+        
+        if LISDKCallbackHandler.shouldHandle(url) {
+            return LISDKCallbackHandler.application(app, open: url, sourceApplication: nil, annotation: nil)
         }
         
         return false

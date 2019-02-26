@@ -97,7 +97,7 @@ class InterviewV2ViewController: UIViewController {
             
             if date.compare(.isThisMonth) {
                 //let date = Date()
-                let dateArr = self.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
+                let dateArr = self.generateDatesArrayBetweenTwoDates(startDate: Date(), endDate: date.endOfMonth())
                 if dateArr.count == 0 {
                     self.dates = [Date()]
                 } else {

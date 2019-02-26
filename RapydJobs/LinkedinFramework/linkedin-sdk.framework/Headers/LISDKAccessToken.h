@@ -6,6 +6,7 @@
 
 #ifndef LISDKAccessToken_h
 #define LISDKAccessToken_h
+#import <UIKit/UIKit.h>
 
 @interface LISDKAccessToken : NSObject
 

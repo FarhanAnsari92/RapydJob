@@ -3271,7 +3271,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mohammadfarhan/Documents/iOS Projects/RapydJobs/rapyd-jobs/RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3301,7 +3301,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mohammadfarhan/Documents/iOS Projects/RapydJobs/rapyd-jobs/RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RapydJobs/Headers/RapydJobs-Bridging-Header.h.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

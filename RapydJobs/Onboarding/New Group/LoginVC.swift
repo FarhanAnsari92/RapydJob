@@ -15,6 +15,7 @@ import LinkedinSwift
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
+import IOSLinkedInAPIFix
 
 
 class LoginVC: UIViewController {
@@ -264,6 +265,7 @@ class LoginVC: UIViewController {
         linkedInButton.bottomAnchor.constraint(equalTo: signupStackView.topAnchor, constant: -20).isActive = true
         linkedInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         linkedInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        linkedInButton.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -281,6 +283,38 @@ class LoginVC: UIViewController {
     }
     
     @objc private func loginViaLinkedin() {
+//        let accessTkn = LISDKAccessToken()
+//        let token = UserDefaults.standard.string(forKey: accessTkn.accessTokenValue)
+//        if (token?.count)! > 0 {
+//
+//        } else {
+//
+//        }
+        
+        let permissions = [LISDK_BASIC_PROFILE_PERMISSION, LISDK_EMAILADDRESS_PERMISSION]
+        
+        LISDKSessionManager.createSession(withAuth: permissions, state: nil/*Constants.linkedin.state*/, showGoToAppStoreDialog: true, successBlock: { (returnState) in
+            
+            if LISDKSessionManager.hasValidSession() {
+            
+                let urlString = String(format: "%@/people/~:(id,first-name,last-name,maiden-name,email-address)", LINKEDIN_API_URL)
+                LISDKAPIHelper.sharedInstance()?.getRequest(urlString, success: { (response) in
+                    print(response)
+                    print(response)
+                }, error: { (error) in
+                    print(error?.localizedDescription)
+                })
+                
+            }
+            
+            
+        }) { (error) in
+            print(error?.localizedDescription)
+        }
+        
+    }
+    
+    @objc private func oldloginViaLinkedin() {
         
         
         

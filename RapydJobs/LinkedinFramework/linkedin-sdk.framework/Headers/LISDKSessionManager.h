@@ -7,7 +7,7 @@
 
 #ifndef LISDKSessionManager_h
 #define LISDKSessionManager_h
-
+#import <UIKit/UIKit.h>
 @class LISDKSession;
 @class LISDKAuthError;
 @class UIApplication;

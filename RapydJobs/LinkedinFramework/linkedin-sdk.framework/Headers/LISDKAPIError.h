@@ -12,7 +12,7 @@
 #define LISDKAPIError_h
 
 #define LISDKAuthErrorAPIResponse @"LISDKAuthErrorAPIResponse"
-
+#import <UIKit/UIKit.h>
 @class LISDKAPIResponse;
 
 @interface LISDKAPIError : NSError
