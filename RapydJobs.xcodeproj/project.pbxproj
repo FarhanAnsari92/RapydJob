@@ -438,6 +438,7 @@
 		C9C310C12194C8B100E215C8 /* ContractTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C310BF2194C8B100E215C8 /* ContractTableViewCell.swift */; };
 		C9C310C22194C8B100E215C8 /* ContractTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C310C02194C8B100E215C8 /* ContractTableViewCell.xib */; };
 		C9C310C42194CC5E00E215C8 /* AddContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C310C32194CC5E00E215C8 /* AddContractViewController.swift */; };
+		C9C365392221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C365382221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift */; };
 		C9C54D72219C96F700834E26 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C54D70219C96F700834E26 /* ReviewTableViewCell.swift */; };
 		C9C54D73219C96F700834E26 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C54D71219C96F700834E26 /* ReviewTableViewCell.xib */; };
 		C9C54D75219CBD0800834E26 /* EducationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C54D74219CBD0800834E26 /* EducationModel.swift */; };
@@ -913,6 +914,7 @@
 		C9C310BF2194C8B100E215C8 /* ContractTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTableViewCell.swift; sourceTree = "<group>"; };
 		C9C310C02194C8B100E215C8 /* ContractTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractTableViewCell.xib; sourceTree = "<group>"; };
 		C9C310C32194CC5E00E215C8 /* AddContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContractViewController.swift; sourceTree = "<group>"; };
+		C9C365382221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUpdateTimeSheetViewController.swift; sourceTree = "<group>"; };
 		C9C54D70219C96F700834E26 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		C9C54D71219C96F700834E26 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		C9C54D74219CBD0800834E26 /* EducationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationModel.swift; sourceTree = "<group>"; };
@@ -2405,6 +2407,7 @@
 				C9A563DD21B060EF00AA0802 /* EmployerTimesheetViewController.swift */,
 				C93D346D21BEE9C600B66AA5 /* TimesheetViewController.swift */,
 				C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */,
+				C9C365382221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -2975,6 +2978,7 @@
 				C9C54D77219CBEC900834E26 /* LanguageModel.swift in Sources */,
 				A54AD703210BCC0800C72F75 /* CreateJobService.swift in Sources */,
 				A55FA59020DE6B200010C3B3 /* FormActionTableViewCell.swift in Sources */,
+				C9C365392221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift in Sources */,
 				A54AD6E7210B640300C72F75 /* JobseekerOnboardingRouter.swift in Sources */,
 				C9872C8921A007C200CEE43D /* ReachabilityHelper.swift in Sources */,
 				A54D07EE20E01F75002C8449 /* FormStatementTableViewCell.swift in Sources */,
