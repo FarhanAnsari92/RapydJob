@@ -60,7 +60,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         self.endTime.text = "00:00"
         
         let date = Date()
-        self.dates = self.generateDatesArrayBetweenTwoDates(startDate: date, endDate: date.endOfMonth())
+        self.dates = self.generateDatesArrayBetweenTwoDates(startDate: date.startOfMonth(), endDate: date.endOfMonth())
         self.collectionView.reloadData()
         
         startTimePicker = UIDatePicker()
@@ -238,7 +238,8 @@ extension CreateUpdateTimeSheetViewController: UITableViewDataSource, UITableVie
         let monthWithYear = slctdWeek["month"] as? String ?? ""
         let startTime = slctdWeek["start_time"] as? String ?? ""
         let endTime = slctdWeek["end_time"] as? String ?? ""
-        
+        let dat = Int(slctdWeek["date"] as! String) ?? 0
+        self.collectionView.scrollToItem(at: IndexPath(row: dat, section: 0), at: .centeredHorizontally, animated: true)
         // ---
         
         let week = self.selectedWeek[indexPath.row]
