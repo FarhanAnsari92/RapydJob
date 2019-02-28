@@ -9,6 +9,6 @@
 #ifndef RapydJobs_Bridging_Header_h_h
 #define RapydJobs_Bridging_Header_h_h
 
-#import <linkedin-sdk/LISDK.h>
+//#import <linkedin-sdk/LISDK.h>
 
 #endif /* RapydJobs_Bridging_Header_h_h */
