@@ -210,6 +210,7 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
         cell.timeSheetCompletion = {
             let sb = UIStoryboard(name: "Timesheet", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "CreateUpdateTimeSheetViewControllerID") as! CreateUpdateTimeSheetViewController
+            vc.jobOffer = self.jobOffers[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.acceptCompletion = {

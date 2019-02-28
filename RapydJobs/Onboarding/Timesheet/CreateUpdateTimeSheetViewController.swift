@@ -25,7 +25,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     var dates = [Date]()
     var selectedDate: Date?
     var dateToEdit: Date?
-    
+    var jobOffer: JobOfferData?
     var selectedWeek = [[String:Any]]()
 //    var selectedDay: String?
     
@@ -48,6 +48,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     }
     
     func setupView() {
+        self.title = "Timesheet"
         view.backgroundColor = Constants.Colors.primaryGreenColor
         
         let leftBtn = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.done))
@@ -103,9 +104,37 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     }
     
     @objc func done() {
-        
+        if self.selectedWeek.count == 0 {
+            return
+        }
         _ = CreateTimesheetPopup(week: self.selectedWeek, completion: { (dictionary) in
-            print(dictionary)
+            guard let hourlyRate = dictionary["hourly_rate"] as? String else {
+                return
+            }
+            print(self.selectedWeek)
+            
+            var timesheetArray = [[String:Any]]()
+            for item in self.selectedWeek {
+                var dic = [String:Any]()
+                let date = item["param_date"] as? String
+                dic["date"] = date
+                dic["start_time"] = item["start_time"] as? String
+                dic["end_time"] = item["end_time"] as? String
+                timesheetArray.append(dic)
+            }
+            print(hourlyRate)
+            var param = [String:Any]()
+            let jobId = "\(String(describing: self.jobOffer?.id))" // <- Job id is not proper
+            param["job_id"] = jobId
+            param["timesheet_data"] = timesheetArray
+            param["hourly_rate"] = hourlyRate
+            print(param)
+            _ = APIClient.callAPI(request: .createTimesheet(param: param), onSuccess: { (dictionary) in
+                print(dictionary)
+            }, onFailure: { (errorDictionary, _) in
+                print(errorDictionary)
+            })
+            
         })
         
     }
@@ -180,7 +209,13 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             let strDate = date.toString(format: DateFormatType.custom("E d"))
             let day = String(strDate.split(separator: " ").first ?? "")
             let date = String(strDate.split(separator: " ").last ?? "")
-            let month = self.monthSelection.titleLabel.text ?? ""
+            let monthYear = self.monthSelection.titleLabel.text ?? ""
+            let month = String(monthYear.split(separator: " ").first ?? "")
+            let year = String(monthYear.split(separator: " ").last ?? "")
+            let monthNum = Constants.getMonthNumber(month)
+            print(monthNum)
+            print("\(date)-\(monthNum)-\(year)")
+            
             
             var week = [String:Any]()
             week["day"] = day
@@ -188,8 +223,9 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             week["start_time"] = self.startTime.text
             week["end_time"] = self.endTime.text
             week["month"] = self.monthSelection.titleLabel.text ?? ""
-            let completeDate = "\(date) \(String(describing: month))"
+            let completeDate = "\(date) \(String(describing: monthYear))"
             week["complete_date"] = completeDate
+            week["param_date"] = "\(date)-\(monthNum)-\(year)"
             
             print(week)
             

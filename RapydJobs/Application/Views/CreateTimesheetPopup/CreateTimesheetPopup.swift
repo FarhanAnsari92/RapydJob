@@ -61,7 +61,7 @@ class CreateTimesheetPopup: UIView {
     
     @IBAction func submitBtnTapped(_ sender: UIButton) {
         
-        self.completion?(["text": self.txtField.text])
+        self.completion?(["hourly_rate": self.txtField.text])
     
         UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
             self.removeFromSuperview()
