@@ -466,6 +466,8 @@
 		C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB2B1B2183A330005FBDFE /* APIClient.swift */; };
 		C9F14FF7220380BE00AF16ED /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF6220380BE00AF16ED /* NotificationType.swift */; };
 		C9F14FF92203906500AF16ED /* NotificationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F14FF82203906500AF16ED /* NotificationContainer.swift */; };
+		C9F2EF9422286D5400A2ABE6 /* CreateTimesheetPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F2EF9322286D5400A2ABE6 /* CreateTimesheetPopup.xib */; };
+		C9F2EF9622286D6700A2ABE6 /* CreateTimesheetPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2EF9522286D6700A2ABE6 /* CreateTimesheetPopup.swift */; };
 		C9FDF9CD21824BCC00991F18 /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */; };
 		C9FDF9CF2182521600991F18 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9CE2182521600991F18 /* AddressModel.swift */; };
 		C9FDF9D12182541300991F18 /* OrganizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FDF9D02182541300991F18 /* OrganizationModel.swift */; };
@@ -942,6 +944,8 @@
 		C9EB2B1B2183A330005FBDFE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C9F14FF6220380BE00AF16ED /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		C9F14FF82203906500AF16ED /* NotificationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContainer.swift; sourceTree = "<group>"; };
+		C9F2EF9322286D5400A2ABE6 /* CreateTimesheetPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTimesheetPopup.xib; sourceTree = "<group>"; };
+		C9F2EF9522286D6700A2ABE6 /* CreateTimesheetPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimesheetPopup.swift; sourceTree = "<group>"; };
 		C9FDF9CC21824BCC00991F18 /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
 		C9FDF9CE2182521600991F18 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		C9FDF9D02182541300991F18 /* OrganizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModel.swift; sourceTree = "<group>"; };
@@ -1832,6 +1836,7 @@
 		A54AD6B3210A64AD00C72F75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9F2EF9222286D1F00A2ABE6 /* CreateTimesheetPopup */,
 				C9B92291218E4D6D000A633B /* RatingPopup */,
 				A55FA5A020DEBBF40010C3B3 /* AnimatableBottomBorder.swift */,
 				A57E30B420EAA89D00BF6CE9 /* AnimatableBar.swift */,
@@ -2427,6 +2432,15 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		C9F2EF9222286D1F00A2ABE6 /* CreateTimesheetPopup */ = {
+			isa = PBXGroup;
+			children = (
+				C9F2EF9322286D5400A2ABE6 /* CreateTimesheetPopup.xib */,
+				C9F2EF9522286D6700A2ABE6 /* CreateTimesheetPopup.swift */,
+			);
+			path = CreateTimesheetPopup;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2524,6 +2538,7 @@
 				0DCE241D20E94E1F00577153 /* RelatedFieldsCollectionViewCell.xib in Resources */,
 				0DEB4A0D210BAEE90083E78C /* Poppins-Regular.otf in Resources */,
 				C993F69D21876C4900CE11EE /* ShortList.storyboard in Resources */,
+				C9F2EF9422286D5400A2ABE6 /* CreateTimesheetPopup.xib in Resources */,
 				A57B9C5520F26BA50083A106 /* DescriptionCell.xib in Resources */,
 				0D42023D20DE6E420063BB23 /* SideMenuTableViewCell.xib in Resources */,
 				4D2C637321692C3D0076B718 /* Login.storyboard in Resources */,
@@ -2853,6 +2868,7 @@
 				A54D082920E17090002C8449 /* UIWindow+Transition.swift in Sources */,
 				A54AD6E2210B474400C72F75 /* Account.swift in Sources */,
 				883D4DCA21074D2A00FF9B09 /* UpdateLanguage.swift in Sources */,
+				C9F2EF9622286D6700A2ABE6 /* CreateTimesheetPopup.swift in Sources */,
 				A54AD6E5210B5B3700C72F75 /* EmployerOnboardingRouter.swift in Sources */,
 				C9B586F7219DF96C00757818 /* SeekerReview.swift in Sources */,
 				C954E47A21BF065700EBF927 /* DefaultEvent.swift in Sources */,

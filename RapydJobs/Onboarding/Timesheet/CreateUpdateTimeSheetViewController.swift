@@ -50,6 +50,9 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     func setupView() {
         view.backgroundColor = Constants.Colors.primaryGreenColor
         
+        let leftBtn = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.done))
+        self.navigationItem.rightBarButtonItem = leftBtn
+        
         self.toast = JYToast()
         
         self.setupDropdown()
@@ -97,6 +100,14 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         endTime.rightView = dropdownImage
         endTime.inputView = endTimePicker
         endTime.delegate = self
+    }
+    
+    @objc func done() {
+        
+        _ = CreateTimesheetPopup(week: self.selectedWeek, completion: { (dictionary) in
+            print(dictionary)
+        })
+        
     }
     
     func setupDropdown() {
@@ -180,6 +191,10 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             let completeDate = "\(date) \(String(describing: month))"
             week["complete_date"] = completeDate
             
+            print(week)
+            
+            week["difference"] = findDateDiff(time1Str: self.endTime.text!, time2Str: self.startTime.text!)
+            
             if let index = self.selectedWeek.firstIndex(where: { $0["complete_date"] as? String == completeDate }) {
                 self.selectedWeek[index] = week
             } else {
@@ -189,6 +204,33 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         } else {
             AlertService.shared.alert(in: self, "Select Day")
         }
+    }
+    
+    func findDateDiff(time1Str: String, time2Str: String) -> Double {
+        let timeformatter = DateFormatter()
+        timeformatter.dateFormat = "HH:mm"
+        
+        guard let time1 = timeformatter.date(from: time1Str),
+            let time2 = timeformatter.date(from: time2Str) else { return 0.0 }
+        
+        //You can directly use from here if you have two dates
+        
+        let interval = time2.timeIntervalSince(time1)
+        let hr = interval / 3600;
+        let hour = hr < 0 ? (-1 * hr) : hr
+        print(hour)
+        return hour
+        
+//        let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+//
+//        let positiveMinute = minute < 0 ? (-1*minute) : minute
+//        print(positiveMinute)
+//        let properHour = positiveMinute / 60.0
+//        print(properHour)
+//        return properHour
+        
+//        let intervalInt = Int(interval)
+        //return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
     }
 }
 

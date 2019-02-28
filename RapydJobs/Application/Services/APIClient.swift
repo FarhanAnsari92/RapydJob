@@ -91,6 +91,8 @@ enum APIClient: URLRequestConvertible {
     case getJobDetail(jobId: String)
     case getConversation(conversationId: String, page: Int)
     case resendCode
+    
+    case createTimesheet(param: [String:Any])
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -112,6 +114,7 @@ enum APIClient: URLRequestConvertible {
                  .jobseekerTimesheet,
                  .employerTimesheet,
                  .socialRegister,
+                 .createTimesheet,
                  .superLikeEmployerRequest:
                 return .post
             case .myProfileOrganization,
@@ -241,6 +244,8 @@ enum APIClient: URLRequestConvertible {
                 return param
             case .socialRegister(let param):
                 return param
+            case .createTimesheet(let param):
+                return param
             }
         }()
         
@@ -301,6 +306,7 @@ enum APIClient: URLRequestConvertible {
                  .getJobDetail,
                  .getConversation,
                  .resendCode,
+                 .createTimesheet,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
@@ -427,6 +433,8 @@ enum APIClient: URLRequestConvertible {
                 return "conversation/\(conversationId)?page=\(page)"
             case .resendCode:
                 return "resend-verification-code"
+            case .createTimesheet:
+                return "timesheet"
             }
         }()
 
