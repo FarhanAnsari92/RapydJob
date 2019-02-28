@@ -136,9 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         
         // Linkedin sdk handle redirect
         
-        if LISDKCallbackHandler.shouldHandle(url) {
-            return LISDKCallbackHandler.application(app, open: url, sourceApplication: nil, annotation: nil)
-        }
+//        if LISDKCallbackHandler.shouldHandle(url) {
+//            return LISDKCallbackHandler.application(app, open: url, sourceApplication: nil, annotation: nil)
+//        }
         
         return false
         
