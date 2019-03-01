@@ -15,7 +15,7 @@ class CreateTimesheetPopup: UIView {
     @IBOutlet weak var txtFieldParent: UIView!
     @IBOutlet weak var totalAmount: UILabel!
     
-    let maxLength = 4
+    let maxLength = 6
     var selectedWeeks: [[String:Any]] = [[String:Any]]()
 
     required init?(coder aDecoder: NSCoder) {

@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 import DropDown
 import JGProgressHUD
 import AFDateHelper
+import JGProgressHUD
 
 class CreateUpdateTimeSheetViewController: UIViewController {
     
@@ -20,6 +21,12 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     @IBOutlet private weak var endTime: SkyFloatingLabelTextField!
     
     @IBOutlet weak var monthSelection: BaseDropdownButton!
+    
+    private let hud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        hud.vibrancyEnabled = true
+        return hud
+    }()
     
     let dropDown = DropDown()
     var dates = [Date]()
@@ -108,7 +115,8 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             return
         }
         _ = CreateTimesheetPopup(week: self.selectedWeek, completion: { (dictionary) in
-            guard let hourlyRate = dictionary["hourly_rate"] as? String else {
+            guard let hourlyRate = dictionary["hourly_rate"] as? String, hourlyRate.count > 0 else {
+                AlertService.shared.alert(in: self, "Hourly rate not provided")
                 return
             }
             print(self.selectedWeek)
@@ -124,15 +132,25 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             }
             print(hourlyRate)
             var param = [String:Any]()
-            let jobId = "\(String(describing: self.jobOffer?.id))" // <- Job id is not proper
+            let jobId = "\(String(describing: self.jobOffer?.userId))" // <- Job id is not proper
             param["job_id"] = jobId
             param["timesheet_data"] = timesheetArray
             param["hourly_rate"] = hourlyRate
             print(param)
+            
+            self.hud.show(in: self.view)
             _ = APIClient.callAPI(request: .createTimesheet(param: param), onSuccess: { (dictionary) in
+                self.hud.dismiss(animated: true)
                 print(dictionary)
+                self.toast.isShow("Timesheet saved successfully.")
+                self.navigationController?.popViewController(animated: true)
             }, onFailure: { (errorDictionary, _) in
-                print(errorDictionary)
+                self.hud.dismiss(animated: true)
+                guard let message = errorDictionary["messaage"] as? String else {
+                    self.toast.isShow("Something went wrong.")
+                    return
+                }
+                self.toast.isShow(message)
             })
             
         })
