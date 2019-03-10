@@ -75,7 +75,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             self.shareAppTapped()
         case 3:
-            self.performSignOut()
+            AlertService.shared.alert(in: self, "Are you sure you want to Sign Out?") {
+                self.performSignOut()
+            }            
         default:
             break
         }

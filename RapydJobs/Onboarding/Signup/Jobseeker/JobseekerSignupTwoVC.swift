@@ -337,7 +337,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         self.distanceInput.text = "\(user.address?.distance ?? "") mi"
-        if let wks = user.jobSeeker?.dates {
+        if let wks = user.jobSeeker?.dates, wks.count > 0 {
             var str = ""
             for item in wks {
                 str += "\(item["day"] as? String ?? ""),"

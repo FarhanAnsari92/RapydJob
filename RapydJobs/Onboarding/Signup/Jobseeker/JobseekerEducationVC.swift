@@ -214,7 +214,9 @@ class JobseekerEducationVC: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let remove = UITableViewRowAction(style: .default, title: "Remove") { (action, index) in
-            self.deleteEducation(row: indexPath.row)
+            AlertService.shared.alert(in: self, "Are you sure you want to delete this education?", success: {
+                self.deleteEducation(row: indexPath.row)
+            })
         }
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, index) in
             self.updateEducation(row: indexPath.row)

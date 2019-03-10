@@ -197,8 +197,10 @@ extension ManageEmployeeViewController: UITableViewDelegate, UITableViewDataSour
         cell.deleteBtn.isHidden = self.segmentControl.selectedSegmentioIndex == 0
         cell.terminateBtn.isHidden = !(self.segmentControl.selectedSegmentioIndex == 0)
         cell.deleteCompletion = {
-            let hireId = self.employees[indexPath.row].hireId!
-            self.deleteEmployee(hireId: hireId, row: indexPath.row)
+            AlertService.shared.alert(in: self, "Are you sure you want to delete this employee?", success: {
+                let hireId = self.employees[indexPath.row].hireId!
+                self.deleteEmployee(hireId: hireId, row: indexPath.row)
+            })
         }
         cell.renewCompletion = {
             self.changeEmployeeStatus(emp: self.employees[indexPath.row], row: indexPath.row)

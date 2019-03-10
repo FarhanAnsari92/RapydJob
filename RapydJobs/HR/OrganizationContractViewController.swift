@@ -128,7 +128,9 @@ extension OrganizationContractViewController: UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContractTableViewCellID", for: indexPath) as! ContractTableViewCell
         
         cell.deleteCompletion = {
-            self.deleteContract(contract: self.contracts[indexPath.row], row: indexPath.row)
+            AlertService.shared.alert(in: self, "Are you sure you want to delete this contract?", success: {
+                self.deleteContract(contract: self.contracts[indexPath.row], row: indexPath.row)
+            })
         }
         
         cell.updateData(date: self.contracts[indexPath.row])

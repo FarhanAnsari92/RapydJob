@@ -218,7 +218,9 @@ class JobseekerExperienceVC: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let remove = UITableViewRowAction(style: .default, title: "Remove") { (action, index) in
-            self.deleteExperience(row: indexPath.row)
+            AlertService.shared.alert(in: self, "Are you sure you want to delete this experience?", success: {
+                self.deleteExperience(row: indexPath.row)
+            })
         }
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, index) in
             self.updateExperience(row: indexPath.row)

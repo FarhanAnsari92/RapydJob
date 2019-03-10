@@ -132,7 +132,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             }
             print(hourlyRate)
             var param = [String:Any]()
-            let jobId = "\(String(describing: self.jobOffer?.userId))" // <- Job id is not proper
+            let jobId: String = "\(String(describing: self.jobOffer?.id ?? 0))" // <- Job id is not proper
             param["job_id"] = jobId
             param["timesheet_data"] = timesheetArray
             param["hourly_rate"] = hourlyRate

@@ -16,7 +16,7 @@ class JobListOrganizationViewController: BaseViewController {
     
     @IBOutlet weak var segmentControl: Segmentio!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     var jobs = [OrganizationJob]()
     var currentPage = 1
     var lastPage = 0
@@ -88,7 +88,8 @@ class JobListOrganizationViewController: BaseViewController {
             self.lastPage = 0
             self.isLoadMore = false
             self.isLoading = false
-            
+            self.emptyPlaceholderView.isHidden = true
+            self.jobs.removeAll()
             self.getActiveJobs(type: segmentIndex == 0 ? "active" : "previous")
         }
     }
@@ -101,6 +102,7 @@ class JobListOrganizationViewController: BaseViewController {
         self.isLoading = true
         hud.show(in: view)
         _ = APIClient.callAPI(request: APIClient.organizationJobsLists(limit: limit, type: type, page: params), onSuccess: { (dictionary) in
+            print(dictionary)
             self.hud.dismiss(animated: true)
             self.isLoading = false
             
@@ -127,6 +129,10 @@ class JobListOrganizationViewController: BaseViewController {
             
             self.tableView.reloadData()
             
+            if self.jobs.count == 0{
+                self.showEmptyPlaceholderView()
+            }
+            
         }) { (errorDictionary, _) in
             self.isLoading = false
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -134,11 +140,23 @@ class JobListOrganizationViewController: BaseViewController {
         }
     }
     
+    private func showEmptyPlaceholderView() {
+        if self.segmentControl.selectedSegmentioIndex == 0 {
+            self.emptyPlaceholderView.message.text = "You have no active jobs at this time"
+        } else if self.segmentControl.selectedSegmentioIndex == 1 {
+            self.emptyPlaceholderView.message.text = "You have no previous jobs at this time"
+        }
+        self.emptyPlaceholderView.isHidden = false
+    }
+    
     func deleteJob(id: Int, row: Int) {
         hud.show(in: view)
         _ = APIClient.callAPI(request: APIClient.deleteJob(id: id), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             self.jobs.remove(at: row)
+            if self.jobs.count == 0{
+                self.showEmptyPlaceholderView()
+            }
             self.tableView.reloadData()
         }, onFailure: { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -152,6 +170,9 @@ class JobListOrganizationViewController: BaseViewController {
         _ = APIClient.callAPI(request: APIClient.updateJob(id: id, param: param), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             self.jobs.remove(at: row)
+            if self.jobs.count == 0{
+                self.showEmptyPlaceholderView()
+            }
             self.tableView.reloadData()
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)
@@ -207,7 +228,10 @@ extension JobListOrganizationViewController: UITableViewDelegate, UITableViewDat
             cell.jobTitle.text = self.jobs[indexPath.row].title
             
             cell.deleteJobCompletion = {
-                self.deleteJob(id: self.jobs[indexPath.row].id, row: indexPath.row)
+                AlertService.shared.alert(in: self, "Are you sure you want to delete this job?", success: {
+                    self.deleteJob(id: self.jobs[indexPath.row].id, row: indexPath.row)
+                })
+                
             }
             
             cell.repeatJobCompletion = {

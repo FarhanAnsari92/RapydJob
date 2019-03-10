@@ -24,4 +24,19 @@ struct AlertService {
       
         vc.present(alert, animated: true, completion: nil)
     }
+    
+    func alert(in vc: UIViewController, _ message: String, success: @escaping (() -> Void)) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            success()
+            alert.dismiss(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true)
+        }))
+        
+        vc.present(alert, animated: true, completion: nil)
+    }
 }

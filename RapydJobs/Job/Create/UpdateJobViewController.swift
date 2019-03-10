@@ -339,7 +339,7 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         for i in 0..<job.dates!.count {
             let date = job.dates[i]
             print(date.day)
-            jobSelectedShiftTimingStr += "\(String(describing: date.day)),"
+            jobSelectedShiftTimingStr += "\(String(describing: date.day ?? "")),"
 
         }
         if jobSelectedShiftTimingStr.count > 0 {
@@ -608,10 +608,10 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     
     @objc func submit() {
         
-        guard let slctdWeeks = self.selectedWeeks, slctdWeeks.count > 0 else {
-            AlertService.shared.alert(in: self, "Timesheet is required.")
-            return
-        }
+//        guard let slctdWeeks = self.selectedWeeks, slctdWeeks.count > 0 else {
+//            AlertService.shared.alert(in: self, "Timesheet is required.")
+//            return
+//        }
         
         if jobTitleInput.text != "" {
             if jobSectorInput.text != "" {
