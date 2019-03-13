@@ -13,6 +13,11 @@ class WeekViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButtn: UIButton! {
+        didSet {
+            self.addButtn.layer.cornerRadius = 8
+        }
+    }
     @IBOutlet weak var startTime: SkyFloatingLabelTextField! {
         didSet {
             startTime.placeholder = "Start Time"
