@@ -175,11 +175,12 @@ class ManageEmployeeViewController: UIViewController {
     }
     
     private func showEmptyPlaceholderView() {
-        if self.segmentControl.selectedSegmentioIndex == 0 {
-            self.emptyPlaceholderView.message.text = "You haven't hired any candidate yet"
-        } else {
-            self.emptyPlaceholderView.message.text = "You haven't any previous candidate yet"
-        }
+//        if self.segmentControl.selectedSegmentioIndex == 0 {
+//            self.emptyPlaceholderView.message.text = "You haven't hired any candidates yet"
+//        } else {
+//            self.emptyPlaceholderView.message.text = "You haven't any previous candidate yet"
+//        }
+        self.emptyPlaceholderView.message.text = "You haven't hired any candidates yet"
         self.emptyPlaceholderView.isHidden = false
     }
 }

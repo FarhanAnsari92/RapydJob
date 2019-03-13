@@ -59,7 +59,7 @@ extension HRVC: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = "Manage Your Employees"
         } else {
             if indexPath.row == 0 {
-                cell.titleLabel.text = "View or Upload Cotracts"
+                cell.titleLabel.text = "View or Upload Contracts"
             } else {
                 cell.titleLabel.text = "Signed Contracts"
             }

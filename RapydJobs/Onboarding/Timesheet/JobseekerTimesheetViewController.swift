@@ -76,9 +76,9 @@ class JobseekerTimesheetViewController: BaseViewController {
             )
         )
         
-        let segmentArray = [SegmentioItem(title: "APPROVE",image: UIImage(named: "")),
+        let segmentArray = [SegmentioItem(title: "APPROVED",image: UIImage(named: "")),
                             SegmentioItem(title: "PENDING",image: UIImage(named: "")),
-                            SegmentioItem(title: "REJECT",image: UIImage(named: ""))];
+                            SegmentioItem(title: "REJECTED",image: UIImage(named: ""))];
         
         segmentControl.setup(content: segmentArray, style: SegmentioStyle.onlyLabel, options: segmentioOptions)
         

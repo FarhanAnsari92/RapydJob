@@ -76,8 +76,8 @@ class JobListOrganizationViewController: BaseViewController {
             )
         )
         
-        let segmentArray = [SegmentioItem(title: "ACTIVE",image: UIImage(named: "")),
-                            SegmentioItem(title: "PREVIOUS",image: UIImage(named: ""))];
+        let segmentArray = [SegmentioItem(title: "ACTIVE JOBS",image: UIImage(named: "")),
+                            SegmentioItem(title: "D-LISTED JOBS",image: UIImage(named: ""))];
         
         segmentControl.setup(content: segmentArray, style: SegmentioStyle.onlyLabel, options: segmentioOptions)
         
@@ -144,7 +144,7 @@ class JobListOrganizationViewController: BaseViewController {
         if self.segmentControl.selectedSegmentioIndex == 0 {
             self.emptyPlaceholderView.message.text = "You have no active jobs at this time"
         } else if self.segmentControl.selectedSegmentioIndex == 1 {
-            self.emptyPlaceholderView.message.text = "You have no previous jobs at this time"
+            self.emptyPlaceholderView.message.text = "You have no d-listed jobs at this time"
         }
         self.emptyPlaceholderView.isHidden = false
     }

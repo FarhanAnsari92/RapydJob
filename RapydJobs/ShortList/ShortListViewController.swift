@@ -34,7 +34,7 @@ class ShortListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Shortlist"
+        self.title = "Shortlisted"
         if AppContainer.shared.user.user?.accountType == "organization" {
             self.getDropDownData();
             self.jobSelectorButton.isHidden = false
@@ -46,12 +46,17 @@ class ShortListViewController: BaseViewController {
     }
     
     func getDropDownData() {
-        _ = APIClient.callAPI(request: APIClient.dropDown, onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .dropDown, onSuccess: { (dictionary) in
             if let arr = dictionary["data"] as? [[String:Any]] {
                 self.jobs = Mapper<JobList>().mapArray(JSONArray: arr)
-                self.selectedJob = self.jobs.first
-                self.getOrganizationShortListedData(job: self.jobs.first!)
-                self.jobSelectorButton.setTitle((self.jobs.first)?.title, for: .normal)
+                
+                if self.jobs.count > 0 {
+                    self.selectedJob = self.jobs.first
+                    self.getOrganizationShortListedData(job: self.jobs.first!)
+                    self.jobSelectorButton.setTitle((self.jobs.first)?.title, for: .normal)
+                } else {
+                    self.toast.isShow("No Jobs Found")
+                }
             }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")

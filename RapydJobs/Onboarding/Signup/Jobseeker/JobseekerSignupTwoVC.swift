@@ -325,11 +325,14 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.relatedFieldsInput.text = relatedFieldsSring
         }
         
-        self.minSalaryValue.text = user.jobSeeker?.minSalaryString ?? ""
-        self.maxSalaryValue.text = user.jobSeeker?.maxSalaryString ?? ""
-        
         self.rangeSlider.lowerValue = Double(Int(user.jobSeeker?.minSalaryString ?? "") ?? 0)
-        self.rangeSlider.upperValue = Double(Int(user.jobSeeker?.maxSalaryString ?? "") ?? 0)
+        self.rangeSlider.upperValue = Double(Int(user.jobSeeker?.maxSalaryString ?? "") ?? (Int(self.rangeSlider.lowerValue + 10)))
+        
+        minSalVal = Int(self.rangeSlider.lowerValue)
+        maxSalVal = Int(self.rangeSlider.upperValue)
+        
+        minSalaryValue.text = "£ \(minSalVal)"
+        maxSalaryValue.text = "£ \(maxSalVal)"
         
         let latitude = Double(user.address?.latitude ?? "") ?? 0.0
         let longitude = Double(user.address?.longitude ?? "") ?? 0.0
@@ -494,6 +497,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        distanceInput.resignFirstResponder()
         distanceInput.text = pickerData[row]
     }
     

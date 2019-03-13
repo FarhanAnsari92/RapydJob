@@ -193,7 +193,7 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .plain, target: self, action: #selector(self.backBtnTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.backBtnTap))
         
         navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -342,6 +342,19 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    @objc private func test_moveToNext() {
+        let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "JobseekerCodeVC") as! JobseekerCodeVC
+        
+        vc.completion = { () in
+            
+            let vc = sb.instantiateViewController(withIdentifier: "JobseekerSignupTwoVC") as! JobseekerSignupTwoVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)}
     
     @objc private func moveToNext() {
         

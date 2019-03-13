@@ -504,6 +504,18 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, 
         
     }
     
+    @objc func test_createAccount() {
+//        let name = Storyboards.EmployerSignup.name()
+//        let sb = UIStoryboard(name: name, bundle: nil)
+//        let vc = sb.instantiateInitialViewController()!
+//        self.present(vc, animated: true)
+        
+        let name = Storyboards.JobseekerSignup.name()
+        let sb = UIStoryboard(name: name, bundle: nil)
+        let vc = sb.instantiateInitialViewController()!
+        self.present(vc, animated: true)
+    }
+    
     @objc private func createAccount() {
         
         

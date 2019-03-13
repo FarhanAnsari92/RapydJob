@@ -95,6 +95,16 @@ class WeekViewController: UIViewController {
     }
     
     @IBAction func add(_ sender: UIButton) {
+        
+        if startTime.text == "00:00" {
+            AlertService.shared.alert(in: self, "Select proper Start time")
+            return
+        }
+        
+        if endTime.text == "00:00" {
+            AlertService.shared.alert(in: self, "Select proper End time")
+            return
+        }
        
         if !(endTimePicker.date > startTimePicker.date) {
             AlertService.shared.alert(in: self, "End time must be greater than Start time")

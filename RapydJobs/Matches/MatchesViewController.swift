@@ -36,7 +36,7 @@ class MatchesViewController: BaseViewController {
     
     @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView! {
         didSet {
-            self.emptyPlaceholderView.message.text = "You haven't matches yet"
+            self.emptyPlaceholderView.message.text = "You haven't matched yet"
         }
     }
     
@@ -74,14 +74,6 @@ class MatchesViewController: BaseViewController {
             } else {
                 self.getData()
             }
-        }
-    }
-    
-    func getJobSeekerMatchList() {
-        _ = APIClient.callAPI(request: .getJobSeekerMatchList, onSuccess: { (dictionary) in
-            print(dictionary)
-        }) { (errorDictionary, _) in
-            self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }
     
@@ -137,8 +129,10 @@ class MatchesViewController: BaseViewController {
                 self.dropDownData = dto.map(JobsDropDownItem.init)
                 //let id = "\(String(describing: self.dropDownData.first?.identifier))"
                 guard let jobsDropDownItem = self.dropDownData.first else {
+                    self.emptyPlaceholderView.isHidden = false
                     return
                 }
+                self.emptyPlaceholderView.isHidden = true
                 self.selectedJob = jobsDropDownItem
                 let strngId = "\(jobsDropDownItem.identifier)"
                 print(strngId)
@@ -156,9 +150,6 @@ class MatchesViewController: BaseViewController {
             
             for i in 0..<data.count {
                 actionSheet.addAction(UIAlertAction(title: data[i].title, style: .default, handler: { (action) in
-                    //self?.jobSelectorButton.setTitle(data[i].title, for: .normal)
-                    //AppContainer.shared.job.save(jobID: self.dropDownData[i].identifier)
-                    //self?.cardVC?.viewModel.service.getCardData()
                     self.selectedJob = self.dropDownData[i]
                     self.getData(jobId: "\(self.dropDownData[i].identifier)")
                     actionSheet.dismiss(animated: true, completion: nil)

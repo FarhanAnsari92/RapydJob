@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ReachabilityDelegate {
         Fabric.with([Crashlytics.self])
         
         IQKeyboardManager.shared.disabledToolbarClasses = [
-            ChatMessagesVC.self
+            ChatMessagesVC.self,
+            JobseekerSignupTwoVC.self
         ]
         
         //IQKeyboardManager.shared.enable = false

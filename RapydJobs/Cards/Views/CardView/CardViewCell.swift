@@ -36,15 +36,15 @@ class CardViewCell: UIView {
         self.imageView.layer.masksToBounds = true
         if AppContainer.shared.user.user?.accountType == "organization" {
             if EditProfileFlowManager.shared().isHomeScreen {
-                self.noDataLabel.text = "NO SEEKER FOR THIS JOB"
+                self.noDataLabel.text = "NO SEEKERS FOR THIS JOB"
             } else {
-                self.noDataLabel.text = "NO SEEKER SHORTLISTED"
+                self.noDataLabel.text = "NO SEEKERS SHORTLISTED"
             }            
         } else {
             if EditProfileFlowManager.shared().isHomeScreen {
-                self.noDataLabel.text = "NO JOB FOUND"
+                self.noDataLabel.text = "NO JOBS FOUND"
             } else {
-                self.noDataLabel.text = "NO JOB SHORTLISTED"
+                self.noDataLabel.text = "NO JOBS SHORTLISTED"
             }
             
         }

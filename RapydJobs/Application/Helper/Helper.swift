@@ -40,4 +40,49 @@ class Helper {
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
+    class func getRedDot() {
+        
+        _ = APIClient.callAPI(request: .getRedDot, onSuccess: { (dictionary) in
+            
+            print(dictionary)
+            
+            if AppContainer.shared.user.user?.accountType == "organization" {
+                
+                let isEmpTimesheet = dictionary["emp_timesheet"] as! Int == 1
+                let isJobOfferResponse = dictionary["jobofferresponse"] as! Int == 1
+                let isEmpMessage = dictionary["emp_message"] as! Int == 1
+                
+                AppContainer.shared.notificationContainer.save(OrganisationTimesheet: isEmpTimesheet)
+                AppContainer.shared.notificationContainer.save(JobOfferResponse: isJobOfferResponse)
+                if isEmpMessage {
+                    NotificationCenter.default.post(name: .messageNotificationName, object: nil)
+                }
+                AppContainer.shared.notificationContainer.save(Chat: isEmpMessage)
+                
+            } else { // Seeker
+                
+                let isJobSeekerTimesheet = dictionary["emp_timesheet"] as! Int == 1
+                let isInterview = dictionary["interview"] as! Int == 1
+                let isJobseekerMessage = dictionary["jobseeker_message"] as! Int == 1
+                let isJobOffer = dictionary["joboffer"] as! Int == 1
+                
+                AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: isJobSeekerTimesheet)
+                AppContainer.shared.notificationContainer.save(InterviewSchedule: isInterview)
+                AppContainer.shared.notificationContainer.save(JobOfferSend: isJobOffer)
+                if isJobseekerMessage {
+                    NotificationCenter.default.post(name: .messageNotificationName, object: nil)
+                }
+                AppContainer.shared.notificationContainer.save(Chat: isJobseekerMessage)
+                
+            }
+            
+            
+            
+            
+        }) { (errorDic, _) in
+            print(errorDic)
+        }
+        
+    }
+    
 }

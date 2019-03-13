@@ -178,7 +178,7 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
             navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             
             navigationController?.navigationBar.tintColor = UIColor.black            
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_button"), style: .plain, target: self, action: #selector(self.backBtnTap))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.backBtnTap))
         }
         
         videoView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: view.frame.height + 100))
@@ -258,6 +258,19 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
         dismiss(animated: true)
     }
     
+    @objc private func test_moveToNext() {
+        let sb = UIStoryboard(name: "EmployerSignup", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "EmployerCodeVC") as! EmployerCodeVC
+        
+        vc.completion = { () in
+            
+            let vc = sb.instantiateViewController(withIdentifier: "EmployerSignupTwoVC") as! EmployerSignupTwoVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
+    }
     @objc private func moveToNext() {
         
         if employerNameInput.text != "" {

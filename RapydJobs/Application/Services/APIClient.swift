@@ -93,6 +93,8 @@ enum APIClient: URLRequestConvertible {
     case resendCode
     
     case createTimesheet(param: [String:Any])
+    
+    case getRedDot
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -139,6 +141,7 @@ enum APIClient: URLRequestConvertible {
                  .getJobDetail,
                  .getConversation,
                  .resendCode,
+                 .getRedDot,
                  .getInterView:
                 return .get
             case .updateInterview,
@@ -192,6 +195,7 @@ enum APIClient: URLRequestConvertible {
                  .getJobDetail,
                  .getConversation,
                  .resendCode,
+                 .getRedDot,
                  .getInterView:
                 return nil
             case .likeEmployeeRequest(let param):
@@ -307,6 +311,7 @@ enum APIClient: URLRequestConvertible {
                  .getConversation,
                  .resendCode,
                  .createTimesheet,
+                 .getRedDot,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
@@ -435,6 +440,8 @@ enum APIClient: URLRequestConvertible {
                 return "resend-verification-code"
             case .createTimesheet:
                 return "timesheet"
+            case .getRedDot:
+                return "get-red-dots"
             }
         }()
 

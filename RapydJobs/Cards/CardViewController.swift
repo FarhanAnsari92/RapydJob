@@ -69,6 +69,7 @@ class CardViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems = rightBarButtonItems()
         
         self.cardVC?.viewModel.service.getCardData()
+        Helper.getRedDot()
         
         setupActionStack()
         //

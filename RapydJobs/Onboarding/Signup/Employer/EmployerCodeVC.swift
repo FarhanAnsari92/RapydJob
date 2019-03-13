@@ -304,6 +304,11 @@ class EmployerCodeVC: UIViewController {
         }
     }
     
+    @objc private func test_moveToNext() {
+        self.completion?()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc private func moveToNext() {
         
         if (code1.text != "" || code1.text != "X") && (code2.text != "" || code2.text != "X") && (code3.text != "" || code3.text != "X") && (code4.text != "" || code4.text != "X") {
