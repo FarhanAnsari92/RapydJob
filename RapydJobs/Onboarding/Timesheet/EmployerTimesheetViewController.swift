@@ -41,6 +41,14 @@ class EmployerTimesheetViewController: BaseViewController {
         self.setupSegment()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.OrganisationTimesheet {
+            Helper.changeRedDot(type: "emp_timesheet")
+        }
+        AppContainer.shared.notificationContainer.save(OrganisationTimesheet: false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.segmentControl.selectedSegmentioIndex = 0

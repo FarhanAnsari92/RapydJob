@@ -11,6 +11,7 @@ import WARangeSlider
 import SkyFloatingLabelTextField
 import JGProgressHUD
 import ObjectMapper
+import Alamofire
 
 protocol UpdateJobViewControllerDelegate {
     func didUpdate(job: OrganizationJob)
@@ -336,6 +337,11 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         self.jobSectorInput.text = jobSelectedStr ?? ""
         
         var jobSelectedShiftTimingStr: String = ""
+        
+        guard job.dates.count > 0 else {
+            return
+        }
+        self.selectedWeeks = job.dates.toJSON()
         for i in 0..<job.dates!.count {
             let date = job.dates[i]
             print(date.day)
@@ -486,6 +492,9 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
         
         let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
+        if let slctdWks = self.selectedWeeks {
+            vc.selectedWeek = slctdWks
+        }
         
         vc.completion = { weeks in
             guard let wks = weeks, wks.count > 0 else {
@@ -608,10 +617,10 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     
     @objc func submit() {
         
-//        guard let slctdWeeks = self.selectedWeeks, slctdWeeks.count > 0 else {
-//            AlertService.shared.alert(in: self, "Timesheet is required.")
-//            return
-//        }
+        guard let slctdWeeks = self.selectedWeeks, slctdWeeks.count > 0 else {
+            AlertService.shared.alert(in: self, "Timesheet is required.")
+            return
+        }
         
         if jobTitleInput.text != "" {
             if jobSectorInput.text != "" {
@@ -631,28 +640,31 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                                 
                                 print(fields)
                                 
-                                let schedule1 = [ "day"          : "Monday",
-                                                  "start_time"   : "09:00",
-                                                  "end_time"     : "12:00" ]
+//                                let params: Parameters = [ "title" : jobTitleInput.text!,
+//                                                             "description" : jobDescriptionInput.text!,
+//                                                             "min_salary" : minSalVal,
+//                                                             "max_salary" : maxSalVal,
+//                                                             "job_type" : jobTypeInput.text!.lowercased(),
+//                                                             "contract_length"    : lengthOfContractInput.text!.lowercased(),
+//                                                             "related_fields"     : fields,
+//                                                             "dates"              : slctdWeeks
+//                                ] as [String:Any]
                                 
-                                let schedule2 = [ "day"          : "Tuesday",
-                                                  "start_time"   : "09:00",
-                                                  "end_time"     : "12:00" ]
-                                
-                                let params: [String:Any] = [ "title" : jobTitleInput.text!,
-                                                             "description" : jobDescriptionInput.text!,
-                                                             "min_salary" : minSalVal,
-                                                             "max_salary" : maxSalVal,
-                                                             "job_type" : jobTypeInput.text!.lowercased(),
-                                                             "contract_length"    : lengthOfContractInput.text!.lowercased(),
-                                                             "related_fields"     : fields,
-                                                             "dates"              : [schedule1, schedule2]
-                                ]
+                                var params = [String:Any]()
+                                params["title"] = jobTitleInput.text!
+                                params["description"] = jobDescriptionInput.text!
+                                params["min_salary"] = minSalVal
+                                params["max_salary"] = maxSalVal
+                                params["job_type"] = jobTypeInput.text!.lowercased()
+                                params["contract_length"] = lengthOfContractInput.text!.lowercased()
+                                params["related_fields"] = fields
+                                params["dates"] = slctdWeeks
                                 
                                 print(params)
+                                let asda = params
                                 
                                 hud.show(in: view)
-                                _ = APIClient.callAPI(request: APIClient.updateJob(id: jobId!, param: params), onSuccess: { (dictionary) in
+                                _ = APIClient.callAPI(request: .updateJob(id: jobId!, param: params), onSuccess: { (dictionary) in
                                     self.hud.dismiss(animated: true)
                                     print(dictionary)
                                     

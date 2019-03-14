@@ -94,17 +94,15 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
             EditProfileFlowManager.shared().isHomeScreen = false
             //Seeker
         case "Scheduled Interviews":
-            AppContainer.shared.notificationContainer.save(InterviewSchedule: false)
+            break
         case "Job Offers":
-            AppContainer.shared.notificationContainer.save(JobOfferSend: false)
+            break
         case "Jobseeker Timesheet":
-            AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: false)
-            
-            //Employeer
+            break
         case "Employer Timesheet":
-            AppContainer.shared.notificationContainer.save(OrganisationTimesheet: false)
+            break
         case "HR":
-            AppContainer.shared.notificationContainer.save(JobOfferResponse: false)
+            break
         default:
             break
         }

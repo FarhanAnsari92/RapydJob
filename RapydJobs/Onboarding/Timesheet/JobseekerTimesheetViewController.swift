@@ -41,6 +41,14 @@ class JobseekerTimesheetViewController: BaseViewController {
         self.setupSegment()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.JobSeekerTimesheet {
+            Helper.changeRedDot(type: "jobseeker_timesheet")
+        }
+        AppContainer.shared.notificationContainer.save(JobSeekerTimesheet: false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

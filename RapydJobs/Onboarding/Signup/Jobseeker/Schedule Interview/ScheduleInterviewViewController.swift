@@ -43,6 +43,11 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.InterviewSchedule {
+            Helper.changeRedDot(type: "interview");
+        }
+        AppContainer.shared.notificationContainer.save(InterviewSchedule: false)
+        
         self.getInterviews()
     }
     

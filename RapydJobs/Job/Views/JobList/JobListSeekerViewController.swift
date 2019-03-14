@@ -40,6 +40,14 @@ class JobListSeekerViewController: BaseViewController {
         self.setupSegment()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.JobOfferSend {
+            Helper.changeRedDot(type: "joboffer");
+        }        
+        AppContainer.shared.notificationContainer.save(JobOfferSend: false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         segmentControl.selectedSegmentioIndex = 0

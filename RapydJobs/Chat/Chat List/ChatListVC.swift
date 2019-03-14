@@ -63,6 +63,13 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.Chat {
+            if AppContainer.shared.user.user?.accountType == "organization" {
+                Helper.changeRedDot(type: "emp_message");
+            } else {
+                Helper.changeRedDot(type: "jobseeker_message");
+            }
+        }
         AppContainer.shared.notificationContainer.save(Chat: false)
     }
     

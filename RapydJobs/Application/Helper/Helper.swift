@@ -85,4 +85,15 @@ class Helper {
         
     }
     
+    class func changeRedDot(type: String) {
+        var param = Dictionary<String,Any>()
+        param["type"] = type
+        print(param)
+        _ = APIClient.callAPI(request: APIClient.changeRedDot(param: param), onSuccess: { (dictionary) in
+            print(dictionary)
+        }, onFailure: { (errorDictionary, _) in
+            print(errorDictionary)
+        })
+    }
+    
 }

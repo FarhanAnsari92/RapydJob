@@ -26,14 +26,6 @@ struct CreateJobAPIService {
         let header = [  "Authorization" :  "Bearer \(token!)",
                         "Accept" : "application/json" ]
         
-        let schedule1 = [ "day"          : "Monday",
-                         "start_time"   : "09:00",
-                         "end_time"     : "12:00" ]
-        
-        let schedule2 = [ "day"          : "Tuesday",
-                          "start_time"   : "09:00",
-                          "end_time"     : "12:00" ]
-        
         let params: Parameters = [ "title"              : title,
                                    "description"        : description,
                                    "min_salary"         : minSalary,

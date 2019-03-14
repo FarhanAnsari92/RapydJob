@@ -95,6 +95,7 @@ enum APIClient: URLRequestConvertible {
     case createTimesheet(param: [String:Any])
     
     case getRedDot
+    case changeRedDot(param: [String:Any])
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -117,6 +118,7 @@ enum APIClient: URLRequestConvertible {
                  .employerTimesheet,
                  .socialRegister,
                  .createTimesheet,
+                 .changeRedDot,
                  .superLikeEmployerRequest:
                 return .post
             case .myProfileOrganization,
@@ -250,6 +252,8 @@ enum APIClient: URLRequestConvertible {
                 return param
             case .createTimesheet(let param):
                 return param
+            case .changeRedDot(let param):
+                return param
             }
         }()
         
@@ -312,10 +316,12 @@ enum APIClient: URLRequestConvertible {
                  .resendCode,
                  .createTimesheet,
                  .getRedDot,
+                 .changeRedDot,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
                 }
+                print(["Authorization" : "Bearer \(token)", "Accept" : "application/json"])
                 return ["Authorization" : "Bearer \(token)", "Accept" : "application/json"]
             }
             
@@ -442,6 +448,8 @@ enum APIClient: URLRequestConvertible {
                 return "timesheet"
             case .getRedDot:
                 return "get-red-dots"
+            case .changeRedDot:
+                return  "change-red-dots"
             }
         }()
 
@@ -458,7 +466,7 @@ enum APIClient: URLRequestConvertible {
         // Encode parameters
         let encoding: ParameterEncoding = {            
             switch method {
-            case .post: //, .put: //, .get:
+            case .post , .put: //, .get:
                 return JSONEncoding()
             default:
                 return URLEncoding()
@@ -509,14 +517,6 @@ enum APIClient: URLRequestConvertible {
                         } else {
                             handleFailure(dictionary, "Something went wrong", nil)
                         }
-//
-//                        switch code {
-//
-//                        case 401:
-//                            handleFailure(dictionary, "Unable to parse JSON", nil)
-//                        default:
-//                            successBlock?(dictionary)
-//                        }
                     } else {
                         successBlock?(dictionary)
                     }

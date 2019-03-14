@@ -21,6 +21,14 @@ class HRVC: BaseViewController {
 
         setupViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppContainer.shared.notificationContainer.JobOfferResponse {
+           Helper.changeRedDot(type: "jobofferresponse")
+        }
+        AppContainer.shared.notificationContainer.save(JobOfferResponse: false)
+    }
 
     private func setupViews() {
         

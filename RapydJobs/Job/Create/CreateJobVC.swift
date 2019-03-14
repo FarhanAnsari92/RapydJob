@@ -10,6 +10,7 @@ import UIKit
 import WARangeSlider
 import SkyFloatingLabelTextField
 import JGProgressHUD
+import ObjectMapper
 
 class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -583,6 +584,10 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
             AlertService.shared.alert(in: self, "Timesheet is required.")
             return
         }
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: slctdWeeks, options: .prettyPrinted)
+        let wks = String(bytes: jsonData!, encoding: String.Encoding.utf8) ?? "Not a valid JSON"
+        print(wks)
         
         if jobTitleInput.text != "" {
             if jobSectorInput.text != "" {
