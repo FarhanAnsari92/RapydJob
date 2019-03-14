@@ -47,6 +47,8 @@ class CardViewController: BaseViewController {
         self.messageBadgeView.backgroundColor = UIColor.red
         self.messageBadgeView.isHidden = true
         
+        Helper.getRedDot()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveMessage), name: .messageNotificationName, object: nil)
     }
     
@@ -69,7 +71,6 @@ class CardViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems = rightBarButtonItems()
         
         self.cardVC?.viewModel.service.getCardData()
-        Helper.getRedDot()
         
         setupActionStack()
         //

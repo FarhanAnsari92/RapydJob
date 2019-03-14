@@ -40,6 +40,15 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         self.setupViews()
+        
+        if AppContainer.shared.notificationContainer.Chat {
+            if AppContainer.shared.user.user?.accountType == "organization" {
+                Helper.changeRedDot(type: "emp_message");
+            } else {
+                Helper.changeRedDot(type: "jobseeker_message");
+            }
+        }
+        
         hud.show(in: view)
         SocketService.getChatList { [weak self] (chatLists, error) in
             if let err = error {
@@ -55,21 +64,11 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //SocketService.establishConnection()
-        
-//        let userId = AppContainer.shared.user.userId
-//        SocketService.connectToServerWithNickname(userId: userId)
     }
-//
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if AppContainer.shared.notificationContainer.Chat {
-            if AppContainer.shared.user.user?.accountType == "organization" {
-                Helper.changeRedDot(type: "emp_message");
-            } else {
-                Helper.changeRedDot(type: "jobseeker_message");
-            }
-        }
+        
         AppContainer.shared.notificationContainer.save(Chat: false)
     }
     

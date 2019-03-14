@@ -89,7 +89,7 @@ class Helper {
         var param = Dictionary<String,Any>()
         param["type"] = type
         print(param)
-        _ = APIClient.callAPI(request: APIClient.changeRedDot(param: param), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .changeRedDot(param: param), onSuccess: { (dictionary) in
             print(dictionary)
         }, onFailure: { (errorDictionary, _) in
             print(errorDictionary)

@@ -121,7 +121,7 @@ extension NotificationContainer: NotificationStorer {
     }
     
     func save(Chat: Bool) {
-        defaults.set(chat, forKey: Constants.chat)
+        defaults.set(Chat, forKey: Constants.chat)
     }
     
     func save(OrganisationTimesheet: Bool) {
