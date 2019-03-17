@@ -331,7 +331,7 @@ class JobseekerCodeVC: UIViewController {
                 self.hud.dismiss(animated: true)
                 if let err = error {
                     self.hud.dismiss(animated: true)
-                    AlertService.shared.alert(in: self, "Wrong code, please insert write code to proceed further")
+                    AlertService.shared.alert(in: self, "Wrong code, please insert right code to proceed further")
                 } else {
                     AppContainer.shared.user.save(isLogin: true)
                     self.hud.dismiss(animated: true)

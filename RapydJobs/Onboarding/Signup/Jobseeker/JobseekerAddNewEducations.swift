@@ -315,7 +315,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
     
     @objc func doneToDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd-mm-yyyy"
         
         let dob = formatter.string(from: toDatePicker.date)
         toInput.text = dob
@@ -344,7 +344,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
     
     @objc func doneFromDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd-mm-yyyy"
         
         let dob = formatter.string(from: fromDatePicker.date)
         fromInput.text = dob
@@ -391,13 +391,13 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
                         AlertService.shared.alert(in: self, "Please select end date of this education or select current month if still studying")
                     }
                 } else {
-                    AlertService.shared.alert(in: self, "Wrong Description")
+                    AlertService.shared.alert(in: self, "Description is required")
                 }
             } else {
-                AlertService.shared.alert(in: self, "Wrong Institution Name")
+                AlertService.shared.alert(in: self, "Institution Name is required")
             }
         } else {
-            AlertService.shared.alert(in: self, "Wrong Education Title")
+            AlertService.shared.alert(in: self, "Education Title is required")
         }
     }
     

@@ -299,7 +299,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
     
     @objc func doneToDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd-mm-yyyy"
         
         let dob = formatter.string(from: toDatePicker.date)
         toInput.text = dob
@@ -328,7 +328,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
     
     @objc func doneFromDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd-mm-yyyy"
         
         let dob = formatter.string(from: fromDatePicker.date)
         fromInput.text = dob
@@ -507,13 +507,13 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
                         AlertService.shared.alert(in: self, "Please select end date of employement or select current month if still working")
                     }
                 } else {
-                    AlertService.shared.alert(in: self, "Wrong Description")
+                    AlertService.shared.alert(in: self, "Description is required")
                 }
             } else {
-                AlertService.shared.alert(in: self, "Wrong Employer Name")
+                AlertService.shared.alert(in: self, "Employer Name is required")
             }
         } else {
-            AlertService.shared.alert(in: self, "Wrong Job Title")
+            AlertService.shared.alert(in: self, "Job Title is required")
         }
     }
 }
