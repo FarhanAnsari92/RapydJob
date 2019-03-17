@@ -102,7 +102,7 @@ class RescheduleInterviewViewController: UIViewController {
                 self.dates = self.getAllDates(month: month, year: year)
             }
             self.collectionView.reloadData()
-            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
+//            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
         }
         
         self.monthSelection.completion = {
@@ -241,7 +241,7 @@ class RescheduleInterviewViewController: UIViewController {
                 
                 self.collectionView.reloadData()
                 
-                self.collectionView.scrollToItem(at: IndexPath(item: Int(day) ?? 0, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+//                self.collectionView.scrollToItem(at: IndexPath(item: Int(day) ?? 0, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
             }
         }
     }

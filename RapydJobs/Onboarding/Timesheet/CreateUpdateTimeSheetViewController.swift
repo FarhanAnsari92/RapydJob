@@ -35,6 +35,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     var jobOffer: JobOfferData?
     var selectedWeek = [[String:Any]]()
 //    var selectedDay: String?
+    var timesheetResponseModel :TimesheetResponseModel?
     
     private let dropdownImage: UIImageView = {
         let iv = UIImageView()
@@ -52,6 +53,11 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        
+        // For Update
+        self.setupForUpdate()
+        
+        
     }
     
     func setupView() {
@@ -110,10 +116,95 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         endTime.delegate = self
     }
     
-    @objc func done() {
-        if self.selectedWeek.count == 0 {
-            return
+    func setupForUpdate() {
+        
+        print(self.timesheetResponseModel?.toJSON())
+        
+        guard let timesheetResponse = self.timesheetResponseModel,
+            let timesheets = timesheetResponse.timesheets,
+            timesheets.count > 0 else {
+                return
         }
+        
+        var week = [[String:Any]]()
+        for item in timesheets {
+            let splittedDate = (item.date ?? "").split(separator: "-")
+            let day = String(splittedDate.first ?? "")
+            let monthNumStr: String = String(splittedDate[1] ?? "")
+            let monthNum: Int = Int(monthNumStr) ?? 0
+            //let monthString = Helper.month
+            let year = String(splittedDate.last ?? "")
+            let monthStr = Constants.MonthHelper.months[monthNum ?? 0]
+            let monthYear: String = "\(monthStr) \(year)" // March 2019
+            week.append([
+                "start_time": item.startTime ?? "",
+                "end_time"  : item.endTime ?? "",
+                "param_date": item.date ?? "",
+                "difference": self.findDateDiff(time1Str: item.endTime ?? "", time2Str: item.startTime ?? ""),
+                "day"       : day, // Fri , Sat
+                "month"     : monthYear, //monthNumStr, // March 2019
+                "date"      : day, // 1 , 2 , 3
+                "complete_date": "\(day) \(String(describing: monthYear))" // 1 March 2019
+                ])
+        }
+        self.selectedWeek = week
+        
+        self.tableView.reloadData()
+        
+        
+    }
+    
+    func updateTimesheet() {
+        
+        _ = CreateTimesheetPopup(week: self.selectedWeek, completion: { (dictionary) in
+            guard let hourlyRate = dictionary["hourly_rate"] as? String, hourlyRate.count > 0 else {
+                AlertService.shared.alert(in: self, "Hourly rate not provided")
+                return
+            }
+            
+            print(self.selectedWeek)
+            
+            var timesheetArray = [[String:Any]]()
+            for item in self.selectedWeek {
+                var dic = [String:Any]()
+                let date = item["param_date"] as? String
+                dic["date"] = date
+                dic["start_time"] = item["start_time"] as? String
+                dic["end_time"] = item["end_time"] as? String
+                timesheetArray.append(dic)
+            }
+            print(hourlyRate)
+            var param = [String:Any]()
+            let jobId: String = "\(String(describing: self.jobOffer?.id ?? 0))"
+//            param["job_id"] = jobId
+            param["timesheet_data"] = timesheetArray
+            param["hourly_rate"] = hourlyRate
+            param["status"] = "update"
+            print(param)
+            
+            self.hud.show(in: self.view)
+            
+            let timesheetId = self.timesheetResponseModel?.id ?? 0
+            
+            _ = APIClient.callAPI(request: .updateTimesheet(param: param, timesheetId: timesheetId), onSuccess: { dictionary in
+                self.hud.dismiss(animated: true)
+                self.toast.isShow("Timesheet updated successfully.")
+                print(dictionary)
+                self.navigationController?.popViewController(animated: true)
+            }, onFailure: { (errorDictionary, _) in
+                self.hud.dismiss(animated: true)
+                guard let message = errorDictionary["messaage"] as? String else {
+                    self.toast.isShow("Something went wrong.")
+                    return
+                }
+                self.toast.isShow(message)
+            })
+            
+        })
+    }
+    
+    func createTimesheet() {
+        
         _ = CreateTimesheetPopup(week: self.selectedWeek, completion: { (dictionary) in
             guard let hourlyRate = dictionary["hourly_rate"] as? String, hourlyRate.count > 0 else {
                 AlertService.shared.alert(in: self, "Hourly rate not provided")
@@ -132,7 +223,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             }
             print(hourlyRate)
             var param = [String:Any]()
-            let jobId: String = "\(String(describing: self.jobOffer?.id ?? 0))" // <- Job id is not proper
+            let jobId: String = "\(String(describing: self.jobOffer?.id ?? 0))"
             param["job_id"] = jobId
             param["timesheet_data"] = timesheetArray
             param["hourly_rate"] = hourlyRate
@@ -156,6 +247,23 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         })
         
     }
+    
+    @objc func done() {
+        if self.selectedWeek.count == 0 {
+            return
+        }
+        
+        if let _ = self.timesheetResponseModel {
+            self.updateTimesheet()
+        } else {
+            createTimesheet()
+        }
+        
+        
+        
+    }
+    
+    
     
     func setupDropdown() {
         dropdownImage.heightAnchor.constraint(equalToConstant: 10).isActive = true
@@ -275,16 +383,6 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         print(hour)
         return hour
         
-//        let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
-//
-//        let positiveMinute = minute < 0 ? (-1*minute) : minute
-//        print(positiveMinute)
-//        let properHour = positiveMinute / 60.0
-//        print(properHour)
-//        return properHour
-        
-//        let intervalInt = Int(interval)
-        //return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
     }
 }
 
@@ -298,9 +396,7 @@ extension CreateUpdateTimeSheetViewController: UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeekTableViewCell", for: indexPath) as! WeekTableViewCell
         
         let week = self.selectedWeek[indexPath.row]
-//        let day = week["day"] as? String ?? ""
-//        let date = week["date"] as? String ?? ""
-//        let month = week["month"] as? String ?? ""
+
         let startTime = week["start_time"] as? String ?? ""
         let endTime = week["end_time"] as? String ?? ""
         cell.day.text = week["complete_date"] as? String ?? "" // "\(date) \(month)"

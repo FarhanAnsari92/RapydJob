@@ -464,13 +464,72 @@ enum APIClient: URLRequestConvertible {
         }()
 
         // Encode parameters
-        let encoding: ParameterEncoding = {            
-            switch method {
-            case .post , .put: //, .get:
+        let encoding: ParameterEncoding = {
+            
+            switch self {
+            case .login,
+                 .superLikeEmployerRequest,
+                 .likeEmployeeRequest,
+                 .scheduleInterview,
+                 .makeOffer,
+                 .updateInterview,
+                 .updateJob,
+                 .updateEmployee,
+                 .superlikeJobSeekerRequest,
+                 .shortListJob,
+                 .shortListSeeker,
+                 .likeJobRequest,
+                 .sendMessage,
+                 .acceptJoboffer,
+                 .addExperience,
+                 .updateJobSeeker,
+                 .updateExperience,
+                 .addLanguage,
+                 .updateLanguage,
+                 .addEducation,
+                 .updateEducation,
+                 .jobseekerTimesheet,
+                 .employerTimesheet,
+                 .updateTimesheet,
+                 .socialRegister,
+                 .createTimesheet,
+                 .changeRedDot:
                 return JSONEncoding()
-            default:
+                
+            case .getInterView,
+                 .getShortListedJobSeeker,
+                 .getContracts,
+                 .reject,
+                 .organizationJobsLists,
+                 .deleteJob,
+                 .getManagedEmployees,
+                 .deleteHiredEmployee,
+                 .getJobSeekerMatchList,
+                 .getJobOffers,
+                 .getJobseekerInterview,
+                 .deleteContract,
+                 .myReview,
+                 .deleteExperience,
+                 .getJobseeker,
+                 .review,
+                 .jobseekerPlanner,
+                 .organizationPlanner,
+                 .getJobDetail,
+                 .getConversation:
                 return URLEncoding()
+                
+            default:
+                return JSONEncoding()
             }
+            
+            
+            
+//            switch method {
+//            case .post , .put: //, .get:
+//                return JSONEncoding()
+//            default:
+//                return URLEncoding()
+//            }
         }()
 
         // Request for URL

@@ -191,17 +191,6 @@ class JobSeekerProfileViewController: UIViewController {
         }
     }
     
-    func getOrganizationPrifle() { // not calling
-        _ = APIClient.callAPI(request: .myProfileOrganization, onSuccess: { (dictionary) in
-            let user: UserResponseModel = Mapper<UserResponseModel>().map(JSON: dictionary)!
-            self.coverImageView.setImageWithName(user.profileImage!)
-            self.profileImageView.setImageWithName(user.profileImage!)
-            
-        }) { (errorDictionary, _) in
-            self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
-        }
-    }
-    
     private func getData() { // Not using
         JobseekerProfileAPIService.shared.getJobseekerPersonalProfile { (jobseeker, error) in
             if let err = error {

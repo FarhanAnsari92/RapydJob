@@ -68,6 +68,10 @@ class Constants: NSObject {
         static let button: UIFont = .systemFont(ofSize: 16.0, weight: .semibold)
     }
     
+    struct MonthHelper {
+        static let months = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
+    }
+    
     static func getMonthNumber(_ month: String) -> Int {
         switch month {
         case "January":

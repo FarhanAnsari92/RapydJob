@@ -103,6 +103,12 @@ class ProfileDetailsViewController: BaseViewController {
         self.nameLabel.text = self.user?.userName ?? "" // "John Smith"
         self.coverImageView.setImageWithName(self.user?.profileImage ?? "")
         self.profileImageView.setImageWithName(self.user?.profileImage ?? "")
+        if let exp = self.user?.experience,
+            exp.count > 0,
+            let firstExperience = exp.first,
+            let title = firstExperience.title {
+            self.subtitleLabel.text = title
+        }
         
         self.tableView.reloadData()
     
@@ -150,17 +156,6 @@ class ProfileDetailsViewController: BaseViewController {
             self.tableView.reloadData()
         }) { (errorDictionary, _) in
             self.isLoading = false
-            self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
-        }
-    }
-    
-    func getOrganizationPrifle() { // not calling
-        _ = APIClient.callAPI(request: .myProfileOrganization, onSuccess: { (dictionary) in
-            let user: UserResponseModel = Mapper<UserResponseModel>().map(JSON: dictionary)!
-            self.coverImageView.setImageWithName(user.profileImage!)
-            self.profileImageView.setImageWithName(user.profileImage!)
-            
-        }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }

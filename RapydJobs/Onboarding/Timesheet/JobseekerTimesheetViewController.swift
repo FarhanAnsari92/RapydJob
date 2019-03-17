@@ -96,7 +96,7 @@ class JobseekerTimesheetViewController: BaseViewController {
             self.emptyPlaceholderView.isHidden = true
             self.tbl.reloadData()
             if segmentIndex == 0 {
-                self.getTimesheet(type: ["approve"])
+                self.getTimesheet(type: ["amendment","approve"])
             } else if segmentIndex == 1 {
                 self.getTimesheet(type: ["active", "update"])
             } else {
@@ -147,7 +147,7 @@ class JobseekerTimesheetViewController: BaseViewController {
         print(param)
         print(timesheetId)
         hud.show(in: view)
-        _ = APIClient.callAPI(request: APIClient.updateTimesheet(param: param, timesheetId: timesheetId), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .updateTimesheet(param: param, timesheetId: timesheetId), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             print(dictionary)
             if let _ = dictionary["status"] as? String {
@@ -197,9 +197,14 @@ extension JobseekerTimesheetViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "SeekerTimesheetViewController") as! SeekerTimesheetViewController
+//        vc.timeSheetData = self.timesheets[indexPath.row]
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
         let sb = UIStoryboard(name: "Timesheet", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SeekerTimesheetViewController") as! SeekerTimesheetViewController
-        vc.timeSheetData = self.timesheets[indexPath.row]
+        let vc = sb.instantiateViewController(withIdentifier: "CreateUpdateTimeSheetViewControllerID") as! CreateUpdateTimeSheetViewController
+        vc.timesheetResponseModel = self.timesheets[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
