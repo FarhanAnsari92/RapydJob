@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -146,37 +147,49 @@
                                             <outlet property="delegate" destination="WBB-s9-xdb" id="VTI-TB-f1e"/>
                                         </connections>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wI-KG-x0h">
+                                        <rect key="frame" x="10" y="190" width="355" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="7gA-ih-UeQ"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qzU-SF-uHq">
-                                        <rect key="frame" x="5" y="190" width="365" height="39"/>
+                                        <rect key="frame" x="5" y="210.5" width="365" height="39"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTT-oc-F2n" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="39"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="180.5" height="39"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TxC-eV-Pf4" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="167.5" y="0.0" width="163.5" height="39"/>
+                                                <rect key="frame" x="184.5" y="0.0" width="180.5" height="39"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-Va-HXq">
-                                                <rect key="frame" x="335" y="0.0" width="30" height="39"/>
-                                                <state key="normal" title="Add">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="add:" destination="WBB-s9-xdb" eventType="touchUpInside" id="7Ys-lQ-s25"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="RTT-oc-F2n" firstAttribute="width" secondItem="TxC-eV-Pf4" secondAttribute="width" id="Dw8-0H-NAp"/>
                                             <constraint firstAttribute="height" constant="39" id="a6n-fa-ZYZ"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-Va-HXq">
+                                        <rect key="frame" x="10" y="269.5" width="355" height="35"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="0.80392156859999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="yEZ-Pj-2Df"/>
+                                        </constraints>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="add:" destination="WBB-s9-xdb" eventType="touchUpInside" id="7Ys-lQ-s25"/>
+                                        </connections>
+                                    </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2qr-qy-pKJ">
-                                        <rect key="frame" x="0.0" y="229" width="375" height="418"/>
+                                        <rect key="frame" x="0.0" y="324.5" width="375" height="322.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WeekTableViewCell" rowHeight="117" id="Ts8-2E-Be6" customClass="WeekTableViewCell" customModule="RapydJobs" customModuleProvider="target">
@@ -231,16 +244,22 @@
                                 <constraints>
                                     <constraint firstItem="qzU-SF-uHq" firstAttribute="leading" secondItem="DDw-ex-sT7" secondAttribute="leading" constant="5" id="0bm-ct-d6w"/>
                                     <constraint firstItem="N8c-Jv-Nhm" firstAttribute="top" secondItem="DDw-ex-sT7" secondAttribute="top" constant="45" id="3y4-2f-hKX"/>
+                                    <constraint firstItem="8Mt-Va-HXq" firstAttribute="leading" secondItem="DDw-ex-sT7" secondAttribute="leading" constant="10" id="3yY-Hx-zWr"/>
+                                    <constraint firstItem="2qr-qy-pKJ" firstAttribute="top" secondItem="8Mt-Va-HXq" secondAttribute="bottom" constant="20" id="3zy-J7-PlX"/>
+                                    <constraint firstAttribute="trailing" secondItem="0wI-KG-x0h" secondAttribute="trailing" constant="10" id="6i3-mR-fow"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Mt-Va-HXq" secondAttribute="trailing" constant="10" id="Dfl-Ue-5Tw"/>
                                     <constraint firstAttribute="bottom" secondItem="2qr-qy-pKJ" secondAttribute="bottom" id="QdG-Rn-bTf"/>
                                     <constraint firstItem="GTw-DV-FFc" firstAttribute="leading" secondItem="DDw-ex-sT7" secondAttribute="leading" constant="15" id="SQ6-sz-PdS"/>
-                                    <constraint firstItem="qzU-SF-uHq" firstAttribute="top" secondItem="GTw-DV-FFc" secondAttribute="bottom" constant="10" id="Yse-IK-TDj"/>
+                                    <constraint firstItem="0wI-KG-x0h" firstAttribute="top" secondItem="GTw-DV-FFc" secondAttribute="bottom" constant="10" id="Tb7-JH-gwk"/>
                                     <constraint firstAttribute="trailing" secondItem="GTw-DV-FFc" secondAttribute="trailing" constant="15" id="b08-OZ-HoG"/>
                                     <constraint firstAttribute="trailing" secondItem="2qr-qy-pKJ" secondAttribute="trailing" id="cON-LX-WQj"/>
+                                    <constraint firstItem="qzU-SF-uHq" firstAttribute="top" secondItem="0wI-KG-x0h" secondAttribute="bottom" constant="20" id="d4G-j8-QCE"/>
+                                    <constraint firstItem="8Mt-Va-HXq" firstAttribute="top" secondItem="qzU-SF-uHq" secondAttribute="bottom" constant="20" id="d7A-rb-ZeX"/>
+                                    <constraint firstItem="0wI-KG-x0h" firstAttribute="leading" secondItem="DDw-ex-sT7" secondAttribute="leading" constant="10" id="fdZ-s0-zY9"/>
                                     <constraint firstItem="2qr-qy-pKJ" firstAttribute="leading" secondItem="DDw-ex-sT7" secondAttribute="leading" id="jL6-m6-OKd"/>
                                     <constraint firstItem="N8c-Jv-Nhm" firstAttribute="centerX" secondItem="DDw-ex-sT7" secondAttribute="centerX" id="mr7-1a-0m6"/>
                                     <constraint firstItem="GTw-DV-FFc" firstAttribute="top" secondItem="N8c-Jv-Nhm" secondAttribute="bottom" constant="20" id="mst-Rm-zXS"/>
                                     <constraint firstAttribute="trailing" secondItem="qzU-SF-uHq" secondAttribute="trailing" constant="5" id="yJV-xZ-s78"/>
-                                    <constraint firstItem="2qr-qy-pKJ" firstAttribute="top" secondItem="qzU-SF-uHq" secondAttribute="bottom" id="zPS-qz-cK4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -254,6 +273,7 @@
                         <viewLayoutGuide key="safeArea" id="xvm-Le-OUZ"/>
                     </view>
                     <connections>
+                        <outlet property="addButtn" destination="8Mt-Va-HXq" id="tTX-n9-Znb"/>
                         <outlet property="collectionView" destination="GTw-DV-FFc" id="19e-NW-bnW"/>
                         <outlet property="endTime" destination="TxC-eV-Pf4" id="Ccy-p2-dsv"/>
                         <outlet property="monthSelection" destination="N8c-Jv-Nhm" id="vox-JW-Anu"/>

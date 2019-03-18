@@ -14,6 +14,7 @@ class MakeOfferViewController: UIViewController {
     
     @IBOutlet weak var tbl: UITableView!
     var contracts: [Contract] = [Contract]()
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     
     var currentPage = 1
     var lastPage = 0
@@ -28,7 +29,7 @@ class MakeOfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toast = JYToast()
-        
+        self.emptyPlaceholderView.message.text = "You don't have any approved timesheet at this moment"
         self.setupView()
         self.getContracts()
     }
@@ -73,6 +74,8 @@ class MakeOfferViewController: UIViewController {
             } else {
                 self.contracts = contract
             }
+            
+            self.emptyPlaceholderView.isHidden = self.contracts.count > 0
             self.tbl.reloadData()
             
         }) { (errorDictionary, _) in

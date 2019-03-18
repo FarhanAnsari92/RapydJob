@@ -167,7 +167,7 @@ class InterviewV2ViewController: UIViewController {
         interviewStartTimeSelection.rightView = dropdownImage
         interviewStartTimeSelection.inputView = startTimePicker
         interviewStartTimeSelection.delegate = self
-        interviewStartTimeSelection.text = Date().toString(format: DateFormatType.custom("HH:mm"))
+//        interviewStartTimeSelection.text = Date().toString(format: DateFormatType.custom("HH:mm"))
         
         interviewEndTimeSelection.placeholder = "End Time"
         interviewEndTimeSelection.title = "End Time"

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iO4-bv-g3m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iO4-bv-g3m">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -256,8 +256,15 @@
                                             <outlet property="delegate" destination="Wqh-R7-SQA" id="xMH-Ri-KGb"/>
                                         </connections>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPa-i7-fHG">
+                                        <rect key="frame" x="10" y="219" width="355" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="Lg4-3b-lBW"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="54F-Sq-brc">
-                                        <rect key="frame" x="20" y="229" width="335" height="348"/>
+                                        <rect key="frame" x="20" y="239.5" width="335" height="348"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bui-PS-pSZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="72"/>
@@ -318,12 +325,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="54F-Sq-brc" secondAttribute="trailing" constant="20" id="2zk-9K-l6Q"/>
                                     <constraint firstAttribute="trailing" secondItem="hrT-K5-xIm" secondAttribute="trailing" constant="15" id="8Ce-BL-rR5"/>
-                                    <constraint firstItem="54F-Sq-brc" firstAttribute="top" secondItem="hrT-K5-xIm" secondAttribute="bottom" constant="30" id="LTy-rC-vB0"/>
+                                    <constraint firstAttribute="trailing" secondItem="OPa-i7-fHG" secondAttribute="trailing" constant="10" id="CjN-gh-oMm"/>
+                                    <constraint firstItem="54F-Sq-brc" firstAttribute="top" secondItem="OPa-i7-fHG" secondAttribute="bottom" constant="20" id="OQ4-IO-snF"/>
                                     <constraint firstItem="90K-hT-8bo" firstAttribute="centerX" secondItem="W6S-95-GvN" secondAttribute="centerX" id="Q87-WR-3lv"/>
                                     <constraint firstItem="90K-hT-8bo" firstAttribute="top" secondItem="W6S-95-GvN" secondAttribute="top" constant="44" id="Txv-sq-mTK"/>
                                     <constraint firstItem="hrT-K5-xIm" firstAttribute="leading" secondItem="W6S-95-GvN" secondAttribute="leading" constant="15" id="bwD-ft-EkJ"/>
                                     <constraint firstItem="hrT-K5-xIm" firstAttribute="top" secondItem="90K-hT-8bo" secondAttribute="bottom" constant="40" id="dpK-t2-Kmw"/>
+                                    <constraint firstItem="OPa-i7-fHG" firstAttribute="top" secondItem="hrT-K5-xIm" secondAttribute="bottom" constant="20" id="t4q-zB-5ca"/>
                                     <constraint firstItem="54F-Sq-brc" firstAttribute="leading" secondItem="W6S-95-GvN" secondAttribute="leading" constant="20" id="vex-Hj-SeE"/>
+                                    <constraint firstItem="OPa-i7-fHG" firstAttribute="leading" secondItem="W6S-95-GvN" secondAttribute="leading" constant="10" id="xTj-La-hxk"/>
                                 </constraints>
                             </view>
                         </subviews>

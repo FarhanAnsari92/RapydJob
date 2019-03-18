@@ -19,6 +19,11 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var startTime: SkyFloatingLabelTextField!
     @IBOutlet private weak var endTime: SkyFloatingLabelTextField!
+    @IBOutlet weak var addButtn: UIButton! {
+        didSet {
+            self.addButtn.layer.cornerRadius = 8
+        }
+    }
     
     @IBOutlet weak var monthSelection: BaseDropdownButton!
     
