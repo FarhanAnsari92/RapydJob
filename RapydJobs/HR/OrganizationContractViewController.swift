@@ -15,6 +15,7 @@ class OrganizationContractViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var contracts: [Contract] = [Contract]()
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
     
     var currentPage = 1
     var lastPage = 0
@@ -45,6 +46,7 @@ class OrganizationContractViewController: UIViewController {
     func setupView() {
         view.backgroundColor = Constants.Colors.primaryGreenColor
         self.title = "Contracts"
+        self.emptyPlaceholderView.message.text = "You don't have any contract at this moment"
         tableView.register(UINib(nibName: "ContractTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractTableViewCellID")
     }
     
@@ -81,7 +83,7 @@ class OrganizationContractViewController: UIViewController {
                     self.contracts = contract
                 }
             }
-            
+            self.emptyPlaceholderView.isHidden = self.contracts.count > 0
             self.tableView.reloadData()
             
         }) { (errorDictionary, _) in
@@ -97,6 +99,7 @@ class OrganizationContractViewController: UIViewController {
         _ = APIClient.callAPI(request: .deleteContract(contractId: contract.contractId), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             self.contracts.remove(at: row)
+            self.emptyPlaceholderView.isHidden = self.contracts.count > 0
             self.tableView.reloadData()
         }) { (errorDictionary, _) in
             self.hud.dismiss(animated: true)

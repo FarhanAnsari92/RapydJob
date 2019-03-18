@@ -29,7 +29,7 @@ class MakeOfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toast = JYToast()
-        self.emptyPlaceholderView.message.text = "You don't have any approved timesheet at this moment"
+        self.emptyPlaceholderView.message.text = "You don't have any contract at this moment"
         self.setupView()
         self.getContracts()
     }

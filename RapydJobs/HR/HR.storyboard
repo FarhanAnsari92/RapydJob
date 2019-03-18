@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -159,6 +160,13 @@
                                     <outlet property="delegate" destination="V2C-jz-h1y" id="0co-ok-LpV"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-XD-9jX" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="UUv-cO-xZ1"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11O-vn-aJw">
                                 <rect key="frame" x="305" y="597" width="50" height="50"/>
                                 <constraints>
@@ -174,15 +182,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5YO-9f-Nbh" firstAttribute="leading" secondItem="pXn-7W-yvI" secondAttribute="leading" id="8PU-gq-NzI"/>
+                            <constraint firstItem="E7c-XD-9jX" firstAttribute="width" secondItem="E7c-XD-9jX" secondAttribute="height" multiplier="1:1" id="Abq-Cf-JkI"/>
                             <constraint firstItem="pXn-7W-yvI" firstAttribute="bottom" secondItem="5YO-9f-Nbh" secondAttribute="bottom" id="B8f-QK-yBe"/>
                             <constraint firstItem="pXn-7W-yvI" firstAttribute="bottom" secondItem="11O-vn-aJw" secondAttribute="bottom" constant="20" id="DHm-vj-4fp"/>
+                            <constraint firstItem="E7c-XD-9jX" firstAttribute="centerX" secondItem="MHw-9k-Kft" secondAttribute="centerX" id="dZ6-lK-Kih"/>
                             <constraint firstItem="pXn-7W-yvI" firstAttribute="trailing" secondItem="11O-vn-aJw" secondAttribute="trailing" constant="20" id="h0K-fw-3dZ"/>
                             <constraint firstItem="5YO-9f-Nbh" firstAttribute="top" secondItem="pXn-7W-yvI" secondAttribute="top" id="pXY-id-tsw"/>
+                            <constraint firstItem="E7c-XD-9jX" firstAttribute="centerY" secondItem="MHw-9k-Kft" secondAttribute="centerY" id="pkK-XU-kgU"/>
                             <constraint firstItem="pXn-7W-yvI" firstAttribute="trailing" secondItem="5YO-9f-Nbh" secondAttribute="trailing" id="xoC-gP-gVK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pXn-7W-yvI"/>
                     </view>
                     <connections>
+                        <outlet property="emptyPlaceholderView" destination="E7c-XD-9jX" id="gUa-n4-Ypr"/>
                         <outlet property="tableView" destination="5YO-9f-Nbh" id="gVd-j3-eiP"/>
                     </connections>
                 </viewController>
@@ -209,7 +221,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-yc-ufH" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="30" y="248" width="315" height="40.5"/>
+                                        <rect key="frame" x="30" y="248" width="315" height="30"/>
                                         <color key="tintColor" red="0.46666666670000001" green="0.74509803919999995" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -234,7 +246,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-bx-ezF">
-                                        <rect key="frame" x="127.5" y="303.5" width="120" height="40"/>
+                                        <rect key="frame" x="127.5" y="293" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="B9I-UO-CcT"/>
                                             <constraint firstAttribute="width" constant="120" id="Jc9-ff-Hd6"/>
