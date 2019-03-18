@@ -9,6 +9,7 @@
 import UIKit
 import JGProgressHUD
 import ObjectMapper
+import SwiftWebVC
 
 class OrganizationContractViewController: UIViewController {
     
@@ -36,6 +37,8 @@ class OrganizationContractViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.lastPage = 0
+        self.currentPage = 0
         self.getContracts()
     }
     
@@ -141,4 +144,23 @@ extension OrganizationContractViewController: UITableViewDataSource, UITableView
         return 100.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contract = self.contracts[indexPath.row]
+        //self.viewContract(contract: contract) // Currently commenting this code as i don't know the contract URL, when i come to know than just uncomment this line
+    }
+    
+    func viewContract(contract: Contract) {
+        
+        print(contract.toJSON())
+        guard let fileName = contract.fileName else {
+            AlertService.shared.alert(in: self, "No Contract Found")
+            return
+        }
+        
+        let baseurl = "http://ec2-18-191-9-134.us-east-2.compute.amazonaws.com/RapydJobs/storage/cv/\(fileName)"
+
+        let webVC = SwiftModalWebVC(urlString: baseurl)
+        self.present(webVC, animated: true, completion: nil)
+        
+    }
 }

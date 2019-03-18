@@ -205,6 +205,7 @@ extension AddContractViewController {
                             self.toast.isShow(errorMessage)
                         } else {
                             self.toast.isShow("Uploaded successfully")
+                            self.navigationController?.popViewController(animated: true)
                         }
                     } catch {
                         self.toast.isShow("Something went wrong.")
