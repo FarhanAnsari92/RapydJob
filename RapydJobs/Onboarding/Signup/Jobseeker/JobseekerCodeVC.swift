@@ -315,29 +315,21 @@ class JobseekerCodeVC: UIViewController {
         
         if (code1.text != "" || code1.text != "X") && (code2.text != "" || code2.text != "X") && (code3.text != "" || code3.text != "X") && (code4.text != "" || code4.text != "X") {
             
-            
-            
             hud.show(in: view)
             let code = "\(code1.text!)\(code2.text!)\(code3.text!)\(code4.text!)"
             
-//            if code == "1234" {
-//                self.hud.dismiss(animated: true)
-//                self.performSegue(withIdentifier: self.segueJobseekerSignupTwoVC, sender: nil)
-//            } else {
-//                self.hud.dismiss(animated: true)
-//                AlertService.shared.alert(in: self, "Wrong code, please insert write code to proceed further")
-//            }
-            EmployerSignupAPIService.shared.verifyUser(in: self, code: code) { (error) in
+            EmployerSignupAPIService.shared.verifyUser(in: self, code: code) { (error, isVerified) in
                 self.hud.dismiss(animated: true)
-                if let err = error {
-                    self.hud.dismiss(animated: true)
+                if let _ = error {
                     AlertService.shared.alert(in: self, "Wrong code, please insert right code to proceed further")
                 } else {
-                    AppContainer.shared.user.save(isLogin: true)
-                    self.hud.dismiss(animated: true)
-                    self.completion?()
-                    self.dismiss(animated: true, completion: nil)
-                    //self.performSegue(withIdentifier: self.segueJobseekerSignupTwoVC, sender: nil)
+                    if isVerified {
+                        AppContainer.shared.user.save(isLogin: true)
+                        self.completion?()
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        AlertService.shared.alert(in: self, "Wrong code please try again with correct code or try resending the code")
+                    }
                 }
             }
         } else {

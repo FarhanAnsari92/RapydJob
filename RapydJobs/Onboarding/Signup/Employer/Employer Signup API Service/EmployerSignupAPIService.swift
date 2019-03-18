@@ -91,7 +91,7 @@ struct EmployerSignupAPIService {
         }
     }
     
-    func verifyUser(in vc: UIViewController, code: String, completion: @escaping (Error?) -> Void) {
+    func verifyUser(in vc: UIViewController, code: String, completion: @escaping (Error?, Bool) -> Void) {
         
         //let accessToken = UserDefaults.standard.value(forKey: "accessToken") as? String ?? ""
         let accessToken = AppContainer.shared.user.user?.accessToken ?? ""
@@ -105,19 +105,19 @@ struct EmployerSignupAPIService {
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).response { (response) in
             if let error = response.error {
-                completion(error)
+                completion(error, false)
             } else {
                 do {
                     let json = try JSON(data: response.data!)
                     print("Verify User Response : ", json)
                     let message = json["message"].stringValue
                     if message == "verified" {
-                        completion(nil)
+                        completion(nil, true)
                     } else {
-                        AlertService.shared.alert(in: vc, "Wrong code please try again with correct code or try resending the code")
+                        completion(nil, false)                        
                     }
                 } catch {
-                    completion(error)
+                    completion(error, false)
                 }
             }
         }

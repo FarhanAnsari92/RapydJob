@@ -316,14 +316,19 @@ class EmployerCodeVC: UIViewController {
             let code = "\(code1.text!)\(code2.text!)\(code3.text!)\(code4.text!)"
             
             hud.show(in: view)
-            EmployerSignupAPIService.shared.verifyUser(in: self, code: code) { (error) in
+            EmployerSignupAPIService.shared.verifyUser(in: self, code: code) { (error, isVerified) in
                 self.hud.dismiss(animated: true)
-                if let err = error {
+                if let _ = error {
                     AlertService.shared.alert(in: self, "Wrong code, please insert write code to proceed further")
                 } else {
-                    AppContainer.shared.user.save(isLogin: true)
-                    self.completion?()
-                    self.dismiss(animated: true, completion: nil)
+                    if isVerified {
+                        AppContainer.shared.user.save(isLogin: true)
+                        self.completion?()
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        AlertService.shared.alert(in: self, "Wrong code please try again with correct code or try resending the code")
+                    }
+                    
                 }
             }
             
