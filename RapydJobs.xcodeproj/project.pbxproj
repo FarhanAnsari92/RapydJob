@@ -452,6 +452,7 @@
 		C9C5AF4D21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4B21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib */; };
 		C9C5AF5021AF316100479D9C /* TimesheetRejectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */; };
 		C9C5AF5121AF316100479D9C /* TimesheetRejectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */; };
+		C9C76EB12241668B00314A6C /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C76EB02241668B00314A6C /* ImagePreviewViewController.swift */; };
 		C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */; };
 		C9CD8D5021FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */; };
 		C9CD8D5121FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */; };
@@ -929,6 +930,7 @@
 		C9C5AF4B21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSheetJobseekerTableViewCell.xib; sourceTree = "<group>"; };
 		C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetRejectTableViewCell.swift; sourceTree = "<group>"; };
 		C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetRejectTableViewCell.xib; sourceTree = "<group>"; };
+		C9C76EB02241668B00314A6C /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDataResponseModel.swift; sourceTree = "<group>"; };
 		C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -1376,6 +1378,7 @@
 			children = (
 				3E9D82EA2133001700DC50F0 /* ChatMessagesVC.swift */,
 				3E9D82ED2133052200DC50F0 /* Message.swift */,
+				C9C76EB02241668B00314A6C /* ImagePreviewViewController.swift */,
 				3E9D82EC213304FC00DC50F0 /* Cell */,
 			);
 			path = "Chat Messages";
@@ -2989,6 +2992,7 @@
 				C993F6A121877B5800CE11EE /* JobList.swift in Sources */,
 				C9C54D77219CBEC900834E26 /* LanguageModel.swift in Sources */,
 				A54AD703210BCC0800C72F75 /* CreateJobService.swift in Sources */,
+				C9C76EB12241668B00314A6C /* ImagePreviewViewController.swift in Sources */,
 				A55FA59020DE6B200010C3B3 /* FormActionTableViewCell.swift in Sources */,
 				C9C365392221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift in Sources */,
 				A54AD6E7210B640300C72F75 /* JobseekerOnboardingRouter.swift in Sources */,

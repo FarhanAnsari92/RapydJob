@@ -105,11 +105,12 @@ class ProfileDetailsViewController: BaseViewController {
         self.profileImageView.setImageWithName(self.user?.profileImage ?? "")
         if let exp = self.user?.experience,
             exp.count > 0,
-            let firstExperience = exp.first,
+            let firstExperience = exp.last,
             let title = firstExperience.title {
             self.subtitleLabel.text = title
+        } else {
+            self.subtitleLabel.text = "Not Provided"
         }
-        // else { self.subtitleLabel.text = "" }
         
         self.tableView.reloadData()
     
@@ -282,7 +283,8 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                 case 2:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
-                    infoCell.titleLabel.text = "-" // "£0 Per Hour"
+                    
+                    infoCell.titleLabel.text = "From £\(String(describing: self.user?.jobSeeker?.minSalaryString ?? "-")) to £\(String(describing: self.user?.jobSeeker?.maxSalaryString ?? "-")) Per Hour Rate" // "£0 Per Hour"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     
                     cell = infoCell

@@ -121,6 +121,16 @@ class JobSeekerProfileViewController: UIViewController {
             self.coverImageView.setImageWithName(self.jobSeeker?.profileImage ?? "", isCompleteUrl: true)
             self.profileImageView.setImageWithName(self.jobSeeker?.profileImage ?? "", isCompleteUrl: true)
             self.subtitleLabel.text = self.jobSeeker?.jobSeeker?.description ?? ""
+            
+            if let exp = self.jobSeeker?.experience,
+                exp.count > 0,
+                let firstExperience = exp.last,
+                let title = firstExperience.title {
+                self.subtitleLabel.text = title
+            } else {
+                self.subtitleLabel.text = "Not Provided"
+            }
+            
             print(self.jobSeeker?.totalRating ?? 0.0)
             self.ratingView.rating = self.jobSeeker?.totalRating ?? 0.0
             self.tableView.reloadData()
@@ -310,7 +320,7 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
                     infoCell.titleLabel.isHidden = false
-                    infoCell.titleLabel.text = "-" // "£0 Per Hour"
+                    infoCell.titleLabel.text = "From £\(String(describing: self.jobSeeker?.jobSeeker?.minSalaryString ?? "-")) to £\(String(describing: self.jobSeeker?.jobSeeker?.maxSalaryString ?? "-")) Per Hour Rate" // "£0 Per Hour"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     cell = infoCell
                     

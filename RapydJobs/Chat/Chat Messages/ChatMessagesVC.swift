@@ -386,7 +386,12 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChatImageTableViewCellID", for: indexPath) as! ChatImageTableViewCell
                 cell.populate(message: message)
                 cell.imageHandler = {
-                    print("called")
+                    
+                    let sb = UIStoryboard(name: "Chat", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ImagePreviewViewControllerID") as! ImagePreviewViewController
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.url = message.message
+                    self.present(vc, animated: true, completion: nil)
                 }
                 
                 return cell

@@ -130,14 +130,58 @@
                         <outlet property="messagesTableView" destination="Mds-1h-PA4" id="guV-5M-1IP"/>
                         <outlet property="noMessageView" destination="9eF-0r-WUy" id="vUA-ym-Hpf"/>
                         <outlet property="sendButton" destination="8Fd-d5-UoK" id="ahb-Xh-nr1"/>
+                        <segue destination="Tet-bz-QBW" kind="presentation" identifier="ImagePreview" modalTransitionStyle="crossDissolve" id="d4N-Cb-67Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOn-hU-UvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="948" y="155.17241379310346"/>
         </scene>
+        <!--Image Preview View Controller-->
+        <scene sceneID="dCh-fc-piM">
+            <objects>
+                <viewController storyboardIdentifier="ImagePreviewViewControllerID" id="Tet-bz-QBW" customClass="ImagePreviewViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cU2-FT-Nop">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="63H-qt-C9a">
+                                <rect key="frame" x="0.0" y="120" width="375" height="427"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-yW-SnC">
+                                <rect key="frame" x="25" y="30" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="GIi-tW-c39"/>
+                                    <constraint firstAttribute="height" constant="40" id="xde-iQ-wot"/>
+                                </constraints>
+                                <state key="normal" image="ic_back"/>
+                                <connections>
+                                    <action selector="dismissController:" destination="Tet-bz-QBW" eventType="touchUpInside" id="KI6-Vs-snd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6i9-yW-SnC" firstAttribute="top" secondItem="iYx-RZ-8Uz" secondAttribute="top" constant="10" id="Iod-rg-Vjc"/>
+                            <constraint firstItem="63H-qt-C9a" firstAttribute="top" secondItem="cU2-FT-Nop" secondAttribute="top" constant="120" id="SQf-1T-5gW"/>
+                            <constraint firstItem="63H-qt-C9a" firstAttribute="trailing" secondItem="iYx-RZ-8Uz" secondAttribute="trailing" id="hFk-MA-CF9"/>
+                            <constraint firstItem="63H-qt-C9a" firstAttribute="leading" secondItem="iYx-RZ-8Uz" secondAttribute="leading" id="pER-lS-1xb"/>
+                            <constraint firstItem="6i9-yW-SnC" firstAttribute="leading" secondItem="iYx-RZ-8Uz" secondAttribute="leading" constant="25" id="t5R-kn-58m"/>
+                            <constraint firstItem="iYx-RZ-8Uz" firstAttribute="bottom" secondItem="63H-qt-C9a" secondAttribute="bottom" constant="120" id="yYH-GB-SCW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iYx-RZ-8Uz"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="63H-qt-C9a" id="QO9-Hh-1Xi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6I-nJ-3hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684" y="154.27286356821591"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic_back" width="29" height="29"/>
         <image name="sendMsg" width="48" height="48"/>
     </resources>
 </document>
