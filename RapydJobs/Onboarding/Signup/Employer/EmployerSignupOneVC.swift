@@ -151,7 +151,12 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func backBtnTap() {
-        self.dismiss(animated: true, completion: nil)
+        AlertService.shared.alert(in: self, "Are you sure you want to Sign Out?") {
+            let name = Storyboards.Login.name()
+            let sb = UIStoryboard(name: name, bundle: nil)
+            let vc = sb.instantiateInitialViewController()!
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     @objc func navigateToAddressVC() {

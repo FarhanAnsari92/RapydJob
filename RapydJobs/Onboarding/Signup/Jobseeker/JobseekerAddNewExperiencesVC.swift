@@ -232,8 +232,8 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
         mainStackView.addArrangedSubview(jobTitleInput)
         mainStackView.addArrangedSubview(employerNameInput)
         mainStackView.addArrangedSubview(descriptionInput)
-        mainStackView.addArrangedSubview(toInput)
         mainStackView.addArrangedSubview(fromInput)
+        mainStackView.addArrangedSubview(toInput)        
         
         jobTitleInput.delegate = self
         employerNameInput.delegate = self

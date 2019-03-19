@@ -247,7 +247,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
         mainStackView.addArrangedSubview(descriptionInput)
         mainStackView.addArrangedSubview(gradeInput)
         mainStackView.addArrangedSubview(fromInput)
-        mainStackView.addArrangedSubview(toInput)        
+        mainStackView.addArrangedSubview(toInput)
         
         educationTitleInput.delegate = self
         institutionNameInput.delegate = self
