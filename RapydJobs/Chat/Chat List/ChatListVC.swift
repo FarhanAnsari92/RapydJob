@@ -10,6 +10,8 @@ import UIKit
 import JGProgressHUD
 
 class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let emptyPlaceholderView: EmptyPlaceholderView = EmptyPlaceholderView() // EmptyPlaceholderView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 250, height: 250)))
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -57,6 +59,7 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 self?.hud.dismiss(animated: true)
                 self?.chatLists = chatLists!
+                self?.emptyPlaceholderView.isHidden = (self?.chatLists.count ?? 0) > 0
                 self?.messagesTableView.reloadData()
             }
         }        
@@ -86,6 +89,17 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        emptyPlaceholderView.layer.zPosition = 10
+        
+        emptyPlaceholderView.message.text = "No conversation found."
+        emptyPlaceholderView.isHidden = true
+//        mainView.addSubview(emptyPlaceholderView)
+        
+//        emptyPlaceholderView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+//        emptyPlaceholderView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+//        emptyPlaceholderView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 0).isActive = true
+//        emptyPlaceholderView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor, constant: 0).isActive = true
         
         mainView.addSubview(messagesTableView)
         messagesTableView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0).isActive = true

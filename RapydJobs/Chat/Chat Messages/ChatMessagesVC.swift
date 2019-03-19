@@ -385,6 +385,9 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChatImageTableViewCellID", for: indexPath) as! ChatImageTableViewCell
                 cell.populate(message: message)
+                cell.imageHandler = {
+                    print("called")
+                }
                 
                 return cell
                 

@@ -299,7 +299,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
     
     @objc func doneToDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-mm-yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         let dob = formatter.string(from: toDatePicker.date)
         toInput.text = dob
@@ -328,7 +328,7 @@ class JobseekerAddNewExperiencesVC: UIViewController, UITextFieldDelegate {
     
     @objc func doneFromDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-mm-yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         let dob = formatter.string(from: fromDatePicker.date)
         fromInput.text = dob

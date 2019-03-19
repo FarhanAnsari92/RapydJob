@@ -109,6 +109,7 @@ class ProfileDetailsViewController: BaseViewController {
             let title = firstExperience.title {
             self.subtitleLabel.text = title
         }
+        // else { self.subtitleLabel.text = "" }
         
         self.tableView.reloadData()
     

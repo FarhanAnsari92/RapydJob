@@ -16,17 +16,27 @@ class ChatImageTableViewCell: UITableViewCell {
     @IBOutlet weak var sentImage: UIImageView!
     @IBOutlet weak var sentImageParent: UIView!
 //    @IBOutlet weak var time: UILabel!
+    var imageHandler: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-            self.senderImage.layer.cornerRadius = self.senderImage.frame.height / 2
-            self.senderImageParent.layer.cornerRadius = 15
-            self.senderImage.layer.cornerRadius = 15
-            self.senderImage.clipsToBounds = true
-            
-            self.sentImageParent.layer.cornerRadius = 15
-            self.sentImage.layer.cornerRadius = 15
-            self.sentImage.clipsToBounds = true
+        self.senderImage.layer.cornerRadius = self.senderImage.frame.height / 2
+        self.senderImageParent.layer.cornerRadius = 15
+        self.senderImage.layer.cornerRadius = 15
+        self.senderImage.clipsToBounds = true
+        
+        self.sentImageParent.layer.cornerRadius = 15
+        self.sentImage.layer.cornerRadius = 15
+        self.sentImage.clipsToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtImage(_:)))
+        self.senderImage.addGestureRecognizer(tapGesture)
+        self.sentImage.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func tapAtImage(_ sender: UITapGestureRecognizer) {
+        self.imageHandler?()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

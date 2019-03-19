@@ -501,6 +501,13 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         distanceInput.text = pickerData[row]
     }
     
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        view.endEditing(true)
+////        if textField != distanceInput {
+////            distanceInput.endEditing(true)
+////        }
+//    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == jobseekerAddressInput {
             jobseekerAddressInput.resignFirstResponder()
@@ -551,7 +558,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.shiftTimeInput.text = str
             self.selectedWeeks = weeks
         }
-        
+        distanceInput.resignFirstResponder()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
