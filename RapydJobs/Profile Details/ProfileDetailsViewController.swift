@@ -284,7 +284,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                 case 2:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
-                    infoCell.titleLabel.text = "From £\(String(describing: self.user?.jobSeeker?.minSalaryString ?? "-")) to £\(String(describing: self.user?.jobSeeker?.maxSalaryString ?? "-")) Per Hour Rate" // "£0 Per Hour"
+                    infoCell.titleLabel.text = "From £\(String(describing: self.user?.jobSeeker?.minSalaryString ?? "-")) to £\(String(describing: self.user?.jobSeeker?.maxSalaryString ?? "-")) Per Hour Rate"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     
                     cell = infoCell

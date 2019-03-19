@@ -245,7 +245,19 @@ extension JobListOrganizationViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        guard let jobId = self.jobs[indexPath.row].id else {
+            return
+        }
+        
+        let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "JobDetailsAndCandidateViewControllerID") as! JobDetailsAndCandidateViewController
         print(self.jobs[indexPath.row].toJSON())
+        vc.organizatioJob = self.jobs[indexPath.row]
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

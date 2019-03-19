@@ -453,6 +453,8 @@
 		C9C5AF5021AF316100479D9C /* TimesheetRejectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */; };
 		C9C5AF5121AF316100479D9C /* TimesheetRejectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */; };
 		C9C76EB12241668B00314A6C /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C76EB02241668B00314A6C /* ImagePreviewViewController.swift */; };
+		C9C76EB32241896200314A6C /* JobDetailsAndCandidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C76EB22241896200314A6C /* JobDetailsAndCandidateViewController.swift */; };
+		C9C76EB522419EC100314A6C /* JobCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C76EB422419EC100314A6C /* JobCandidate.swift */; };
 		C9C89A3E21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */; };
 		C9CD8D5021FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */; };
 		C9CD8D5121FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */; };
@@ -931,6 +933,8 @@
 		C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetRejectTableViewCell.swift; sourceTree = "<group>"; };
 		C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetRejectTableViewCell.xib; sourceTree = "<group>"; };
 		C9C76EB02241668B00314A6C /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		C9C76EB22241896200314A6C /* JobDetailsAndCandidateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsAndCandidateViewController.swift; sourceTree = "<group>"; };
+		C9C76EB422419EC100314A6C /* JobCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCandidate.swift; sourceTree = "<group>"; };
 		C9C89A3D21C82CFE00D4EDD9 /* PlannerDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDataResponseModel.swift; sourceTree = "<group>"; };
 		C9CD8D4E21FB97DD00C6FE5E /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C9CD8D4F21FB97DD00C6FE5E /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -2105,6 +2109,8 @@
 				A57B9C4820F198960083A106 /* JobDetails.storyboard */,
 				A57B9C4A20F199440083A106 /* JobDetailsViewController.swift */,
 				A57B9C4C20F208000083A106 /* JobDetailsViewModel.swift */,
+				C9C76EB22241896200314A6C /* JobDetailsAndCandidateViewController.swift */,
+				C9C76EB422419EC100314A6C /* JobCandidate.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -2902,6 +2908,7 @@
 				3E9D82F12133CDFA00DC50F0 /* PlannerVC.swift in Sources */,
 				0D42020B20DE62070063BB23 /* AppDelegate.swift in Sources */,
 				0D42025020DE91890063BB23 /* CardViewController.swift in Sources */,
+				C9C76EB32241896200314A6C /* JobDetailsAndCandidateViewController.swift in Sources */,
 				3E9D82EB2133001700DC50F0 /* ChatMessagesVC.swift in Sources */,
 				887DBF4420FC9BA10019E818 /* GetEmployerJobs.swift in Sources */,
 				4DE52A9B216231BE009B552C /* PlannerAPIService.swift in Sources */,
@@ -3006,6 +3013,7 @@
 				4DD6DF2921691C6F00F8CA3A /* LoginAPIService.swift in Sources */,
 				C9A75672219375D4005CD41C /* ScheduleInterviewViewController.swift in Sources */,
 				3E5080E02137A19300CC5748 /* SocketService.swift in Sources */,
+				C9C76EB522419EC100314A6C /* JobCandidate.swift in Sources */,
 				3E9D82E12132F0FE00DC50F0 /* ChatListCell.swift in Sources */,
 				883D4DC2210733CF00FF9B09 /* SwipeLikeJobSeeker.swift in Sources */,
 				0DCE241F20E9534600577153 /* RelatedFieldsCellModel.swift in Sources */,

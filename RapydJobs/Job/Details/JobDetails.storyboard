@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzJ-eb-1AK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzJ-eb-1AK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,6 +145,102 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXC-HL-ITT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="77"/>
+        </scene>
+        <!--Job Details And Candidate View Controller-->
+        <scene sceneID="qke-mm-eqT">
+            <objects>
+                <viewController storyboardIdentifier="JobDetailsAndCandidateViewControllerID" id="V3T-iu-UkY" customClass="JobDetailsAndCandidateViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zqO-qY-tMe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vodafone.png" translatesAutoresizingMaskIntoConstraints="NO" id="cXR-4c-y75">
+                                <rect key="frame" x="0.0" y="20" width="375" height="133.5"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDV-Uv-dmm">
+                                <rect key="frame" x="0.0" y="153.5" width="375" height="513.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vodafone.png" translatesAutoresizingMaskIntoConstraints="NO" id="44M-DQ-eRc">
+                                <rect key="frame" x="30" y="103.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="44M-DQ-eRc" secondAttribute="height" multiplier="1:1" id="6z1-yZ-PqB"/>
+                                    <constraint firstAttribute="width" constant="100" id="7Ih-Wc-RUt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-aJ-oRu">
+                                <rect key="frame" x="30" y="213.5" width="220" height="44.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68c-pm-WZX">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="0.24263392859999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Consultant @ Davidson Co." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Muf-Sx-tmd">
+                                        <rect key="frame" x="0.0" y="28.5" width="220" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                        <color key="textColor" red="0.4549019608" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNs-t5-ENN" customClass="SegmentControl" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="273" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zVg-VF-XyJ"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="chC-su-YGI">
+                                <rect key="frame" x="0.0" y="313" width="375" height="354"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CDV-Uv-dmm" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" id="3Tt-LM-Hnz"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="bottom" secondItem="CDV-Uv-dmm" secondAttribute="bottom" id="4pE-Jz-wTV"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="trailing" secondItem="chC-su-YGI" secondAttribute="trailing" id="8E1-VY-I1d"/>
+                            <constraint firstItem="1Hq-aJ-oRu" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" constant="30" id="DQR-CC-dXn"/>
+                            <constraint firstItem="cXR-4c-y75" firstAttribute="top" secondItem="zqO-qY-tMe" secondAttribute="top" constant="20" id="EM7-jY-Cgt"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="trailing" secondItem="CDV-Uv-dmm" secondAttribute="trailing" id="IfC-vl-CHP"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="bottom" secondItem="chC-su-YGI" secondAttribute="bottom" id="PiS-wV-9Y4"/>
+                            <constraint firstItem="cXR-4c-y75" firstAttribute="height" secondItem="zqO-qY-tMe" secondAttribute="height" multiplier="0.2" id="U2a-ne-fZW"/>
+                            <constraint firstItem="cXR-4c-y75" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" id="VKy-3o-hNB"/>
+                            <constraint firstItem="44M-DQ-eRc" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" constant="30" id="WBq-Vm-wtd"/>
+                            <constraint firstItem="1Hq-aJ-oRu" firstAttribute="top" secondItem="44M-DQ-eRc" secondAttribute="bottom" constant="10" id="aOU-lc-NHO"/>
+                            <constraint firstItem="DNs-t5-ENN" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" id="d9g-r0-TSj"/>
+                            <constraint firstItem="chC-su-YGI" firstAttribute="top" secondItem="DNs-t5-ENN" secondAttribute="bottom" id="fn7-Ch-q2i"/>
+                            <constraint firstItem="CDV-Uv-dmm" firstAttribute="top" secondItem="cXR-4c-y75" secondAttribute="bottom" id="hks-fq-zlZ"/>
+                            <constraint firstItem="44M-DQ-eRc" firstAttribute="centerY" secondItem="cXR-4c-y75" secondAttribute="bottom" id="myV-JT-gbP"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="trailing" secondItem="DNs-t5-ENN" secondAttribute="trailing" id="oft-2w-kPl"/>
+                            <constraint firstItem="chC-su-YGI" firstAttribute="leading" secondItem="VZ1-q2-huo" secondAttribute="leading" id="qwV-PT-xf2"/>
+                            <constraint firstItem="DNs-t5-ENN" firstAttribute="top" secondItem="1Hq-aJ-oRu" secondAttribute="bottom" constant="15" id="sny-yf-2KB"/>
+                            <constraint firstItem="VZ1-q2-huo" firstAttribute="trailing" secondItem="cXR-4c-y75" secondAttribute="trailing" id="vDC-Ka-Adu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VZ1-q2-huo"/>
+                    </view>
+                    <connections>
+                        <outlet property="coverImageView" destination="cXR-4c-y75" id="GZE-Rl-whI"/>
+                        <outlet property="displayImageView" destination="44M-DQ-eRc" id="GbD-83-OXv"/>
+                        <outlet property="segmentControl" destination="DNs-t5-ENN" id="aA7-w6-bcx"/>
+                        <outlet property="subtitle" destination="Muf-Sx-tmd" id="o5z-ta-7GP"/>
+                        <outlet property="tableView" destination="chC-su-YGI" id="lRB-cP-bqQ"/>
+                        <outlet property="titleLabel" destination="68c-pm-WZX" id="vb8-3D-IJz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LwP-gd-Bzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="97.601199400299862"/>
         </scene>
