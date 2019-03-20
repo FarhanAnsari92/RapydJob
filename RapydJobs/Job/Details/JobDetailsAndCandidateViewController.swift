@@ -40,7 +40,7 @@ class JobDetailsAndCandidateViewController: UIViewController {
         }
     }
     
-    let sectionArray = ["Basic Information", "Job Description",]
+    var sectionArray = ["Basic Information", "Job Description",]
     var organizatioJob: OrganizationJob?
     var jobCandidates: [JobCandidate] = [JobCandidate]()
 
@@ -52,6 +52,10 @@ class JobDetailsAndCandidateViewController: UIViewController {
         }
         print(job.toJSON())
         
+        
+        self.titleLabel.text = job.title ?? "Not provided"
+        self.subtitle.text = job.status ?? "Not provided"
+        
         // Setting table view
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,6 +65,8 @@ class JobDetailsAndCandidateViewController: UIViewController {
         tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ReviewTableViewCellID")
         tableView.register(UINib(nibName: "ProfileInfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileInfoTableViewCellID")
         tableView.register(UINib(nibName: "DownloadResumeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "DownloadResumeTableViewCellID")
+        tableView.register(UINib(nibName: "CandidateTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CandidateTableViewCellID")
+        
         
         self.segmentControl.content = [
             SegmentioItem(title: "Details",image: UIImage(named: "")),
@@ -69,11 +75,12 @@ class JobDetailsAndCandidateViewController: UIViewController {
         
         self.segmentControl.valueDidChange = { segmentio, segmentIndex in
             if segmentIndex == 0 {
-
-                
+                self.jobCandidates.removeAll()
+                self.sectionArray = ["Basic Information", "Job Description",]
                 self.tableView.reloadData()
             } else {
-                
+                self.sectionArray.removeAll()
+                self.tableView.reloadData()
                 self.getCandidates()
                 
             }
@@ -90,6 +97,7 @@ class JobDetailsAndCandidateViewController: UIViewController {
             if let data = dictionary["data"] as? [[String:Any]] {
                 let candidates: [JobCandidate] = Mapper<JobCandidate>().mapArray(JSONArray: data)
                 self.jobCandidates = candidates
+                self.tableView.reloadData()
             }
         }) { (errorDictionary, _) in
             print(errorDictionary)
@@ -103,19 +111,33 @@ extension JobDetailsAndCandidateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return segmentControl.selectedSegmentioIndex == 0 ? 10 : 5
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if segmentControl.selectedSegmentioIndex == 1 {
+            return 90
+        }
+        return tableView.estimatedRowHeight
+    }
 }
 
 extension JobDetailsAndCandidateViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionArray.count
+        if segmentControl.selectedSegmentioIndex == 0 {
+            return self.sectionArray.count
+        }
+        return 1
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 4
+        if segmentControl.selectedSegmentioIndex == 0 {
+            if section == 0 {
+                return 4
+            }
+            return 2
         }
-        return 2
+        return self.jobCandidates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -215,17 +237,42 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
                     cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
                     
                     return cell
+                case 1:
+                    let descCell = tableView.dequeueReusableCell(withIdentifier: "description-cell") as! DescriptionTableViewCell
+                    
+                    descCell.descriptionTextView.text = self.organizatioJob?.description ?? "Not provided"
+                    cell = descCell
+                    cell.isFirstCell = indexPath.row == 0
+                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                    return cell
+                    
                 default:
                     let cell = UITableViewCell()
                     return cell
                 }
             }
             
-        } else {
+        } else { // Segment Index 1
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CandidateTableViewCellID", for: indexPath) as! CandidateTableViewCell
+            let candidate = self.jobCandidates[indexPath.row]
+            cell.candidateName.text = candidate.fullName ?? ""
+            cell.isFirstCell = true
+            cell.isLastCell = true
             
+            cell.callForAnInterView = {
+                print("callForAnInterView")
+            }
+            
+            cell.reject = {
+                print("reject")
+            }
+            
+            cell.candidateImage.setImageWithName(candidate.profileImage ?? "", isCompleteUrl: true)
+            print(candidate.toJSON())
+            return cell
         }
         
-        return UITableViewCell()
+//        return UITableViewCell()
     }
     
 }

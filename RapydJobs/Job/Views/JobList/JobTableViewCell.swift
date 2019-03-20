@@ -20,8 +20,8 @@ class JobTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var stopJob: UIButton! {
         didSet {
-            actionStyle(stopJob, UIImage(named: "ic_interviews")!)
-            stopJob.titleEdgeInsets = UIEdgeInsetsMake(0, -17.5, 0, 0)
+            actionStyle(stopJob, UIImage(named: "close")!) //ic_interviews
+            stopJob.titleEdgeInsets = UIEdgeInsetsMake(0, -12, 0, 0) //-17.5
         }
     }
     

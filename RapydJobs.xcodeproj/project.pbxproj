@@ -429,6 +429,8 @@
 		C9B92290218E3A42000A633B /* ManagedEmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B9228E218E3A42000A633B /* ManagedEmployeeTableViewCell.xib */; };
 		C9B92293218E4D88000A633B /* RatingPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B92292218E4D88000A633B /* RatingPopup.swift */; };
 		C9B92295218E4D97000A633B /* RatingPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B92294218E4D97000A633B /* RatingPopup.xib */; };
+		C9BAEBEF2242A7E8002BF820 /* CandidateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAEBED2242A7E8002BF820 /* CandidateTableViewCell.swift */; };
+		C9BAEBF02242A7E8002BF820 /* CandidateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9BAEBEE2242A7E8002BF820 /* CandidateTableViewCell.xib */; };
 		C9C07BAC218B9D95006CBEEB /* MakeOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C07BAB218B9D95006CBEEB /* MakeOfferViewController.swift */; };
 		C9C07BAE218B9DF0006CBEEB /* Offer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C07BAD218B9DF0006CBEEB /* Offer.storyboard */; };
 		C9C07BB1218B9EA0006CBEEB /* MakeOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C07BAF218B9EA0006CBEEB /* MakeOfferTableViewCell.swift */; };
@@ -909,6 +911,8 @@
 		C9B9228E218E3A42000A633B /* ManagedEmployeeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagedEmployeeTableViewCell.xib; sourceTree = "<group>"; };
 		C9B92292218E4D88000A633B /* RatingPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopup.swift; sourceTree = "<group>"; };
 		C9B92294218E4D97000A633B /* RatingPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingPopup.xib; sourceTree = "<group>"; };
+		C9BAEBED2242A7E8002BF820 /* CandidateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTableViewCell.swift; sourceTree = "<group>"; };
+		C9BAEBEE2242A7E8002BF820 /* CandidateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CandidateTableViewCell.xib; sourceTree = "<group>"; };
 		C9C07BAB218B9D95006CBEEB /* MakeOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeOfferViewController.swift; sourceTree = "<group>"; };
 		C9C07BAD218B9DF0006CBEEB /* Offer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Offer.storyboard; sourceTree = "<group>"; };
 		C9C07BAF218B9EA0006CBEEB /* MakeOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeOfferTableViewCell.swift; sourceTree = "<group>"; };
@@ -2106,6 +2110,7 @@
 		A57B9C4720F1987C0083A106 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				C9BAEBEC2242A7C5002BF820 /* Cell */,
 				A57B9C4820F198960083A106 /* JobDetails.storyboard */,
 				A57B9C4A20F199440083A106 /* JobDetailsViewController.swift */,
 				A57B9C4C20F208000083A106 /* JobDetailsViewModel.swift */,
@@ -2394,6 +2399,15 @@
 			path = RatingPopup;
 			sourceTree = "<group>";
 		};
+		C9BAEBEC2242A7C5002BF820 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C9BAEBED2242A7E8002BF820 /* CandidateTableViewCell.swift */,
+				C9BAEBEE2242A7E8002BF820 /* CandidateTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C9C07BAA218B9D74006CBEEB /* MakerAnOffer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2592,6 +2606,7 @@
 				A57E30B320EAA7B100BF6CE9 /* CreateJob.storyboard in Resources */,
 				A57B9C5020F21D110083A106 /* BasicInformationCell.xib in Resources */,
 				C963960C218CEC80001FEFCD /* JobTableViewCell.xib in Resources */,
+				C9BAEBF02242A7E8002BF820 /* CandidateTableViewCell.xib in Resources */,
 				A54AD719210BCC4E00C72F75 /* face.jpg in Resources */,
 				A57E30B820EAAA0A00BF6CE9 /* RangeField.xib in Resources */,
 				C929E9DF2185D61C00A8AA8E /* JobList.storyboard in Resources */,
@@ -2905,6 +2920,7 @@
 				A54AD6BD210A68D400C72F75 /* SigninRequest.swift in Sources */,
 				A54AD70D210BCC0800C72F75 /* GetEmployerDetailsService.swift in Sources */,
 				A54AD70A210BCC0800C72F75 /* SignupUpdateEmployerService.swift in Sources */,
+				C9BAEBEF2242A7E8002BF820 /* CandidateTableViewCell.swift in Sources */,
 				3E9D82F12133CDFA00DC50F0 /* PlannerVC.swift in Sources */,
 				0D42020B20DE62070063BB23 /* AppDelegate.swift in Sources */,
 				0D42025020DE91890063BB23 /* CardViewController.swift in Sources */,
