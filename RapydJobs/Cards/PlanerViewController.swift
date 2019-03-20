@@ -33,6 +33,9 @@ class PlanerViewController: UIViewController {
         self.title = "Timesheet"
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
+        
+        weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
+        
         self.setupWeekView()
         self.getHiderDropDown()
         
@@ -56,12 +59,12 @@ class PlanerViewController: UIViewController {
         _ = APIClient.callAPI(request: .jobseekerPlanner(id: id), onSuccess: { (dictionary) in
             
             print(dictionary)
-            if let data = dictionary["time_planner"] as? [[String:Any]] {
+            if let data = dictionary["time_planner"] as? [[String:Any]] , data.count > 0 {
                 self.timePlannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
                 print(self.timePlannerData.toJSON())
             }
             
-            if let data = dictionary["interview_planner"] as? [[String:Any]] {
+            if let data = dictionary["interview_planner"] as? [[String:Any]] , data.count > 0 {
                 self.interviewPlannerData = Mapper<InterviewPlannerDataResponseModel>().mapArray(JSONArray: data)
                 print(self.interviewPlannerData.toJSON())
             }
@@ -95,6 +98,8 @@ class PlanerViewController: UIViewController {
                 actionSheet.addAction(UIAlertAction(title: self.dropDownData[i].jobName, style: .default, handler: { (action) in
                     
                     self.selectedJob = self.dropDownData[i]
+                    self.timePlannerData.removeAll()
+                    self.interviewPlannerData.removeAll()
                     self.getPlannerData(id: self.dropDownData[i].jobId)
                     actionSheet.dismiss(animated: true, completion: nil)
                     
@@ -108,7 +113,7 @@ class PlanerViewController: UIViewController {
     
     func setupWeekView() {
         
-        weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
+        
 
         self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
 
