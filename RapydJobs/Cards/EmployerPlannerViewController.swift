@@ -12,7 +12,7 @@ import JZCalendarWeekView
 import JGProgressHUD
 
 class EmployerPlannerViewController: UIViewController {
-
+    
     @IBOutlet weak var weekView: DefaultWeekView!
     
     private let hud: JGProgressHUD = {
@@ -33,6 +33,9 @@ class EmployerPlannerViewController: UIViewController {
         self.title = "Timesheet"
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
+        
+        weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
+        
         self.setupWeekView()
         self.getHiredDropDown()
         
@@ -57,12 +60,12 @@ class EmployerPlannerViewController: UIViewController {
             print(dictionary)
             
             print(dictionary)
-            if let data = dictionary["time_planner"] as? [[String:Any]] {
+            if let data = dictionary["time_planner"] as? [[String:Any]], data.count > 0 {
                 self.timePlannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
                 print(self.timePlannerData.toJSON())
             }
             
-            if let data = dictionary["interview_planner"] as? [[String:Any]] {
+            if let data = dictionary["interview_planner"] as? [[String:Any]] , data.count > 0{
                 self.interviewPlannerData = Mapper<InterviewPlannerDataResponseModel>().mapArray(JSONArray: data)
                 print(self.interviewPlannerData.toJSON())
             }
@@ -87,7 +90,7 @@ class EmployerPlannerViewController: UIViewController {
         if self.dropDownData.count > 0 {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (action) in
+            actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (action) in                
                 self.getPlannerData()
                 actionSheet.dismiss(animated: true, completion: nil)
             }))
@@ -96,6 +99,8 @@ class EmployerPlannerViewController: UIViewController {
                 actionSheet.addAction(UIAlertAction(title: self.dropDownData[i].jobName, style: .default, handler: { (action) in
                     
                     self.selectedJob = self.dropDownData[i]
+                    self.timePlannerData.removeAll()
+                    self.interviewPlannerData.removeAll()
                     self.getPlannerData(id: self.dropDownData[i].jobId)
                     actionSheet.dismiss(animated: true, completion: nil)
                     
@@ -109,16 +114,8 @@ class EmployerPlannerViewController: UIViewController {
     
     func setupWeekView() {
         
-        weekView.updateFlowLayout(JZWeekViewFlowLayout(hourHeight: 50, rowHeaderWidth: 50, columnHeaderHeight: 50, hourGridDivision: JZHourGridDivision.noneDiv))
-        //let dateFormatter = DateFormatter()
-        //guard let timesheet = self.timeSheetData else {
-            self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
-//            return
-//        }
+        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
         
-//        let date =  dateFormatter.date(fromSwapiString: (timesheet.timesheets?.first?.date!)!)
-//
-//        self.weekView.setupCalendar(numOfDays: 7, setDate: date!, allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
