@@ -9,12 +9,20 @@
 import UIKit
 import Segmentio
 import ObjectMapper
+import JGProgressHUD
 
 class JobDetailsAndCandidateViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    private let hud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        hud.vibrancyEnabled = true
+        return hud
+    }()
+    var toast: JYToast!
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -47,6 +55,7 @@ class JobDetailsAndCandidateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.toast = JYToast()
         guard let job = self.organizatioJob else {
             return
         }
@@ -79,6 +88,7 @@ class JobDetailsAndCandidateViewController: UIViewController {
                 self.sectionArray = ["Basic Information", "Job Description",]
                 self.tableView.reloadData()
             } else {
+                self.hud.dismiss(animated: true)
                 self.sectionArray.removeAll()
                 self.tableView.reloadData()
                 self.getCandidates()
@@ -93,13 +103,16 @@ class JobDetailsAndCandidateViewController: UIViewController {
         guard let jobId = self.organizatioJob?.id else {
             return
         }
+        self.hud.show(in: self.view)
         _ = APIClient.callAPI(request: APIClient.getCandidates(jobId: "\(jobId)"), onSuccess: { (dictionary) in
+            self.hud.dismiss(animated: true)
             if let data = dictionary["data"] as? [[String:Any]] {
                 let candidates: [JobCandidate] = Mapper<JobCandidate>().mapArray(JSONArray: data)
                 self.jobCandidates = candidates
                 self.tableView.reloadData()
             }
         }) { (errorDictionary, _) in
+            self.hud.dismiss(animated: true)
             print(errorDictionary)
         }
     }
@@ -255,16 +268,38 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
         } else { // Segment Index 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "CandidateTableViewCellID", for: indexPath) as! CandidateTableViewCell
             let candidate = self.jobCandidates[indexPath.row]
+            
             cell.candidateName.text = candidate.fullName ?? ""
             cell.isFirstCell = true
             cell.isLastCell = true
             
             cell.callForAnInterView = {
-                print("callForAnInterView")
+                print(candidate.toJSON())
+                let storyboard = UIStoryboard(name: "Interview", bundle: nil)
+                let interviewVC = storyboard.instantiateViewController(withIdentifier: "InterviewV2ViewControllerID") as! InterviewV2ViewController
+                
+                interviewVC.jobId = self.organizatioJob?.id ?? 0
+                interviewVC.jobTitle = self.organizatioJob?.title ?? ""
+                interviewVC.jobSeekerName = candidate.fullName ?? ""
+                interviewVC.jobSeekerId = candidate.userId ?? 0
+                
+                self.navigationController?.pushViewController(interviewVC, animated: true)
             }
             
             cell.reject = {
-                print("reject")
+                let matchId = "\(candidate.matchId ?? 0)"
+                print(matchId)
+                self.hud.show(in: self.view)
+                _ = APIClient.callAPI(request: APIClient.removeCandidate(id: matchId), onSuccess: { (dictionary) in
+                    self.jobCandidates.remove(at: indexPath.row)
+                    tableView.reloadData()
+                    self.hud.dismiss(animated: true)
+                    self.toast.isShow("Match deleted successfully")
+                }, onFailure: { (errorDictionary, _) in
+                    self.hud.dismiss(animated: true)
+                    self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
+                })
+                
             }
             
             cell.candidateImage.setImageWithName(candidate.profileImage ?? "", isCompleteUrl: true)

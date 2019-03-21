@@ -481,7 +481,9 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     @objc func experienceScreen() {
-        self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
+        self.distanceInput.resignFirstResponder()
+        
+        //self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -523,6 +525,12 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == relatedFieldsInput || textField == shiftTimeInput {
+            self.distanceInput.resignFirstResponder()
+        }
+    }
+    
     @objc private func rangeSliderValueChanged(_ slider: RangeSlider) {
         
         minSalVal = Int(slider.lowerValue)
@@ -534,32 +542,37 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     @objc private func didTapShiftTime() {
         view.endEditing(true)
-        let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
         
-        let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
-        if let slctdWks = self.selectedWeeks {
-            vc.selectedWeek = slctdWks
-        }
-        
-        vc.completion = { weeks in
-            guard let wks = weeks, wks.count > 0 else {
-                self.shiftTimeInput.text = ""
-                self.selectedWeeks?.removeAll()
-                return
+        Helper.delay(0.3) {
+            
+            
+            let sb = UIStoryboard(name: "JobseekerSignup", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: "WeekViewController") as! WeekViewController
+            if let slctdWks = self.selectedWeeks {
+                vc.selectedWeek = slctdWks
             }
             
-            
-            var str = ""
-            for item in wks {
-                str += "\(item["day"] as? String ?? ""),"
+            vc.completion = { weeks in
+                guard let wks = weeks, wks.count > 0 else {
+                    self.shiftTimeInput.text = ""
+                    self.selectedWeeks?.removeAll()
+                    return
+                }
+                
+                
+                var str = ""
+                for item in wks {
+                    str += "\(item["day"] as? String ?? ""),"
+                }
+                str.remove(at: str.index(before: str.endIndex))
+                
+                self.shiftTimeInput.text = str
+                self.selectedWeeks = weeks
             }
-            str.remove(at: str.index(before: str.endIndex))
-            
-            self.shiftTimeInput.text = str
-            self.selectedWeeks = weeks
+            self.distanceInput.resignFirstResponder()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        distanceInput.resignFirstResponder()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func moveToRelatedFieldVC() {

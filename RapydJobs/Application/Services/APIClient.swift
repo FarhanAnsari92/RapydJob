@@ -97,6 +97,7 @@ enum APIClient: URLRequestConvertible {
     case getRedDot
     case changeRedDot(param: [String:Any])
     case getCandidates(jobId: String)
+    case removeCandidate(id: String)
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -161,6 +162,7 @@ enum APIClient: URLRequestConvertible {
                  .deleteHiredEmployee,
                  .deleteContract,
                  .deleteExperience,
+                 .removeCandidate,
                  .deleteJob:
                 return .delete
             }
@@ -201,6 +203,7 @@ enum APIClient: URLRequestConvertible {
                  .resendCode,
                  .getRedDot,
                  .getCandidates,
+                 .removeCandidate,
                  .getInterView:
                 return nil
             case .likeEmployeeRequest(let param):
@@ -321,6 +324,7 @@ enum APIClient: URLRequestConvertible {
                  .getRedDot,
                  .changeRedDot,
                  .getCandidates,
+                 .removeCandidate,
                  .superLikeEmployerRequest:
                 guard let token = AppContainer.shared.user.user?.accessToken else {
                     return nil
@@ -456,6 +460,8 @@ enum APIClient: URLRequestConvertible {
                 return  "change-red-dots"
             case .getCandidates(let jobId):
                 return "job-candidates/\(jobId)"
+            case .removeCandidate(let id):
+                return "delete-match/\(id)"
             }
         }()
 
