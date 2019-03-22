@@ -148,7 +148,7 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
             if section == 0 {
                 return 4
             }
-            return 2
+            return 1
         }
         return self.jobCandidates.count
     }
@@ -158,7 +158,7 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
         
         if segmentControl.selectedSegmentioIndex == 0 {
             
-            switch indexPath.section {
+            switch indexPath.section { // Section index 0
             case 0:
                 switch indexPath.row {
                 case 0:
@@ -239,18 +239,9 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
                     return UITableViewCell()
                     
                 }
-            default:
+            default: // Section index 1
                 switch indexPath.row {
                 case 0:
-                    let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-                    headerCell.titleLabel.text = self.sectionArray[indexPath.section] // viewModel.titleForSection(indexPath.section)
-                    cell = headerCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
-                case 1:
                     let descCell = tableView.dequeueReusableCell(withIdentifier: "description-cell") as! DescriptionTableViewCell
                     
                     descCell.descriptionTextView.text = self.organizatioJob?.description ?? "Not provided"
@@ -258,7 +249,18 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
                     cell.isFirstCell = indexPath.row == 0
                     cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
                     return cell
-                    
+//
+//                case 1:
+//                    let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
+//                    headerCell.titleLabel.text = self.sectionArray[indexPath.section] // viewModel.titleForSection(indexPath.section)
+//                    cell = headerCell
+//
+//                    cell.isFirstCell = indexPath.row == 0
+//                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+//
+//                    return cell
+//
+//
                 default:
                     let cell = UITableViewCell()
                     return cell
@@ -303,11 +305,9 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
             }
             
             cell.candidateImage.setImageWithName(candidate.profileImage ?? "", isCompleteUrl: true)
-            print(candidate.toJSON())
             return cell
         }
         
-//        return UITableViewCell()
     }
     
 }
