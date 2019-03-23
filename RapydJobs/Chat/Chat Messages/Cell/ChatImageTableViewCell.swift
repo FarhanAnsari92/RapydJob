@@ -29,6 +29,9 @@ class ChatImageTableViewCell: UITableViewCell {
         self.sentImage.layer.cornerRadius = 15
         self.sentImage.clipsToBounds = true
         
+        self.senderProfileImage.layer.cornerRadius = 15
+        self.senderProfileImage.clipsToBounds = true
+        
         let senderImageGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtImage(_:)))
         self.senderImage.isUserInteractionEnabled = true
         self.senderImage.addGestureRecognizer(senderImageGesture)

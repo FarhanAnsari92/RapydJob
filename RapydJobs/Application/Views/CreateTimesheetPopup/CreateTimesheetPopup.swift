@@ -86,7 +86,7 @@ class CreateTimesheetPopup: UIView {
         
         let ttlAmount = totalTime * amount
         let totalAmount = Double(round(100*ttlAmount)/100)
-        self.totalAmount.text = "Total Amount: \(totalAmount)"
+        self.totalAmount.text = "Total Amount: £\(totalAmount)"
     }
 
 }

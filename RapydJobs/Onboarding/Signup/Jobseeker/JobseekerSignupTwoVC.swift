@@ -481,9 +481,9 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     @objc func experienceScreen() {
-        self.distanceInput.resignFirstResponder()
+//        self.distanceInput.resignFirstResponder()
         
-        //self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
+        self.performSegue(withIdentifier: self.segueJobseekerExperienceVC, sender: nil)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

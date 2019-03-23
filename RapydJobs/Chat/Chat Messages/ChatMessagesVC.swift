@@ -266,7 +266,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         let optionBarBtn = UIBarButtonItem(customView: optionBtn)
         
         let imageBtn: UIButton = UIButton(type: UIButtonType.custom)
-        imageBtn.setImage(UIImage(named: "ic_message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        imageBtn.setImage(UIImage(named: "sendImage")?.withRenderingMode(.alwaysOriginal), for: .normal) //ic_message
         imageBtn.addTarget(self, action: #selector(self.sendImage), for: .touchUpInside)
         imageBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let imageBarBtn = UIBarButtonItem(customView: imageBtn)
@@ -384,6 +384,12 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             if message.type == "file" {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChatImageTableViewCellID", for: indexPath) as! ChatImageTableViewCell
+                if let pic = self.seekerPicture {
+                    cell.senderProfileImage.setImageWithName(pic)
+                } else {
+                    cell.senderProfileImage.image = UIImage(named: "user")
+                }
+                
                 cell.populate(message: message)
                 cell.imageHandler = {
                     

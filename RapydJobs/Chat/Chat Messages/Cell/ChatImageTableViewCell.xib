@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="915" height="286.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="COA-Oo-bh3">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="COA-Oo-bh3">
                         <rect key="frame" x="16" y="8" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="COA-Oo-bh3" secondAttribute="height" multiplier="1:1" id="F56-hI-s55"/>
@@ -43,7 +43,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLZ-VL-8WA">
-                        <rect key="frame" x="636.5" y="8" width="270.5" height="270.5"/>
+                        <rect key="frame" x="628.5" y="8" width="270.5" height="270.5"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iNv-Kw-ZEd">
                                 <rect key="frame" x="3" y="3" width="264.5" height="264.5"/>
@@ -66,7 +66,7 @@
                     <constraint firstItem="lv4-YU-ZGV" firstAttribute="leading" secondItem="COA-Oo-bh3" secondAttribute="trailing" constant="8" id="JpK-jw-Vks"/>
                     <constraint firstAttribute="bottom" secondItem="lv4-YU-ZGV" secondAttribute="bottom" constant="8" id="Mom-kg-bdW"/>
                     <constraint firstItem="lv4-YU-ZGV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="iuC-qG-Er5"/>
-                    <constraint firstAttribute="trailing" secondItem="WLZ-VL-8WA" secondAttribute="trailing" constant="8" id="jMF-02-ubK"/>
+                    <constraint firstAttribute="trailing" secondItem="WLZ-VL-8WA" secondAttribute="trailing" constant="16" id="jMF-02-ubK"/>
                     <constraint firstItem="COA-Oo-bh3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="x57-Vl-Xuy"/>
                 </constraints>
             </tableViewCellContentView>
@@ -81,4 +81,7 @@
             <point key="canvasLocation" x="421.60000000000002" y="76.011994002998506"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="user" width="24" height="24"/>
+    </resources>
 </document>

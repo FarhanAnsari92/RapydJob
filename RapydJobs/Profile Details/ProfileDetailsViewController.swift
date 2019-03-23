@@ -14,7 +14,7 @@ import SwiftWebVC
 
 class ProfileDetailsViewController: BaseViewController {
     
-    let sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
+    var sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
     var reviews: [SeekerReview]?
 
     var currentPage = 1
@@ -159,24 +159,6 @@ class ProfileDetailsViewController: BaseViewController {
         }) { (errorDictionary, _) in
             self.isLoading = false
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
-        }
-    }
-    
-    private func getData() { // Not using
-        JobseekerProfileAPIService.shared.getJobseekerPersonalProfile { (jobseeker, error) in
-            if let err = error {
-                print("🔥 Error : ", err)
-            } else {
-                if let jobseeker = jobseeker {
-                    self.ratingView.rating = Double(jobseeker.totalRating)
-                    self.nameLabel.text = jobseeker.username.capitalized
-                    if jobseeker.experience.count > 0 {
-                        self.subtitleLabel.text = jobseeker.experience[0].title.capitalized + " @ " + jobseeker.experience[0].companyName.capitalized
-                    }
-                    self.coverImageView.setImageWithName(jobseeker.profileImage)
-                    self.profileImageView.setImageWithName(jobseeker.profileImage)
-                }
-            }
         }
     }
     
