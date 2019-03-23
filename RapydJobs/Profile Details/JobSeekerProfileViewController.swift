@@ -13,7 +13,8 @@ import ObjectMapper
 import SwiftWebVC
 
 class JobSeekerProfileViewController: UIViewController {
-    let sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
+    //let sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
+    var sectionArray: [ProfileViewData] = [ProfileViewData(title: "Basic Information", cellType: "basicInformation")]
     var reviews: [SeekerReview]?
     
     var currentPage = 1
@@ -129,6 +130,18 @@ class JobSeekerProfileViewController: UIViewController {
                 self.subtitleLabel.text = title
             } else {
                 self.subtitleLabel.text = "Not Provided"
+            }
+            
+            self.sectionArray.removeAll()
+            self.sectionArray = [ProfileViewData(title: "Basic Information", cellType: "BasicInfo")]
+            if let exp = self.jobSeeker?.experience, exp.count > 0 {
+                self.sectionArray.append(ProfileViewData(title: "Experience Information", cellType: "Experience"))
+            }
+            if let edu = self.jobSeeker?.education, edu.count > 0 {
+                self.sectionArray.append(ProfileViewData(title: "Education Information", cellType: "Education"))
+            }
+            if let lang = self.jobSeeker?.language, lang.count > 0 {
+                self.sectionArray.append(ProfileViewData(title: "Language", cellType: "Language"))
             }
             
             print(self.jobSeeker?.totalRating ?? 0.0)
@@ -274,18 +287,20 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
             
             if section == 0 {
                 return 4
-            } else if section == 1 {
-                return (user.experience?.count ?? 0) + 1
-            } else if section == 2 {
-                return (user.education?.count ?? 0) + 1
-            } else {
-                return (user.language?.count ?? 0) + 1
+            }
+            
+            if let exp = user.experience, exp.count > 0 {
+                return (exp.count) + 1
+            } else if let edu = user.education, edu.count > 0 {
+                return (edu.count) + 1
+            } else if let lang = user.language, lang.count > 0 {
+                return (lang.count) + 1
             }
             
         } else {
             return self.reviews?.count ?? 0
         }
-        
+        return 0
     }
     
     
@@ -293,12 +308,11 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
         var cell:ShdaowBaseTableViewCell
         
         if segmentControl.selectedSegmentioIndex == 0 {
-            switch indexPath.section {
-            case 0:
+            if indexPath.section == 0 {
                 switch indexPath.row {
                 case 0:
                     let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-                    headerCell.titleLabel.text = self.sectionArray[indexPath.section] // viewModel.titleForSection(indexPath.section)
+                    headerCell.titleLabel.text = self.sectionArray[indexPath.section].title // viewModel.titleForSection(indexPath.section)
                     cell = headerCell
                     
                     cell.isFirstCell = indexPath.row == 0
@@ -346,117 +360,120 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                     return UITableViewCell()
                     
                 }
+            } else {
                 
-            case 1: //Experience
-                if indexPath.row == 0 {
-                    let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-                    headerCell.titleLabel.text = self.sectionArray[indexPath.section]
-                    cell = headerCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
-                    
-                } else {
-                    guard let experience = self.jobSeeker?.experience?[indexPath.row - 1] else {
-                        return UITableViewCell()
+                
+                if self.sectionArray[indexPath.section].cellType == "Experience" {
+                    if indexPath.row == 0 {
+                        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
+                        headerCell.titleLabel.text = self.sectionArray[indexPath.section].title
+                        cell = headerCell
+                        
+                        cell.isFirstCell = indexPath.row == 0
+                        cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                        
+                        return cell
+                        
+                    } else {
+                        guard let experience = self.jobSeeker?.experience?[indexPath.row - 1] else {
+                            return UITableViewCell()
+                        }
+                        
+                        let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                        
+                        infoCell.titleLabel.isHidden = false
+                        infoCell.downloadBtn.isHidden = true
+                        
+                        infoCell.toggleButton.isHidden = false
+                        infoCell.delegate = self
+                        infoCell.titleLabel.textColor = infoCell.experienceLabelColor
+                        infoCell.titleLabel.text = experience.title ?? "" //jobTitle
+                        infoCell.organisationLabel.text = experience.companyName ?? "" //organisationName
+                        infoCell.durationLabel.text = experience.duration
+                        infoCell.iconView?.image = UIImage(named: "ic_jobs")
+                        
+                        cell = infoCell
+                        
+                        cell.isFirstCell = indexPath.row == 0
+                        cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                        
+                        return cell
+                        
                     }
-                    
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
-                    infoCell.titleLabel.isHidden = false
-                    infoCell.downloadBtn.isHidden = true
-                    
-                    infoCell.toggleButton.isHidden = false
-                    infoCell.delegate = self
-                    infoCell.titleLabel.textColor = infoCell.experienceLabelColor
-                    infoCell.titleLabel.text = experience.title ?? "" //jobTitle
-                    infoCell.organisationLabel.text = experience.companyName ?? "" //organisationName
-                    infoCell.durationLabel.text = experience.duration
-                    infoCell.iconView?.image = UIImage(named: "ic_jobs")
-                    
-                    cell = infoCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
-                    
                 }
-            case 2: //Education
-                if indexPath.row == 0 {
-                    let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-                    headerCell.titleLabel.text = self.sectionArray[indexPath.section]
-                    cell = headerCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
-                } else {
-                    guard let education = self.jobSeeker?.education?[indexPath.row - 1] else {
-                        return UITableViewCell()
+                if self.sectionArray[indexPath.section].cellType == "Education" {
+                    if indexPath.row == 0 {
+                        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
+                        headerCell.titleLabel.text = self.sectionArray[indexPath.section].title
+                        cell = headerCell
+                        
+                        cell.isFirstCell = indexPath.row == 0
+                        cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                        
+                        return cell
+                    } else {
+                        guard let education = self.jobSeeker?.education?[indexPath.row - 1] else {
+                            return UITableViewCell()
+                        }
+                        
+                        let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                        
+                        infoCell.titleLabel.isHidden = false
+                        infoCell.downloadBtn.isHidden = true
+                        
+                        infoCell.toggleButton.isHidden = false
+                        infoCell.delegate = self
+                        infoCell.titleLabel.textColor = infoCell.experienceLabelColor
+                        infoCell.titleLabel.text = education.title ?? "" //jobTitle
+                        infoCell.organisationLabel.text = education.instituteName ?? "" //organisationName
+                        infoCell.durationLabel.text = education.duration
+                        infoCell.iconView?.image = UIImage(named: "ic_jobs")
+                        
+                        infoCell.gradeLabel.isHidden = false
+                        infoCell.gradeLabel.text = "Grade : " + String(education.grade ?? "-")
+                        
+                        cell = infoCell
+                        
+                        cell.isFirstCell = indexPath.row == 0
+                        cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                        
+                        return cell
                     }
-                    
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
-                    infoCell.titleLabel.isHidden = false
-                    infoCell.downloadBtn.isHidden = true
-                    
-                    infoCell.toggleButton.isHidden = false
-                    infoCell.delegate = self
-                    infoCell.titleLabel.textColor = infoCell.experienceLabelColor
-                    infoCell.titleLabel.text = education.title ?? "" //jobTitle
-                    infoCell.organisationLabel.text = education.instituteName ?? "" //organisationName
-                    infoCell.durationLabel.text = education.duration
-                    infoCell.iconView?.image = UIImage(named: "ic_jobs")
-                    
-                    infoCell.gradeLabel.isHidden = false
-                    infoCell.gradeLabel.text = "Grade : " + String(education.grade ?? "-")
-                    
-                    cell = infoCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
                 }
-            case 3: //Language
-                if indexPath.row == 0 {
-                    let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
-                    headerCell.titleLabel.text = self.sectionArray[indexPath.section]
-                    cell = headerCell
-                    return cell
-                } else {
-                    
-                    guard let language = self.jobSeeker?.language?[indexPath.row - 1] else {
-                        return UITableViewCell()
+                if self.sectionArray[indexPath.section].cellType == "Language" {
+                    if indexPath.row == 0 {
+                        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
+                        headerCell.titleLabel.text = self.sectionArray[indexPath.section].title
+                        cell = headerCell
+                        return cell
+                    } else {
+                        
+                        guard let language = self.jobSeeker?.language?[indexPath.row - 1] else {
+                            return UITableViewCell()
+                        }
+                        
+                        let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
+                        
+                        infoCell.titleLabel.isHidden = false
+                        infoCell.downloadBtn.isHidden = true
+                        
+                        infoCell.toggleButton.isHidden = false
+                        infoCell.delegate = self
+                        infoCell.titleLabel.textColor = infoCell.experienceLabelColor
+                        infoCell.titleLabel.text = language.language ?? "" //jobTitle
+                        infoCell.organisationLabel.text = language.level ?? "" // "-" // language.instituteName ?? "" //organisationName
+                        infoCell.durationLabel.text = "" // language.duration
+                        infoCell.iconView?.image = UIImage(named: "ic_jobs")
+                        
+                        cell = infoCell
+                        
+                        cell.isFirstCell = indexPath.row == 0
+                        cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+                        
+                        return cell
+                        
                     }
-                    
-                    let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! ProfileDetailsTableInfoCell
-                    
-                    infoCell.titleLabel.isHidden = false
-                    infoCell.downloadBtn.isHidden = true
-                    
-                    infoCell.toggleButton.isHidden = false
-                    infoCell.delegate = self
-                    infoCell.titleLabel.textColor = infoCell.experienceLabelColor
-                    infoCell.titleLabel.text = language.language ?? "" //jobTitle
-                    infoCell.organisationLabel.text = language.level ?? "" // "-" // language.instituteName ?? "" //organisationName
-                    infoCell.durationLabel.text = "" // language.duration
-                    infoCell.iconView?.image = UIImage(named: "ic_jobs")
-                    
-                    cell = infoCell
-                    
-                    cell.isFirstCell = indexPath.row == 0
-                    cell.isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-                    
-                    return cell
-                    
                 }
-            default:
-                return UITableViewCell()
                 
             }
         } else { // segment index 1
@@ -471,7 +488,7 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
             return cell
             
         }
-        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
