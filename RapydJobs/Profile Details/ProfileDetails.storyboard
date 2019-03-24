@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +41,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xZk-cj-VVr">
-                                <rect key="frame" x="30" y="203.5" width="315" height="66.5"/>
+                                <rect key="frame" x="30" y="203.5" width="315" height="96.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tC1-uk-IlO">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="26.5"/>
@@ -55,7 +56,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-wM-Nuf" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="0.0" y="46.5" width="315" height="20"/>
+                                        <rect key="frame" x="0.0" y="46.5" width="315" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -84,7 +85,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-jC-09J" customClass="SegmentControl" customModule="RapydJobs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="300" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hvm-b1-Lj6"/>
@@ -153,7 +154,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8c3-T7-JQK">
-                                <rect key="frame" x="0.0" y="340" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="370" width="375" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="M2R-h4-9kw" id="7sM-nx-aUL"/>
@@ -161,7 +162,7 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhV-wF-aQY" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
-                                <rect key="frame" x="74" y="390" width="227" height="227"/>
+                                <rect key="frame" x="89" y="420" width="197" height="197"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OhV-wF-aQY" secondAttribute="height" multiplier="1:1" id="t96-8w-3fs"/>
@@ -363,6 +364,14 @@
                                 <rect key="frame" x="0.0" y="370" width="375" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HS-Ux-LZ9" customClass="EmptyPlaceholderView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="89" y="420" width="197" height="197"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="197" id="eBc-o5-Zcf"/>
+                                    <constraint firstAttribute="width" secondItem="6HS-Ux-LZ9" secondAttribute="height" multiplier="1:1" id="wL1-9t-wsq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -376,6 +385,7 @@
                             <constraint firstItem="hoR-oM-pDz" firstAttribute="top" secondItem="stX-9N-ZRk" secondAttribute="bottom" constant="10" id="L9R-Q4-gKo"/>
                             <constraint firstItem="22L-zF-lED" firstAttribute="bottom" secondItem="lDo-LW-DQL" secondAttribute="bottom" id="PDQ-QM-Ksa"/>
                             <constraint firstItem="hoR-oM-pDz" firstAttribute="leading" secondItem="22L-zF-lED" secondAttribute="leading" constant="30" id="Q1O-4x-zpa"/>
+                            <constraint firstItem="6HS-Ux-LZ9" firstAttribute="centerX" secondItem="dWA-6T-70S" secondAttribute="centerX" id="RAJ-Rc-igM"/>
                             <constraint firstItem="dcj-D9-CQA" firstAttribute="height" secondItem="dWA-6T-70S" secondAttribute="height" multiplier="0.2" id="SJP-aL-20R"/>
                             <constraint firstItem="2hV-TT-4Sg" firstAttribute="top" secondItem="dcj-D9-CQA" secondAttribute="bottom" constant="10" id="Td6-a4-PXi"/>
                             <constraint firstItem="vaQ-2G-kBC" firstAttribute="top" secondItem="dcj-D9-CQA" secondAttribute="bottom" id="Uy2-FP-Wia"/>
@@ -384,6 +394,7 @@
                             <constraint firstItem="stX-9N-ZRk" firstAttribute="leading" secondItem="22L-zF-lED" secondAttribute="leading" constant="30" id="e8L-8y-Tyz"/>
                             <constraint firstItem="22L-zF-lED" firstAttribute="bottom" secondItem="vaQ-2G-kBC" secondAttribute="bottom" id="j9L-6l-d5t"/>
                             <constraint firstItem="dcj-D9-CQA" firstAttribute="top" secondItem="dWA-6T-70S" secondAttribute="top" constant="20" id="k6I-ix-yas"/>
+                            <constraint firstItem="22L-zF-lED" firstAttribute="bottom" secondItem="6HS-Ux-LZ9" secondAttribute="bottom" constant="50" id="lWA-jJ-Vte"/>
                             <constraint firstItem="lDo-LW-DQL" firstAttribute="leading" secondItem="22L-zF-lED" secondAttribute="leading" id="lWX-tv-v69"/>
                             <constraint firstItem="22L-zF-lED" firstAttribute="trailing" secondItem="8th-FN-KGr" secondAttribute="trailing" id="o7l-Tx-Zi9"/>
                             <constraint firstItem="8th-FN-KGr" firstAttribute="leading" secondItem="22L-zF-lED" secondAttribute="leading" id="oH0-my-9PC"/>
@@ -394,6 +405,7 @@
                     <connections>
                         <outlet property="acceptButton" destination="tOb-7I-bwF" id="d4j-Q0-1jU"/>
                         <outlet property="coverImageView" destination="dcj-D9-CQA" id="bQj-RA-sjY"/>
+                        <outlet property="emptyPlaceholderView" destination="6HS-Ux-LZ9" id="Y5M-eC-XR1"/>
                         <outlet property="nameLabel" destination="pLo-0y-Xrb" id="o3K-Ah-3v8"/>
                         <outlet property="profileImageView" destination="stX-9N-ZRk" id="dDO-1J-WB3"/>
                         <outlet property="ratingView" destination="z32-4X-1PW" id="Gbw-fa-WZL"/>

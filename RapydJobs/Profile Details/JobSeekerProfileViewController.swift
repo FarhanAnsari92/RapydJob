@@ -13,7 +13,7 @@ import ObjectMapper
 import SwiftWebVC
 
 class JobSeekerProfileViewController: UIViewController {
-    //let sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
+    
     var sectionArray: [ProfileViewData] = [ProfileViewData(title: "Basic Information", cellType: "basicInformation")]
     var reviews: [SeekerReview]?
     
@@ -289,12 +289,12 @@ extension JobSeekerProfileViewController: UITableViewDataSource {
                 return 4
             }
             
-            if let exp = user.experience, exp.count > 0 {
-                return (exp.count) + 1
-            } else if let edu = user.education, edu.count > 0 {
-                return (edu.count) + 1
-            } else if let lang = user.language, lang.count > 0 {
-                return (lang.count) + 1
+            if self.sectionArray[section].cellType == "Experience" {
+                return (user.experience?.count ?? 0) + 1
+            } else if self.sectionArray[section].cellType == "Education" {
+                return (user.education?.count ?? 0) + 1
+            } else if self.sectionArray[section].cellType == "Language" {
+                return (user.language?.count ?? 0) + 1
             }
             
         } else {

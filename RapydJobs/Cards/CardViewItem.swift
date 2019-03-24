@@ -39,7 +39,7 @@ class CardViewItem {
         self.userId = ""
         
         self.imageName =  dto.profileImage ?? ""
-        self.rating = Double(arc4random_uniform(5) + 1)
+        self.rating = dto.rating ?? 0.0
         
         self.description = dto.description ?? ""
         

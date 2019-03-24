@@ -21,6 +21,7 @@ extension Initializable {
     }
     
     static func getInstance() -> Self {
+        print(self.storyboardName)
         let storyboard = UIStoryboard(name: self.storyboardName, bundle: nil)
         let instance = storyboard.instantiateViewController(withIdentifier: identifier)
         return instance as! Self

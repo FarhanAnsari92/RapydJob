@@ -47,6 +47,11 @@ class ProfileDetailsViewController: BaseViewController {
     @IBOutlet weak var segmentControl: SegmentControl!
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView! {
+        didSet {
+            self.emptyPlaceholderView.message.text = "No review found"
+        }
+    }
 
     var viewModel: ProfileDetailsViewModel = ProfileDetailsViewModel()
     
@@ -80,7 +85,7 @@ class ProfileDetailsViewController: BaseViewController {
         self.segmentControl.content = viewModel.segmentData
         self.segmentControl.valueDidChange = { segmentio, segmentIndex in
             if segmentIndex == 0 {
-                
+                self.emptyPlaceholderView.isHidden = true
                 self.currentPage = 1
                 self.lastPage = 0
                 self.isLoadMore = false
@@ -108,6 +113,7 @@ class ProfileDetailsViewController: BaseViewController {
         self.nameLabel.text = self.user?.userName ?? "" // "John Smith"
         self.coverImageView.setImageWithName(self.user?.profileImage ?? "")
         self.profileImageView.setImageWithName(self.user?.profileImage ?? "")
+        self.ratingView.rating = self.user?.totalRating ?? 0.0
         if let exp = self.user?.experience,
             exp.count > 0,
             let firstExperience = exp.last,
@@ -149,7 +155,7 @@ class ProfileDetailsViewController: BaseViewController {
         let numberOfItems = 10
         self.isLoading = true
         _ = APIClient.callAPI(request: .myReview(numberOfItems: numberOfItems, page: self.currentPage), onSuccess: { (dictionary) in
-            print(dictionary)
+            
             self.isLoading = false
             
             let lastPage = dictionary["last_page"] as? Int ?? 0
@@ -173,6 +179,11 @@ class ProfileDetailsViewController: BaseViewController {
                 self.reviews = review
             }
             self.tableView.reloadData()
+            if self.reviews?.count == 0 {
+                self.emptyPlaceholderView.isHidden = false
+            } else {
+                self.emptyPlaceholderView.isHidden = true
+            }
         }) { (errorDictionary, _) in
             self.isLoading = false
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -240,11 +251,11 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                 return 4
             }
             
-            if let exp = self.user?.experience, exp.count > 0 {
+            if self.sectionArray[section].cellType == "Experience" {
                 return (user.experience?.count ?? 0) + 1
-            } else if let edu = self.user?.education, edu.count > 0 {
+            } else if self.sectionArray[section].cellType == "Education" {
                 return (user.education?.count ?? 0) + 1
-            } else if let lang = self.user?.language, lang.count > 0 {
+            } else if self.sectionArray[section].cellType == "Language" {
                 return (user.language?.count ?? 0) + 1
             }
             
@@ -349,7 +360,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     }
                     
                 } else if self.sectionArray[indexPath.section].cellType == "Education" {
-                    
+                    print(indexPath.row)
                     if indexPath.row == 0 {
                         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! ProfileDetailsTableHeaderCell
                         headerCell.titleLabel.text = self.sectionArray[indexPath.section].title
