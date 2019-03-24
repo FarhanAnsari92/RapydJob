@@ -96,11 +96,11 @@ class JobseekerTimesheetViewController: BaseViewController {
             self.emptyPlaceholderView.isHidden = true
             self.tbl.reloadData()
             if segmentIndex == 0 {
-                self.getTimesheet(type: ["amendment","approve"])
+                self.getTimesheet(type: ["approve"])
             } else if segmentIndex == 1 {
-                self.getTimesheet(type: ["active", "update"])
+                self.getTimesheet(type: ["update", "active"])
             } else {
-                self.getTimesheet(type: ["amendment", "reject"])
+                self.getTimesheet(type: ["reject", "amendment"])
             }
             
         }
@@ -178,11 +178,18 @@ extension JobseekerTimesheetViewController: UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimesheetRejectTableViewCellID", for: indexPath) as! TimesheetRejectTableViewCell
             let timesheet = self.timesheets[indexPath.row]
             let id = timesheet.id ?? 0
+            
+            
             cell.approveBtn.isHidden = true
             cell.rejectBtn.isHidden = true
-            
+            cell.remakeBtn.isHidden = self.timesheets[indexPath.row].status != "amendment"
+            cell.separator.isHidden = self.timesheets[indexPath.row].status != "amendment"
             cell.remake = { btn in
-                self.change(status: "update", timesheetId: id,indexPath: indexPath)
+//                self.change(status: "update", timesheetId: id,indexPath: indexPath)
+                let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "CreateUpdateTimeSheetViewControllerID") as! CreateUpdateTimeSheetViewController
+                vc.timesheetResponseModel = self.timesheets[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             cell.update(data: timesheet)
@@ -197,15 +204,13 @@ extension JobseekerTimesheetViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let sb = UIStoryboard(name: "Timesheet", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "SeekerTimesheetViewController") as! SeekerTimesheetViewController
-//        vc.timeSheetData = self.timesheets[indexPath.row]
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
+
+        print(self.timesheets[indexPath.row].toJSON())
         let sb = UIStoryboard(name: "Timesheet", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "CreateUpdateTimeSheetViewControllerID") as! CreateUpdateTimeSheetViewController
-        vc.timesheetResponseModel = self.timesheets[indexPath.row]
+        let vc = sb.instantiateViewController(withIdentifier: "TimesheetViewController") as! TimesheetViewController
+        vc.timeSheetData = self.timesheets[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+
     }
 }
 

@@ -63,7 +63,7 @@ class TimesheetRejectTableViewCell: UITableViewCell {
         let perHourRate = "( \(data.hourlyRate ?? "0") per hour )"
         self.perHour.text = perHourRate
         let tAmount = String(data.totalAmount ?? 0.0)
-        self.totalAmount.text = "Total Amount: \(tAmount)"
+        self.totalAmount.text = "Total Amount: £\(tAmount)"
 //        self.remakeBtn.isHidden = data.status == "reject"
 //        self.separator.isHidden = data.status == "reject"
     }
