@@ -24,12 +24,15 @@ class SideMenuTableViewCell: UITableViewCell {
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.InterviewSchedule)
             case "Job Offers":
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobOfferSend)
-            case "Jobseeker Timesheet":
-                self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobSeekerTimesheet)
-                
-                //Employeer
-            case "Employer Timesheet":
+            case "Timesheet":
+                if AppContainer.shared.user.user?.accountType == "organization" {
+                    //Employeer
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.OrganisationTimesheet)
+                } else {
+                    //Jobseeker
+                    self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobSeekerTimesheet)
+                }
+                
             case "HR":
                 self.notificationView.isHidden = !(AppContainer.shared.notificationContainer.JobOfferResponse)                
             default:

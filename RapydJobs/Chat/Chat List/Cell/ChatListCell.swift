@@ -150,7 +150,12 @@ class ChatListCell: UITableViewCell {
         let users = chat.users.filter({ $0.id != userId })
         
         if chat.messages.count > 0 {
-            userMessage.text = chat.messages.last?.message
+            if chat.messages.last?.type == "file" {
+                userMessage.text = "Attachment"
+            } else {
+                userMessage.text = chat.messages.last?.message
+            }
+            
         } else {
             userMessage.text = "No messages available to view"
         }

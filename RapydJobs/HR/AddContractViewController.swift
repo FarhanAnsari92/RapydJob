@@ -89,6 +89,7 @@ class AddContractViewController: UIViewController, UIDocumentPickerDelegate {
             controller.dismiss(animated: true, completion: nil)
             return
         }
+        self.addImg.image = #imageLiteral(resourceName: "iconDocument")
         self.selectedContractURL = url
         
         controller.dismiss(animated: true, completion: nil)

@@ -246,6 +246,10 @@ class JobseekerSignupOneVC: UIViewController, UIPickerViewDelegate, UIPickerView
         
         genderInput.text = "Male"
         
+        if let user = AppContainer.shared.user.user {
+            self.fullNameInput.text = user.userName ?? ""
+        }
+        
         dropdownImageDOB.heightAnchor.constraint(equalToConstant: 10).isActive = true
         dropdownImageDOB.widthAnchor.constraint(equalToConstant: 18).isActive = true
         

@@ -97,10 +97,10 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
             break
         case "Job Offers":
             break
-        case "Jobseeker Timesheet":
+        case "Timesheet":
             break
-        case "Employer Timesheet":
-            break
+//        case "Timesheet":
+//            break
         case "HR":
             break
         default:

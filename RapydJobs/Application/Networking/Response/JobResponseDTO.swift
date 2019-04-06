@@ -16,7 +16,7 @@ struct JobDatesDTO: DTO {
     let endTime: String?
     
     enum CodingKeys: String, CodingKey {
-        case day
+        case day = "day"
         case startTime = "start_time"
         case endTime = "end_time"
     }
@@ -69,7 +69,7 @@ struct JobResponseDTO: DTO {
         case organisationName = "organization_name"
         case profileImage = "profile_image"
         case address
-        case dates
+        case dates = "dates"
         case rating = "rating"
         case education = "education"
         case experience = "experience"

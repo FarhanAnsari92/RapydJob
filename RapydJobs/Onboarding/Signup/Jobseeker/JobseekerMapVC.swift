@@ -263,10 +263,12 @@ class JobseekerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             if let err = error {
                 print("Error: ", err)
             } else {
-                self.showMap(with: result!.lat, and: result!.lng, and: result!.name)
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.layoutIfNeeded()
-                })
+                self.reverseCodeGeocoordinate(with:  CLLocationCoordinate2D(latitude: result!.lat, longitude: result!.lng))
+                
+//                self.showMap(with: result!.lat, and: result!.lng, and: result!.name)
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.view.layoutIfNeeded()
+//                })
             }
         }
     }

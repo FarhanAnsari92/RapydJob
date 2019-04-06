@@ -20,7 +20,7 @@ protocol CardServiceDelegate: class {
     func jobShortlisted()
     func success(cards: [JobseekerResponseDTO])
     func success(cards: [JobResponseDTO])
-    func failed(error: Error)
+    func failed(error: NetworkError)
 }
 
 final class CardService {

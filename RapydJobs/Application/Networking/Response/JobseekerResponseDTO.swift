@@ -14,7 +14,7 @@ struct AvailabilityDTO: DTO {
     let endTime: String
     
     enum CodingKeys: String, CodingKey {
-        case day
+        case day = "day"
         case startTime = "start_time"
         case endTime = "end_time"
     }

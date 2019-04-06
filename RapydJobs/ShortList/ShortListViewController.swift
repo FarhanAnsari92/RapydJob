@@ -314,6 +314,40 @@ extension ShortListViewController: KolodaViewDelegate, KolodaViewDataSource {
             view.populateWithCardItem(cardItem)
         }
         
+        view.shidTimingCompletion = {
+            
+            var dateArray = [[String: Any]]()
+            if AppContainer.shared.user.user?.accountType == "organization" {
+                let jobseeker = self.cardData[index]["job_seeker"] as! [String: Any]
+                dateArray = jobseeker["dates"] as? [[String: Any]] ?? [[String: Any]]()
+            } else {
+                dateArray = self.cardData[index]["dates"] as? [[String: Any]] ?? [[String: Any]]()
+            }
+            
+            print(dateArray)
+            
+            if dateArray.count > 0 {
+                
+                var availabilityDtoArray = [AvailabilityDTO]()
+                
+                for item in dateArray {
+                    
+                    let startTime = item["start_time"] as? String ?? ""
+                    let endTime = item["end_time"] as? String ?? ""
+                    let day = item["day"] as? String ?? ""
+                    
+                    let availabilityDto = AvailabilityDTO(day: day, startTime: startTime, endTime: endTime)
+                    availabilityDtoArray.append(availabilityDto)
+                }
+                
+                let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
+                vc.dates = availabilityDtoArray
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        }
+        
         return view
     }
     

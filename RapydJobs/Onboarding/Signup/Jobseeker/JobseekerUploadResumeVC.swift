@@ -201,6 +201,7 @@ class JobseekerUploadResumeVC: UIViewController, UIDocumentPickerDelegate {
             return
         }
         self.selectedContractURL = url
+        self.iconImage.image = #imageLiteral(resourceName: "iconDocument")
         
         controller.dismiss(animated: true, completion: nil)
     }

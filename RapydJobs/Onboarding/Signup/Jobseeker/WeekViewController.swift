@@ -68,7 +68,7 @@ class WeekViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Add TimeSheet"
+        self.title = "Add Timesheet"
         view.backgroundColor = Constants.Colors.primaryGreenColor
         
         let doneBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneHandler))

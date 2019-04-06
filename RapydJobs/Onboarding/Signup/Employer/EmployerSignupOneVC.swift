@@ -151,11 +151,15 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func backBtnTap() {
-        AlertService.shared.alert(in: self, "Are you sure you want to Sign Out?") {
-            let name = Storyboards.Login.name()
-            let sb = UIStoryboard(name: name, bundle: nil)
-            let vc = sb.instantiateInitialViewController()!
-            self.present(vc, animated: true, completion: nil)
+        if EditProfileFlowManager.shared().isEditProfile == true {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } else {
+            AlertService.shared.alert(in: self, "Are you sure you want to Sign Out?") {
+                let name = Storyboards.Login.name()
+                let sb = UIStoryboard(name: name, bundle: nil)
+                let vc = sb.instantiateInitialViewController()!
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
@@ -184,6 +188,10 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
             
             navigationController?.navigationBar.tintColor = UIColor.black            
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.backBtnTap))
+            
+            if let user = AppContainer.shared.user.user {
+                employerNameInput.text = user.userName ?? ""
+            }
         }
         
         videoView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: view.frame.height + 100))

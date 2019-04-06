@@ -15,6 +15,9 @@ class ScheduledTableViewCell: ShdaowBaseTableViewCell {
     @IBOutlet weak var timeLabel: UILabel! {
         didSet { timeStyle(timeLabel) }
     }
+    @IBOutlet weak var dateLabel: UILabel! {
+        didSet { timeStyle(dateLabel) }
+    }
     @IBOutlet weak var nameLabel: UILabel! {
         didSet { titleStyle(nameLabel) }
     }
@@ -67,13 +70,22 @@ class ScheduledTableViewCell: ShdaowBaseTableViewCell {
         displayImageView.setImageWithName(data.profileImage!, isCompleteUrl: true)
         let startTime = data.startTime ?? ""
         let endTime = data.endTime ?? ""
+        let date = data.date ?? ""
+        
+        let formatString = "E, MMMM dd, yyyy"
+        let df = DateFormatter(withFormat: "dd-MM-yyyy", locale: "en_US_POSIX")
+        let dt = df.date(from: date) ?? Date()
+        df.dateFormat = formatString
+        let strDate = df.string(from: dt)
+        
         timeLabel.text =  "\(String(describing: startTime)) - \(String(describing: endTime))"
         nameLabel.text = data.fullname
         titleLabel.text = data.jobTitle
+        dateLabel.text = strDate // "Interview Date: \(date)"
     }
     
     func setup(viewModel: ScheduledInterviewViewModel) {
-        displayImageView.image = UIImage(named: "face.jpg")
+        displayImageView.image = #imageLiteral(resourceName: "Placeholder")
         timeLabel.text = viewModel.time.string
         nameLabel.text = viewModel.candidate.name
         titleLabel.text = viewModel.candidate.title

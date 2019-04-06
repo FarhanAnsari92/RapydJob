@@ -10,6 +10,7 @@ import Foundation
 
 protocol CardViewModelDelegate: class {
     func didFetchedDropDownData()
+    func errorMessage(err: NetworkError)
 }
 
 class CardViewModel: NSObject {
@@ -23,6 +24,7 @@ class CardViewModel: NSObject {
     var dropDownData = [JobsDropDownItem]();
     
     var reload: () -> Void
+//    var failed: (Error) -> Void
     
     var flow: CardFlow
     let accountType = AppContainer.shared.user.user?.accountType ?? ""
@@ -30,6 +32,7 @@ class CardViewModel: NSObject {
     init(withFlow flow:CardFlow, reload: @escaping () -> Void) {
         self.data = []
         self.reload = reload
+//        self.failed = failed
         self.flow = flow
     }
     
@@ -95,7 +98,12 @@ extension CardViewModel: CardServiceDelegate {
     
     func jobAdjudged() { }
     
-    func failed(error: Error) { }
+    func failed(error: NetworkError) {
+//        print(error)
+        print(error.localizedDescription)
+        self.delegate?.errorMessage(err: error)
+//        failed(error)
+    }
     
     func userSuperSeekerAdjudge() { }
     

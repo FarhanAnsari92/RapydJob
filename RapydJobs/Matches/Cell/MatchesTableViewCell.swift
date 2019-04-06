@@ -42,7 +42,7 @@ class MatchesTableViewCell: ShdaowBaseTableViewCell {
     func populateWithJobseekerMatchModel(_ model: JobMatches) {
         self.iconView.setImageWithName(model.jobOwner.profileImage)
         self.titleLabel.text = model.title.capitalized
-        self.subtitleLabel.text = model.jobOwner.email.lowercased()
+        self.subtitleLabel.text = model.jobOwner.username
     }
     
     @IBAction func didTapMessageButton(_ sender: Any) {

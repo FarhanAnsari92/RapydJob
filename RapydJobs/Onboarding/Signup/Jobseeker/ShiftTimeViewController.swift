@@ -45,7 +45,7 @@ class ShiftTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Add TimeSheet"
+        self.title = "Add Timesheet"
         view.backgroundColor = Constants.Colors.primaryGreenColor
         
         startTimePicker = UIDatePicker()

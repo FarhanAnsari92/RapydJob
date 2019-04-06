@@ -15,6 +15,7 @@ class CardViewItem {
     let userId: String
     let id: Int?
     var dates: [JobDatesDTO]?
+    var jobSeeker: JobseekerDTO?
 //    var educationModel: EducationDTO?
 //    var experienceModel: ExperienceDTO?
     
@@ -70,6 +71,7 @@ class CardViewItem {
         self.description = dto.job_seeker?.description ?? ""
 
         if let jobSeeker = dto.job_seeker {
+            self.jobSeeker = jobSeeker
             if let fullname = jobSeeker.fullname {
                 self.title = fullname
             } else {

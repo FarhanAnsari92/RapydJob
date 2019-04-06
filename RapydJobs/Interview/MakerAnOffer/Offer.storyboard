@@ -33,6 +33,19 @@
                                     <constraint firstAttribute="height" constant="250" id="UIS-9G-ht8"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifW-At-qsC">
+                                <rect key="frame" x="112.5" y="416.5" width="150" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="D17-eI-jYM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="   Add Contract   ">
+                                    <color key="titleColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addContractBtnTap:" destination="Ftw-co-ZdE" eventType="touchUpInside" id="1iw-F6-ctT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -40,13 +53,16 @@
                             <constraint firstItem="dYD-CI-0XA" firstAttribute="width" secondItem="dYD-CI-0XA" secondAttribute="height" multiplier="1:1" id="2hB-9J-Soj"/>
                             <constraint firstItem="eez-e5-Oa8" firstAttribute="trailing" secondItem="c4d-Nz-K9v" secondAttribute="trailing" id="410-AG-kAZ"/>
                             <constraint firstItem="eez-e5-Oa8" firstAttribute="bottom" secondItem="c4d-Nz-K9v" secondAttribute="bottom" id="CvT-Eg-6qb"/>
+                            <constraint firstItem="ifW-At-qsC" firstAttribute="centerX" secondItem="H3i-SI-gnp" secondAttribute="centerX" id="J6b-zo-XC7"/>
                             <constraint firstItem="c4d-Nz-K9v" firstAttribute="leading" secondItem="eez-e5-Oa8" secondAttribute="leading" id="MXr-nY-ZCd"/>
                             <constraint firstItem="dYD-CI-0XA" firstAttribute="centerX" secondItem="H3i-SI-gnp" secondAttribute="centerX" id="rJY-Wb-PZ5"/>
                             <constraint firstItem="c4d-Nz-K9v" firstAttribute="top" secondItem="eez-e5-Oa8" secondAttribute="top" id="uOh-Ue-9OT"/>
+                            <constraint firstItem="ifW-At-qsC" firstAttribute="bottom" secondItem="dYD-CI-0XA" secondAttribute="bottom" constant="-10" id="v0U-sV-dW3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eez-e5-Oa8"/>
                     </view>
                     <connections>
+                        <outlet property="addContractBtn" destination="ifW-At-qsC" id="XFD-uZ-ndk"/>
                         <outlet property="emptyPlaceholderView" destination="dYD-CI-0XA" id="iYW-GX-ztS"/>
                         <outlet property="tbl" destination="c4d-Nz-K9v" id="b8P-UC-Fnu"/>
                     </connections>

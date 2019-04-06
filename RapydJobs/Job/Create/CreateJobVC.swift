@@ -120,7 +120,7 @@ class CreateJobVC: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     private let sliderTitle: UILabel = {
         let label = UILabel()
-        label.text = "SALARY RANGE"
+        label.text = "SALARY RANGE (Per Hour)"
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.font = UIFont(name: "Poppins-Regular", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -23,6 +23,9 @@ class CardViewCell: UIView {
     @IBOutlet weak var descriptionHeadLabel: UILabel!
     @IBOutlet weak var attributesStackView: UIStackView!
     @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var jobshiftTiming: UIStackView!
+    @IBOutlet weak var lblDates: UILabel!
+    var shidTimingCompletion: (() -> Void)?
     
     override func awakeFromNib() {
         self.contentView.layer.cornerRadius = 25
@@ -31,23 +34,36 @@ class CardViewCell: UIView {
         self.contentView.layer.shadowColor = Constants.Colors.primaryBlueColor.cgColor
         self.contentView.layer.shadowOpacity = 0.3
         self.contentView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtDates))
+        lblDates.addGestureRecognizer(gesture)
 
         self.imageView.layer.cornerRadius = self.imageView.bounds.size.width/2
         self.imageView.layer.masksToBounds = true
+        self.lblDates.isUserInteractionEnabled = true
         if AppContainer.shared.user.user?.accountType == "organization" {
+            self.lblDates.text = "View Candidate's Availability"
+            
             if EditProfileFlowManager.shared().isHomeScreen {
                 self.noDataLabel.text = "NO SEEKERS FOR THIS JOB"
             } else {
                 self.noDataLabel.text = "NO SEEKERS SHORTLISTED"
             }            
         } else {
+            self.jobshiftTiming.isHidden = true
+            self.lblDates.text = "View Shift Timing"
             if EditProfileFlowManager.shared().isHomeScreen {
+                
                 self.noDataLabel.text = "NO JOBS FOUND"
             } else {
                 self.noDataLabel.text = "NO JOBS SHORTLISTED"
             }
             
         }
+    }
+    
+    @objc func tapAtDates() {
+        self.shidTimingCompletion?()
     }
     
     func populateWithCardItem(_ cardItem:CardViewItem) {
@@ -69,32 +85,58 @@ class CardViewCell: UIView {
             return
         }
         print(data)
-        let profileImage = data["profile_image"] as! String
-        self.imageView.setImageWithName(profileImage)
         
-        if let education = data["education"] as? [String: Any],
-            let educationDesc = education["title"] as? String {
-            self.educationLabel.text = educationDesc
+        if AppContainer.shared.user.user?.accountType ?? "" == "jobseeker" {
+            let profileImage = data["profile_image"] as? String ?? ""
+            let title = data["title"] as? String ?? ""
+            let organizationName = data["organization_name"] as? String ?? ""
+            let description = data["description"] as? String ?? ""
+            let minSalary = data["min_salary"] as? Int ?? 0
+            let maxSalary = data["max_salary"] as? Int ?? 0
+            
+            let addressDetail = data["address"] as? [String: Any] ?? [String: Any]()
+            let address = addressDetail["address"] as? String ?? "Not Provided"
+            
+            self.imageView.setImageWithName(profileImage)
+            self.nameLabel.text = title
+            self.subtitleLabel.text = organizationName
+            self.ratingView.rating = 0
+            self.descriptionLabel.text = description
+            self.jobTitleLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            self.educationLabel.text = "View Shift Timing"
+            self.locationLabel.text = address
+            
+            let shouldHide = data["shouldHide"] as? Bool ?? false
+            self.shouldHideAllViews(shouldHide)
+        } else {
+            let profileImage = data["profile_image"] as? String ?? ""
+            self.imageView.setImageWithName(profileImage)
+            
+            if let education = data["education"] as? [String: Any],
+                let educationDesc = education["title"] as? String {
+                self.educationLabel.text = educationDesc
+            }
+            
+            if let address = data["address"] as? [String:Any],
+                let completeAddress = address["address"] as? String {
+                self.locationLabel.text = completeAddress
+            }
+            
+            if let experience = data["experience"] as? [String:Any],
+                let _ = experience["description"] as? String,
+                let jobTitle = experience["title"] as? String {
+                self.jobTitleLabel.text = jobTitle
+            }
+            
+            if let jobSeeker = data["job_seeker"] as? [String:Any],
+                let fullName = jobSeeker["fullname"] as? String,
+            let description = jobSeeker["description"] as? String {
+                self.nameLabel.text = fullName
+                self.descriptionLabel.text = description
+            }
+            let shouldHide = data["shouldHide"] as? Bool ?? false
+            self.shouldHideAllViews(shouldHide)
         }
-        
-        if let address = data["address"] as? [String:Any],
-            let completeAddress = address["address"] as? String {
-            self.locationLabel.text = completeAddress
-        }
-        
-        if let experience = data["experience"] as? [String:Any],
-            let _ = experience["description"] as? String,
-            let jobTitle = experience["title"] as? String {
-            self.jobTitleLabel.text = jobTitle
-        }
-        
-        
-        if let jobSeeker = data["job_seeker"] as? [String:Any],
-            let fullName = jobSeeker["fullname"] as? String {
-            self.nameLabel.text = fullName
-        }
-        let shouldHide = data["shouldHide"] as? Bool ?? false
-        self.shouldHideAllViews(shouldHide)
         
         
 //        self.imageView.setImageWithName(cardItem.imageName)

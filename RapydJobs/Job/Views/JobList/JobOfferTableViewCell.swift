@@ -77,7 +77,11 @@ class JobOfferTableViewCell: UITableViewCell {
     func updateData(_ data: JobOfferData) {
         self.jobOrganizationName.text = data.JobOfferOwnerData.username
         self.jobTitle.text = data.title
-        self.jobSeekerImage.setImageWithName(data.JobOfferOwnerData.profileImage)        
+        if let img = data.JobOfferOwnerData.profileImage {
+            self.jobSeekerImage.setImageWithName(img)
+        } else {
+            self.jobSeekerImage.image = UIImage(named: "Placeholder")
+        }
     }
     
 }

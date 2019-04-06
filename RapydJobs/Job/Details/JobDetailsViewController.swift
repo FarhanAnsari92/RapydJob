@@ -116,6 +116,7 @@ class JobDetailsViewController: UIViewController {
             self.titleLabel.text = jobModel?.title ?? ""
             self.subtitle.text = jobModel?.organizationName ?? ""
             
+            
             self.tableView.reloadData()
             
         }) { (errorDictionary, _) in
@@ -136,29 +137,73 @@ extension JobDetailsViewController: UITableViewDataSource {
         if indexPath.row < 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "information-cell") as! BasicInformationTableViewCell
             
-            cell.timeLabel.text = self.jobModel?.organizationName ?? ""
             
-            let start = (self.jobModel?.dates?.last)?.startTime ?? ""
-            let endTime = (self.jobModel?.dates?.last)?.endTime ?? ""
-            cell.budgetLabel.text = "\(start) - \(endTime)"
+            let minSalary = self.jobModel?.minSalary ?? 0
+            let maxSalary = self.jobModel?.maxSalary ?? 0
+            if let wks = self.jobModel?.dates, wks.count > 0 {
+                var str = ""
+                for item in wks {
+                    str += "\(item.day ?? ""), "
+                }
+                str.remove(at: str.index(before: str.endIndex))
+                cell.timeLabel.text = str
+            }
+            
             cell.locationLabel.text = self.jobModel?.address?.address ?? ""
+            cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
             
             if let _ = self.item {
-                cell.timeLabel.text = item?.subtitle ?? ""
-                let start = (item?.dates?.first)?.startTime ?? ""
-                let endTime = (item?.dates?.first)?.endTime ?? ""
-                cell.budgetLabel.text = "\(start) - \(endTime)"
-                cell.locationLabel.text = item?.location ?? ""
-            } else if let rwItm = self.rawItem {
-                cell.timeLabel.text = rwItm["organization_name"] as? String ?? ""
-                if let dt = rwItm["dates"] as? [[String:Any]] {
-                    let start = dt.first?["start_time"] as? String ?? ""
-                    let endTime = dt.first?["end_time"] as? String ?? ""
-                    cell.budgetLabel.text = "\(start) - \(endTime)"
+                let minSalary = self.jobModel?.minSalary ?? 0
+                let maxSalary = self.jobModel?.maxSalary ?? 0
+                
+                if let wks = self.jobModel?.dates, wks.count > 0 {
+                    var str = ""
+                    for item in wks {
+                        str += "\(item.day ?? ""), "
+                    }
+                    str.remove(at: str.index(before: str.endIndex))
+                    cell.timeLabel.text = str
                 }
-                cell.locationLabel.text = rwItm["address"] as? String ?? ""
+                
+                cell.locationLabel.text = item?.location ?? ""
+                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            } else if let rwItm = self.rawItem {
+                
+                let minSalary = rwItm["min_salary"] as? Int ?? 0
+                let maxSalary = rwItm["max_salary"] as? Int ?? 0
+                
+                let addressDetail = rwItm["address"] as? [String: Any] ?? [String: Any]()
+                let address = addressDetail["address"] as? String ?? "Not Provided"
+                
+                let dates = rwItm["dates"] as? [[String: Any]]
+                if let wks = dates, wks.count > 0 {
+                    var str = ""
+                    for item in wks {
+                        str += "\(item["day"] as? String ?? ""), "
+                    }
+                    str.remove(at: str.index(before: str.endIndex))
+                    
+                    cell.timeLabel.text = str
+                }
+                cell.locationLabel.text = address
+                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+                
             } else if let jobItm = self.jobMatch {
-                cell.timeLabel.text = self.jobMatch?.jobOwner.organization.organizationName
+                
+                let minSalary = jobItm.minSalary
+                let maxSalary = jobItm.maxSalary
+                
+                cell.locationLabel.text = self.jobMatch?.jobOwner.organization.website ?? ""
+                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+                
+                if let wks = self.jobMatch?.dates, wks.count > 0 {
+                    var str = ""
+                    for item in wks {
+                        str += "\(item.day), "
+                    }
+                    str.remove(at: str.index(before: str.endIndex))
+                    cell.timeLabel.text = str
+                }
             }
             
             return cell
@@ -172,7 +217,7 @@ extension JobDetailsViewController: UITableViewDataSource {
             } else if let rwItm = self.rawItem {
                 cell.descriptionTextView.text = rwItm["description"] as? String ?? ""
             } else if let jobItm = self.jobMatch {
-                cell.descriptionTextView.text = self.jobMatch?.descriptionField
+                cell.descriptionTextView.text = jobItm.descriptionField
             }
             
             return cell

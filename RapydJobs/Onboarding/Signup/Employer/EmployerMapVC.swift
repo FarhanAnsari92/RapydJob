@@ -276,8 +276,9 @@ class EmployerMapVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDele
                 print("Error: ", err)
             } else {
                 //self.showMap(with: result!.lat, and: result!.lng, and: result!.name)
-                let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: result!.lat, longitude: result!.lng), zoom: 16)
-                self.mapView.animate(to: camera)
+                self.reverseCodeGeocoordinate(with:  CLLocationCoordinate2D(latitude: result!.lat, longitude: result!.lng))
+//                let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: result!.lat, longitude: result!.lng), zoom: 16)
+//                self.mapView.animate(to: camera)
             }
         }
     }

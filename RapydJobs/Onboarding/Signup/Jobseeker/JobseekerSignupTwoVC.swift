@@ -343,7 +343,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         if let wks = user.jobSeeker?.dates, wks.count > 0 {
             var str = ""
             for item in wks {
-                str += "\(item["day"] as? String ?? ""),"
+                str += "\(item["day"] as? String ?? ""), "
             }
             str.remove(at: str.index(before: str.endIndex))
             
@@ -621,7 +621,7 @@ class JobseekerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
         
         guard let slctdWeeks = self.selectedWeeks, slctdWeeks.count > 0 else {
-            AlertService.shared.alert(in: self, "Timesheet is required.")
+            AlertService.shared.alert(in: self, "Shift timing is required.")
             return
         }
         

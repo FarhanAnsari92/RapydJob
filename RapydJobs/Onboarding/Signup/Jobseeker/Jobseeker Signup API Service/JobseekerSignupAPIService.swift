@@ -64,9 +64,9 @@ struct JobseekerSignupAPIService {
         //let accessToken = UserDefaults.standard.value(forKey: "accessToken") as? String ?? ""
         let accessToken = AppContainer.shared.user.user?.accessToken ?? ""
         let endPoint = EditProfileFlowManager.shared().isEditProfile ? "work-information" : "user"
-        print(endPoint)
+        print("End Point - ", endPoint)
         let url = URLConstants.shared.getEndPointURL(endPoint)
-        
+        print("URL - ", url)
         let header = [  "Authorization" : "Bearer \(accessToken)",
                         "Accept" : "application/json",
                         "Content-Type" : "application/json" ]

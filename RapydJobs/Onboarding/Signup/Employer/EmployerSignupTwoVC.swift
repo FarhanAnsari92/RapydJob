@@ -117,7 +117,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     private let employerPostalCodeInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
         input.placeholder = "Postal Code"
-        input.title = "Postal Code"
+        input.title = "Postal Code (Optional)"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         input.lineColor = AppConstants.shared.primaryBlueColor
@@ -259,7 +259,13 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
             
             employerAddressInput.text = user.address?.address ?? ""
             employerBuildingFloorInput.text = user.address?.buildingFloor ?? ""
-            employerPostalCodeInput.text = user.address?.postalCode ?? ""
+            if let postalCode = user.address?.postalCode, postalCode.count > 0 {
+                employerPostalCodeInput.text = postalCode
+                employerPostalCodeInput.isUserInteractionEnabled = false
+            } else {
+                employerPostalCodeInput.isUserInteractionEnabled = true
+            }
+            
             
             let latitude = Double(user.address?.latitude ?? "") ?? 0.0
             let longitude = Double(user.address?.longitude ?? "") ?? 0.0
@@ -296,7 +302,13 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         
         vc.completion = { dictionary in
             self.centerCoordinate = dictionary["coordinate"] as? CLLocationCoordinate2D
-            self.selectedAddress = dictionary["address"] as? String ?? ""            
+            self.selectedAddress = dictionary["address"] as? String ?? ""
+            if let postalCode = dictionary["postalCode"] as? String, postalCode.count > 0 {
+                self.employerPostalCodeInput.text = postalCode
+                self.employerPostalCodeInput.isUserInteractionEnabled = false
+            } else {
+                self.employerPostalCodeInput.isUserInteractionEnabled = true
+            }
             self.employerAddressInput.text = self.selectedAddress
         }
         self.navigationController?.pushViewController(vc, animated: true)
@@ -305,7 +317,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     @objc private func moveToNext() {
         
         if self.distanceInput.text!.isEmpty {
-            AlertService.shared.alert(in: self, "Please insert address to proceed")
+            AlertService.shared.alert(in: self, "Please select distance to proceed")
             return
         }
         
@@ -325,7 +337,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
         print(lat)
         
         if employerAddressInput.text != "" {
-            if employerPostalCodeInput.text != "" {
+//            if employerPostalCodeInput.text != "" {
                 hud.show(in: view)
                 EmployerSignupAPIService.shared.updateAddress(address: employerAddressInput.text!, floor: employerBuildingFloorInput.text!, postCode: employerPostalCodeInput.text!, distance: String(distance), lat: lat, lng: lng) { (error) in
                     if let err = error {
@@ -339,9 +351,9 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
                         }
                     }
                 }
-            } else {
-                AlertService.shared.alert(in: self, "Please insert postal code to proceed")
-            }
+//            } else {
+//                AlertService.shared.alert(in: self, "Please insert postal code to proceed")
+//            }
             
         } else {
             AlertService.shared.alert(in: self, "Please insert address to proceed")

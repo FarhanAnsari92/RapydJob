@@ -48,6 +48,7 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
             detailsStackView.removeArrangedSubview(durationLabel)
             button.isSelected = false
             detailsStackView.isHidden = true
+            toggleButton.setTitle("MORE", for: .normal)
         }
         else {
             detailsStackView.isHidden = false
@@ -55,6 +56,7 @@ class ProfileDetailsTableInfoCell: ShdaowBaseTableViewCell {
             detailsStackView.addArrangedSubview(gradeLabel)
             detailsStackView.addArrangedSubview(durationLabel)
             button.isSelected = true
+            toggleButton.setTitle("LESS", for: .normal)
         }
         
         self.delegate?.infoCellLayoutChanged(self)

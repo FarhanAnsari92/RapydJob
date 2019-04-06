@@ -157,7 +157,7 @@ class InterviewsViewController: BaseViewController {
         if self.segmentControl.selectedSegmentioIndex == 0 {
             self.emptyPlaceholderView.message.text = "You haven't scheduled meetings yet"
         } else {
-            self.emptyPlaceholderView.message.text = "You haven't scheduled meetings yet"
+            self.emptyPlaceholderView.message.text = "You haven't interviewed anyone as yet"
         }
         self.emptyPlaceholderView.isHidden = false
     }

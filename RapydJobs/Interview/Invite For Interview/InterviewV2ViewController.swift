@@ -33,7 +33,7 @@ class InterviewV2ViewController: UIViewController {
     var jobTitle: String!
     var jobSeekerId: Int!
     var jobSeekerName: String!
-    
+    var completion: (() -> Void)? = nil
     
     private let dropdownImage: UIImageView = {
         let iv = UIImageView()
@@ -236,6 +236,7 @@ class InterviewV2ViewController: UIViewController {
         _ = APIClient.callAPI(request: APIClient.scheduleInterview(param: params), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             self.toast.isShow("Interview scheduled successfully")
+            self.completion?()
             self.navigationController?.popViewController(animated: true)
             print(dictionary)
         }) { (errorDictionary, _) in

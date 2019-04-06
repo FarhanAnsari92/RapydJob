@@ -54,6 +54,7 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         hud.show(in: view)
         SocketService.getChatList { [weak self] (chatLists, error) in
             if let err = error {
+                AlertService.shared.alert(in: self!, "Mo messages found")
                 self?.hud.dismiss(animated: true)
                 print("🔥 Error : ", err)
             } else {

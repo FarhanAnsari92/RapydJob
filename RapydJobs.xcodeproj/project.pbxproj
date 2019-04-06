@@ -360,6 +360,8 @@
 		A5F1053C210DFEBA00179332 /* AddUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1053B210DFEBA00179332 /* AddUserRequest.swift */; };
 		A5F1053E210DFEFD00179332 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1053D210DFEFD00179332 /* Like.swift */; };
 		A5F10542210E027C00179332 /* AddJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F10541210E027C00179332 /* AddJobRequest.swift */; };
+		C90AFBF32250BC5F00D8F431 /* ShowTimeSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90AFBF22250BC5F00D8F431 /* ShowTimeSheetViewController.swift */; };
+		C90AFBF52250BE9E00D8F431 /* ShowTimeSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90AFBF42250BE9E00D8F431 /* ShowTimeSheetTableViewCell.swift */; };
 		C90D968621B5D94700191773 /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90D968421B5D94600191773 /* CardOverlayView.xib */; };
 		C90D968721B5D94700191773 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D968521B5D94700191773 /* CardOverlayView.swift */; };
 		C911FC002210A05C0031C7C5 /* EmptyPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C911FBFF2210A05C0031C7C5 /* EmptyPlaceholderView.xib */; };
@@ -841,6 +843,8 @@
 		A5F1053B210DFEBA00179332 /* AddUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserRequest.swift; sourceTree = "<group>"; };
 		A5F1053D210DFEFD00179332 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		A5F10541210E027C00179332 /* AddJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobRequest.swift; sourceTree = "<group>"; };
+		C90AFBF22250BC5F00D8F431 /* ShowTimeSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeSheetViewController.swift; sourceTree = "<group>"; };
+		C90AFBF42250BE9E00D8F431 /* ShowTimeSheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeSheetTableViewCell.swift; sourceTree = "<group>"; };
 		C90D968421B5D94600191773 /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
 		C90D968521B5D94700191773 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
 		C911FBFF2210A05C0031C7C5 /* EmptyPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyPlaceholderView.xib; sourceTree = "<group>"; };
@@ -2432,6 +2436,7 @@
 				C93D346D21BEE9C600B66AA5 /* TimesheetViewController.swift */,
 				C9167FE321C03F3A00BD11E7 /* SeekerTimesheetViewController.swift */,
 				C9C365382221C40300E1BAB6 /* CreateUpdateTimeSheetViewController.swift */,
+				C90AFBF22250BC5F00D8F431 /* ShowTimeSheetViewController.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -2443,6 +2448,7 @@
 				C9C5AF4B21AF2AF700479D9C /* TimeSheetJobseekerTableViewCell.xib */,
 				C9C5AF4E21AF316100479D9C /* TimesheetRejectTableViewCell.swift */,
 				C9C5AF4F21AF316100479D9C /* TimesheetRejectTableViewCell.xib */,
+				C90AFBF42250BE9E00D8F431 /* ShowTimeSheetTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2857,6 +2863,7 @@
 				A54AD70B210BCC0800C72F75 /* HireEmployeeServices.swift in Sources */,
 				A54AD6D8210A7AB900C72F75 /* DateFormatter+Rapyd.swift in Sources */,
 				A55FA58520DE6A010010C3B3 /* FormViewController.swift in Sources */,
+				C90AFBF32250BC5F00D8F431 /* ShowTimeSheetViewController.swift in Sources */,
 				C9A6987A21A4A21000689928 /* RelatedField.swift in Sources */,
 				4DD6DF4F21691DD800F8CA3A /* EmployerMapVC.swift in Sources */,
 				889DFBBC2105FE7A0073A532 /* UpdateJobOffer.swift in Sources */,
@@ -3023,6 +3030,7 @@
 				A54D07EE20E01F75002C8449 /* FormStatementTableViewCell.swift in Sources */,
 				C9852F85218D8B9600E409DF /* Helper.swift in Sources */,
 				A54D07F020E01FB4002C8449 /* FormStatementViewModel.swift in Sources */,
+				C90AFBF52250BE9E00D8F431 /* ShowTimeSheetTableViewCell.swift in Sources */,
 				C9167FE221C010E500BD11E7 /* PlanerViewController.swift in Sources */,
 				C9EB2B1C2183A330005FBDFE /* APIClient.swift in Sources */,
 				0D42022620DE63F20063BB23 /* Storyboard.swift in Sources */,

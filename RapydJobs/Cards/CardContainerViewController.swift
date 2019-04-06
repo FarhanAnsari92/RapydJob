@@ -11,6 +11,7 @@ import Koloda
 
 protocol CardContainerViewControllerDelegate: class {
     func didFetchedDropDownData()
+    func errorMessage(err: NetworkError)
 }
 
 class CardContainerViewController: UIViewController {
@@ -24,6 +25,13 @@ class CardContainerViewController: UIViewController {
         self.cardView.resetCurrentCardIndex()
         self.cardView.reloadData()
     })
+    
+//    lazy var viewModel: CardViewModel = CardViewModel(withFlow: cardFlow, reload: {
+//        self.cardView.resetCurrentCardIndex()
+//        self.cardView.reloadData()
+//    }) { (err) in
+//        print(err.)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +46,8 @@ class CardContainerViewController: UIViewController {
             viewModel.service.getEmployerDropdownJobs()
         }
     }
+    
+    
     
     func judge(like: Like) {
         if viewModel.data.count > 0 {
@@ -58,6 +68,13 @@ extension CardContainerViewController: CardViewModelDelegate {
     func didFetchedDropDownData() {
         self.delegate?.didFetchedDropDownData()
     }
+    
+    func errorMessage(err: NetworkError) {
+        self.delegate?.errorMessage(err: err)
+//        print(err.localizedDescription)
+    }
+    
+    
 }
 
 extension CardContainerViewController: KolodaViewDelegate {
@@ -141,6 +158,47 @@ extension CardContainerViewController: KolodaViewDataSource {
             let cardItem = CardViewItem()
             cardItem.shouldHide = true
             view.populateWithCardItem(cardItem)
+        }
+        
+        view.shidTimingCompletion = {
+            
+            if AppContainer.shared.user.user?.accountType == "organization" {
+                if let jobseeker = self.viewModel.data[index].jobSeeker, let dates = jobseeker.dates, dates.count > 0 {
+                    
+                    let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
+                    vc.dates = dates
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                }
+            } else {
+                
+                print(self.viewModel.data[index])
+                
+                if let dates = self.viewModel.data[index].dates, dates.count > 0 {
+                    
+                    let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
+                    
+                    var availabilityDtoArray = [AvailabilityDTO]()
+                    
+                    for item in dates {
+                        
+                        let startTime = item.startTime ?? ""
+                        let endTime = item.endTime ?? ""
+                        let day = item.day ?? ""
+                        
+                        let availabilityDto = AvailabilityDTO(day: day, startTime: startTime, endTime: endTime)
+                        availabilityDtoArray.append(availabilityDto)
+                    }
+                    
+                    vc.dates = availabilityDtoArray
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                }
+                
+            }
+            
         }
 
         return view

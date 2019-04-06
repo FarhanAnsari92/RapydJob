@@ -15,7 +15,7 @@ class AddTimeSheetViewController: UIViewController, WeekViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Add TimeSheet"
+        self.title = "Add Timesheet"
         view.backgroundColor = Constants.Colors.primaryGreenColor
         weekView.maximumZoomScale = 3.0
         weekView.minimumZoomScale = 0.75

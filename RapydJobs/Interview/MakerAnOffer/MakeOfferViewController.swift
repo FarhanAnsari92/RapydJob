@@ -15,6 +15,7 @@ class MakeOfferViewController: UIViewController {
     @IBOutlet weak var tbl: UITableView!
     var contracts: [Contract] = [Contract]()
     @IBOutlet weak var emptyPlaceholderView: EmptyPlaceholderView!
+    @IBOutlet weak var addContractBtn: UIButton!
     
     var currentPage = 1
     var lastPage = 0
@@ -31,6 +32,16 @@ class MakeOfferViewController: UIViewController {
         self.toast = JYToast()
         self.emptyPlaceholderView.message.text = "You don't have any contract at this moment"
         self.setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.currentPage = 1
+        self.lastPage = 0
+        self.isLoadMore = false
+        self.isLoading = false
+        
         self.getContracts()
     }
     
@@ -44,6 +55,9 @@ class MakeOfferViewController: UIViewController {
         view.backgroundColor = Constants.Colors.primaryGreenColor
         self.title = "Make Offer"
         tbl.register(UINib(nibName: "MakeOfferTableViewCell", bundle: nil), forCellReuseIdentifier: "MakeOfferTableViewCellID")
+        self.addContractBtn.layer.cornerRadius = 7.0
+        self.addContractBtn.layer.borderWidth = 1.5
+        self.addContractBtn.layer.borderColor = Constants.Colors.buttonBorderColor.cgColor
     }
     
     func getContracts() {
@@ -76,6 +90,7 @@ class MakeOfferViewController: UIViewController {
             }
             
             self.emptyPlaceholderView.isHidden = self.contracts.count > 0
+            self.addContractBtn.isHidden = self.contracts.count > 0
             self.tbl.reloadData()
             
         }) { (errorDictionary, _) in
@@ -104,6 +119,12 @@ class MakeOfferViewController: UIViewController {
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
             self.hud.dismiss(animated: true)            
         }
+    }
+    
+    @IBAction func addContractBtnTap(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "HR", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AddContractViewControllerID") as! AddContractViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

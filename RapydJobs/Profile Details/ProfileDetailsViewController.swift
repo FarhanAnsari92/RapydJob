@@ -284,7 +284,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                 case 1:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
-                    infoCell.titleLabel.text = self.user?.address?.address ?? "" // basicInfo.text
+                    infoCell.titleLabel.text = self.user?.address?.address ?? "Not Provided" // basicInfo.text
                     infoCell.iconView?.image = UIImage(named: "ic_location")
                     cell = infoCell
                     
@@ -294,8 +294,12 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     return cell
                 case 2:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
+                    if let minSal = self.user?.jobSeeker?.minSalaryString, let maxSal = self.user?.jobSeeker?.maxSalaryString {
+                        infoCell.titleLabel.text = "From £\(String(describing: minSal)) to £\(String(describing: maxSal)) Per Hour Rate"
+                    } else {
+                        infoCell.titleLabel.text = "Not Provided"
+                    }
                     
-                    infoCell.titleLabel.text = "From £\(String(describing: self.user?.jobSeeker?.minSalaryString ?? "-")) to £\(String(describing: self.user?.jobSeeker?.maxSalaryString ?? "-")) Per Hour Rate"
                     infoCell.iconView?.image = UIImage(named: "ic_wallet")
                     
                     cell = infoCell
@@ -322,7 +326,7 @@ extension ProfileDetailsViewController: UITableViewDataSource {
                     
                 }
             } else {
-                //var sectionArray = ["Basic Information", "Experience Information", "Education", "Language"]
+                
                 if self.sectionArray[indexPath.section].cellType == "Experience" {
                     
                     if indexPath.row == 0 {

@@ -285,6 +285,93 @@
             </objects>
             <point key="canvasLocation" x="-338.39999999999998" y="748.87556221889065"/>
         </scene>
+        <!--Show Time Sheet View Controller-->
+        <scene sceneID="n4j-o5-Ku1">
+            <objects>
+                <viewController storyboardIdentifier="ShowTimeSheetViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="Grm-pM-DTa" customClass="ShowTimeSheetViewController" customModule="RapydJobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BBF-Cd-Jkq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TAS-hO-TXf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShowTimeSheetTableViewCellID" rowHeight="179" id="J5k-Nd-skI" customClass="ShowTimeSheetTableViewCell" customModule="RapydJobs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="179"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J5k-Nd-skI" id="E4D-er-vGf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B93-9S-8D6">
+                                                    <rect key="frame" x="15" y="15" width="67" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 - 07:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjD-ho-hZc">
+                                                    <rect key="frame" x="15" y="44" width="104" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mg8-oc-tWy">
+                                                    <rect key="frame" x="15" y="178" width="345" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="zdw-Uq-QBf"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="B93-9S-8D6" firstAttribute="leading" secondItem="E4D-er-vGf" secondAttribute="leading" constant="15" id="PRD-tU-xmb"/>
+                                                <constraint firstItem="jjD-ho-hZc" firstAttribute="top" secondItem="B93-9S-8D6" secondAttribute="bottom" constant="7" id="QUK-vW-Yn0"/>
+                                                <constraint firstItem="Mg8-oc-tWy" firstAttribute="leading" secondItem="E4D-er-vGf" secondAttribute="leading" constant="15" id="VIu-3l-FUF"/>
+                                                <constraint firstItem="B93-9S-8D6" firstAttribute="top" secondItem="E4D-er-vGf" secondAttribute="top" constant="15" id="ZUH-03-Uqs"/>
+                                                <constraint firstItem="jjD-ho-hZc" firstAttribute="leading" secondItem="B93-9S-8D6" secondAttribute="leading" id="gm2-kA-L8I"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mg8-oc-tWy" secondAttribute="trailing" constant="15" id="lLq-2V-s5a"/>
+                                                <constraint firstAttribute="bottom" secondItem="Mg8-oc-tWy" secondAttribute="bottom" id="osg-If-kjo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblDay" destination="B93-9S-8D6" id="sjD-7W-0Gx"/>
+                                            <outlet property="lblTime" destination="jjD-ho-hZc" id="D1T-aa-KMo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Grm-pM-DTa" id="G9R-5Q-znm"/>
+                                    <outlet property="delegate" destination="Grm-pM-DTa" id="Bdk-VK-XOL"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9L-B3-XQH" customClass="DefaultWeekView" customModule="RapydJobs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FIF-6i-fxx" firstAttribute="bottom" secondItem="C9L-B3-XQH" secondAttribute="bottom" id="4KP-Gd-llT"/>
+                            <constraint firstItem="TAS-hO-TXf" firstAttribute="top" secondItem="FIF-6i-fxx" secondAttribute="top" id="AaC-xA-yZ1"/>
+                            <constraint firstItem="TAS-hO-TXf" firstAttribute="leading" secondItem="BBF-Cd-Jkq" secondAttribute="leading" id="VHk-hH-sXb"/>
+                            <constraint firstItem="C9L-B3-XQH" firstAttribute="top" secondItem="FIF-6i-fxx" secondAttribute="top" id="ZRr-Ae-ekr"/>
+                            <constraint firstItem="FIF-6i-fxx" firstAttribute="trailing" secondItem="TAS-hO-TXf" secondAttribute="trailing" id="g4J-J4-srA"/>
+                            <constraint firstItem="FIF-6i-fxx" firstAttribute="trailing" secondItem="C9L-B3-XQH" secondAttribute="trailing" id="oXI-fC-xXu"/>
+                            <constraint firstItem="FIF-6i-fxx" firstAttribute="bottom" secondItem="TAS-hO-TXf" secondAttribute="bottom" id="rtj-EX-MxI"/>
+                            <constraint firstItem="C9L-B3-XQH" firstAttribute="leading" secondItem="FIF-6i-fxx" secondAttribute="leading" id="sT7-lz-U3m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FIF-6i-fxx"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbl" destination="TAS-hO-TXf" id="LiT-kB-QiT"/>
+                        <outlet property="weekView" destination="C9L-B3-XQH" id="Nux-hc-Ryl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycP-aE-FBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520.79999999999995" y="748.87556221889065"/>
+        </scene>
         <!--Employer Timesheet View Controller-->
         <scene sceneID="oLp-hw-7wl">
             <objects>

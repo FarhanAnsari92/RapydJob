@@ -41,6 +41,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var txtViewBottomBonstraint: NSLayoutConstraint!
     @IBOutlet weak var noMessageView: UIView!
     
+    var shouldCallService: Bool = true
     private let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
         hud.vibrancyEnabled = true
@@ -118,7 +119,9 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.getConversation()
+        if self.shouldCallService {
+            self.getConversation()
+        }
     }
     
     //MARK:- Get Conversation
@@ -188,6 +191,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.shouldCallService = true
         SocketService.closeConnection()
         IQKeyboardManager.shared.enable = true
     }
@@ -310,6 +314,19 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             interviewVC.jobTitle = self.jobTitle
             interviewVC.jobSeekerName = self.seekerName
             interviewVC.jobSeekerId = self.jobSeekerId
+            interviewVC.completion = {
+                self.shouldCallService = false
+                let name: String = self.seekerName ?? ""
+                let msg = "Your interview has been schedule with \(name)"
+                
+                let userId = AppContainer.shared.user.user?.userId ?? 0
+                let msgObj = Message(repliedTo: "", updatedAt: "", id: 0, conversationId: "", senderId: userId, createdAt: "", message: msg, type: "interviewNotification")
+                self.messages.append(msgObj)
+                self.messagesTableView.reloadData()
+                self.moveToBottom()
+                
+            }
+            
             self.navigationController?.pushViewController(interviewVC, animated: true)
         }
         
@@ -646,6 +663,7 @@ extension ChatMessagesVC: UIImagePickerControllerDelegate & UINavigationControll
                             
                             self.messages.append(msg)
                             self.messagesTableView.reloadData()
+                            self.noMessageView.isHidden = true
                             self.moveToBottom()
                             
                             

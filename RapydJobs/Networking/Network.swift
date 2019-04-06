@@ -62,6 +62,12 @@ public final class Network {
         let task = manager.dataTask(with: urlRequest) { (data, response, error) in
             
             Logger.log(response: response, error: error, data: data)
+            var msg = ""
+            if let body = data, let json = try? JSONSerialization.jsonObject(with: body, options: []) {
+                if let dict = json as? [String:Any], let message = dict["message"] as? String, message.contains("complete") {
+                    msg = message
+                }
+            }
             
             let result: Result<E.Response, NetworkError>
             
@@ -77,7 +83,7 @@ public final class Network {
                 } else if let error = error {
                     result = .failure(.server(error))
                 } else {
-                    result = .failure(.unknown)
+                    result = .failure(.unknown(msg))
                 }
                 
             } else if let data = data {
@@ -91,7 +97,7 @@ public final class Network {
                     result = .failure(.decoding(data, exception))
                 }
             } else {
-                result = .failure(.unknown)
+                result = .failure(.unknown(msg))
             }
             
             DispatchQueue.main.async {

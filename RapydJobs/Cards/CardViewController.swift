@@ -259,6 +259,27 @@ class CardViewController: BaseViewController {
         print(params)
         _ = APIClient.callAPI(request: .likeEmployeeRequest(param: params), onSuccess: { (dictionary) in
             print(dictionary)
+            
+            guard let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary) else {
+                return
+            }
+            print(superlikeResponse.toJSON())
+            
+            //let chatVC = ChatMessagesVC()
+            
+            let sb = UIStoryboard(name: "Chat", bundle: nil)
+            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+            
+            let jobSeekerId = superlikeResponse.jobseekerId as? Int
+            chatVC.jobSeekerId = jobSeekerId
+            chatVC.seekerName = data.title
+            chatVC.conversationId = superlikeResponse.conversationId
+            chatVC.jobTitle = self.selectedJob?.title
+            chatVC.jobId = self.selectedJob?.identifier
+            chatVC.seekerPicture = data.imageName
+            chatVC.title = data.title
+            
+            self.navigationController?.pushViewController(chatVC, animated: true)
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
@@ -274,6 +295,28 @@ class CardViewController: BaseViewController {
         print(params)
         _ = APIClient.callAPI(request: .likeJobRequest(param: params), onSuccess: { (dictionary) in
             print(dictionary)
+            
+            
+            guard let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary) else {
+                return
+            }
+            print(superlikeResponse.toJSON())
+            
+            //let chatVC = ChatMessagesVC()
+            let sb = UIStoryboard(name: "Chat", bundle: nil)
+            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+            
+            let jobSeekerId = superlikeResponse.jobseekerId as? Int
+            chatVC.jobSeekerId = jobSeekerId
+            chatVC.seekerName = data.title
+            chatVC.conversationId = superlikeResponse.conversationId
+            chatVC.jobTitle = self.selectedJob?.title
+            chatVC.jobId = self.selectedJob?.identifier
+            chatVC.seekerPicture = data.imageName
+            chatVC.title = data.title
+            
+            self.navigationController?.pushViewController(chatVC, animated: true)
+            
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
@@ -365,6 +408,17 @@ class CardViewController: BaseViewController {
 }
 
 extension CardViewController: CardContainerViewControllerDelegate {
+    func errorMessage(err: NetworkError) {
+        print(err.localizedDescription)
+//        err.
+//        NetworkError.unknown(err as! String).message
+        if err.message.count > 0 {
+            AlertService.shared.alert(in: self, err.message)
+        }
+        
+        
+    }
+    
     func didFetchedDropDownData() {
 
         guard let data = cardVC?.viewModel.dropDownData else { return }
@@ -378,6 +432,7 @@ extension CardViewController: CardContainerViewControllerDelegate {
             self.jobSelectorButton.setTitle("No Jobs Available", for: .normal)
         }
     }
+    
 }
 
 extension CardViewController: Initializable {
