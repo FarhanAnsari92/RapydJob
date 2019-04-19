@@ -117,7 +117,7 @@ extension CardContainerViewController: KolodaViewDataSource {
         switch direction {
         case .right:
             (self.parent as? CardViewController)?.isLastActionDeleted = false
-            (self.parent as? CardViewController)?.like(data: cardItem, isLike: true)            
+            (self.parent as? CardViewController)?.like(data: cardItem, isLike: true)
         case .left:
             (self.parent as? CardViewController)?.isLastActionDeleted = true
             (self.parent as? CardViewController)?.like(data: cardItem, isLike: false)
@@ -128,11 +128,9 @@ extension CardContainerViewController: KolodaViewDataSource {
             (self.parent as? CardViewController)?.isLastActionDeleted = false
             (self.parent as? CardViewController)?.superLike(data: cardItem)
         default:
-            koloda.resetCurrentCardIndex()
-            koloda.reloadData()
+            break
         }
-        koloda.resetCurrentCardIndex()
-        koloda.reloadData()
+        
     }
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
