@@ -248,7 +248,7 @@ class CardViewController: BaseViewController {
         }
     }
     
-    //Seeker end
+    //Organization end
     func likeOrganization(data: CardViewItem, isLike: Bool) {
         
         var params = [String: Any]()
@@ -265,27 +265,32 @@ class CardViewController: BaseViewController {
             }
             print(superlikeResponse.toJSON())
             
-            //let chatVC = ChatMessagesVC()
-            
-            let sb = UIStoryboard(name: "Chat", bundle: nil)
-            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
-            
-            let jobSeekerId = superlikeResponse.jobseekerId as? Int
-            chatVC.jobSeekerId = jobSeekerId
-            chatVC.seekerName = data.title
-            chatVC.conversationId = superlikeResponse.conversationId
-            chatVC.jobTitle = self.selectedJob?.title
-            chatVC.jobId = self.selectedJob?.identifier
-            chatVC.seekerPicture = data.imageName
-            chatVC.title = data.title
-            
-            self.navigationController?.pushViewController(chatVC, animated: true)
+            if isLike {
+                
+                guard let conversationId = superlikeResponse.conversationId else {
+                    return
+                }
+                
+                let sb = UIStoryboard(name: "Chat", bundle: nil)
+                let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+                
+                let jobSeekerId = superlikeResponse.jobseekerId as? Int
+                chatVC.jobSeekerId = jobSeekerId
+                chatVC.seekerName = data.title
+                chatVC.conversationId = conversationId
+                chatVC.jobTitle = self.selectedJob?.title
+                chatVC.jobId = self.selectedJob?.identifier
+                chatVC.seekerPicture = data.imageName
+                chatVC.title = data.title
+                
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }
     
-    //Organization end
+    //Seeker end
     func likeSeeker(data: CardViewItem, isLike: Bool) {
         
         var params = [String: Any]()
@@ -296,26 +301,30 @@ class CardViewController: BaseViewController {
         _ = APIClient.callAPI(request: .likeJobRequest(param: params), onSuccess: { (dictionary) in
             print(dictionary)
             
-            
             guard let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary) else {
                 return
             }
-            print(superlikeResponse.toJSON())
             
-            //let chatVC = ChatMessagesVC()
-            let sb = UIStoryboard(name: "Chat", bundle: nil)
-            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
-            
-            let jobSeekerId = superlikeResponse.jobseekerId as? Int
-            chatVC.jobSeekerId = jobSeekerId
-            chatVC.seekerName = data.title
-            chatVC.conversationId = superlikeResponse.conversationId
-            chatVC.jobTitle = self.selectedJob?.title
-            chatVC.jobId = self.selectedJob?.identifier
-            chatVC.seekerPicture = data.imageName
-            chatVC.title = data.title
-            
-            self.navigationController?.pushViewController(chatVC, animated: true)
+            if isLike {
+                
+                guard let conversationId = superlikeResponse.conversationId else {
+                    return
+                }
+                
+                let sb = UIStoryboard(name: "Chat", bundle: nil)
+                let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+                
+                let jobSeekerId = superlikeResponse.jobseekerId as? Int
+                chatVC.jobSeekerId = jobSeekerId
+                chatVC.seekerName = data.title
+                chatVC.conversationId = conversationId
+                chatVC.jobTitle = data.title
+                chatVC.jobId = Int(data.jobId)
+                chatVC.seekerPicture = data.imageName
+                chatVC.title = data.title
+                
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
             
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -344,9 +353,7 @@ class CardViewController: BaseViewController {
             
             print(dictionary)
             let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary)
-            print(superlikeResponse?.toJSON())
             
-            //let chatVC = ChatMessagesVC()
             let sb = UIStoryboard(name: "Chat", bundle: nil)
             let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
             
@@ -354,8 +361,8 @@ class CardViewController: BaseViewController {
             chatVC.jobSeekerId = jobSeekerId
             chatVC.seekerName = data.title
             chatVC.conversationId = superlikeResponse?.conversationId
-            chatVC.jobTitle = self.selectedJob?.title
-            chatVC.jobId = self.selectedJob?.identifier
+            chatVC.jobTitle = data.title
+            chatVC.jobId = Int(data.jobId)
             chatVC.seekerPicture = data.imageName
             chatVC.title = data.title
             
@@ -405,6 +412,7 @@ class CardViewController: BaseViewController {
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }
+    
 }
 
 extension CardViewController: CardContainerViewControllerDelegate {

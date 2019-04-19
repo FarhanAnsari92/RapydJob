@@ -45,6 +45,14 @@ class ShortListViewController: BaseViewController {
         
     }
     
+//    fileprivate func refreshData() {
+//        if AppContainer.shared.user.user?.accountType == "organization" {
+//            self.getOrganizationShortListedData(job: self.selectedJob!)
+//        } else {
+//            self.getSeekerShortListData()
+//        }
+//    }
+//
     func getDropDownData() {
         _ = APIClient.callAPI(request: .dropDown, onSuccess: { (dictionary) in
             if let arr = dictionary["data"] as? [[String:Any]] {
@@ -70,6 +78,8 @@ class ShortListViewController: BaseViewController {
                 return
             }
             self.cardData = arr
+            
+            self.cardView.resetCurrentCardIndex()
             self.cardView.reloadData()
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -108,18 +118,17 @@ class ShortListViewController: BaseViewController {
         }
     }
     
-    func superLike(data: [String:Any]) {
+    func superLike(data: [String:Any], index: Int) {
         
         if AppContainer.shared.user.user?.accountType == "organization" {
-            self.organizationSuperLike(data: data)
+            self.organizationSuperLike(data: data, index: index)
         } else {
-            self.seekerSuperLike(data: data)
+            self.seekerSuperLike(data: data, index: index)
         }
     }
     
-    func seekerSuperLike(data: [String:Any]) {
-        print(data)
-        print(data["job_id"] as? Int)
+    func seekerSuperLike(data: [String:Any], index: Int) {
+        
         guard let jobId = data["job_id"] as? Int else {
             return
         }
@@ -128,17 +137,46 @@ class ShortListViewController: BaseViewController {
         param["type"] = "Job"
         param["like"] = "yes"
         
-        print(param)
         _ = APIClient.callAPI(request: APIClient.superlikeJobSeekerRequest(param: param), onSuccess: { (dictionary) in
-            print(dictionary)
+            
+            if index == self.cardData.count - 1 {
+                self.cardData.removeAll()
+                self.cardView.resetCurrentCardIndex()
+                self.cardView.reloadData()
+            }
+            
+            guard let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary),
+                let conversationId = superlikeResponse.conversationId else {
+                    return
+            }
+            
+            let sb = UIStoryboard(name: "Chat", bundle: nil)
+            let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+            
+            guard let jobSeeker = data["job_seeker"] as? [String:Any],
+                let id = jobSeeker["user_id"] as? String else {
+                    return
+            }
+            let fullName = jobSeeker["fullname"] as? String ?? "N/A"
+            
+            chatVC.seekerName = fullName
+            chatVC.seekerPicture = data["profile_image"] as? String ?? ""
+            chatVC.title = fullName
+            
+            chatVC.jobSeekerId = Int(id)
+            chatVC.conversationId = conversationId
+            chatVC.jobId = self.selectedJob?.id
+            chatVC.jobTitle = self.selectedJob?.title
+            
+            self.navigationController?.pushViewController(chatVC, animated: true)
+
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }
     
-    func organizationSuperLike(data: [String:Any]) {
+    func organizationSuperLike(data: [String:Any], index: Int) {
         
-        print(data)
         guard let id = data["id"] as? Int else {
                 return
         }
@@ -149,8 +187,13 @@ class ShortListViewController: BaseViewController {
         params["like"] = "yes"
         _ = APIClient.callAPI(request: APIClient.superLikeEmployerRequest(param: params), onSuccess: { (dictionary) in
             
+            if index == self.cardData.count - 1 {
+                self.cardData.removeAll()
+                self.cardView.resetCurrentCardIndex()
+                self.cardView.reloadData()
+            }
+            
             let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary)
-            //let chatVC = ChatMessagesVC()
             
             let sb = UIStoryboard(name: "Chat", bundle: nil)
             let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
@@ -186,7 +229,7 @@ class ShortListViewController: BaseViewController {
         
     }
     
-    func likeJob(data: [String:Any], isLike: Bool) {
+    func likeJob(data: [String:Any], isLike: Bool, index: Int) {
         
         guard let _ = data["job_seeker"] as? [String:Any] else {
             return
@@ -198,13 +241,48 @@ class ShortListViewController: BaseViewController {
         params["like"] = isLike ? "yes" : "no"
         print(params)
         _ = APIClient.callAPI(request: APIClient.likeJobRequest(param: params), onSuccess: { (dictionary) in
-            print(dictionary)
+            
+            if index == self.cardData.count - 1 {
+                self.cardData.removeAll()
+                self.cardView.resetCurrentCardIndex()
+                self.cardView.reloadData()
+            }
+            
+            if isLike {
+                print(dictionary)
+                let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary)
+                
+                guard let conversationId = superlikeResponse?.conversationId else {
+                    return
+                }
+                
+                let sb = UIStoryboard(name: "Chat", bundle: nil)
+                let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+                
+                guard let jobSeeker = data["job_seeker"] as? [String:Any],
+                    let id = jobSeeker["user_id"] as? String else {
+                        return
+                }
+                let fullName = jobSeeker["fullname"] as? String ?? "N/A"
+                
+                chatVC.seekerName = fullName
+                chatVC.seekerPicture = data["profile_image"] as? String ?? ""
+                chatVC.title = fullName
+                
+                chatVC.jobSeekerId = Int(id)
+                chatVC.conversationId = conversationId
+                chatVC.jobId = self.selectedJob?.id
+                chatVC.jobTitle = self.selectedJob?.title
+                
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
+            
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
     }
     
-    func likeSeeker(data: [String:Any], isLike: Bool) {
+    func likeSeeker(data: [String:Any], isLike: Bool, index: Int) {
         
         guard let id = data["id"] as? Int else {
             return
@@ -214,9 +292,43 @@ class ShortListViewController: BaseViewController {
         params["type"] = "User"
         params["like"] = isLike ? "yes" : "no"
         params["user_id"] = id
-        print(params)
+        
         _ = APIClient.callAPI(request: .likeEmployeeRequest(param: params), onSuccess: { (dictionary) in
-            self.cardView.reloadData()
+            
+            if index == self.cardData.count - 1 {
+                self.cardData.removeAll()
+                self.cardView.resetCurrentCardIndex()
+                self.cardView.reloadData()
+            }
+            
+            if isLike {
+                
+                let superlikeResponse = Mapper<OrganizationSuperLikeResponse>().map(JSON: dictionary)
+                
+                guard let conversationId = superlikeResponse?.conversationId else {
+                    return
+                }
+                
+                let sb = UIStoryboard(name: "Chat", bundle: nil)
+                let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
+                
+                guard let jobSeeker = data["job_seeker"] as? [String:Any],
+                    let id = jobSeeker["user_id"] as? String else {
+                        return
+                }
+                let fullName = jobSeeker["fullname"] as? String ?? "N/A"
+                
+                chatVC.seekerName = fullName
+                chatVC.seekerPicture = data["profile_image"] as? String ?? ""
+                chatVC.title = fullName
+                
+                chatVC.jobSeekerId = Int(id)
+                chatVC.conversationId = conversationId
+                chatVC.jobId = self.selectedJob?.id
+                chatVC.jobTitle = self.selectedJob?.title
+                
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
         }
@@ -272,21 +384,24 @@ extension ShortListViewController: KolodaViewDelegate, KolodaViewDataSource {
         switch direction {
         case .right:
             if AppContainer.shared.user.user?.accountType == "organization" {
-                self.likeSeeker(data: cardItem, isLike: true)
+                self.likeSeeker(data: cardItem, isLike: true, index: index)
             } else {
-                self.likeJob(data: cardItem, isLike: true)
+                self.likeJob(data: cardItem, isLike: true, index: index)
             }
+        
         case .left:
             if AppContainer.shared.user.user?.accountType == "organization" {
-                self.likeSeeker(data: cardItem, isLike: false)
+                self.likeSeeker(data: cardItem, isLike: false, index: index)
             } else {
-                self.likeJob(data: cardItem, isLike: false)
+                self.likeJob(data: cardItem, isLike: false, index: index)
             }
+            
         case .down:
-            self.superLike(data: cardItem)
+            self.superLike(data: cardItem, index: index)
         default:
             break
         }
+        
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
@@ -297,6 +412,18 @@ extension ShortListViewController: KolodaViewDelegate, KolodaViewDataSource {
         return Bundle.main.loadNibNamed("CardOverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
     
+    func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
+        
+        let currentVisibleIndex = koloda.currentCardIndex
+        let nextIndex = currentVisibleIndex + 1
+        if nextIndex < cardData.count {
+            var cardItem = self.cardData[nextIndex]
+            cardItem["shouldHide"] = false
+            guard let view = koloda.viewForCard(at: nextIndex) as? CardViewCell else {return}
+            view.populateWithCardItem(cardItem)
+        }
+    }
+    
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         guard let view = Bundle.main.loadNibNamed("CardViewCell", owner: self, options: nil)?.first as? CardViewCell else {
             return UIView()
@@ -305,7 +432,6 @@ extension ShortListViewController: KolodaViewDelegate, KolodaViewDataSource {
         if cardData.count > 0 {
             var cardItem = cardData[index]
             cardItem["shouldHide"] = index == 0 ? false : true
-            //view.shouldHideAllViews(index > 0)
             view.noDataLabel.isHidden = true
             view.populateWithCardItem(cardItem)
         } else {
