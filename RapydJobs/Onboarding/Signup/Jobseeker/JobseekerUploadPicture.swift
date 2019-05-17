@@ -85,7 +85,7 @@ class JobseekerUploadPicture: UIViewController, UINavigationControllerDelegate, 
     private let profilePic: UIImageView = {
         let iv = UIImageView()
         iv.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 105
         iv.backgroundColor = AppConstants.shared.primaryBlueColor
@@ -96,7 +96,7 @@ class JobseekerUploadPicture: UIViewController, UINavigationControllerDelegate, 
     
     private let doneButton: UIButton = {
         let button = UIButton()
-        button.setTitle("DONE", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20
@@ -120,6 +120,13 @@ class JobseekerUploadPicture: UIViewController, UINavigationControllerDelegate, 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let user = AppContainer.shared.user.user {
+            if let profileImage = user.profileImage {
+                self.iconImage.isHidden = true
+                self.profilePic.setImageWithName(profileImage)
+            }
+        }
         
         try? VideoBackground.shared.play(view: videoView, videoName: "Background", videoType: "mp4")
     }

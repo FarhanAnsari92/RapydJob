@@ -103,7 +103,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     
     private let employerBuildingFloorInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
-        input.placeholder = "Building No."
+        input.placeholder = "Building No. (Optional)"
         input.title = "Building No. (Optional)"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -116,7 +116,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     
     private let employerPostalCodeInput: SkyFloatingLabelTextField = {
         let input = SkyFloatingLabelTextField()
-        input.placeholder = "Postal Code"
+        input.placeholder = "Postal Code (Optional)"
         input.title = "Postal Code (Optional)"
         input.font = AppConstants.shared.textFieldFont
         input.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -150,7 +150,7 @@ class EmployerSignupTwoVC: UIViewController, UITextFieldDelegate, UIPickerViewDe
     
     private let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("NEXT", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20

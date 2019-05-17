@@ -93,6 +93,7 @@ class ShortListViewController: BaseViewController {
                 return
             }
             self.cardData = arr
+            self.cardView.resetCurrentCardIndex()
             self.cardView.reloadData()
         }) { (errorDictionary, _) in
             self.toast.isShow(errorDictionary["message"] as? String ?? "Something went wrong")
@@ -129,7 +130,7 @@ class ShortListViewController: BaseViewController {
     
     func seekerSuperLike(data: [String:Any], index: Int) {
         
-        guard let jobId = data["job_id"] as? Int else {
+        guard let jobId = data["id"] as? Int else {
             return
         }
         var param = [String:Any]()
@@ -153,20 +154,21 @@ class ShortListViewController: BaseViewController {
             let sb = UIStoryboard(name: "Chat", bundle: nil)
             let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
             
-            guard let jobSeeker = data["job_seeker"] as? [String:Any],
-                let id = jobSeeker["user_id"] as? String else {
-                    return
-            }
-            let fullName = jobSeeker["fullname"] as? String ?? "N/A"
+//            guard let jobSeeker = data["job_seeker"] as? [String:Any],
+//                let id = jobSeeker["user_id"] as? String else {
+//                    return
+//            }
+            let fullName = data["organization_name"] as? String ?? "N/A"
+            let jobTitle = data["title"] as? String ?? "N/A"
             
             chatVC.seekerName = fullName
             chatVC.seekerPicture = data["profile_image"] as? String ?? ""
             chatVC.title = fullName
             
-            chatVC.jobSeekerId = Int(id)
+           // chatVC.jobSeekerId = Int(id)
             chatVC.conversationId = conversationId
-            chatVC.jobId = self.selectedJob?.id
-            chatVC.jobTitle = self.selectedJob?.title
+            chatVC.jobId = jobId
+            chatVC.jobTitle = jobTitle
             
             self.navigationController?.pushViewController(chatVC, animated: true)
 
@@ -231,16 +233,15 @@ class ShortListViewController: BaseViewController {
     
     func likeJob(data: [String:Any], isLike: Bool, index: Int) {
         
-        guard let _ = data["job_seeker"] as? [String:Any] else {
+        guard let jobId = data["id"] as? Int else {
             return
         }
-            
-        var params = [String: Any]()
-        params["job_id"] = self.selectedJob?.id // ye ghalat hai .. model se uthegi ID
-        params["type"] = "Job"
-        params["like"] = isLike ? "yes" : "no"
-        print(params)
-        _ = APIClient.callAPI(request: APIClient.likeJobRequest(param: params), onSuccess: { (dictionary) in
+        var param = [String:Any]()
+        param["job_id"] = jobId
+        param["type"] = "Job"
+        param["like"] = isLike ? "yes" : "no"
+        print(param)
+        _ = APIClient.callAPI(request: APIClient.likeJobRequest(param: param), onSuccess: { (dictionary) in
             
             if index == self.cardData.count - 1 {
                 self.cardData.removeAll()
@@ -259,20 +260,21 @@ class ShortListViewController: BaseViewController {
                 let sb = UIStoryboard(name: "Chat", bundle: nil)
                 let chatVC = sb.instantiateViewController(withIdentifier: "ChatMessagesVC") as! ChatMessagesVC
                 
-                guard let jobSeeker = data["job_seeker"] as? [String:Any],
-                    let id = jobSeeker["user_id"] as? String else {
-                        return
-                }
-                let fullName = jobSeeker["fullname"] as? String ?? "N/A"
+//                guard let jobSeeker = data["job_seeker"] as? [String:Any],
+//                    let id = jobSeeker["user_id"] as? String else {
+//                        return
+//                }
+                let fullName = data["organization_name"] as? String ?? "N/A"
+                let jobTitle = data["title"] as? String ?? "N/A"
                 
                 chatVC.seekerName = fullName
                 chatVC.seekerPicture = data["profile_image"] as? String ?? ""
                 chatVC.title = fullName
                 
-                chatVC.jobSeekerId = Int(id)
+                //chatVC.jobSeekerId = Int(id)
                 chatVC.conversationId = conversationId
-                chatVC.jobId = self.selectedJob?.id
-                chatVC.jobTitle = self.selectedJob?.title
+                chatVC.jobId = jobId
+                chatVC.jobTitle = jobTitle
                 
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }

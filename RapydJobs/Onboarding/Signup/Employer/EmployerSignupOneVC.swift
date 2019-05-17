@@ -123,7 +123,7 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
     
     private let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("NEXT", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20
@@ -289,6 +289,10 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
         if employerNameInput.text != "" {
             if employerRegNumInput.text != "" {
                 if employerWebsiteInput.text != "" {
+                    if employerWebsiteInput.text?.isValidURL() == false {
+                        AlertService.shared.alert(in: self, "Please insert valid url")
+                        return
+                    }
                     if employerPhoneInput.text != "" {
                         hud.show(in: view)
                         UserDefaults.standard.set(employerPhoneInput.text!, forKey: "contactNumber")

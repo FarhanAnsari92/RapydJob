@@ -30,7 +30,7 @@ class TimesheetRejectTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var rejectBtn: UIButton! {
         didSet {
-            actionStyle(rejectBtn, UIImage(named: "ic_cross_big")!)
+            //actionStyle(rejectBtn, UIImage(named: "ic_cross_big")!)
             rejectBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -17.5, 0, 0)
         }
     }

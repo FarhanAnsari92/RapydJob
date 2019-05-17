@@ -14,11 +14,17 @@ class SignedContractTableViewCell: UITableViewCell {
     @IBOutlet weak var contractImage: UIImageView!
     @IBOutlet weak var contractTitle: UILabel!
     @IBOutlet weak var signedBy: UILabel!
+    
+    var userProfileCompletion: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         print(contractImage.frame.height / 2)
         self.contractImage.layer.cornerRadius = contractImage.frame.height / 2
+        
+        self.signedBy.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapUserName))
+        self.signedBy.addGestureRecognizer(tapGesture)
         
         parentVu.backgroundColor = .white
         parentVu.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0.1176470588, alpha: 1)
@@ -36,6 +42,10 @@ class SignedContractTableViewCell: UITableViewCell {
         self.contractImage.setImageWithName(data.signedBy?.profileImage ?? "")
         self.signedBy.text = data.signedBy?.userName ?? ""
         self.contractTitle.text = data.file ?? ""
+    }
+    
+    @objc func didTapUserName() {
+        self.userProfileCompletion?()
     }
     
 }

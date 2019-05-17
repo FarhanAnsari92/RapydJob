@@ -30,7 +30,7 @@ class PlanerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Timesheet"
+        self.title = "Planner"
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
         
@@ -115,7 +115,7 @@ class PlanerViewController: UIViewController {
         
         
 
-        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+        self.weekView.setupCalendar(numOfDays: 3, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
 
         
     }

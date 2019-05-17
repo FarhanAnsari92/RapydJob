@@ -192,8 +192,6 @@ class ProfileDetailsViewController: BaseViewController {
     
     func viewCV() {
         
-        print(self.user?.toJSON())
-        
         guard let user = self.user,
             let jobSeeker = user.jobSeeker,
             let cv = jobSeeker.cv else {

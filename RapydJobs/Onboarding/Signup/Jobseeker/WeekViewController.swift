@@ -45,6 +45,7 @@ class WeekViewController: UIViewController {
     var completion: (([[String:Any]]?) -> Void)?
     private var startTimePicker: UIDatePicker!
     private var endTimePicker: UIDatePicker!
+    var controllerTitle: String? = "Add Timesheet"
     
     let days = [
         "monday",
@@ -68,14 +69,14 @@ class WeekViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Add Timesheet"
+        self.title = self.controllerTitle // "Add Timesheet"
         view.backgroundColor = Constants.Colors.primaryGreenColor
         
         let doneBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneHandler))
         self.navigationItem.rightBarButtonItem = doneBarBtn
         
-        self.startTime.text = "00:00"
-        self.endTime.text = "00:00"
+//        self.startTime.text = "00:00"
+//        self.endTime.text = "00:00"
         
         startTimePicker = UIDatePicker()
         startTimePicker.datePickerMode = .time
@@ -101,13 +102,13 @@ class WeekViewController: UIViewController {
     
     @IBAction func add(_ sender: UIButton) {
         
-        if startTime.text == "00:00" {
-            AlertService.shared.alert(in: self, "Select proper Start time")
+        if startTime.text!.isEmpty {
+            AlertService.shared.alert(in: self, "Please select start time")
             return
         }
         
-        if endTime.text == "00:00" {
-            AlertService.shared.alert(in: self, "Select proper End time")
+        if endTime.text == "00:00" || endTime.text!.isEmpty {
+            AlertService.shared.alert(in: self, "Please select end time")
             return
         }
        
@@ -190,8 +191,8 @@ extension WeekViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.startTime.text = week["start_time"] as? String ?? ""
             self.endTime.text = week["end_time"] as? String ?? ""
         } else {
-            self.startTime.text = "00:00"
-            self.endTime.text = "00:00"
+            self.startTime.text = ""
+            self.endTime.text = ""
         }
         
         collectionView.reloadData()

@@ -19,7 +19,7 @@ class ShowTimeSheetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Timesheet"
+        self.title = "Shift Timing"
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         
         setupWeekView()

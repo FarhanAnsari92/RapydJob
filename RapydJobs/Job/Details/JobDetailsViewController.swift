@@ -107,8 +107,6 @@ class JobDetailsViewController: UIViewController {
         _ = APIClient.callAPI(request: .getJobDetail(jobId: id), onSuccess: { (dictionary) in
             
             let jobModel = Mapper<JobDetailModel>().map(JSON: dictionary)
-            print(jobModel?.toJSON())
-            
             self.jobModel = jobModel
             
             self.coverImageView.setImageWithName(jobModel?.profileImage ?? "")
@@ -151,6 +149,12 @@ extension JobDetailsViewController: UITableViewDataSource {
             
             cell.locationLabel.text = self.jobModel?.address?.address ?? ""
             cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            cell.shiftTimingCompletion = {
+                let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
+                //vc.dates = availabilityDtoArray
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             if let _ = self.item {
                 let minSalary = self.jobModel?.minSalary ?? 0

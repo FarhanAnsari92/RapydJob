@@ -40,6 +40,8 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     var jobOffer: JobOfferData?
     var selectedWeek = [[String:Any]]()
 //    var selectedDay: String?
+    var isStartDateSelected: Bool = false
+    var isEndDateSelected: Bool = false
     var timesheetResponseModel :TimesheetResponseModel?
     
     private let dropdownImage: UIImageView = {
@@ -78,8 +80,8 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         
         self.monthSelection.titleLabel.text = self.getMonths()[3]
         
-        self.startTime.text = "00:00"
-        self.endTime.text = "00:00"
+        //self.startTime.text = "00:00"
+        //self.endTime.text = "00:00"
         
         let date = Date()
         self.dates = self.generateDatesArrayBetweenTwoDates(startDate: date.startOfMonth(), endDate: date.endOfMonth())
@@ -106,7 +108,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
         startTime.rightView = dropdownImage
         startTime.inputView = startTimePicker
         startTime.delegate = self
-        startTime.text = Date().toString(format: DateFormatType.custom("HH:mm"))
+        //startTime.text = Date().toString(format: DateFormatType.custom("HH:mm"))
         
         endTime.placeholder = "End Time"
         endTime.title = "End Time"
@@ -238,7 +240,7 @@ class CreateUpdateTimeSheetViewController: UIViewController {
             _ = APIClient.callAPI(request: .createTimesheet(param: param), onSuccess: { (dictionary) in
                 self.hud.dismiss(animated: true)
                 print(dictionary)
-                self.toast.isShow("Timesheet saved successfully.")
+                self.toast.isShow("Timesheet submitted successfully.")
                 self.navigationController?.popViewController(animated: true)
             }, onFailure: { (errorDictionary, _) in
                 self.hud.dismiss(animated: true)
@@ -331,7 +333,12 @@ class CreateUpdateTimeSheetViewController: UIViewController {
     }
     
     @IBAction func add(_ sender: UIButton) {
-        if !(endTimePicker.date > startTimePicker.date) {
+        if !isStartDateSelected || !isEndDateSelected {
+            AlertService.shared.alert(in: self, "Please select start time and end time")
+            return
+        }
+        if !(endTimePicker.date > startTimePicker.date) ||
+            startTimePicker.date.toString() == endTimePicker.date.toString() {
             AlertService.shared.alert(in: self, "End time must be greater than Start time")
             return
         }
@@ -431,7 +438,13 @@ extension CreateUpdateTimeSheetViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.isStartDateSelected = true
+        self.isEndDateSelected = true
         let slctdWeek = self.selectedWeek[indexPath.row]
+        if let dat = slctdWeek["param_date"] as? String {
+            let df = DateFormatter(withFormat: "dd-MM-yyyy", locale: "en_US_POSIX")
+            self.selectedDate = df.date(from: dat)
+        }
         
         let monthWithYear = slctdWeek["month"] as? String ?? ""
         let startTime = slctdWeek["start_time"] as? String ?? ""
@@ -515,11 +528,13 @@ extension CreateUpdateTimeSheetViewController: UITextFieldDelegate {
         switch textField {
         case startTime:
             if endTimePicker.date > startTimePicker.date {
+                self.isStartDateSelected = true
                 self.startTime.text = startTimePicker.date.toString(format: DateFormatType.custom("HH:mm"))
             }
         case endTime:
             
             if endTimePicker.date > startTimePicker.date {
+                self.isEndDateSelected = true
                 self.endTime.text = endTimePicker.date.toString(format: DateFormatType.custom("HH:mm"))
             }
             

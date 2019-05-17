@@ -30,7 +30,7 @@ class EmployerPlannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Timesheet"
+        self.title = "Planner"
         self.view.backgroundColor = Constants.Colors.primaryGreenColor
         self.setupView()
         
@@ -58,8 +58,7 @@ class EmployerPlannerViewController: UIViewController {
     func getPlannerData(id: Int? = nil) {
         _ = APIClient.callAPI(request: .organizationPlanner(id: id), onSuccess: { (dictionary) in
             print(dictionary)
-            
-            print(dictionary)
+        
             if let data = dictionary["time_planner"] as? [[String:Any]], data.count > 0 {
                 self.timePlannerData = Mapper<PlannerDataResponseModel>().mapArray(JSONArray: data)
                 print(self.timePlannerData.toJSON())
@@ -114,7 +113,7 @@ class EmployerPlannerViewController: UIViewController {
     
     func setupWeekView() {
         
-        self.weekView.setupCalendar(numOfDays: 7, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
+        self.weekView.setupCalendar(numOfDays: 3, setDate: Date(), allEvents: JZWeekViewHelper.getIntraEventsByDate(originalEvents: self.scheduleTimes()))
         
     }
     
@@ -135,7 +134,7 @@ class EmployerPlannerViewController: UIViewController {
             let start = date!.add(component: .hour, value: Int(startTimeSplit![0])!).add(component: .minute, value: Int(startTimeSplit![1])!)
             let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
             
-            let event = DefaultEvent(id: "1", title: "", startDate: start, endDate: end, location: "")
+            let event = DefaultEvent(id: "", title: item.jobName ?? "", startDate: start, endDate: end, location: "")
             schedules.append(event)
             
         }
@@ -148,6 +147,7 @@ class EmployerPlannerViewController: UIViewController {
             
             let start = date!.add(component: .hour, value: Int(startTimeSplit![0])!).add(component: .minute, value: Int(startTimeSplit![1])!)
             let end = date!.add(component: .hour, value: Int(endTimeSplit![0])!).add(component: .minute, value: Int(endTimeSplit![1])!)
+            
             
             let event = DefaultEvent(id: "1", title: item.candidateName ?? "", startDate: start, endDate: end, location: item.jobName ?? "")
             schedules.append(event)

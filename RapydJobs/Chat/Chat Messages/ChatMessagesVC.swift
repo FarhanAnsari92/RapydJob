@@ -548,7 +548,7 @@ class ChatMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction private func sendMessageTapped(_ sender: UIButton) {
         
-        if messageInput.text != "" { //} || messageInput.text != "Type a message" {
+        if messageInput.text != "" && messageInput.text != "Type a message" {
             
             view.endEditing(true)
             

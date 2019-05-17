@@ -109,6 +109,16 @@ extension UIView {
     }
 }
 
+extension String {
+    private func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
+    func isValidURL() -> Bool {
+        return self.matches("^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$")
+    }
+}
+
 extension Dictionary {
     var json: String {
         let invalidJson = "Not a valid JSON"

@@ -61,6 +61,8 @@ class JobOfferTableViewCell: UITableViewCell {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtImage))
         self.jobSeekerImage.addGestureRecognizer(tapGesture)
+        self.jobTitle.isUserInteractionEnabled = true
+        self.jobTitle.addGestureRecognizer(tapGesture)
         
         parentVu.backgroundColor = .white
         parentVu.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0.1176470588, alpha: 1)

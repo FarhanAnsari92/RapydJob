@@ -196,7 +196,12 @@ extension EmployerTimesheetViewController: UITableViewDelegate, UITableViewDataS
             }
             
             
-            let btnTitle = timesheet.status ?? "" == "update" ? "Reject" : "Amendment Timesheet"
+            let btnTitle = timesheet.status ?? "" == "update" ? "Reject" : "Amend Timesheet"
+            if btnTitle == "Reject" {
+                actionStyle(cell.rejectBtn, UIImage(named: "ic_cross_big")!)
+            } else {
+                actionStyle(cell.rejectBtn, UIImage(named: "ic_redo")!)
+            }
             cell.rejectBtn.setTitle(btnTitle, for: .normal)
             
             cell.update(data: timesheet)

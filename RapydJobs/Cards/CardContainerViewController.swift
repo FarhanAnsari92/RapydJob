@@ -39,7 +39,7 @@ class CardContainerViewController: UIViewController {
         cardView.countOfVisibleCards = 3
         cardView.delegate = self
         cardView.dataSource = self
-        
+    
         viewModel.delegate = self
         
         if AppContainer.shared.user.user?.accountType ?? "" == "organization" {
@@ -92,10 +92,7 @@ extension CardContainerViewController: KolodaViewDelegate {
                 vc.jobId = viewModel.data[index].jobId
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
-                let profileDetailsVC = JobSeekerProfileViewController.getInstance()
-                print(viewModel.data[index].id)
-                profileDetailsVC.jobseekerId = viewModel.data[index].id
-                self.navigationController?.pushViewController(profileDetailsVC, animated: true)
+                Helper.openJobSeekerProfile(self, jobId: viewModel.data[index].id)                
             }
         }
     }

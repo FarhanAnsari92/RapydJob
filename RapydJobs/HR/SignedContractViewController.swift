@@ -106,6 +106,10 @@ extension SignedContractViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SignedContractTableViewCellID", for: indexPath) as! SignedContractTableViewCell
+        cell.userProfileCompletion = {
+            let userId = self.signedContract[indexPath.row].signedBy?.id
+            Helper.openJobSeekerProfile(self, jobId: userId)
+        }
         cell.updateData(self.signedContract[indexPath.row])
         return cell
     }

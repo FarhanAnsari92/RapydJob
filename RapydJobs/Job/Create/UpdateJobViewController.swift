@@ -275,7 +275,7 @@ class UpdateJobViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     
     private let createButton: UIButton = {
         let button = UIButton()
-        button.setTitle("EDIT JOB", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20

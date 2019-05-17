@@ -286,7 +286,7 @@ class JobseekerAddNewEducations: UIViewController, UITextFieldDelegate {
     
     private func selectToDate() {
         toDatePicker.datePickerMode = .date
-        toDatePicker.maximumDate = Date()
+        //toDatePicker.maximumDate = Date()
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()

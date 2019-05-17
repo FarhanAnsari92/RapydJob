@@ -233,16 +233,7 @@ extension JobListSeekerViewController: UITableViewDelegate, UITableViewDataSourc
             guard let jobId = self.jobOffers[indexPath.row].id else {
                 return
             }
-            
-            let sb = UIStoryboard(name: "JobDetails", bundle: nil)
-            let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
-            
-            print(self.jobOffers[indexPath.row].toJSON())
-            
-            
-            vc.jobId = "\(jobId)"
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            Helper.openJobDetail(self, jobId: jobId)            
         }
         print(self.jobOffers.toJSON())
         cell.updateData(self.jobOffers[indexPath.row])

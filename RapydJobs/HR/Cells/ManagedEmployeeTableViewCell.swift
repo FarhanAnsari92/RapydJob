@@ -38,9 +38,16 @@ class ManagedEmployeeTableViewCell: UITableViewCell {
     var terminateCompletion: (() -> Void)?
     var renewCompletion: (() -> Void)?
     var deleteCompletion: (() -> Void)?
+    var profileCompletion: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        let tapGesture = UIGestureRecognizer(target: self, action: #selector(self.tapAtImageOrName))
+        self.jobSeekerImage.isUserInteractionEnabled = true
+        self.jobSeekerImage.addGestureRecognizer(tapGesture)
+        
+        self.jobSeekerName.isUserInteractionEnabled = true
+        self.jobSeekerName.addGestureRecognizer(tapGesture)
         
         self.jobSeekerImage.layer.cornerRadius = 37.0
         
@@ -50,6 +57,10 @@ class ManagedEmployeeTableViewCell: UITableViewCell {
         parentVu.layer.shadowOpacity = 0.3
         parentVu.layer.shadowOffset = CGSize(width: -2, height: 0.5)
         parentVu.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func tapAtImageOrName() {
+        profileCompletion?()
     }
     
     @IBAction func btnHandler(_ sender: UIButton) {

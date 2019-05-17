@@ -56,7 +56,9 @@ class ScheduledTableViewCell: ShdaowBaseTableViewCell {
         
         self.displayImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapAtPicture))
+        self.nameLabel.isUserInteractionEnabled = true
         self.displayImageView.addGestureRecognizer(tapGesture)
+        self.nameLabel.addGestureRecognizer(tapGesture)
         
     }
     

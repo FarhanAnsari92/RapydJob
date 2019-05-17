@@ -132,7 +132,7 @@ class JobseekerAddNewLanguageVC: UIViewController, UIPickerViewDelegate, UIPicke
     
     private func setupViews() {
         
-        languageLevelInput.text = "Expert"
+//        languageLevelInput.text = "Expert"
         
         self.toast = JYToast()
         

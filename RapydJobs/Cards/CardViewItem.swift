@@ -47,7 +47,7 @@ class CardViewItem {
         self.title = dto.title
         self.subtitle = dto.organisationName
         
-        self.jobTitle = "£\(dto.minSalary) Per Hour"
+        self.jobTitle = "£\(dto.minSalary) - £\(dto.maxSalary) Per Hour"
         self.education = "View Shift Timing"
         
         if let location = dto.address {

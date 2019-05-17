@@ -37,7 +37,12 @@ class JobDetailsAndCandidateViewController: UIViewController {
     }
     
     @IBOutlet weak var coverImageView: UIImageView!
-    @IBOutlet weak var displayImageView: UIImageView!
+    @IBOutlet weak var displayImageView: UIImageView! {
+        didSet {
+            displayImageView.layer.cornerRadius = displayImageView.bounds.size.width/2
+            displayImageView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var segmentControl: SegmentControl! {
@@ -54,6 +59,13 @@ class JobDetailsAndCandidateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let user = AppContainer.shared.user.user {
+            if let profileImage = user.profileImage {
+                self.coverImageView.setImageWithName(profileImage)
+                self.displayImageView.setImageWithName(profileImage)
+            }
+        }
         
         self.toast = JYToast()
         guard let job = self.organizatioJob else {
@@ -212,7 +224,7 @@ extension JobDetailsAndCandidateViewController: UITableViewDataSource {
                 case 3:
                     let infoCell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
                     
-                    infoCell.iconView?.image = UIImage(named: "ic_download")
+                    infoCell.iconView?.image = UIImage(named: "ic_calendar")
                     
                     var datesSring: String = ""
                     if let dates = self.organizatioJob?.dates {

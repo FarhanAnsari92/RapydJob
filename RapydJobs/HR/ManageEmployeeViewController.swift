@@ -209,6 +209,9 @@ extension ManageEmployeeViewController: UITableViewDelegate, UITableViewDataSour
         cell.terminateCompletion = {
             self.changeEmployeeStatus(emp: self.employees[indexPath.row], row: indexPath.row)
         }
+        cell.profileCompletion = {
+            print("prifle")
+        }
         return cell
     }
     

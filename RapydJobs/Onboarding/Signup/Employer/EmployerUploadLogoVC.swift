@@ -97,7 +97,7 @@ class EmployerUploadLogoVC: UIViewController, UINavigationControllerDelegate, UI
     
     private let doneButton: UIButton = {
         let button = UIButton()
-        button.setTitle("DONE", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20

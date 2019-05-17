@@ -96,4 +96,27 @@ class Helper {
         })
     }
     
+    class func openJobSeekerProfile(_ controller: UIViewController,jobId: Int?) {
+        guard let id = jobId else {
+            return
+        }
+        let profileDetailsVC = JobSeekerProfileViewController.getInstance()
+        profileDetailsVC.jobseekerId = id
+        controller.navigationController?.pushViewController(profileDetailsVC, animated: true)
+        
+    }
+    
+    class func openJobDetail(_ controller: UIViewController, jobId: Int?) {
+        
+        guard let id = jobId else {
+            return
+        }
+        
+        let sb = UIStoryboard(name: "JobDetails", bundle: nil)
+        let vc = sb.instantiateInitialViewController() as! JobDetailsViewController
+        vc.jobId = "\(id)"
+        controller.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }

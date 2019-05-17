@@ -80,7 +80,7 @@ class JobseekerEducationVC: UIViewController, UITableViewDataSource, UITableView
     
     private let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("NEXT", for: .normal)
+        button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = AppConstants.shared.buttonFont
         button.backgroundColor = AppConstants.shared.buttonGradientStart
         button.layer.cornerRadius = 20
