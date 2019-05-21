@@ -20,6 +20,7 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
     }
     var jobOffers = [[String:Any]]()
     
+    let limit = 10
     var currentPage = 1
     var lastPage = 0
     var isLoadMore: Bool = false
@@ -57,12 +58,16 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
     
     func getInterviews() {
         hud.show(in: view)
-        _ = APIClient.callAPI(request: .getJobseekerInterview(page: self.currentPage), onSuccess: { (dictionary) in
+        _ = APIClient.callAPI(request: .getJobseekerInterview(limit: self.limit, page: self.currentPage), onSuccess: { (dictionary) in
             self.hud.dismiss(animated: true)
             
             guard let rawData = dictionary["data"] as? [[String:Any]] else {
                 return
             }
+            print(rawData)
+            let lastPage = dictionary["last_page"] as? Int ?? 0
+            self.lastPage = lastPage + 1
+            let currentPage = dictionary["current_page"] as! Int
             var arrOfObj = [[String:Any]]()
             for item in rawData {
                 let date = item["date"] as! String
@@ -75,15 +80,20 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
                 dic["time"] = time
                 if let jobDetail = item["job_detail"] as? [String:Any],
                     let user = jobDetail["user"] as? [String:Any],
+                    let title = jobDetail["title"] as? String,
                     let organizationPicture = user["profile_image"] as? String,
                     let organizationName = user["username"],
                     let jobId = item["job_id"] as? Int {
+                    dic["title"] = title
                     dic["organizationPicture"] = organizationPicture
                     dic["organizationName"] = organizationName
                     dic["jobId"] = jobId
                 }
                 
                 arrOfObj.append(dic)
+            }
+            if arrOfObj.count > 0 {
+                self.currentPage += 1
             }
             self.jobOffers = arrOfObj
             self.tableView.reloadData()
@@ -128,6 +138,21 @@ class ScheduleInterviewViewController: BaseViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        // Change 10.0 to adjust the distance from bottom
+        if maximumOffset - currentOffset <= 10.0 {
+            print("Load mare")
+            self.isLoadMore = true
+            if self.currentPage < lastPage, !self.isLoading {
+                self.getInterviews()
+            }
+            
+        }
     }
 
 }

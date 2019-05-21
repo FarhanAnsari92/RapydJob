@@ -83,8 +83,8 @@ class CardViewItem {
         
         if let experience = dto.experience {
             if let title = experience.title, let company = experience.company {
-                self.subtitle = "\(title) @ \(company)"
-                self.jobTitle = "\(title) @ \(company)"
+                self.subtitle = "\(title) at \(company)"
+                self.jobTitle = "\(title) at \(company)"
             } else {
                 self.subtitle = ""
                 self.jobTitle = ""
@@ -95,7 +95,7 @@ class CardViewItem {
         }
         
         if let experience = dto.education {
-            self.education = "\(experience.title) @ \(experience.institute)"
+            self.education = "\(experience.title) at \(experience.institute)"
         } else {
             self.education = ""
         }

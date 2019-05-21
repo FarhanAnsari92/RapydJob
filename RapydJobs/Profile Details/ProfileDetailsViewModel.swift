@@ -47,7 +47,7 @@ class ProfileDetailsViewModel: NSObject {
         let review3 = ProfileReviewModel("John Madison", "face.jpg", "Amazing guy, very cooperative and nice", rating: 4)
         let review4 = ProfileReviewModel("John Hank", "face.jpg", "Finest work I have ever seen", rating: 5)
 
-        data = ProfileDetailModel("John Smith", "Software Engineer @ Davidson Co.", "face.jpg", 4, "London, United Kingdom", 45, [experience1, experience2], [education1], [review1, review2, review3, review4])
+        data = ProfileDetailModel("John Smith", "Software Engineer at Davidson Co.", "face.jpg", 4, "London, United Kingdom", 45, [experience1, experience2], [education1], [review1, review2, review3, review4])
 
         var segmentArray = ["Details", "Reviews"];
         for i in 0..<segmentArray.count {

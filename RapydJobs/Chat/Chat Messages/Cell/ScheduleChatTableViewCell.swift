@@ -66,19 +66,23 @@ class ScheduleChatTableViewCell: UITableViewCell {
                     self.receiverSeparator.isHidden = true
                 } else {
                     self.receiverScheduleBtn.isHidden = false
-                    self.receiverScheduleBtn.titleLabel?.text = "View Job Offer"
+                    self.receiverScheduleBtn.setTitle("View Job Offer", for: .normal)
+//                    self.receiverScheduleBtn.titleLabel?.text = "View Job Offer"
                 }
                 
             } else if messageType == "hireNotification" {
                 
                 if AppContainer.shared.user.user?.accountType == "organization" {
-                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Candidate"
+                    self.receiverScheduleBtn.setTitle("Open Hired Candidate", for: .normal)
+//                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Candidate"
                 } else {
-                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Job"
+                    self.receiverScheduleBtn.setTitle("Open Hired Job", for: .normal)
+//                    self.receiverScheduleBtn.titleLabel?.text = "Open Hired Job"
                 }
                 
             } else if messageType == "interviewNotification" {
-                self.receiverScheduleBtn.titleLabel?.text = "Open Schedule Interview"
+                self.receiverScheduleBtn.setTitle("Open Schedule Interview", for: .normal)
+//                self.receiverScheduleBtn.titleLabel?.text = "Open Schedule Interview"
             }
             
             receivedBubbleView.isHidden = false
@@ -101,18 +105,22 @@ class ScheduleChatTableViewCell: UITableViewCell {
                     self.senderSeparator.isHidden = true
                 } else {
                     self.senderScheduleBtn.isHidden = false
-                    self.senderScheduleBtn.titleLabel?.text = "View Job Offer"
+                    self.senderScheduleBtn.setTitle("View Job Offer", for: .normal)
+//                    self.senderScheduleBtn.titleLabel?.text = "View Job Offer"
                 }
             } else if messageType == "hireNotification" {
                 
                 if AppContainer.shared.user.user?.accountType == "organization" {
-                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Candidate"
+                    self.senderScheduleBtn.setTitle("Open Hired Candidate", for: .normal)
+//                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Candidate"
                 } else {
-                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Job"
+                    self.senderScheduleBtn.setTitle("Open Hired Job", for: .normal)
+//                    self.senderScheduleBtn.titleLabel?.text = "Open Hired Job"
                 }
                 
             } else if messageType == "interviewNotification" {
-                self.senderScheduleBtn.titleLabel?.text = "Open Schedule Interview"
+                self.senderScheduleBtn.setTitle("Open Schedule Interview", for: .normal)
+//                self.senderScheduleBtn.titleLabel?.text = "Open Schedule Interview"
             }
             if receivedBubbleView != nil {
                 receivedBubbleView.isHidden = true

@@ -59,7 +59,7 @@ enum APIClient: URLRequestConvertible {
     case sendMessage(param: [String:Any])
     case getJobOffers(type: String, limit: Int, page: Int)
     case acceptJoboffer(param: [String:Any])
-    case getJobseekerInterview(page: Int)
+    case getJobseekerInterview(limit: Int, page: Int)
     case deleteContract(contractId: Int)
     case myReview(numberOfItems: Int, page: Int)
     //--- Edit Profile
@@ -398,8 +398,8 @@ enum APIClient: URLRequestConvertible {
                 return "joboffer/\(limit)/\(type)?page=\(page)"
             case .acceptJoboffer:
                 return "accept-joboffer"
-            case .getJobseekerInterview(let page):
-                return "jobseeker-interview/\(page)"
+            case .getJobseekerInterview(let limit, let page):
+                return "jobseeker-interview/\(limit)?page=\(page)"
             case .deleteContract(let contractId):
                 return "delete-contract/\(contractId)"
             case .myReview(let numberOfItems, let page):

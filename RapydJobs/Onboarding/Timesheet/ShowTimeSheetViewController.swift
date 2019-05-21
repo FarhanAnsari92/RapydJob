@@ -72,7 +72,7 @@ class ShowTimeSheetViewController: UIViewController {
                 print(newDt)
                 
                 let weekday = dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from: weekDate) - 1].lowercased()
-                if weekday == item.day {
+                if weekday == item.day.lowercased() {
                     let startTimeSplit = item.startTime.components(separatedBy: ":")
                     let endTimeSplit = item.endTime.components(separatedBy: ":")
                     

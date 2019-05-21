@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,6 +33,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mds-1h-PA4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xVn-3B-9pU" id="uUB-D3-HDU"/>
+                                    <outlet property="delegate" destination="xVn-3B-9pU" id="pSg-gZ-dCK"/>
+                                </connections>
+                            </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eF-0r-WUy">
+                                <rect key="frame" x="0.0" y="298.5" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No messages yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPd-hW-9vf">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7rv-xc-eD0"/>
+                                    <constraint firstAttribute="trailing" secondItem="XPd-hW-9vf" secondAttribute="trailing" id="VHQ-Sx-Dha"/>
+                                    <constraint firstAttribute="bottom" secondItem="XPd-hW-9vf" secondAttribute="bottom" id="XG4-3F-3st"/>
+                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="leading" secondItem="9eF-0r-WUy" secondAttribute="leading" id="eu7-dx-2Qp"/>
+                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="top" secondItem="9eF-0r-WUy" secondAttribute="top" id="pzm-gM-4fn"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-YR-yWq">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
@@ -78,33 +105,6 @@
                                     <constraint firstAttribute="bottom" secondItem="7Ke-o5-nkA" secondAttribute="bottom" constant="5" id="hry-KZ-aiO"/>
                                     <constraint firstItem="7Ke-o5-nkA" firstAttribute="leading" secondItem="KcF-YR-yWq" secondAttribute="leading" constant="5" id="mpq-Vt-ggv"/>
                                     <constraint firstItem="8Fd-d5-UoK" firstAttribute="centerY" secondItem="KcF-YR-yWq" secondAttribute="centerY" id="pfk-5K-pne"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mds-1h-PA4">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="xVn-3B-9pU" id="uUB-D3-HDU"/>
-                                    <outlet property="delegate" destination="xVn-3B-9pU" id="pSg-gZ-dCK"/>
-                                </connections>
-                            </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eF-0r-WUy">
-                                <rect key="frame" x="0.0" y="298.5" width="375" height="70"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No messages yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPd-hW-9vf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="7rv-xc-eD0"/>
-                                    <constraint firstAttribute="trailing" secondItem="XPd-hW-9vf" secondAttribute="trailing" id="VHQ-Sx-Dha"/>
-                                    <constraint firstAttribute="bottom" secondItem="XPd-hW-9vf" secondAttribute="bottom" id="XG4-3F-3st"/>
-                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="leading" secondItem="9eF-0r-WUy" secondAttribute="leading" id="eu7-dx-2Qp"/>
-                                    <constraint firstItem="XPd-hW-9vf" firstAttribute="top" secondItem="9eF-0r-WUy" secondAttribute="top" id="pzm-gM-4fn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -182,6 +182,6 @@
     </scenes>
     <resources>
         <image name="ic_back" width="29" height="29"/>
-        <image name="sendMsg" width="48" height="48"/>
+        <image name="sendMsg" width="30" height="30"/>
     </resources>
 </document>

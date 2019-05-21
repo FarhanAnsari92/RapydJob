@@ -223,7 +223,7 @@ class JobSeekerProfileViewController: UIViewController {
                     self.ratingView.rating = Double(jobseeker.totalRating)
                     self.nameLabel.text = jobseeker.username.capitalized
                     if jobseeker.experience.count > 0 {
-                        self.subtitleLabel.text = jobseeker.experience[0].title.capitalized + " @ " + jobseeker.experience[0].companyName.capitalized
+                        self.subtitleLabel.text = jobseeker.experience[0].title.capitalized + " at " + jobseeker.experience[0].companyName.capitalized
                     }
                     self.coverImageView.setImageWithName(jobseeker.profileImage)
                     self.profileImageView.setImageWithName(jobseeker.profileImage)

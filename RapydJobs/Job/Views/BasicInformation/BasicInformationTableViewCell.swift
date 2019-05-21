@@ -17,13 +17,19 @@ class BasicInformationTableViewCell: ShdaowBaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let tapGesture = UIGestureRecognizer(target: self, action: #selector(self.didtapAtTimeSheet))
-        self.timeLabel.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didtapAtTimeSheet))
         self.timeLabel.addGestureRecognizer(tapGesture)
+        
+        self.timeLabel.isUserInteractionEnabled = true
     }
     
     @objc func didtapAtTimeSheet() {
         self.shiftTimingCompletion?()
+    }
+    
+    @IBAction func asldjha(_ sender: UIButton) {
+        print("call bc")
     }
     
     func setup(location: String, budget: String, time: String) {

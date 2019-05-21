@@ -18,12 +18,16 @@ class JobDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
             tableView.register(
-                UINib(nibName: "BasicInformationCell", bundle: .main),
-                forCellReuseIdentifier: "information-cell")
+            UINib(nibName: "ProfileInfoTableViewCell", bundle: .main),
+            forCellReuseIdentifier: "ProfileInfoTableViewCellID")
             tableView.register(
                 UINib(nibName: "DescriptionCell", bundle: .main),
                 forCellReuseIdentifier: "description-cell")
+            tableView.register(
+                UINib(nibName: "ProfileDetailsTableHeaderCell", bundle: .main),
+                forCellReuseIdentifier: "headerCell") //ProfileDetailsTableHeaderCellID
         }
     }
     
@@ -125,60 +129,76 @@ class JobDetailsViewController: UIViewController {
     
 }
 
-extension JobDetailsViewController: UITableViewDataSource {
+extension JobDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row < 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "information-cell") as! BasicInformationTableViewCell
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
+            cell.iconView.image = UIImage(named: "ic_location")
+            cell.titleLabel.text = self.jobModel?.address?.address ?? ""
             
+            if let _ = self.item {
+                cell.titleLabel.text = item?.location ?? ""
+            } else if let rwItm = self.rawItem {
+                let addressDetail = rwItm["address"] as? [String: Any] ?? [String: Any]()
+                let address = addressDetail["address"] as? String ?? "Not Provided"
+                cell.titleLabel.text = address
+            } else if let jobItm = self.jobMatch {
+                cell.titleLabel.text = self.jobMatch?.jobOwner.organization.website ?? ""
+            }
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
             
+            cell.iconView.image = UIImage(named: "ic_wallet")
             let minSalary = self.jobModel?.minSalary ?? 0
             let maxSalary = self.jobModel?.maxSalary ?? 0
+            cell.titleLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            
+            if let _ = self.item {
+                let minSalary = self.jobModel?.minSalary ?? 0
+                let maxSalary = self.jobModel?.maxSalary ?? 0
+                cell.titleLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            } else if let rwItm = self.rawItem {
+                let minSalary = rwItm["min_salary"] as? Int ?? 0
+                let maxSalary = rwItm["max_salary"] as? Int ?? 0
+                cell.titleLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            } else if let jobItm = self.jobMatch {
+                let minSalary = jobItm.minSalary
+                let maxSalary = jobItm.maxSalary
+                cell.titleLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
+            }
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoTableViewCellID", for: indexPath) as! ProfileInfoTableViewCell
+            
+            cell.iconView.image = UIImage(named: "ic_calendar")
             if let wks = self.jobModel?.dates, wks.count > 0 {
                 var str = ""
                 for item in wks {
                     str += "\(item.day ?? ""), "
                 }
                 str.remove(at: str.index(before: str.endIndex))
-                cell.timeLabel.text = str
-            }
-            
-            cell.locationLabel.text = self.jobModel?.address?.address ?? ""
-            cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
-            cell.shiftTimingCompletion = {
-                let sb = UIStoryboard(name: "Timesheet", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
-                //vc.dates = availabilityDtoArray
-                self.navigationController?.pushViewController(vc, animated: true)
+                cell.titleLabel.text = str
             }
             
             if let _ = self.item {
-                let minSalary = self.jobModel?.minSalary ?? 0
-                let maxSalary = self.jobModel?.maxSalary ?? 0
-                
                 if let wks = self.jobModel?.dates, wks.count > 0 {
                     var str = ""
                     for item in wks {
                         str += "\(item.day ?? ""), "
                     }
                     str.remove(at: str.index(before: str.endIndex))
-                    cell.timeLabel.text = str
+                    cell.titleLabel.text = str
                 }
-                
-                cell.locationLabel.text = item?.location ?? ""
-                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
             } else if let rwItm = self.rawItem {
-                
-                let minSalary = rwItm["min_salary"] as? Int ?? 0
-                let maxSalary = rwItm["max_salary"] as? Int ?? 0
-                
-                let addressDetail = rwItm["address"] as? [String: Any] ?? [String: Any]()
-                let address = addressDetail["address"] as? String ?? "Not Provided"
-                
                 let dates = rwItm["dates"] as? [[String: Any]]
                 if let wks = dates, wks.count > 0 {
                     var str = ""
@@ -187,31 +207,20 @@ extension JobDetailsViewController: UITableViewDataSource {
                     }
                     str.remove(at: str.index(before: str.endIndex))
                     
-                    cell.timeLabel.text = str
+                    cell.titleLabel.text = str
                 }
-                cell.locationLabel.text = address
-                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
-                
             } else if let jobItm = self.jobMatch {
-                
-                let minSalary = jobItm.minSalary
-                let maxSalary = jobItm.maxSalary
-                
-                cell.locationLabel.text = self.jobMatch?.jobOwner.organization.website ?? ""
-                cell.budgetLabel.text = "£\(minSalary) - £\(maxSalary) Per Hour Rate"
-                
                 if let wks = self.jobMatch?.dates, wks.count > 0 {
                     var str = ""
                     for item in wks {
                         str += "\(item.day), "
                     }
                     str.remove(at: str.index(before: str.endIndex))
-                    cell.timeLabel.text = str
+                    cell.titleLabel.text = str
                 }
             }
-            
             return cell
-        } else {
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "description-cell") as! DescriptionTableViewCell
             
             cell.descriptionTextView.text = self.jobModel?.description ?? ""
@@ -225,6 +234,22 @@ extension JobDetailsViewController: UITableViewDataSource {
             }
             
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            let sb = UIStoryboard(name: "Timesheet", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ShowTimeSheetViewControllerID") as! ShowTimeSheetViewController
+            if let dateArr = self.jobModel?.dates, dateArr.count > 0 {
+                var dates = [AvailabilityDTO]()                
+                for date in dateArr {
+                    let dateDTO = AvailabilityDTO(day: date.day, startTime: date.startTime, endTime: date.endTime)
+                    dates.append(dateDTO)
+                }
+                vc.dates = dates
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

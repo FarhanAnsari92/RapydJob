@@ -43,6 +43,32 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         self.setupViews()
         
+//        if AppContainer.shared.notificationContainer.Chat {
+//            if AppContainer.shared.user.user?.accountType == "organization" {
+//                Helper.changeRedDot(type: "emp_message");
+//            } else {
+//                Helper.changeRedDot(type: "jobseeker_message");
+//            }
+//        }
+//
+        hud.show(in: view)
+//        SocketService.getChatList { [weak self] (chatLists, error) in
+//            if let err = error {
+//                AlertService.shared.alert(in: self!, "Mo messages found")
+//                self?.hud.dismiss(animated: true)
+//                print("🔥 Error : ", err)
+//            } else {
+//                self?.hud.dismiss(animated: true)
+//                self?.chatLists = chatLists!
+//                self?.emptyPlaceholderView.isHidden = (self?.chatLists.count ?? 0) > 0
+//                self?.messagesTableView.reloadData()
+//            }
+//        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if AppContainer.shared.notificationContainer.Chat {
             if AppContainer.shared.user.user?.accountType == "organization" {
                 Helper.changeRedDot(type: "emp_message");
@@ -51,7 +77,7 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        hud.show(in: view)
+//        hud.show(in: view)
         SocketService.getChatList { [weak self] (chatLists, error) in
             if let err = error {
                 AlertService.shared.alert(in: self!, "Mo messages found")
@@ -63,11 +89,7 @@ class ChatListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self?.emptyPlaceholderView.isHidden = (self?.chatLists.count ?? 0) > 0
                 self?.messagesTableView.reloadData()
             }
-        }        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

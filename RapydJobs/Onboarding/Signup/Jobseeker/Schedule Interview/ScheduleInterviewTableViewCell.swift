@@ -44,7 +44,7 @@ class ScheduleInterviewTableViewCell: UITableViewCell {
     }
     
     func updateData(_ data: [String:Any]) {
-        self.jobTitle.text = data["organizationName"] as? String ?? ""
+        self.jobTitle.text = data["title"] as? String ?? ""
         self.date.text = data["date"] as? String ?? ""
         self.time.text = data["time"] as? String ?? ""
             
