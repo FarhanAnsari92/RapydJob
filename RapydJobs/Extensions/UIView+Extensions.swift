@@ -111,11 +111,13 @@ extension UIView {
 
 extension String {
     private func matches(_ regex: String) -> Bool {
-        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+        let text = self.lowercased()
+        print(text)
+        return text.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
     func isValidURL() -> Bool {
-        return self.matches("^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$")
+        return self.matches("((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?")
     }
 }
 

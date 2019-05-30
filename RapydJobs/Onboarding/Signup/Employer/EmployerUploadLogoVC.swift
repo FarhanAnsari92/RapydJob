@@ -123,12 +123,24 @@ class EmployerUploadLogoVC: UIViewController, UINavigationControllerDelegate, UI
         
         try? VideoBackground.shared.play(view: videoView, videoName: "Background", videoType: "mp4")
     }
+    
+    @objc func navigateToAddressVC() {
+        self.dismissToRootviewController()
+    }
 
     private func setupViews() {
         self.toast = JYToast()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if EditProfileFlowManager.shared().isEditProfile == true {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: #selector(navigateToAddressVC))
+        } else {
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         videoView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: view.frame.height + 100))
         view.addSubview(videoView)

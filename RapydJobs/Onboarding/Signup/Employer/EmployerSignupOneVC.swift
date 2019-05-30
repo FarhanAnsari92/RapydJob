@@ -288,46 +288,47 @@ class EmployerSignupOneVC: UIViewController, UITextFieldDelegate {
         
         if employerNameInput.text != "" {
             if employerRegNumInput.text != "" {
-                if employerWebsiteInput.text != "" {
-                    if employerWebsiteInput.text?.isValidURL() == false {
-                        AlertService.shared.alert(in: self, "Please insert valid url")
-                        return
-                    }
-                    if employerPhoneInput.text != "" {
-                        hud.show(in: view)
-                        UserDefaults.standard.set(employerPhoneInput.text!, forKey: "contactNumber")
-                        UserDefaults.standard.synchronize()
-                        
-                        EmployerSignupAPIService.shared.updateEmployer(organizationName: employerNameInput.text!, website: employerWebsiteInput.text!, registrationNo: employerRegNumInput.text!, contactNo: employerPhoneInput.text!) { (error) in
-                            if let err = error {
-                                self.hud.dismiss(animated: true)
-                                AlertService.shared.alert(in: self, err.localizedDescription)
-                                print("🔥 Error : ", err)
-                            } else {
-                                self.hud.dismiss(animated: true)
-                                if !EditProfileFlowManager.shared().isEditProfile {
+                if employerWebsiteInput.text?.isEmpty ?? false {
+                    AlertService.shared.alert(in: self, "Please insert url")
+                    return
+                }
+                if employerWebsiteInput.text?.isValidURL() == false {
+                    AlertService.shared.alert(in: self, "Please insert valid url")
+                    return
+                }
+                if employerPhoneInput.text != "" {
+                    hud.show(in: view)
+                    UserDefaults.standard.set(employerPhoneInput.text!, forKey: "contactNumber")
+                    UserDefaults.standard.synchronize()
+                    
+                    EmployerSignupAPIService.shared.updateEmployer(organizationName: employerNameInput.text!, website: employerWebsiteInput.text!.lowercased(), registrationNo: employerRegNumInput.text!, contactNo: employerPhoneInput.text!) { (error) in
+                        if let err = error {
+                            self.hud.dismiss(animated: true)
+                            AlertService.shared.alert(in: self, err.localizedDescription)
+                            print("🔥 Error : ", err)
+                        } else {
+                            self.hud.dismiss(animated: true)
+                            if !EditProfileFlowManager.shared().isEditProfile {
+                                
+                                let sb = UIStoryboard(name: "EmployerSignup", bundle: nil)
+                                let vc = sb.instantiateViewController(withIdentifier: "EmployerCodeVC") as! EmployerCodeVC
+                                
+                                vc.completion = { () in
                                     
-                                    let sb = UIStoryboard(name: "EmployerSignup", bundle: nil)
-                                    let vc = sb.instantiateViewController(withIdentifier: "EmployerCodeVC") as! EmployerCodeVC
-                                    
-                                    vc.completion = { () in
-                                        
-                                        let vc = sb.instantiateViewController(withIdentifier: "EmployerSignupTwoVC") as! EmployerSignupTwoVC
-                                        self.navigationController?.pushViewController(vc, animated: true)
-                                    }
-                                    
-                                    let nav = UINavigationController(rootViewController: vc)
-                                    self.present(nav, animated: true, completion: nil)
-                                    
+                                    let vc = sb.instantiateViewController(withIdentifier: "EmployerSignupTwoVC") as! EmployerSignupTwoVC
+                                    self.navigationController?.pushViewController(vc, animated: true)
                                 }
+                                
+                                let nav = UINavigationController(rootViewController: vc)
+                                self.present(nav, animated: true, completion: nil)
+                                
                             }
                         }
-                    } else {
-                        AlertService.shared.alert(in: self, "Please insert Organization phone number")
                     }
                 } else {
-                    AlertService.shared.alert(in: self, "Please insert Organizations Website")
+                    AlertService.shared.alert(in: self, "Please insert Organization phone number")
                 }
+                
             } else {
                 AlertService.shared.alert(in: self, "Please insert Organization Registration Number")
             }

@@ -103,6 +103,14 @@ extension SideMenuMainViewController: UITableViewDelegate, UITableViewDataSource
 //            break
         case "HR":
             break
+        case "Post A Job":
+            guard let user = AppContainer.shared.user.user,
+                let _ = user.address,
+                let _ = user.profileImage else {
+                AlertService.shared.alert(in: self, "Please complete your organization profile")
+                return
+            }
+            break
         default:
             break
         }

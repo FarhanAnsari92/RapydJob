@@ -27,7 +27,7 @@ class JobSector {
         let childcare = JobSector("Childcare", "ic_childcare")
         let cleaning = JobSector("Cleaning", "ic_cleaning")
         let construction = JobSector("Construction", "ic_construction")
-        let customerSales = JobSector("Customer Sales", "ic_customer_sales")
+        let customerSales = JobSector("Customer Services", "ic_customer_sales")
         let finance = JobSector("Finance", "ic_finance")
         let health = JobSector("Health", "ic_health")
         let it = JobSector("IT", "ic_it")

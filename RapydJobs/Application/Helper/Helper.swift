@@ -24,7 +24,7 @@ class Helper {
         sectors.append(Sector(sectorImage: "ic_childcare", sectorTitle: "Childcare"))
         sectors.append(Sector(sectorImage: "ic_cleaning", sectorTitle: "Cleaning"))
         sectors.append(Sector(sectorImage: "ic_construction", sectorTitle: "Construction"))
-        sectors.append(Sector(sectorImage: "ic_customer_sales", sectorTitle: "Customer Sales"))
+        sectors.append(Sector(sectorImage: "ic_customer_sales", sectorTitle: "Customer Services"))
         sectors.append(Sector(sectorImage: "ic_finance", sectorTitle: "Finance"))
         sectors.append(Sector(sectorImage: "ic_health", sectorTitle: "Health"))
         sectors.append(Sector(sectorImage: "ic_it", sectorTitle: "IT"))
